@@ -1,2 +1,2 @@
-# gameoff2024
+# Game Off 2024
 Assembly Game Jam
