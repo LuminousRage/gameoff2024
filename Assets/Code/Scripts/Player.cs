@@ -19,14 +19,17 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        bool down = Input.GetKeyDown(KeyCode.S);
-        bool up = Input.GetKey(KeyCode.W);
-        bool left = Input.GetKeyDown(KeyCode.A);
-        bool right = Input.GetKeyDown(KeyCode.D);
+        bool back = Input.GetKey(KeyCode.S);
+        bool forward = Input.GetKey(KeyCode.W);
+        bool left = Input.GetKey(KeyCode.A);
+        bool right = Input.GetKey(KeyCode.D);
 
-        if (up)
-        {
-            rb_.AddForce(acceleration * Vector3.one, 0);
-        }
+        Vector3 direction = Vector3.zero;
+        if (forward) {direction += Vector3.forward;}
+        if (back) {direction += Vector3.back;}
+        if (left) {direction += Vector3.left;}
+        if (right) {direction += Vector3.right;}
+
+        rb_.AddForce(acceleration * direction.normalized, ForceMode.Acceleration);
     }
 }
