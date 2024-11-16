@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0acf2dc38d696237a1d4de6d1257972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followee: {fileID: 0}
+  _followee: {fileID: 1827724871}
 --- !u!1001 &535823826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1316,6 +1316,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4258852129015504531, guid: be2fcf4b35f65eb0c8d748a552c36ba2, type: 3}
   m_PrefabInstance: {fileID: 1639075570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1827724871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8124183052260777435, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
+  m_PrefabInstance: {fileID: 1523303495}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1926194171
 GameObject:
