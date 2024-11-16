@@ -73,11 +73,12 @@ public class Player : MonoBehaviour
 
     private void UpdatePosition()
     {
-        var directions = moveAction.ReadValue<Vector2>();
+        var inputDirections = moveAction.ReadValue<Vector2>();
 
         Vector3 direction = Vector3.zero;
-        direction += directions.x * Vector3.right;
-        direction += directions.y * Vector3.forward;
+
+        direction += inputDirections.y * this.transform.forward;
+        direction += inputDirections.x * this.head_.transform.right;
 
         // Add force if high enough
         if (direction.magnitude >= movementDeadzone)

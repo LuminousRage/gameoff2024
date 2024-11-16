@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoveSpeed: 5
-  acceleration: 100
+  acceleration: 40
   movementDeadzone: 0.2
   moveAction:
     m_Name: Move
