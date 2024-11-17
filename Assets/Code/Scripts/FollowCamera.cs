@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class PlayerCamera : MonoBehaviour
+public class FollowCamera : MonoBehaviour
 {
     public GameObject _followee = null;
 
