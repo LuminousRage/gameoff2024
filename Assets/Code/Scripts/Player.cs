@@ -11,8 +11,13 @@ public class Player : MonoBehaviour
     [Range(0f, 1.0f)]
     public float movementDeadzone = 0.2f;
 
+    [Range(0.1f, 1)]
+    public float mouseSensitivity = 0.2f;
+
     public InputAction moveAction;
     public InputAction lookAction;
+
+    private MouseManager mouseManager_;
 
     public InputActionMap gameplayActions;
 
@@ -23,13 +28,16 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb_ = GetComponent<Rigidbody>();
-        Assert.IsNotNull(rb_, "Unable to find Rigidbody on a Player instance.");
+        Assert.IsNotNull(this.rb_, "Unable to find Rigidbody on a Player instance.");
 
+        // Find the head using the head's transform
         Transform headTransform = this.transform.Find("Head");
         Assert.IsNotNull(headTransform, "Unable to find Head transform from Player.");
-
         this.head_ = headTransform.gameObject;
         Assert.IsNotNull(this.head_, "Unable to find Head from head transform.");
+
+        this.mouseManager_ = FindFirstObjectByType<MouseManager>();
+        Assert.IsNotNull(this.mouseManager_, "Unable to find the MouseManager from the Player.");
 
         moveAction.Enable();
         lookAction.Enable();
@@ -40,18 +48,9 @@ public class Player : MonoBehaviour
     {
         this.UpdateCamera();
 
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (Cursor.lockState == CursorLockMode.Locked)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
+            mouseManager_.Toggle();
         }
     }
 
@@ -66,7 +65,12 @@ public class Player : MonoBehaviour
 
     private void UpdateCamera()
     {
-        var mouseXY = lookAction.ReadValue<Vector2>();
+        Vector2 mouseXY = this.mouseManager_.delta;
+
+        // Use the sensitivity value
+        mouseXY *= this.mouseSensitivity;
+
+        // Debug.Log($"mouseXY: {mouseXY}");
 
         // Rotate horizontal view (no need for bounds checking)
         this.transform.Rotate(new Vector3(0, mouseXY.x, 0));
@@ -90,7 +94,7 @@ public class Player : MonoBehaviour
             oldXAngle = 0;
         }
 
-        Debug.Log($"Old euler x: {headTransform.rotation.eulerAngles.x}   Adjusted: {oldXAngle}");
+        // Debug.Log($"Old euler x: {headTransform.rotation.eulerAngles.x}   Adjusted: {oldXAngle}");
 
         float xDiff = -mouseXY.y;
 
