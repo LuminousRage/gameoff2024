@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            Debug.Log("UP ARROW IS PRESSED.");
             mouseManager_.Toggle();
         }
     }

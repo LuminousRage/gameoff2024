@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MouseManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class MouseManager : MonoBehaviour
 
         this.mousePos_ = newPos;
 
-        var middle = new Vector2(Screen.width / 2, Screen.height / 2);
+        this.ResetMouse();
     }
 
     public void Toggle()
@@ -51,8 +52,12 @@ public class MouseManager : MonoBehaviour
         return;
     }
 
-    Vector2 GetDelta()
+    private void ResetMouse()
     {
-        return this.delta;
+        if (!this.locked)
+            return;
+
+        var middle = new Vector2(Screen.width / 2, Screen.height / 2);
+        Mouse.current.WarpCursorPosition(middle);
     }
 }
