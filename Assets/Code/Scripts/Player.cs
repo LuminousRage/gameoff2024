@@ -12,14 +12,17 @@ public class Player : MonoBehaviour
     public float movementDeadzone = 0.2f;
 
     public InputAction moveAction;
-    public InputAction lookAction;
 
-    private MouseManager mouseManager_;
+    private InputAction useAction_;
 
     public InputActionMap gameplayActions;
 
+    private MouseManager mouseManager_;
+
+    private IUsable usable_;
     private Rigidbody rb_;
     private GameObject head_;
+    private PlayerReacher reacher_;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,11 +36,22 @@ public class Player : MonoBehaviour
         this.head_ = headTransform.gameObject;
         Assert.IsNotNull(this.head_, "Unable to find Head from head transform.");
 
+        this.reacher_ = GetComponentInChildren<PlayerReacher>();
+        Assert.IsNotNull(headTransform, "Unable to find Reacher transform from Player.");
+
         this.mouseManager_ = FindFirstObjectByType<MouseManager>();
         Assert.IsNotNull(this.mouseManager_, "Unable to find the MouseManager from the Player.");
 
         moveAction.Enable();
-        lookAction.Enable();
+        // gameplayActions.Enable();
+
+        useAction_ = gameplayActions.FindAction("Use");
+
+        useAction_.performed += context =>
+        {
+            this.reacher_.UseUsable();
+        };
+        useAction_.Enable();
     }
 
     // Update every frame
@@ -49,6 +63,8 @@ public class Player : MonoBehaviour
         {
             mouseManager_.Toggle();
         }
+
+        if (this.useAction_.IsPressed()) { }
     }
 
     // Update on a fixed timer
@@ -63,8 +79,6 @@ public class Player : MonoBehaviour
     private void UpdateCamera()
     {
         Vector2 mouseXY = this.mouseManager_.GetScaledDelta();
-
-        Debug.Log($"mouseXY: {mouseXY}");
 
         // Rotate horizontal view (no need for bounds checking)
         this.transform.Rotate(new Vector3(0, mouseXY.x, 0));
@@ -88,8 +102,6 @@ public class Player : MonoBehaviour
             oldXAngle = 0;
         }
 
-        // Debug.Log($"Old euler x: {headTransform.rotation.eulerAngles.x}   Adjusted: {oldXAngle}");
-
         float xDiff = -mouseXY.y;
 
         const float SAFETY = 1;
@@ -99,8 +111,6 @@ public class Player : MonoBehaviour
             EULER_MIN - oldXAngle + SAFETY,
             EULER_MAX - oldXAngle - SAFETY
         );
-
-        // Debug.Log($"xDiff: {xDiff}  clampedXDiff: {clampedXDiff}");
 
         this.head_.transform.Rotate(new Vector3(clampedXDiff, 0, 0));
     }

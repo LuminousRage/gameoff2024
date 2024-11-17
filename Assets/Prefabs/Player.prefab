@@ -31,6 +31,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3052933672463574367}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8241396265650477490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7113577045044023282}
+  - component: {fileID: 8849648631438134316}
+  - component: {fileID: 2457203987583534289}
+  m_Layer: 6
+  m_Name: Reacher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7113577045044023282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241396265650477490}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3052933672463574367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8849648631438134316
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241396265650477490}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 1}
+--- !u!114 &2457203987583534289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241396265650477490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83f26531598513afb4f5219fe3842da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8880783659850259186
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +132,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7000257175610438640}
+  - {fileID: 7113577045044023282}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &220526795326924657
@@ -153,85 +222,12 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
-  lookAction:
-    m_Name: Look
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 1ed6dda7-9d26-4373-bb56-482383339acd
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 2D Vector
-      m_Id: beb3a65c-2dd0-4f27-a80e-6d535944a627
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 4
-    - m_Name: up
-      m_Id: 4e1e429a-5b02-4d9e-84ef-15142a46c426
-      m_Path: <Mouse>/delta/up
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 8
-    - m_Name: down
-      m_Id: b784be41-27db-4fb0-b409-4e3f5974e98a
-      m_Path: <Mouse>/delta/down
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 8
-    - m_Name: left
-      m_Id: e37599a5-1741-4033-b857-d12e8f18f175
-      m_Path: <Mouse>/delta/left
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 2a47a734-7c71-4b8e-8200-24743f8d43c0
-      m_Path: <Mouse>/delta/right
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 8
-    - m_Name: MouseX
-      m_Id: 399c2b5d-d7e6-450b-9463-22dbc258842e
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 4
-    - m_Name: negative
-      m_Id: 2e9efe6f-ffef-4d5d-bb29-6122aa3a3cef
-      m_Path: <Mouse>/position/x
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 8
-    - m_Name: positive
-      m_Id: 8577123f-d459-41bc-a48b-d02dfc3ea219
-      m_Path: <Mouse>/position/x
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 8
-    m_Flags: 0
   gameplayActions:
     m_Name: Gameplay Actions
     m_Id: e7262acf-eb01-456d-9cba-51ecd5910d06
     m_Asset: {fileID: 0}
     m_Actions:
-    - m_Name: New action
+    - m_Name: Use
       m_Type: 1
       m_ExpectedControlType: Button
       m_Id: f1a45c5e-738c-48ca-a3d9-c36cad8637b0
@@ -242,11 +238,11 @@ MonoBehaviour:
     m_Bindings:
     - m_Name: 
       m_Id: 8a718dea-f28a-4f96-af7b-cfa75041e2bb
-      m_Path: 
+      m_Path: <Keyboard>/e
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: New action
+      m_Action: Use
       m_Flags: 0
 --- !u!54 &4753164541546685440
 Rigidbody:
