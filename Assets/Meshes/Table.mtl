@@ -1,0 +1,12 @@
+# Blender 4.2.3 LTS MTL File: 'Table.blend'
+# www.blender.org
+
+newmtl Material
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.062647 0.017150 0.008958
+Ks 0.134454 0.134454 0.134454
+Ke 0.000000 0.000000 0.000000
+Ni 1.250000
+d 1.000000
+illum 2
