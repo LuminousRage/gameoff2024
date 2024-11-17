@@ -39,6 +39,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         this.UpdateCamera();
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
     }
 
     // Update on a fixed timer
@@ -47,28 +61,56 @@ public class Player : MonoBehaviour
         this.UpdatePosition();
     }
 
+    const float EULER_MAX = 90;
+    const float EULER_MIN = -90;
+
     private void UpdateCamera()
     {
         var mouseXY = lookAction.ReadValue<Vector2>();
+
+        // Rotate horizontal view (no need for bounds checking)
         this.transform.Rotate(new Vector3(0, mouseXY.x, 0));
-        this.head_.transform.Rotate(new Vector3(-mouseXY.y, 0, 0));
 
-        // // Add force if high enough
-        // if (direction.magnitude >= movementDeadzone)
-        // {
-        //     var force = acceleration * direction.normalized;
-        //     Debug.Log($"Force: {force}");
+        // Rotate head view (vertical)
+        Transform headTransform = this.head_.transform;
 
-        //     // rb_.AddForce(acceleration * direction.normalized, ForceMode.Acceleration);
-        //     rb_.AddForce(force);
-        // }
+        // Old X angle in [-180, 180]
+        float oldXAngle = headTransform.rotation.eulerAngles.x;
+        if (oldXAngle >= 180)
+        {
+            oldXAngle -= 360;
+        }
 
-        // float currentSpeed = rb_.linearVelocity.magnitude;
+        if (oldXAngle < EULER_MIN || oldXAngle > EULER_MAX)
+        {
+            Debug.Log(
+                $"Player head vertical rotation {oldXAngle} is out of range [{EULER_MIN},{EULER_MAX}]. Resetting to 0."
+            );
+            this.ResetVerticalLook();
+            oldXAngle = 0;
+        }
 
-        // if (currentSpeed > maxMoveSpeed)
-        // {
-        //     rb_.linearVelocity = rb_.linearVelocity.normalized * maxMoveSpeed;
-        // }
+        Debug.Log($"Old euler x: {headTransform.rotation.eulerAngles.x}   Adjusted: {oldXAngle}");
+
+        float xDiff = -mouseXY.y;
+
+        const float SAFETY = 1;
+
+        var clampedXDiff = Math.Clamp(
+            xDiff,
+            EULER_MIN - oldXAngle + SAFETY,
+            EULER_MAX - oldXAngle - SAFETY
+        );
+
+        // Debug.Log($"xDiff: {xDiff}  clampedXDiff: {clampedXDiff}");
+
+        this.head_.transform.Rotate(new Vector3(clampedXDiff, 0, 0));
+    }
+
+    private void ResetVerticalLook()
+    {
+        Vector3 eulers = this.head_.transform.rotation.eulerAngles;
+        this.head_.transform.eulerAngles = new Vector3(0, eulers.y, eulers.z);
     }
 
     private void UpdatePosition()
