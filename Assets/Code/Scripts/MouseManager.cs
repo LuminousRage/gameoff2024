@@ -4,27 +4,16 @@ using UnityEngine.InputSystem;
 public class MouseManager : MonoBehaviour
 {
     public Vector2 delta { get; private set; } = Vector2.zero;
-    private Vector2 mousePos_;
 
-    private bool locked;
+    [Range(1f, 10f)]
+    public float sensitivity = 5f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private bool locked = false;
+
+    public Vector2 GetScaledDelta()
     {
-        this.mousePos_ = Input.mousePosition;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        var newPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
-        var newDelta = newPos - this.mousePos_;
-        this.delta = newDelta;
-
-        this.mousePos_ = newPos;
-
-        this.ResetMouse();
+        // Use the sensitivity value
+        return this.delta * this.sensitivity;
     }
 
     public void Toggle()
@@ -39,9 +28,17 @@ public class MouseManager : MonoBehaviour
     {
         if (this.locked)
             Debug.LogWarning($"Attempted to lock the MouseManager when it it already locked.");
+        else
+        {
+            Debug.Log("Locking the cursor.");
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Cursor.visible = false;
+        Cursor.visible = true;
+
+        this.locked = true;
+
         return;
     }
 
@@ -49,15 +46,32 @@ public class MouseManager : MonoBehaviour
     {
         if (!this.locked)
             Debug.LogWarning($"Attempted to unlock the MouseManager when it it already unlocked.");
-        return;
+        else
+        {
+            Debug.Log("Unlocking the cursor.");
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        this.locked = false;
     }
 
-    private void ResetMouse()
+    void Start()
     {
-        if (!this.locked)
-            return;
+        this.Lock();
+    }
 
-        var middle = new Vector2(Screen.width / 2, Screen.height / 2);
-        Mouse.current.WarpCursorPosition(middle);
+    // Update is called once per frame
+    void Update()
+    {
+        var newDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+        this.delta = newDelta;
+    }
+
+    private Vector2 GetMousePosition()
+    {
+        return Mouse.current.position.ReadValue();
     }
 }

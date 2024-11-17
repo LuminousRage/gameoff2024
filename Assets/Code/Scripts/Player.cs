@@ -11,9 +11,6 @@ public class Player : MonoBehaviour
     [Range(0f, 1.0f)]
     public float movementDeadzone = 0.2f;
 
-    [Range(0.1f, 1)]
-    public float mouseSensitivity = 0.2f;
-
     public InputAction moveAction;
     public InputAction lookAction;
 
@@ -48,9 +45,8 @@ public class Player : MonoBehaviour
     {
         this.UpdateCamera();
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.Backslash))
         {
-            Debug.Log("UP ARROW IS PRESSED.");
             mouseManager_.Toggle();
         }
     }
@@ -66,12 +62,9 @@ public class Player : MonoBehaviour
 
     private void UpdateCamera()
     {
-        Vector2 mouseXY = this.mouseManager_.delta;
+        Vector2 mouseXY = this.mouseManager_.GetScaledDelta();
 
-        // Use the sensitivity value
-        mouseXY *= this.mouseSensitivity;
-
-        // Debug.Log($"mouseXY: {mouseXY}");
+        Debug.Log($"mouseXY: {mouseXY}");
 
         // Rotate horizontal view (no need for bounds checking)
         this.transform.Rotate(new Vector3(0, mouseXY.x, 0));
@@ -131,7 +124,6 @@ public class Player : MonoBehaviour
         if (direction.magnitude >= movementDeadzone)
         {
             var force = acceleration * direction.normalized;
-            Debug.Log($"Force: {force}");
 
             // rb_.AddForce(acceleration * direction.normalized, ForceMode.Acceleration);
             rb_.AddForce(force);

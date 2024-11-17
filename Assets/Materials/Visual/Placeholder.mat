@@ -28,7 +28,7 @@ Material:
     m_Floats:
     - _BlockSize: 1
     m_Colors:
-    - _Color1: {r: 0.8926573, g: 0, b: 1, a: 1}
-    - _Color2: {r: 0.07006645, g: 1, b: 0, a: 1}
+    - _Color1: {r: 0.019820213, g: 0, b: 1, a: 1}
+    - _Color2: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
