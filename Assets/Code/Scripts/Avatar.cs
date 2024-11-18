@@ -1,42 +1,30 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Avatar : MonoBehaviour
 {
+    public Rigidbody2D rb;
     public InputAction move;
 
-    [Range(0, 1)]
-    public float movementDelay = 0.1f;
+    [SerializeField]
+    private float speed = 5;
 
-    private float timer = 0f;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         move.Enable();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MovementHandler();
     }
 
     void MovementHandler()
     {
-        timer += Time.deltaTime;
-
-        if (timer > movementDelay)
-        {
-            var directions = move.ReadValue<Vector2>();
-            // Move the player
-            transform.position += new Vector3(
-                Mathf.Ceil(directions.x),
-                Mathf.Ceil(directions.y),
-                0
-            );
-            timer = 0;
-        }
+        var directions = move.ReadValue<Vector2>();
+        directions = new Vector2(Mathf.Round(directions.x), Mathf.Round(directions.y));
+        var newPosition = rb.position + directions * Time.deltaTime * speed;
+        rb.MovePosition(newPosition);
     }
 }
