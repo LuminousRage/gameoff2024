@@ -7,7 +7,7 @@ public class Avatar : MonoBehaviour
     public InputAction move;
 
     [Range(0, 1)]
-    public float movementDelay = 0.2f;
+    public float movementDelay = 0.1f;
 
     private float timer = 0f;
 
@@ -27,7 +27,7 @@ public class Avatar : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > this.movementDelay)
+        if (timer > movementDelay)
         {
             var directions = move.ReadValue<Vector2>();
             // Move the player
