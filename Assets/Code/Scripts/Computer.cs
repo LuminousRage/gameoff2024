@@ -1,10 +1,20 @@
+using Globals;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Computer : MonoBehaviour, IUsable
 {
+    public Level2D level;
+    public Zone zone;
+
+    [Range(1, 8)]
+    public byte avatar;
+
+    private Camera renderCamera_;
+
     public void Use(Player p)
     {
-        Debug.Log("Using Computer (TODO: IMPLEMENT)");
+        level.EnterFrom(this);
     }
 
     public string GetUsableLabel()
@@ -13,7 +23,17 @@ public class Computer : MonoBehaviour, IUsable
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start() { }
+    void Start()
+    {
+        Assert.IsNotNull(this.level);
+        NUnit.Framework.Assert.IsInstanceOf<Level2D>(this.level);
+
+        renderCamera_ = GetComponentInChildren<Camera>();
+        Assert.IsNotNull(renderCamera_);
+
+        renderCamera_.transform.position = level.transform.position - 2 * level.transform.forward;
+        renderCamera_.transform.rotation = level.transform.rotation;
+    }
 
     // Update is called once per frame
     void Update() { }
