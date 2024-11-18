@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class Computer : MonoBehaviour, IUsable
 {
+    public void Use(Player p)
+    {
+        Debug.Log("Using Computer (TODO: IMPLEMENT)");
+    }
+
+    public string GetUsableLabel()
+    {
+        return "Computer";
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() { }
 
@@ -30,10 +40,5 @@ public class Computer : MonoBehaviour, IUsable
         }
 
         reacher.UnsetUsable(this);
-    }
-
-    public void Use(Player p)
-    {
-        Debug.Log("Using Computer (TODO: IMPLEMENT)");
     }
 }

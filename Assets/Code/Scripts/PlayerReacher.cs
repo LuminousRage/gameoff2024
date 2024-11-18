@@ -6,11 +6,16 @@ public class PlayerReacher : MonoBehaviour
     private Player player_;
     private IUsable usable_;
 
+    private SceneManager sm_;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player_ = this.transform.GetComponentInParent<Player>();
         Assert.IsNotNull(player_, "Unable to find Player script from PlayerReacher.");
+
+        sm_ = GameObject.FindFirstObjectByType<SceneManager>();
+        Assert.IsNotNull(sm_, "Unable to find SceneManager from Player.");
     }
 
     // Update is called once per frame
@@ -27,6 +32,7 @@ public class PlayerReacher : MonoBehaviour
         Debug.Log($"Setting usable to {usable}");
 
         this.usable_ = usable;
+        this.sm_.SetUsePrompt(usable);
     }
 
     public void UnsetUsable(IUsable usable)
@@ -35,6 +41,7 @@ public class PlayerReacher : MonoBehaviour
         {
             Debug.Log($"Unsetting usable from {usable}");
             this.usable_ = null;
+            this.sm_.UnsetUsePrompt();
         }
     }
 }

@@ -13,11 +13,18 @@ public class Player : MonoBehaviour
 
     public InputAction moveAction;
 
+    public Transform GetHeadTransform()
+    {
+        return this.head_.transform;
+    }
+
+    // Private
+
     private InputAction useAction_;
 
     public InputActionMap gameplayActions;
 
-    private MouseManager mouseManager_;
+    private SceneManager mouseManager_;
 
     private IUsable usable_;
     private Rigidbody rb_;
@@ -39,7 +46,7 @@ public class Player : MonoBehaviour
         this.reacher_ = GetComponentInChildren<PlayerReacher>();
         Assert.IsNotNull(headTransform, "Unable to find Reacher transform from Player.");
 
-        this.mouseManager_ = FindFirstObjectByType<MouseManager>();
+        this.mouseManager_ = FindFirstObjectByType<SceneManager>();
         Assert.IsNotNull(this.mouseManager_, "Unable to find the MouseManager from the Player.");
 
         moveAction.Enable();
@@ -61,7 +68,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
-            mouseManager_.Toggle();
+            mouseManager_.ToggleMouseLock();
         }
 
         if (this.useAction_.IsPressed()) { }
