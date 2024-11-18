@@ -1,13 +1,23 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Avatar : MonoBehaviour
+public class Avatar : MonoBehaviour, IControllable
 {
     public Rigidbody2D rb;
     public InputAction move;
 
     [SerializeField]
     private float speed = 5;
+
+    [Range(1, 8)]
+    public byte number = 1;
+
+    private bool controlling_ = false;
+
+    public void SetControllable(bool controllable = true)
+    {
+        this.controlling_ = controllable;
+    }
 
     void Start()
     {
@@ -17,7 +27,10 @@ public class Avatar : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovementHandler();
+        if (controlling_)
+        {
+            MovementHandler();
+        }
     }
 
     void MovementHandler()

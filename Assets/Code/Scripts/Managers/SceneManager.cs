@@ -89,6 +89,8 @@ public class SceneManager : MonoBehaviour
             followCamera_._followee = computer.GetWatcherTransform();
             player_.SetControllable(false);
 
+            computer.level.EnterFrom(computer);
+
             this.UnsetUsePrompt();
         }
         else
@@ -97,8 +99,7 @@ public class SceneManager : MonoBehaviour
             player_.SetControllable(true);
         }
 
-        computer?.level.SetControllable(true);
-        focusedComputer_?.level.SetControllable(false);
+        focusedComputer_?.level.Exit();
         focusedComputer_ = computer;
     }
 
