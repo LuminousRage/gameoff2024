@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IControllable
 {
     public float maxMoveSpeed = 1;
     public float acceleration = 1;
@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float movementDeadzone = 0.2f;
 
     public InputAction moveAction;
+    private InputAction useAction_;
 
     public Transform GetHeadTransform()
     {
@@ -20,7 +21,6 @@ public class Player : MonoBehaviour
 
     // Private
 
-    private InputAction useAction_;
 
     public InputActionMap gameplayActions;
 
@@ -30,6 +30,24 @@ public class Player : MonoBehaviour
     private Rigidbody rb_;
     private GameObject head_;
     private PlayerReacher reacher_;
+
+    private bool currentlyControlling_ = false;
+
+    public void SetControllable(bool enable = true)
+    {
+        this.currentlyControlling_ = enable;
+
+        if (currentlyControlling_)
+        {
+            moveAction.Enable();
+            useAction_.Enable();
+        }
+        else
+        {
+            moveAction.Disable();
+            useAction_.Disable();
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,7 +67,6 @@ public class Player : MonoBehaviour
         this.mouseManager_ = FindFirstObjectByType<SceneManager>();
         Assert.IsNotNull(this.mouseManager_, "Unable to find the MouseManager from the Player.");
 
-        moveAction.Enable();
         // gameplayActions.Enable();
 
         useAction_ = gameplayActions.FindAction("Use");
@@ -58,20 +75,20 @@ public class Player : MonoBehaviour
         {
             this.reacher_.UseUsable();
         };
-        useAction_.Enable();
     }
 
     // Update every frame
     void Update()
     {
-        this.UpdateCamera();
+        if (this.currentlyControlling_)
+        {
+            this.UpdateCamera();
+        }
 
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
             mouseManager_.ToggleMouseLock();
         }
-
-        if (this.useAction_.IsPressed()) { }
     }
 
     // Update on a fixed timer

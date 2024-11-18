@@ -18,6 +18,10 @@ public class SceneManager : MonoBehaviour
 
     private Player player_;
 
+    private FollowCamera followCamera_;
+
+    private Computer focusedComputer_ = null;
+
     public Vector2 GetScaledDelta()
     {
         // Use the sensitivity value
@@ -78,6 +82,26 @@ public class SceneManager : MonoBehaviour
         useKeyPreview_.gameObject.SetActive(false);
     }
 
+    public void SetFocus(Computer computer)
+    {
+        if (computer)
+        {
+            followCamera_._followee = computer.GetWatcherTransform();
+            player_.SetControllable(false);
+
+            this.UnsetUsePrompt();
+        }
+        else
+        {
+            followCamera_._followee = player_.GetHeadTransform();
+            player_.SetControllable(true);
+        }
+
+        computer?.level.SetControllable(true);
+        focusedComputer_?.level.SetControllable(false);
+        focusedComputer_ = computer;
+    }
+
     void Start()
     {
         this.uiCanvas_ = this.transform.Find("UICanvas")?.gameObject;
@@ -92,8 +116,14 @@ public class SceneManager : MonoBehaviour
         useKeyPreview_ = uiCanvas_.transform.Find("KeyPreview").GetComponent<TMP_Text>();
         Assert.IsNotNull(useKeyPreview_);
 
+        this.followCamera_ = FindFirstObjectByType<FollowCamera>();
+        Assert.IsNotNull(followCamera_, "Unable to find FollowCamera from the scene.");
+
         this.LockMouse();
         this.UnsetUsePrompt();
+
+        // Start the game with the 3D player as controllable
+        this.SetFocus(null);
     }
 
     // Update is called once per frame

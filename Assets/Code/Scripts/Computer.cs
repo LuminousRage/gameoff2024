@@ -12,14 +12,23 @@ public class Computer : MonoBehaviour, IUsable
 
     private Camera renderCamera_;
 
+    private GameObject watcher_;
+
+    private SceneManager sceneManager_;
+
     public void Use(Player p)
     {
-        level.EnterFrom(this);
+        sceneManager_.SetFocus(this);
     }
 
     public string GetUsableLabel()
     {
         return "Computer";
+    }
+
+    public Transform GetWatcherTransform()
+    {
+        return watcher_.transform;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,7 +38,13 @@ public class Computer : MonoBehaviour, IUsable
         NUnit.Framework.Assert.IsInstanceOf<Level2D>(this.level);
 
         renderCamera_ = GetComponentInChildren<Camera>();
-        Assert.IsNotNull(renderCamera_);
+        Assert.IsNotNull(renderCamera_, "Unable to find render camera in Computer.");
+
+        watcher_ = this.transform.Find("Watcher").gameObject;
+        Assert.IsNotNull(watcher_, "Unable to find watcher in Computer.");
+
+        sceneManager_ = FindFirstObjectByType<SceneManager>();
+        Assert.IsNotNull(sceneManager_, "Unable to find SceneManager from Computer.");
 
         renderCamera_.transform.position = level.transform.position - 2 * level.transform.forward;
         renderCamera_.transform.rotation = level.transform.rotation;
