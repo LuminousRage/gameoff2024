@@ -35,16 +35,12 @@ public class Avatar : MonoBehaviour
 
     public void SetZone(int newZone)
     {
+        Debug.Log($"Changing Avatar zone from {zone} to {newZone}");
         zone = newZone;
     }
 
     public int GetZone()
     {
         return zone;
-    }
-
-    void OnCollisionEnter2D(Collision2D c)
-    {
-        Debug.Log($"Collision {c}");
     }
 }
