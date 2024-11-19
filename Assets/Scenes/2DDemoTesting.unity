@@ -211,6 +211,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 5208496366314107604, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208496366314107604, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208496366314107604, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: m_AngularDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208496366314107604, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208496366314107604, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5329752711728287311, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.size
       value: 6
@@ -1520,7 +1540,8 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5116370242083631327, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2444841676674762237, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
       insertIndex: -1

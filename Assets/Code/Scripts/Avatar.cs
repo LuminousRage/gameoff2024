@@ -26,6 +26,11 @@ public class Avatar : MonoBehaviour, IControllable
     {
         move.Enable();
 
+        var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+        if (scene.name.Contains("Demo"))
+        {
+            SetControllable(true);
+        }
         rb = GetComponent<Rigidbody2D>();
         Assert.IsNotNull(this.rb);
     }
