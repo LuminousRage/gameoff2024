@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Zone : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Zone : MonoBehaviour
     void Start()
     {
         c = GetComponent<CompositeCollider2D>();
+        Assert.IsNotNull(c);
     }
 
     void OnTriggerStay2D(Collider2D other)
