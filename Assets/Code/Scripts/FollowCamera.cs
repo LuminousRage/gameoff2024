@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 public class FollowCamera : MonoBehaviour
 {
-    public GameObject _followee = null;
+    public Transform _followee = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +17,7 @@ public class FollowCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = _followee.transform.position;
-        this.transform.rotation = _followee.transform.rotation;
+        this.transform.position = _followee.position;
+        this.transform.rotation = _followee.rotation;
     }
 }
