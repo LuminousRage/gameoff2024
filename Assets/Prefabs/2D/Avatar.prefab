@@ -97,6 +97,8 @@ MonoBehaviour:
       m_Flags: 8
     m_Flags: 0
   speed: 5
+  number: 1
+  spawnPoints: []
 --- !u!50 &3452220081574250936
 Rigidbody2D:
   serializedVersion: 5

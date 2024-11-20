@@ -20,7 +20,7 @@ public class Zone : MonoBehaviour
         {
             var avatar = other.GetComponent<Avatar>();
             var centre = other.offset + other.attachedRigidbody.position;
-            if (avatar.GetZone() != zone && c.bounds.Contains(centre))
+            if (avatar.GetZone() != zone && c.OverlapPoint(centre))
             {
                 avatar.SetZone(zone);
             }
