@@ -5,21 +5,26 @@ using UnityEngine;
 public class ComputerManager : MonoBehaviour
 {
     // Level -> (Avatar, Zone) -> Computer
-    public Dictionary<Level2D, Dictionary<(byte, int), Computer>> computerLookUp;
+    public Dictionary<Level2D, Dictionary<(byte, Zone), Computer>> computerLookUp;
+
+    void Start()
+    {
+        BuildComputerLookUp();
+    }
 
     void BuildComputerLookUp()
     {
         var computers = GetComponentsInChildren<Computer>();
-        computers.Aggregate(
-            computerLookUp,
+        computerLookUp = computers.Aggregate(
+            new Dictionary<Level2D, Dictionary<(byte, Zone), Computer>>(),
             (acc, computer) =>
             {
                 if (!acc.ContainsKey(computer.level))
                 {
-                    acc[computer.level] = new Dictionary<(byte, int), Computer>();
+                    acc[computer.level] = new Dictionary<(byte, Zone), Computer>();
                 }
 
-                // acc[computer.level][(computer.avatar, computer.zone)] = computer;
+                acc[computer.level][(computer.avatar, computer.zone)] = computer;
 
                 return acc;
             }

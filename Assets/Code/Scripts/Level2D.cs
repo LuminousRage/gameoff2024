@@ -20,6 +20,13 @@ public class Level2D : MonoBehaviour
             return;
         }
 
+        if (entered_)
+        {
+            Debug.LogError(
+                "Attempted to enter level while being entered already. Entering anyway."
+            );
+        }
+
         var avatars = GetComponentsInChildren<Avatar>().Where(a => a.number == c.avatar).ToList();
 
         if (!avatars.Any())
@@ -41,9 +48,10 @@ public class Level2D : MonoBehaviour
     {
         if (!entered_)
         {
-            return;
+            Debug.LogError("Attempted to exit level without entering. Exiting anyway.");
         }
 
         GetComponentsInChildren<Avatar>().ToList().ForEach(a => a.SetControllable(false));
+        entered_ = false;
     }
 }
