@@ -19,15 +19,6 @@ public class Avatar : MonoBehaviour, IControllable
 
     private bool controlling_ = false;
 
-    [System.Serializable]
-    public struct ZoneSpawnPoint
-    {
-        public Zone zone;
-        public Vector2 spawnPoint;
-    }
-
-    public ZoneSpawnPoint[] spawnPoints;
-
     public void SetControllable(bool controllable = true)
     {
         this.controlling_ = controllable;
@@ -46,8 +37,6 @@ public class Avatar : MonoBehaviour, IControllable
 
         rb = GetComponent<Rigidbody2D>();
         Assert.IsNotNull(this.rb);
-
-        ValidateSpawnPoints();
     }
 
     void FixedUpdate()
@@ -64,22 +53,6 @@ public class Avatar : MonoBehaviour, IControllable
         directions = new Vector2(Mathf.Round(directions.x), Mathf.Round(directions.y));
         var newPosition = rb.position + directions * Time.deltaTime * speed;
         rb.MovePosition(newPosition);
-    }
-
-    void ValidateSpawnPoints()
-    {
-        Assert.IsTrue(spawnPoints.Length > 0, "No spawn points set for Avatar.");
-
-        spawnPoints
-            .ToList()
-            .ForEach(sp =>
-            {
-                Assert.IsNotNull(sp.zone, "Zone not set for spawn point.");
-                Assert.IsTrue(
-                    sp.zone.GetComponent<CompositeCollider2D>().OverlapPoint(sp.spawnPoint),
-                    $"Spawn point {sp.spawnPoint} is not within zone {sp.zone}."
-                );
-            });
     }
 
     public void SetZone(int newZone)
