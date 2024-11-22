@@ -9,6 +9,7 @@ public class Avatar : MonoBehaviour, IControllable
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     public InputAction move;
+    public InputAction standupAction;
 
     private Globals.Zone? zone;
 
@@ -20,6 +21,8 @@ public class Avatar : MonoBehaviour, IControllable
 
     private bool controlling_ = false;
 
+    private SceneManager sceneManager_;
+
     public void SetControllable(bool controllable = true)
     {
         this.controlling_ = controllable;
@@ -28,6 +31,7 @@ public class Avatar : MonoBehaviour, IControllable
     void Start()
     {
         move.Enable();
+        standupAction.Enable();
 
         // for debug only
         var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
@@ -42,7 +46,15 @@ public class Avatar : MonoBehaviour, IControllable
         sr = GetComponent<SpriteRenderer>();
         Assert.IsNotNull(this.sr);
 
+        sceneManager_ = FindFirstObjectByType<SceneManager>();
+        Assert.IsNotNull(sceneManager_);
+
         sr.enabled = false;
+
+        standupAction.performed += context =>
+        {
+            StandUp();
+        };
     }
 
     void FixedUpdate()
@@ -50,6 +62,15 @@ public class Avatar : MonoBehaviour, IControllable
         if (controlling_)
         {
             MovementHandler();
+        }
+    }
+
+    void StandUp()
+    {
+        if (controlling_)
+        {
+            Debug.Log("Standing up");
+            sceneManager_.SetFocus(null);
         }
     }
 

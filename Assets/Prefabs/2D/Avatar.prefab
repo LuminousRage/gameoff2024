@@ -96,6 +96,23 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
+  standupAction:
+    m_Name: Standup
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4b428eff-a239-40d0-9fb7-2aabd8b8491f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 052b9f6d-9e43-4aca-b9bf-fbae6084ddfd
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Standup
+      m_Flags: 0
+    m_Flags: 0
   speed: 5
   number: 1
 --- !u!50 &3452220081574250936

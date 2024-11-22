@@ -3923,6 +3923,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: spawnPoints.Array.data[0].avatarId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.data[0].spawnPoint.x
       value: 2
       objectReference: {fileID: 0}
