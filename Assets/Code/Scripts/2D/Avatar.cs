@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Avatar : MonoBehaviour, IControllable
 {
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
     public InputAction move;
 
     private Globals.Zone? zone;
@@ -37,6 +38,11 @@ public class Avatar : MonoBehaviour, IControllable
 
         rb = GetComponent<Rigidbody2D>();
         Assert.IsNotNull(this.rb);
+
+        sr = GetComponent<SpriteRenderer>();
+        Assert.IsNotNull(this.sr);
+
+        sr.enabled = false;
     }
 
     void FixedUpdate()
@@ -57,13 +63,21 @@ public class Avatar : MonoBehaviour, IControllable
 
     public void MoveAvatarTo(Vector2 position)
     {
-        rb.MovePosition(position);
+        transform.position = position;
+    }
+
+    public void ToggleSpriteRenderer(bool enable = true)
+    {
+        sr.enabled = enable;
     }
 
     public void SetZone(Globals.Zone newZone)
     {
-        Debug.Log($"Changing Avatar zone from {zone} to {newZone}");
-        zone = newZone;
+        if (controlling_)
+        {
+            Debug.Log($"Changing Avatar zone from {zone} to {newZone}");
+            zone = newZone;
+        }
     }
 
     public Globals.Zone? GetZone()

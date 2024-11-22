@@ -6,12 +6,16 @@ using UnityEngine;
 public class Level2D : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start() { }
+    void Start()
+    {
+        transformPosition_ = new Vector2(transform.position.x, transform.position.y);
+    }
 
     // Update is called once per frame
     void Update() { }
 
     bool entered_ = false;
+    Vector2 transformPosition_;
 
     public void EnterFrom(Computer c)
     {
@@ -27,16 +31,21 @@ public class Level2D : MonoBehaviour
             return;
         }
 
-        avatar.SetControllable(true);
-
         var avatarLastZone = avatar.GetZone();
         var spawnPoint = zone.spawnPoints.First(sp => sp.avatarId == avatar.number).spawnPoint;
         // Avatar has never entered, or was previously exited out in a different zone
+
         if (avatarLastZone != zone.number || avatarLastZone == null)
         {
-            avatar.MoveAvatarTo(spawnPoint);
+            Debug.Log($"Respawning avatar to ${spawnPoint + transformPosition_}");
+
+            avatar.MoveAvatarTo(spawnPoint + transformPosition_);
+            // This honestly just need to happen once when the avatar is first created, but it doesn't hurt to keep it
+            avatar.ToggleSpriteRenderer(true);
             // Zone resetting is automatically done once the avatar is detected in the new zone
         }
+
+        avatar.SetControllable(true);
 
         entered_ = true;
     }
@@ -52,8 +61,8 @@ public class Level2D : MonoBehaviour
         if (avatars.Count != 1 || zones.Count != 1)
         {
             Debug.LogError(
-                $"Expected 1 avatar and 1 zone for entering a level."
-                    + "Found {avatars.Count} avatars and {zones.Count} zones."
+                "Expected 1 avatar and 1 zone for entering a level."
+                    + $"Found {avatars.Count} avatars and {zones.Count} zones."
             );
 
             return badResult;

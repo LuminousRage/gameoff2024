@@ -11,6 +11,7 @@ public class CollisionZone : MonoBehaviour
     [System.Serializable]
     public struct AvatarSpawnPoint
     {
+        [Range(1, 8)]
         public byte avatarId;
         public Vector2 spawnPoint;
     }
@@ -39,7 +40,7 @@ public class CollisionZone : MonoBehaviour
             .ForEach(sp =>
             {
                 Assert.IsTrue(
-                    c.OverlapPoint(sp.spawnPoint),
+                    c.OverlapPoint(sp.spawnPoint + c.attachedRigidbody.position),
                     $"Spawn point {sp.spawnPoint} is not within zone"
                 );
             });
