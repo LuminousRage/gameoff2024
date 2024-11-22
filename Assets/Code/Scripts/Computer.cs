@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 public class Computer : MonoBehaviour, IUsable
 {
     public Level2D level;
-    public Zone zone;
+    public Globals.Zone zone;
 
     [Range(1, 8)]
     public byte avatar;

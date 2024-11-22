@@ -2,10 +2,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Zone : MonoBehaviour
+public class CollisionZone : MonoBehaviour
 {
-    [Range(0, 9)]
-    public int zone = 0;
+    public Globals.Zone zone;
 
     private Collider2D c;
 
@@ -52,9 +51,9 @@ public class Zone : MonoBehaviour
         {
             var avatar = other.GetComponent<Avatar>();
             var centre = other.offset + other.attachedRigidbody.position;
-            if (avatar.GetZone() != this && c.OverlapPoint(centre))
+            if (avatar.GetZone() != zone && c.OverlapPoint(centre))
             {
-                avatar.SetZone(this);
+                avatar.SetZone(zone);
             }
         }
     }
