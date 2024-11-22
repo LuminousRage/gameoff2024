@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Avatar : MonoBehaviour, IControllable
 {
+    private Level2D level;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     public InputAction move;
@@ -20,8 +21,6 @@ public class Avatar : MonoBehaviour, IControllable
     public byte number = 1;
 
     private bool controlling_ = false;
-
-    private SceneManager sceneManager_;
 
     public void SetControllable(bool controllable = true)
     {
@@ -46,14 +45,18 @@ public class Avatar : MonoBehaviour, IControllable
         sr = GetComponent<SpriteRenderer>();
         Assert.IsNotNull(this.sr);
 
-        sceneManager_ = FindFirstObjectByType<SceneManager>();
-        Assert.IsNotNull(sceneManager_);
+        level = GetComponentInParent<Level2D>();
+        Assert.IsNotNull(this.level);
 
         sr.enabled = false;
 
         standupAction.performed += context =>
         {
-            StandUp();
+            if (controlling_)
+            {
+                Debug.Log("Standing up");
+                level.StandUp();
+            }
         };
     }
 
@@ -62,15 +65,6 @@ public class Avatar : MonoBehaviour, IControllable
         if (controlling_)
         {
             MovementHandler();
-        }
-    }
-
-    void StandUp()
-    {
-        if (controlling_)
-        {
-            Debug.Log("Standing up");
-            sceneManager_.SetFocus(null);
         }
     }
 
@@ -98,6 +92,7 @@ public class Avatar : MonoBehaviour, IControllable
         {
             Debug.Log($"Changing Avatar zone from {zone} to {newZone}");
             zone = newZone;
+            level.UpdatePlayerLocation((this.number, newZone));
         }
     }
 

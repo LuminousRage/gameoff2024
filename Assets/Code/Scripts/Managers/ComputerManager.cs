@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
+using AvatarZone = System.ValueTuple<byte, Globals.Zone>;
 
 public class ComputerManager : MonoBehaviour
 {
     // Level -> (Avatar, Zone) -> Computer
-    public Dictionary<Level2D, Dictionary<(byte, Globals.Zone), Computer>> computerLookUp;
+    public Dictionary<Level2D, Dictionary<AvatarZone, Computer>> computerLookUp;
 
     void Start()
     {
@@ -29,5 +31,6 @@ public class ComputerManager : MonoBehaviour
                 return acc;
             }
         );
+        Assert.IsTrue(computerLookUp.Count > 0, "No computers found in scene.");
     }
 }

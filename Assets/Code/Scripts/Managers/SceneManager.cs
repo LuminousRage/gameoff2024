@@ -22,6 +22,8 @@ public class SceneManager : MonoBehaviour
 
     private Computer focusedComputer_ = null;
 
+    private ComputerManager computerManager_;
+
     public Vector2 GetScaledDelta()
     {
         // Use the sensitivity value
@@ -120,6 +122,8 @@ public class SceneManager : MonoBehaviour
         this.followCamera_ = FindFirstObjectByType<FollowCamera>();
         Assert.IsNotNull(followCamera_, "Unable to find FollowCamera from the scene.");
 
+        computerManager_ = GetComponent<ComputerManager>();
+
         this.LockMouse();
         this.UnsetUsePrompt();
 
@@ -146,5 +150,10 @@ public class SceneManager : MonoBehaviour
 
         // this.uiCanvas_.transform.position = headTransform.position + headTransform.forward * 2;
         // this.uiCanvas_.transform.rotation = headTransform.rotation;
+    }
+
+    public void UpdatePlayerLocation(Vector3 position)
+    {
+        player_.transform.position = position;
     }
 }

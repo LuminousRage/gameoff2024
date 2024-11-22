@@ -1,21 +1,25 @@
-using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using UnityEngine;
+using AvatarZone = System.ValueTuple<byte, Globals.Zone>;
 
 public class Level2D : MonoBehaviour
 {
+    bool entered_ = false;
+    Vector2 transformPosition_;
+
+    private SceneManager sceneManager;
+    private ComputerManager computerManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         transformPosition_ = new Vector2(transform.position.x, transform.position.y);
+        sceneManager = GameObject.FindFirstObjectByType<SceneManager>();
+        computerManager = GameObject.FindFirstObjectByType<ComputerManager>();
     }
 
     // Update is called once per frame
     void Update() { }
-
-    bool entered_ = false;
-    Vector2 transformPosition_;
 
     public void EnterFrom(Computer c)
     {
@@ -92,5 +96,17 @@ public class Level2D : MonoBehaviour
 
         GetComponentsInChildren<Avatar>().ToList().ForEach(a => a.SetControllable(false));
         entered_ = false;
+    }
+
+    public void StandUp()
+    {
+        sceneManager.SetFocus(null);
+    }
+
+    public void UpdatePlayerLocation(AvatarZone az)
+    {
+        var computer = computerManager.computerLookUp[this][az];
+        var position = computer.GetWatcherTransform().position;
+        sceneManager.UpdatePlayerLocation(position);
     }
 }
