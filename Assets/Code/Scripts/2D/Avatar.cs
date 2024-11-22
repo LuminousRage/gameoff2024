@@ -9,7 +9,7 @@ public class Avatar : MonoBehaviour, IControllable
     private Rigidbody2D rb;
     public InputAction move;
 
-    private Globals.Zone zone;
+    private Globals.Zone? zone;
 
     [SerializeField]
     private float speed = 5;
@@ -55,13 +55,18 @@ public class Avatar : MonoBehaviour, IControllable
         rb.MovePosition(newPosition);
     }
 
+    public void MoveAvatarTo(Vector2 position)
+    {
+        rb.MovePosition(position);
+    }
+
     public void SetZone(Globals.Zone newZone)
     {
         Debug.Log($"Changing Avatar zone from {zone} to {newZone}");
         zone = newZone;
     }
 
-    public Globals.Zone GetZone()
+    public Globals.Zone? GetZone()
     {
         return zone;
     }

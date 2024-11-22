@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 
 public class CollisionZone : MonoBehaviour
 {
-    public Globals.Zone zone;
+    public Globals.Zone number;
 
     private Collider2D c;
 
@@ -51,9 +51,9 @@ public class CollisionZone : MonoBehaviour
         {
             var avatar = other.GetComponent<Avatar>();
             var centre = other.offset + other.attachedRigidbody.position;
-            if (avatar.GetZone() != zone && c.OverlapPoint(centre))
+            if (avatar.GetZone() != number && c.OverlapPoint(centre))
             {
-                avatar.SetZone(zone);
+                avatar.SetZone(number);
             }
         }
     }
