@@ -152,8 +152,9 @@ public class SceneManager : MonoBehaviour
         // this.uiCanvas_.transform.rotation = headTransform.rotation;
     }
 
-    public void UpdatePlayerLocation(Vector3 position)
+    public void UpdatePlayerLocation(Transform transform)
     {
-        player_.transform.position = position;
+        player_.transform.position = transform.position;
+        followCamera_._followee = transform;
     }
 }

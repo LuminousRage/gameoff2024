@@ -106,7 +106,7 @@ public class Level2D : MonoBehaviour
     public void UpdatePlayerLocation(AvatarZone az)
     {
         var computer = computerManager.computerLookUp[this][az];
-        var position = computer.GetWatcherTransform().position;
-        sceneManager.UpdatePlayerLocation(position);
+        var transform = computer.GetWatcherTransform();
+        sceneManager.UpdatePlayerLocation(transform);
     }
 }
