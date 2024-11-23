@@ -14,6 +14,8 @@ public class Computer : MonoBehaviour, IUsable
 
     private GameObject watcher_;
 
+    private GameObject quad_;
+
     private SceneManager sceneManager_;
 
     public void Use(Player p)
@@ -46,7 +48,12 @@ public class Computer : MonoBehaviour, IUsable
         sceneManager_ = FindFirstObjectByType<SceneManager>();
         Assert.IsNotNull(sceneManager_, "Unable to find SceneManager from Computer.");
 
-        renderCamera_.transform.position = level.transform.position - 2 * level.transform.forward;
+        quad_ = this.transform.Find("Quad").gameObject;
+        Assert.IsNotNull(quad_, "Unable to find Quad in Computer.");
+
+        var cameraOffset = 2 * level.transform.forward;
+
+        renderCamera_.transform.position = level.transform.position - cameraOffset;
         renderCamera_.transform.rotation = level.transform.rotation;
 
         ToggleComputer(false);
@@ -81,6 +88,6 @@ public class Computer : MonoBehaviour, IUsable
 
     public void ToggleComputer(bool enabled = true)
     {
-        renderCamera_.enabled = enabled;
+        quad_.SetActive(enabled);
     }
 }
