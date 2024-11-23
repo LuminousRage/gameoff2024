@@ -91,8 +91,8 @@ public class Avatar : MonoBehaviour, IControllable
         if (controlling_)
         {
             Debug.Log($"Changing Avatar zone from {zone} to {newZone}");
+            level.UpdatePlayerToComputer(this.number, newZone, zone);
             zone = newZone;
-            level.UpdatePlayerLocation((this.number, newZone));
         }
     }
 

@@ -48,6 +48,8 @@ public class Computer : MonoBehaviour, IUsable
 
         renderCamera_.transform.position = level.transform.position - 2 * level.transform.forward;
         renderCamera_.transform.rotation = level.transform.rotation;
+
+        ToggleComputer(false);
     }
 
     // Update is called once per frame
@@ -75,5 +77,10 @@ public class Computer : MonoBehaviour, IUsable
         }
 
         reacher.UnsetUsable(this);
+    }
+
+    public void ToggleComputer(bool enabled = true)
+    {
+        renderCamera_.enabled = enabled;
     }
 }

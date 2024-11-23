@@ -1,6 +1,5 @@
 using System.Linq;
 using UnityEngine;
-using AvatarZone = System.ValueTuple<byte, Globals.Zone>;
 
 public class Level2D : MonoBehaviour
 {
@@ -103,9 +102,19 @@ public class Level2D : MonoBehaviour
         sceneManager.SetFocus(null);
     }
 
-    public void UpdatePlayerLocation(AvatarZone az)
+    public void UpdatePlayerToComputer(byte avatarId, Globals.Zone newZone, Globals.Zone? oldZone)
     {
-        var computer = computerManager.computerLookUp[this][az];
+        if (oldZone != null)
+        {
+            var originalComputer = computerManager.computerLookUp[this][(avatarId, oldZone.Value)];
+            // If this is implemented right, every computer of the same avatar ID should be turned off when exited
+            originalComputer.ToggleComputer(false);
+        }
+
+        var computer = computerManager.computerLookUp[this][(avatarId, newZone)];
+        computer.ToggleComputer(true);
+
+        // move 3d player in front of computer
         var transform = computer.GetWatcherTransform();
         sceneManager.UpdatePlayerLocation(transform);
     }
