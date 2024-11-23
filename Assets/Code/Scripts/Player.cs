@@ -49,6 +49,11 @@ public class Player : MonoBehaviour, IControllable
         }
     }
 
+    public bool GetControllable()
+    {
+        return this.currentlyControlling_;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

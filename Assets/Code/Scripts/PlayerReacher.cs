@@ -29,15 +29,19 @@ public class PlayerReacher : MonoBehaviour
 
     public void SetUsable(IUsable usable)
     {
-        Debug.Log($"Setting usable to {usable}");
+        if (player_.GetControllable())
+        {
+            Debug.Log($"Setting usable to {usable}");
 
-        this.usable_ = usable;
-        this.sm_.SetUsePrompt(usable);
+            this.usable_ = usable;
+            this.sm_.SetUsePrompt(usable);
+            return;
+        }
     }
 
     public void UnsetUsable(IUsable usable)
     {
-        if (this.usable_ == usable)
+        if (this.usable_ == usable && player_.GetControllable())
         {
             Debug.Log($"Unsetting usable from {usable}");
             this.usable_ = null;
