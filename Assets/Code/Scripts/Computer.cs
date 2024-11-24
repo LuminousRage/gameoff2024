@@ -44,13 +44,13 @@ public class Computer : MonoBehaviour, IUsable
         renderCamera_ = GetComponentInChildren<Camera>();
         Assert.IsNotNull(renderCamera_, "Unable to find render camera in Computer.");
 
-        watcher_ = this.transform.Find("Watcher").gameObject;
+        watcher_ = this.transform.Find("Watcher")?.gameObject;
         Assert.IsNotNull(watcher_, "Unable to find watcher in Computer.");
 
         sceneManager_ = FindFirstObjectByType<SceneManager>();
         Assert.IsNotNull(sceneManager_, "Unable to find SceneManager from Computer.");
 
-        quad_ = this.transform.Find("Quad").gameObject;
+        quad_ = this.transform.Find("Blackscreen")?.gameObject;
         Assert.IsNotNull(quad_, "Unable to find Quad in Computer.");
 
         var cameraOffset = 2 * level.transform.forward;
@@ -63,30 +63,6 @@ public class Computer : MonoBehaviour, IUsable
 
     // Update is called once per frame
     void Update() { }
-
-    void OnTriggerEnter(Collider c)
-    {
-        var reacher = c.GetComponent<PlayerReacher>();
-        if (reacher == null)
-        {
-            // Debug.Log("Collision occured with non PlayerReacher.");
-            return;
-        }
-
-        reacher.SetUsable(this);
-    }
-
-    void OnTriggerExit(Collider c)
-    {
-        var reacher = c.GetComponent<PlayerReacher>();
-        if (reacher == null)
-        {
-            // Debug.Log("Collision occured with non PlayerReacher.");
-            return;
-        }
-
-        reacher.UnsetUsable(this);
-    }
 
     public void ToggleComputer(bool enabled = true)
     {

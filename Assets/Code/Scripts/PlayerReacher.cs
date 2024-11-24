@@ -45,4 +45,28 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
             this.sm_.UnsetUsePrompt();
         }
     }
+
+    void OnTriggerEnter(Collider c)
+    {
+        var usable = c.GetComponent<IUsable>();
+        if (usable == null)
+        {
+            // Debug.Log("Collision occured with non PlayerReacher.");
+            return;
+        }
+
+        this.SetUsable(usable);
+    }
+
+    void OnTriggerExit(Collider c)
+    {
+        var usable = c.GetComponent<IUsable>();
+        if (usable == null)
+        {
+            Debug.Log("Collision occured with non PlayerReacher.");
+            return;
+        }
+
+        this.UnsetUsable(usable);
+    }
 }

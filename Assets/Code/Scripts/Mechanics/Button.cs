@@ -10,7 +10,7 @@ public class Button : MonoBehaviour, IUsable
 
     void Start()
     {
-        Assert.IsNotNull(triggerable);
+        // Assert.IsNotNull(triggerable);
     }
 
     IUsableSetter GetUsableSetter(GameObject obj)
