@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8617576594809164069}
   - component: {fileID: 3959676855675439273}
+  - component: {fileID: 1124784903334507087}
+  - component: {fileID: 7999653218218875025}
   - component: {fileID: 3452220081574250936}
   - component: {fileID: 1609790220642901344}
   - component: {fileID: 7904636876759750003}
@@ -47,16 +49,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e26bf8df9a334dffab1c96b74f7f09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 1
+  az: {fileID: 0}
+  ai: {fileID: 0}
+--- !u!114 &1124784903334507087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350891814998936499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61791ce4acd14567957dbf5932f2a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   move:
     m_Name: Move
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 66684814-6742-4aa5-aa95-043c0889adce
+    m_Id: 8eb664fb-49fe-4f15-a2c5-3c08ef356641
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 2D Vector
-      m_Id: 03f00bca-8234-4f97-b967-45b62fe7f420
+      m_Id: 07762718-23f5-4a00-a81b-4551179fa882
       m_Path: 2DVector
       m_Interactions: 
       m_Processors: 
@@ -64,7 +81,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 4
     - m_Name: up
-      m_Id: f704ac2f-126f-4229-8516-9a722ecd2c0a
+      m_Id: ef24a307-ed84-4a73-bd74-e81e45d5e1ca
       m_Path: <Keyboard>/w
       m_Interactions: 
       m_Processors: 
@@ -72,7 +89,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     - m_Name: down
-      m_Id: d31bd8f1-7037-41de-8f5e-821ae6457aa0
+      m_Id: cecae2d9-be6e-4834-bb1b-506ad446df4a
       m_Path: <Keyboard>/s
       m_Interactions: 
       m_Processors: 
@@ -80,7 +97,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     - m_Name: left
-      m_Id: e09ae17a-3bfa-4398-8f5c-6c72a353d7ba
+      m_Id: c128b854-729d-4479-a4ae-7d88d6739981
       m_Path: <Keyboard>/a
       m_Interactions: 
       m_Processors: 
@@ -88,7 +105,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     - m_Name: right
-      m_Id: 3f153957-eb23-441d-995d-c4fc6f2b2ff9
+      m_Id: b12b0e7a-8aac-401b-bdd3-2e3ca0d59b63
       m_Path: <Keyboard>/d
       m_Interactions: 
       m_Processors: 
@@ -100,12 +117,12 @@ MonoBehaviour:
     m_Name: Standup
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 4b428eff-a239-40d0-9fb7-2aabd8b8491f
+    m_Id: d0ef90f8-04fa-440f-8aa5-8aaf82c118a0
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 052b9f6d-9e43-4aca-b9bf-fbae6084ddfd
+      m_Id: 5033361d-547b-43f5-9d70-075e608610cd
       m_Path: <Keyboard>/e
       m_Interactions: 
       m_Processors: 
@@ -114,7 +131,18 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   speed: 5
-  number: 1
+--- !u!114 &7999653218218875025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350891814998936499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39aaee6d56b624f15aec707990ff23fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &3452220081574250936
 Rigidbody2D:
   serializedVersion: 5

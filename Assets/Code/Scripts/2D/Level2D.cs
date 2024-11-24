@@ -34,7 +34,7 @@ public class Level2D : MonoBehaviour
             return;
         }
 
-        var avatarLastZone = avatar.GetZone();
+        var avatarLastZone = avatar.az.GetZone();
         var spawnPoint = zone.spawnPoints.First(sp => sp.avatarId == avatar.number).spawnPoint;
         // Avatar has never entered, or was previously exited out in a different zone
 

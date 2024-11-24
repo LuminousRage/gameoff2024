@@ -7,31 +7,28 @@ using UnityEngine.InputSystem;
 public class Avatar : MonoBehaviour, IControllable
 {
     private Level2D level;
-    private Rigidbody2D rb;
     private SpriteRenderer sr;
-    public InputAction move;
-    public InputAction standupAction;
-
-    private Globals.Zone? zone;
-
-    [SerializeField]
-    private float speed = 5;
 
     [Range(1, 8)]
     public byte number = 1;
 
     private bool controlling_ = false;
 
+    public AvatarZone az;
+    public AvatarInput ai;
+
     public void SetControllable(bool controllable = true)
     {
         this.controlling_ = controllable;
     }
 
+    public bool GetControllable()
+    {
+        return this.controlling_;
+    }
+
     void Start()
     {
-        move.Enable();
-        standupAction.Enable();
-
         // for debug only
         var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
         if (scene.name.Contains("Demo"))
@@ -39,41 +36,19 @@ public class Avatar : MonoBehaviour, IControllable
             SetControllable(true);
         }
 
-        rb = GetComponent<Rigidbody2D>();
-        Assert.IsNotNull(this.rb);
-
         sr = GetComponent<SpriteRenderer>();
         Assert.IsNotNull(this.sr);
 
         level = GetComponentInParent<Level2D>();
         Assert.IsNotNull(this.level);
 
+        az = GetComponent<AvatarZone>();
+        Assert.IsNotNull(this.az);
+
+        ai = GetComponent<AvatarInput>();
+        Assert.IsNotNull(this.ai);
+
         sr.enabled = false;
-
-        standupAction.performed += context =>
-        {
-            if (controlling_)
-            {
-                Debug.Log("Standing up");
-                level.StandUp();
-            }
-        };
-    }
-
-    void FixedUpdate()
-    {
-        if (controlling_)
-        {
-            MovementHandler();
-        }
-    }
-
-    void MovementHandler()
-    {
-        var directions = move.ReadValue<Vector2>();
-        directions = new Vector2(Mathf.Round(directions.x), Mathf.Round(directions.y));
-        var newPosition = rb.position + directions * Time.deltaTime * speed;
-        rb.MovePosition(newPosition);
     }
 
     public void MoveAvatarTo(Vector2 position)
@@ -86,18 +61,8 @@ public class Avatar : MonoBehaviour, IControllable
         sr.enabled = enable;
     }
 
-    public void SetZone(Globals.Zone newZone)
+    public Level2D GetLevel()
     {
-        if (controlling_)
-        {
-            Debug.Log($"Changing Avatar zone from {zone} to {newZone}");
-            level.UpdatePlayerToComputer(this.number, newZone, zone);
-            zone = newZone;
-        }
-    }
-
-    public Globals.Zone? GetZone()
-    {
-        return zone;
+        return level;
     }
 }

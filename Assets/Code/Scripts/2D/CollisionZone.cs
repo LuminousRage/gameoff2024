@@ -52,9 +52,9 @@ public class CollisionZone : MonoBehaviour
         {
             var avatar = other.GetComponent<Avatar>();
             var centre = other.offset + other.attachedRigidbody.position;
-            if (avatar.GetZone() != number && c.OverlapPoint(centre))
+            if (avatar.az.GetZone() != number && c.OverlapPoint(centre))
             {
-                avatar.SetZone(number);
+                avatar.az.SetZone(number);
             }
         }
     }
