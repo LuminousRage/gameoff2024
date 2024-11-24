@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 
-public class PlayerReacher : MonoBehaviour
+public class PlayerReacher : MonoBehaviour, IUsableSetter
 {
     private Player player_;
     private IUsable usable_;
@@ -29,7 +29,7 @@ public class PlayerReacher : MonoBehaviour
 
     public void SetUsable(IUsable usable)
     {
-        Debug.Log($"Setting usable to {usable}");
+        Debug.Log($"Setting PlayerReacher usable to {usable}");
 
         this.usable_ = usable;
         this.sm_.SetUsePrompt(usable);
@@ -40,7 +40,7 @@ public class PlayerReacher : MonoBehaviour
     {
         if (this.usable_ == usable)
         {
-            Debug.Log($"Unsetting usable from {usable}");
+            Debug.Log($"Unsetting PlayerReacher usable from {usable}");
             this.usable_ = null;
             this.sm_.UnsetUsePrompt();
         }

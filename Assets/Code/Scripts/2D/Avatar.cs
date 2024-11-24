@@ -8,6 +8,7 @@ public class Avatar : MonoBehaviour, IControllable
 {
     private Level2D level;
     private SpriteRenderer sr;
+    private Rigidbody2D rb;
 
     [Range(1, 8)]
     public byte number = 1;
@@ -42,6 +43,9 @@ public class Avatar : MonoBehaviour, IControllable
         level = GetComponentInParent<Level2D>();
         Assert.IsNotNull(this.level);
 
+        rb = GetComponent<Rigidbody2D>();
+        Assert.IsNotNull(this.rb);
+
         az = GetComponent<AvatarZone>();
         Assert.IsNotNull(this.az);
 
@@ -64,5 +68,10 @@ public class Avatar : MonoBehaviour, IControllable
     public Level2D GetLevel()
     {
         return level;
+    }
+
+    public Rigidbody2D GetRigidbody()
+    {
+        return rb;
     }
 }

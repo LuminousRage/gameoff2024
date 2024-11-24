@@ -130,6 +130,23 @@ MonoBehaviour:
       m_Action: Standup
       m_Flags: 0
     m_Flags: 0
+  useAction:
+    m_Name: Use
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 65c72515-b608-4315-988d-d1def6e0ebf8
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 7f22e979-caaa-4c99-83e5-ada2319c0b9e
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Use
+      m_Flags: 0
+    m_Flags: 0
   speed: 5
 --- !u!114 &7999653218218875025
 MonoBehaviour:
