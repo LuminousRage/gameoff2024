@@ -153,9 +153,9 @@ public class Player : MonoBehaviour, IControllable
     private void UpdatePosition()
     {
         var inputDirections = moveAction.ReadValue<Vector2>();
-
         Vector3 direction = Vector3.zero;
 
+        // Add movement relative to camera/character orientation
         direction += inputDirections.y * this.transform.forward;
         direction += inputDirections.x * this.head_.transform.right;
 
@@ -163,9 +163,7 @@ public class Player : MonoBehaviour, IControllable
         if (direction.magnitude >= movementDeadzone)
         {
             var force = acceleration * direction.normalized;
-
-            // rb_.AddForce(acceleration * direction.normalized, ForceMode.Acceleration);
-            rb_.AddForce(force);
+            rb_.AddForce(force * Time.deltaTime, ForceMode.VelocityChange);
         }
 
         float currentSpeed = rb_.linearVelocity.magnitude;
