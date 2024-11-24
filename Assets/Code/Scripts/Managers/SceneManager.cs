@@ -1,4 +1,6 @@
+using System.Linq;
 using TMPro;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -133,6 +135,8 @@ public class SceneManager : MonoBehaviour
 
         // Start the game with the 3D player as controllable
         this.SetFocus(null);
+
+        ValidateFloppyDisks();
     }
 
     // Update is called once per frame
@@ -169,5 +173,16 @@ public class SceneManager : MonoBehaviour
         // will need to be adjusted if the table size changes
         player_.transform.position = newPosition + new Vector3(-0.5f, 0, 0);
         followCamera_._followee = transform;
+    }
+
+    void ValidateFloppyDisks()
+    {
+        var floppyDisks = GetComponentsInChildren<FloppyDisk>();
+        var distinctFloppyDiskCount = floppyDisks.Select(fd => fd.floppyDiskID).Distinct().Count();
+
+        if (distinctFloppyDiskCount != floppyDisks.Length)
+        {
+            Debug.LogError("There are duplicate floppy disks in the scene.");
+        }
     }
 }

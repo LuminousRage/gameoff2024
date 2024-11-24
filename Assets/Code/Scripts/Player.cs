@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour, IControllable
     private Rigidbody rb_;
     private GameObject head_;
     private PlayerReacher reacher_;
+    private HashSet<Globals.FloppyDiskID> inventory_ = new HashSet<Globals.FloppyDiskID>();
 
     private bool currentlyControlling_ = false;
 
@@ -172,5 +174,12 @@ public class Player : MonoBehaviour, IControllable
         {
             rb_.linearVelocity = rb_.linearVelocity.normalized * maxMoveSpeed;
         }
+    }
+
+    public void AddToInventory(FloppyDisk disk)
+    {
+        Debug.Log($"Adding disk {disk} to inventory.");
+        // I think we'd only use the ID, but we can change that later
+        inventory_.Add(disk.floppyDiskID);
     }
 }
