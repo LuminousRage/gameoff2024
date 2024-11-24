@@ -1,39 +1,57 @@
-// using UnityEngine;
+using NUnit.Framework;
+using UnityEngine;
 
-// public class Button : MonoBehaviour, IUsable
-// {
-//     // public Door door;
-//     bool isPressed = false;
+public class Button : MonoBehaviour, IUsable
+{
+    // public Door door;
+    bool isPressed = false;
 
-//     public float activeForSeconds = 1.0f;
+    public float activeForSeconds = 1.0f;
 
-//     void Start() { }
+    void Start() { }
 
-//     void FixedUpdate() { }
+    void FixedUpdate() { }
 
-//     void OnCollisionEnter2D(Collision2D collision)
-//     {
-//         if (collision.gameObject.tag == "Player")
-//         {
-//             SetControllable(true);
-//         }
-//     }
+    IUsableSetter GetUsableSetter(GameObject obj)
+    {
+        var ai = obj.GetComponent<AvatarInput>(); // 2d case
+        var pr = obj.GetComponent<PlayerReacher>(); // 3d case
 
-//     void OnCollisionExit2D(Collision2D collision)
-//     {
-//         if (collision.gameObject.tag == "Player")
-//         {
-//             SetControllable(false);
-//         }
-//     }
+        Assert.IsFalse(ai == null && pr == null, "Both AvatarInput and PlayerReacher are null.");
+        // There can be only one AvatarInput or PlayerReacher
+        Assert.IsFalse(
+            ai != null && pr != null,
+            "Both AvatarInput and PlayerReacher are not null."
+        );
 
-//     public void Use(Player p)
-//     {
-//         throw new System.NotImplementedException();
-//     }
+        return ai != null ? ai : pr;
+    }
 
-//     public string GetUsableLabel()
-//     {
-//         throw new System.NotImplementedException();
-//     }
-// }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            var usableSetter = GetUsableSetter(collision.gameObject);
+            usableSetter.SetUsable(this);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            var usableSetter = GetUsableSetter(collision.gameObject);
+            usableSetter.UnsetUsable(this);
+        }
+    }
+
+    public void Use(IControllable p)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public string GetUsableLabel()
+    {
+        throw new System.NotImplementedException();
+    }
+}

@@ -31,6 +31,14 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
                 avatar.GetLevel().StandUp();
             }
         };
+
+        useAction.performed += context =>
+        {
+            if (avatar.GetControllable())
+            {
+                usable?.Use(null);
+            }
+        };
     }
 
     void FixedUpdate()
@@ -53,7 +61,7 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
 
     public void SetUsable(IUsable usable)
     {
-        Debug.Log($"Setting PlayerReacher usable to {usable}");
+        Debug.Log($"Setting AvatarInput usable to {usable}");
 
         this.usable = usable;
         // this.sm_.SetUsePrompt(usable);
@@ -64,7 +72,7 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
     {
         if (this.usable == usable)
         {
-            Debug.Log($"Unsetting PlayerReacher usable from {usable}");
+            Debug.Log($"Unsetting AvatarInput usable from {usable}");
             this.usable = null;
             // this.sm_.UnsetUsePrompt();
         }

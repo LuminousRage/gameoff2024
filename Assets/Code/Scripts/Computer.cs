@@ -18,7 +18,7 @@ public class Computer : MonoBehaviour, IUsable
 
     private SceneManager sceneManager_;
 
-    public void Use(Player p)
+    public void Use(IControllable p)
     {
         sceneManager_.SetFocus(this);
     }
