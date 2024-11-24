@@ -1,16 +1,17 @@
-using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Button : MonoBehaviour, IUsable
 {
-    // public Door door;
+    public ITriggerable triggerable;
     bool isPressed = false;
 
     public float activeForSeconds = 1.0f;
 
-    void Start() { }
-
-    void FixedUpdate() { }
+    void Start()
+    {
+        Assert.IsNotNull(triggerable);
+    }
 
     IUsableSetter GetUsableSetter(GameObject obj)
     {
@@ -51,6 +52,7 @@ public class Button : MonoBehaviour, IUsable
         if (!isPressed)
         {
             isPressed = true;
+            triggerable.Trigger();
             Invoke("ResetButton", activeForSeconds);
         }
     }
@@ -58,6 +60,7 @@ public class Button : MonoBehaviour, IUsable
     void ResetButton()
     {
         isPressed = false;
+        triggerable.Untrigger();
     }
 
     public string GetUsableLabel() => "Button";
