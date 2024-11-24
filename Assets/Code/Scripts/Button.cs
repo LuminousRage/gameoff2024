@@ -29,6 +29,7 @@ public class Button : MonoBehaviour, IUsable
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collid");
         if (collision.gameObject.tag == "Player")
         {
             var usableSetter = GetUsableSetter(collision.gameObject);
@@ -47,11 +48,19 @@ public class Button : MonoBehaviour, IUsable
 
     public void Use(IControllable p)
     {
-        throw new System.NotImplementedException();
+        if (!isPressed)
+        {
+            isPressed = true;
+            Invoke("ResetButton", activeForSeconds);
+        }
     }
 
-    public string GetUsableLabel()
+    void ResetButton()
     {
-        throw new System.NotImplementedException();
+        isPressed = false;
     }
+
+    public string GetUsableLabel() => "Button";
+
+    public string GetActionLabel() => "Press";
 }
