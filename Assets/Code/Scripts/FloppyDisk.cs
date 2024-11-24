@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -18,7 +19,17 @@ public class FloppyDisk : MonoBehaviour, IUsable
 
     public void Use(IControllable p)
     {
-        player.AddToInventory(this);
-        // Remove the floppy disk from the scene
+        player.inventory.AddToInventory(this);
+
+        // TODO: Clean this disgusting thing up
+        FindFirstObjectByType<PlayerReacher>()
+            ?.UnsetUsable(this);
     }
+
+    public void SetVisible(bool visible = true)
+    {
+        this.gameObject.SetActive(visible);
+    }
+
+    public void UnsetVisible() => this.SetVisible(false);
 }
