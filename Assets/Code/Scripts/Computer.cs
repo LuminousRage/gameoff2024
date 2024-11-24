@@ -18,6 +18,8 @@ public class Computer : MonoBehaviour, IUsable
 
     private SceneManager sceneManager_;
 
+    private ITriggerable triggerable;
+
     public void Use(IControllable p)
     {
         sceneManager_.SetFocus(this);
@@ -89,5 +91,17 @@ public class Computer : MonoBehaviour, IUsable
     public void ToggleComputer(bool enabled = true)
     {
         quad_.SetActive(enabled);
+
+        if (triggerable != null)
+        {
+            if (enabled)
+            {
+                triggerable.Trigger();
+            }
+            else
+            {
+                triggerable.Untrigger();
+            }
+        }
     }
 }
