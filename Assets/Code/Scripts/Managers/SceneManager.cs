@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+// Note: I think this is more of a 3D manager, rather than a manager for the whole scene (which is 2D + 3D)
 public class SceneManager : MonoBehaviour
 {
     public Vector2 mouseDelta { get; private set; } = Vector2.zero;
@@ -75,7 +76,7 @@ public class SceneManager : MonoBehaviour
     {
         if (player_.GetControllable())
         {
-            useText_.text = $"Use {usable.GetUsableLabel()}";
+            useText_.text = $"{usable.GetActionLabel()} {usable.GetUsableLabel()}";
             useText_.gameObject.SetActive(true);
             useKeyPreview_.gameObject.SetActive(true);
         }
