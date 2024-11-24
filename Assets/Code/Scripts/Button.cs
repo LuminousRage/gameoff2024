@@ -27,7 +27,7 @@ public class Button : MonoBehaviour, IUsable
         return ai != null ? ai : pr;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collid");
         if (collision.gameObject.tag == "Player")
@@ -37,7 +37,7 @@ public class Button : MonoBehaviour, IUsable
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
