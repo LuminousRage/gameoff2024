@@ -157,7 +157,16 @@ public class SceneManager : MonoBehaviour
 
     public void UpdatePlayerLocation(Transform transform)
     {
-        player_.transform.position = transform.position;
+        player_.transform.forward = transform.forward;
+
+        var newPosition = new Vector3(
+            transform.position.x,
+            player_.transform.position.y,
+            transform.position.z
+        );
+        // subtract some offset so the player doesn't appear on the table
+        // will need to be adjusted if the table size changes
+        player_.transform.position = newPosition + new Vector3(-0.5f, 0, 0);
         followCamera_._followee = transform;
     }
 }
