@@ -30,7 +30,6 @@ public class Button : MonoBehaviour, IUsable
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collid");
         if (collision.gameObject.tag == "Player")
         {
             var usableSetter = GetUsableSetter(collision.gameObject);
