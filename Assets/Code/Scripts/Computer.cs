@@ -79,7 +79,7 @@ public class Computer : MonoBehaviour, IUsable
         var reacher = c.GetComponent<PlayerReacher>();
         if (reacher == null)
         {
-            Debug.Log("Collision occured with non PlayerReacher.");
+            // Debug.Log("Collision occured with non PlayerReacher.");
             return;
         }
 

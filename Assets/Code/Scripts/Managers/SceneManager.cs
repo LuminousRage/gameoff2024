@@ -73,9 +73,12 @@ public class SceneManager : MonoBehaviour
 
     public void SetUsePrompt(IUsable usable)
     {
-        useText_.text = $"Use {usable.GetUsableLabel()}";
-        useText_.gameObject.SetActive(true);
-        useKeyPreview_.gameObject.SetActive(true);
+        if (player_.GetControllable())
+        {
+            useText_.text = $"Use {usable.GetUsableLabel()}";
+            useText_.gameObject.SetActive(true);
+            useKeyPreview_.gameObject.SetActive(true);
+        }
     }
 
     public void UnsetUsePrompt()
