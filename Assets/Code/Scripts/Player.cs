@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
@@ -14,8 +13,7 @@ public class Player : MonoBehaviour, IControllable
 
     public InputAction moveAction;
     private InputAction useAction_;
-    private InputAction insertAction_;
-    private InputAction ejectAction_;
+    private InputAction diskAction_;
 
     public Transform GetHeadTransform()
     {
@@ -84,18 +82,17 @@ public class Player : MonoBehaviour, IControllable
 
         useAction_ = gameplayActions.FindAction("Use");
         Assert.IsNotNull(useAction_, "Unable to find Use action from Player.");
-        insertAction_ = gameplayActions.FindAction("Insert");
-        Assert.IsNotNull(insertAction_, "Unable to find Insert action from Player.");
-        ejectAction_ = gameplayActions.FindAction("Eject");
-        Assert.IsNotNull(ejectAction_, "Unable to find Eject action from Player.");
+        diskAction_ = gameplayActions.FindAction("Disk");
+        Assert.IsNotNull(diskAction_, "Unable to find Insert action from Player.");
 
         useAction_.performed += context => this.reacher_.UseUsable();
 
-        insertAction_.performed += context =>
+        diskAction_.performed += context =>
         {
             var computer = this.reacher_.GetComputer();
             if (computer != null)
             {
+                // insert
                 if (computer.IsFloppyDisksFull())
                 {
                     Debug.Log("Computer is full of disks.");
@@ -103,14 +100,8 @@ public class Player : MonoBehaviour, IControllable
                 }
                 var disk = inventory.PopCurrentHoldableFromInventory();
                 computer.InsertFloppyDisk(disk);
-            }
-        };
 
-        ejectAction_.performed += context =>
-        {
-            var computer = this.reacher_.GetComputer();
-            if (computer != null)
-            {
+                // eject
                 var disks = computer.RemoveAllFloppyDisk();
                 disks.ForEach(disk => inventory.AddToInventory(disk));
             }
