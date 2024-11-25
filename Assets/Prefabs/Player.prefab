@@ -273,6 +273,7 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Use
       m_Flags: 0
+  reacher_: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!114 &6058119305721968279
 MonoBehaviour:
@@ -298,3 +299,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae486b40a7584287af2118deda3be2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceFromHead: 0.35
+  distanceDown: 0.17

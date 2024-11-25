@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UIElements;
 using IHoldable = FloppyDisk;
 
 public class PlayerInventory : MonoBehaviour
@@ -9,18 +10,19 @@ public class PlayerInventory : MonoBehaviour
 
     private int currentIndex_ = -1;
 
-    [Range(0f, 1.0f)]
-    public float distanceFromHead = 0.3f;
+    [Range(0.3f, 1.0f)]
+    public float distanceFromHead = 0.35f;
 
-    private Transform headTransform_;
+    [Range(0f, 1.0f)]
+    public float distanceDown = 0.17f;
+
+    private Player player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        var player = FindFirstObjectByType<Player>();
-
-        this.headTransform_ = player.GetHeadTransform();
-        Assert.IsNotNull(headTransform_, "Unable to find head transform from the player.");
+        player = FindFirstObjectByType<Player>();
+        Assert.IsNotNull(player, "Unable to find Player from PlayerInventory.");
     }
 
     // Update is called once per frame
@@ -39,16 +41,31 @@ public class PlayerInventory : MonoBehaviour
             UpdatePlayerHeldItem();
         }
 
-        var newPosition = headTransform_.position + this.distanceFromHead * headTransform_.forward;
+        var headTransform_ = player.GetHeadTransform();
+        if (headTransform_ == null)
+        {
+            Debug.LogError("Unable to get the head transform from the player.");
+            return;
+        }
 
+        var newPosition =
+            headTransform_.position
+            + this.distanceFromHead * headTransform_.forward
+            - distanceDown * headTransform_.up;
         currentHeldItem.transform.position = newPosition;
-        currentHeldItem.transform.rotation = headTransform_.rotation;
+        currentHeldItem.transform.rotation = headTransform_.rotation * Quaternion.Euler(100, 0, 0);
     }
 
     private IHoldable GetCurrentHoldable()
     {
         if (currentIndex_ == -1)
             return null;
+
+        if (currentIndex_ >= items_.Count)
+        {
+            Debug.LogError($"Current index {currentIndex_} is out of bounds, resetting");
+            currentIndex_ = items_.Count - 1;
+        }
 
         return this.items_[currentIndex_];
     }
@@ -64,7 +81,8 @@ public class PlayerInventory : MonoBehaviour
         // I think we'd only use the ID, but we can change that later
         items_.Add(disk);
 
-        disk.SetVisible(false);
+        currentIndex_ = items_.Count - 1;
+        disk.SetVisible(true);
     }
 
     public List<IHoldable> GetInventory()
@@ -88,6 +106,7 @@ public class PlayerInventory : MonoBehaviour
 
         Debug.Log($"Removing disk {disk} from inventory.");
         items_.Remove(disk);
+        currentIndex_ -= 1;
         UpdatePlayerHeldItem();
 
         return disk;

@@ -6,6 +6,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
 {
     public Globals.FloppyDiskID floppyDiskID;
     Player player;
+    private bool isInInventory_ = false;
 
     void Start()
     {
@@ -20,10 +21,15 @@ public class FloppyDisk : MonoBehaviour, IUsable
     public void Use(IControllable p)
     {
         player.inventory.AddToInventory(this);
-
+        isInInventory_ = true;
         // TODO: Clean this disgusting thing up
         FindFirstObjectByType<PlayerReacher>()
             ?.UnsetUsable(this);
+    }
+
+    public bool IsCurrentlyUsable()
+    {
+        return !isInInventory_;
     }
 
     public void SetVisible(bool visible = true)

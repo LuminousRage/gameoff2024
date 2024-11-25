@@ -1,6 +1,5 @@
 using System.Linq;
 using TMPro;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -16,8 +15,8 @@ public class SceneManager : MonoBehaviour
 
     private GameObject uiCanvas_;
 
-    private TMP_Text useText_;
-    private TMP_Text useKeyPreview_;
+    private TMP_Text useKeyPreview_,
+        useText_;
 
     private Player player_;
 
@@ -74,14 +73,24 @@ public class SceneManager : MonoBehaviour
         this.locked = false;
     }
 
-    public void SetUsePrompt(IUsable usable)
+    public void SetUsePrompt(string key = "E")
     {
         if (player_.GetControllable())
         {
-            useText_.text = $"{usable.GetActionLabel()} {usable.GetUsableLabel()}";
-            useText_.gameObject.SetActive(true);
-            useKeyPreview_.gameObject.SetActive(true);
+            var usablePriority = player_.reacher_.SortUsablePriority();
+            var mostPriority = usablePriority.FirstOrDefault();
+            if (mostPriority != null)
+            {
+                useText_.text = $"{mostPriority.GetActionLabel()} {mostPriority.GetUsableLabel()}";
+                useText_.gameObject.SetActive(true);
+                useKeyPreview_.text = key;
+                useKeyPreview_.gameObject.SetActive(true);
+                return;
+            }
         }
+
+        useText_.gameObject.SetActive(false);
+        useKeyPreview_.gameObject.SetActive(false);
     }
 
     public void UnsetUsePrompt()
@@ -142,6 +151,7 @@ public class SceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetUsePrompt();
         this.UpdateMouseDelta();
         this.UpdateUICanvas();
     }

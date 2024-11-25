@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public interface IUsableSetter
 {
     public void SetUsable(IUsable usable);

@@ -32,7 +32,7 @@ public class Player : MonoBehaviour, IControllable
     private IUsable usable_;
     private Rigidbody rb_;
     private GameObject head_;
-    private PlayerReacher reacher_;
+    public PlayerReacher reacher_;
 
     public PlayerInventory inventory;
 

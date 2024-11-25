@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 
 public class PlayerReacher : MonoBehaviour, IUsableSetter
 {
     private Player player_;
-    private IUsable usable_;
+    private List<IUsable> usable_ = new List<IUsable>();
 
     private SceneManager sm_;
 
@@ -25,27 +26,38 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
 
     public void UseUsable()
     {
+        if (this.usable_.Count == 0)
+        {
+            return;
+        }
+
         Debug.Log($"Using usable: {this.usable_}");
-        this.usable_?.Use(this.player_);
+        this.usable_[0]?.Use(this.player_);
     }
 
     public void SetUsable(IUsable usable)
     {
+        if (this.usable_.Contains(usable))
+        {
+            return;
+        }
         Debug.Log($"Setting PlayerReacher usable to {usable}");
-
-        this.usable_ = usable;
-        this.sm_.SetUsePrompt(usable);
+        this.usable_.Add(usable);
         return;
     }
 
     public void UnsetUsable(IUsable usable)
     {
-        if (this.usable_ == usable)
+        if (this.usable_.Contains(usable))
         {
             Debug.Log($"Unsetting PlayerReacher usable from {usable}");
-            this.usable_ = null;
-            this.sm_.UnsetUsePrompt();
+            this.usable_.Remove(usable);
         }
+    }
+
+    public List<IUsable> SortUsablePriority()
+    {
+        return this.usable_;
     }
 
     void OnTriggerEnter(Collider c)
@@ -56,8 +68,10 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
             // Debug.Log("Collision occured with non IUsable.");
             return;
         }
-
-        this.SetUsable(usable);
+        if (usable.IsCurrentlyUsable())
+        {
+            this.SetUsable(usable);
+        }
 
         // computer is a usable, so no fear of early return
         var comp = c.GetComponent<Computer>();
