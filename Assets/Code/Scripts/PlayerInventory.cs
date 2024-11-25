@@ -27,9 +27,16 @@ public class PlayerInventory : MonoBehaviour
     void Update()
     {
         var currentHeldItem = GetCurrentHoldable();
+
         if (currentHeldItem == null)
         {
             return;
+        }
+
+        // This shouldn't happen, updating item active just in case
+        if (!currentHeldItem.gameObject.activeSelf)
+        {
+            UpdatePlayerHeldItem();
         }
 
         var newPosition = headTransform_.position + this.distanceFromHead * headTransform_.forward;
@@ -65,15 +72,25 @@ public class PlayerInventory : MonoBehaviour
         return items_;
     }
 
-    public void RemoveFromInventory(IHoldable disk)
+    public IHoldable PopCurrentHoldableFromInventory()
     {
-        if (!items_.Contains(disk))
+        var disk = GetCurrentHoldable();
+        if (currentIndex_ == -1)
+        {
+            return null;
+        }
+
+        if (disk == null)
         {
             Debug.LogError($"Disk {disk} not in inventory.");
-            return;
+            return null;
         }
+
         Debug.Log($"Removing disk {disk} from inventory.");
         items_.Remove(disk);
+        UpdatePlayerHeldItem();
+
+        return disk;
     }
 
     public void UpdatePlayerHeldItem()

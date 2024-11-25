@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Globals;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -19,6 +21,8 @@ public class Computer : MonoBehaviour, IUsable
     private SceneManager sceneManager_;
 
     private ITriggerable triggerable;
+
+    private List<FloppyDisk> floppyDisks = new List<FloppyDisk>();
 
     public void Use(IControllable p)
     {
@@ -61,9 +65,6 @@ public class Computer : MonoBehaviour, IUsable
         ToggleComputer(false);
     }
 
-    // Update is called once per frame
-    void Update() { }
-
     public void ToggleComputer(bool enabled = true)
     {
         quad_.SetActive(enabled);
@@ -79,5 +80,29 @@ public class Computer : MonoBehaviour, IUsable
                 triggerable.Untrigger();
             }
         }
+    }
+
+    public bool IsFloppyDisksFull()
+    {
+        return floppyDisks.Count == 2;
+    }
+
+    public void InsertFloppyDisk(FloppyDisk disk)
+    {
+        if (IsFloppyDisksFull())
+        {
+            Debug.LogError("Computer has max floppy disks inserted.");
+            return;
+        }
+
+        floppyDisks.Add(disk);
+    }
+
+    public List<FloppyDisk> RemoveAllFloppyDisk()
+    {
+        var disks = floppyDisks.ToList();
+        floppyDisks.Clear();
+
+        return disks;
     }
 }

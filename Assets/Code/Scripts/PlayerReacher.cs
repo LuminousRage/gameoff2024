@@ -8,6 +8,8 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
 
     private SceneManager sm_;
 
+    private Computer computer_;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,11 +53,18 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         var usable = c.GetComponent<IUsable>();
         if (usable == null)
         {
-            // Debug.Log("Collision occured with non PlayerReacher.");
+            // Debug.Log("Collision occured with non IUsable.");
             return;
         }
 
         this.SetUsable(usable);
+
+        // computer is a usable, so no fear of early return
+        var comp = c.GetComponent<Computer>();
+        if (comp != null)
+        {
+            computer_ = comp;
+        }
     }
 
     void OnTriggerExit(Collider c)
@@ -63,10 +72,21 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         var usable = c.GetComponent<IUsable>();
         if (usable == null)
         {
-            Debug.Log("Collision occured with non PlayerReacher.");
+            Debug.Log("Collision occured with non IUsable.");
             return;
         }
 
         this.UnsetUsable(usable);
+
+        var comp = c.GetComponent<Computer>();
+        if (comp != null)
+        {
+            computer_ = null;
+        }
+    }
+
+    public Computer GetComputer()
+    {
+        return computer_;
     }
 }

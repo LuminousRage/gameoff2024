@@ -14,6 +14,8 @@ public class Player : MonoBehaviour, IControllable
 
     public InputAction moveAction;
     private InputAction useAction_;
+    private InputAction insertAction_;
+    private InputAction ejectAction_;
 
     public Transform GetHeadTransform()
     {
@@ -81,10 +83,37 @@ public class Player : MonoBehaviour, IControllable
         Assert.IsNotNull(inventory, "Unable to find PlayerInventory from Player.");
 
         useAction_ = gameplayActions.FindAction("Use");
+        Assert.IsNotNull(useAction_, "Unable to find Use action from Player.");
+        insertAction_ = gameplayActions.FindAction("Insert");
+        Assert.IsNotNull(insertAction_, "Unable to find Insert action from Player.");
+        ejectAction_ = gameplayActions.FindAction("Eject");
+        Assert.IsNotNull(ejectAction_, "Unable to find Eject action from Player.");
 
-        useAction_.performed += context =>
+        useAction_.performed += context => this.reacher_.UseUsable();
+
+        insertAction_.performed += context =>
         {
-            this.reacher_.UseUsable();
+            var computer = this.reacher_.GetComputer();
+            if (computer != null)
+            {
+                if (computer.IsFloppyDisksFull())
+                {
+                    Debug.Log("Computer is full of disks.");
+                    return;
+                }
+                var disk = inventory.PopCurrentHoldableFromInventory();
+                computer.InsertFloppyDisk(disk);
+            }
+        };
+
+        ejectAction_.performed += context =>
+        {
+            var computer = this.reacher_.GetComputer();
+            if (computer != null)
+            {
+                var disks = computer.RemoveAllFloppyDisk();
+                disks.ForEach(disk => inventory.AddToInventory(disk));
+            }
         };
     }
 
