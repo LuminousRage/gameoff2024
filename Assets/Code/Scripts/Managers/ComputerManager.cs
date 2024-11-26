@@ -22,6 +22,12 @@ public class ComputerManager : MonoBehaviour
             new Dictionary<Level2D, Dictionary<AvatarZoneTuple, Computer>>(),
             (acc, computer) =>
             {
+                if (computer.level == null)
+                {
+                    Debug.LogError("Computer has no level assigned.");
+                    return acc;
+                }
+
                 if (!acc.ContainsKey(computer.level))
                 {
                     acc[computer.level] = new Dictionary<AvatarZoneTuple, Computer>();
