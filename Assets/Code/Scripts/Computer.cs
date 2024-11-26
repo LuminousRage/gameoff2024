@@ -22,6 +22,8 @@ public class Computer : MonoBehaviour, IUsable
 
     public ComputerFloppyDisk floppyDiskManager { get; private set; }
 
+    private Avatar avatarObj;
+
     public void Use(IControllable p)
     {
         sceneManager_.SetFocus(this);
@@ -61,12 +63,26 @@ public class Computer : MonoBehaviour, IUsable
         floppyDiskManager = GetComponent<ComputerFloppyDisk>();
         Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
 
-        var cameraOffset = 2 * level.transform.forward;
+        if (level != null)
+        {
+            avatarObj = level.GetAndValidateAvatarAndZone(this).Item1;
 
-        renderCamera_.transform.position = level.transform.position - cameraOffset;
-        renderCamera_.transform.rotation = level.transform.rotation;
+            var cameraOffset = 2 * level.transform.forward;
+
+            renderCamera_.transform.position = level.transform.position - cameraOffset;
+            renderCamera_.transform.rotation = level.transform.rotation;
+        }
 
         ToggleComputer(false);
+    }
+
+    public void FixedUpdate()
+    {
+        if (avatarObj != null)
+        {
+            renderCamera_.transform.position =
+                avatarObj.transform.position - 2 * level.transform.forward;
+        }
     }
 
     public void ToggleComputer(bool enabled = true)
