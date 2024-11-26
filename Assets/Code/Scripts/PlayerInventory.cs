@@ -56,7 +56,7 @@ public class PlayerInventory : MonoBehaviour
         currentHeldItem.transform.rotation = headTransform_.rotation * Quaternion.Euler(100, 0, 0);
     }
 
-    private IHoldable GetCurrentHoldable()
+    public IHoldable GetCurrentHoldable()
     {
         if (currentIndex_ == -1)
             return null;

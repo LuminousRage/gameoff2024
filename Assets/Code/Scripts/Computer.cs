@@ -82,14 +82,19 @@ public class Computer : MonoBehaviour, IUsable
         }
     }
 
-    public bool IsFloppyDisksFull()
+    public bool IsAvatarDisksFull()
     {
         return floppyDisks.Count == 2;
     }
 
+    public bool ContainsDisk()
+    {
+        return floppyDisks.Count > 0;
+    }
+
     public void InsertFloppyDisk(FloppyDisk disk)
     {
-        if (IsFloppyDisksFull())
+        if (IsAvatarDisksFull())
         {
             Debug.LogError("Computer has max floppy disks inserted.");
             return;

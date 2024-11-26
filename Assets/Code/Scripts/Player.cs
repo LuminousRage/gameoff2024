@@ -44,11 +44,13 @@ public class Player : MonoBehaviour, IControllable
         {
             moveAction.Enable();
             useAction_.Enable();
+            diskAction_.Enable();
         }
         else
         {
             moveAction.Disable();
             useAction_.Disable();
+            diskAction_.Disable();
         }
     }
 
@@ -87,25 +89,7 @@ public class Player : MonoBehaviour, IControllable
 
         useAction_.performed += context => this.reacher_.UseUsable();
 
-        diskAction_.performed += context =>
-        {
-            var computer = this.reacher_.GetComputer();
-            if (computer != null)
-            {
-                // insert
-                if (computer.IsFloppyDisksFull())
-                {
-                    Debug.Log("Computer is full of disks.");
-                    return;
-                }
-                var disk = inventory.PopCurrentHoldableFromInventory();
-                computer.InsertFloppyDisk(disk);
-
-                // eject
-                var disks = computer.RemoveAllFloppyDisk();
-                disks.ForEach(disk => inventory.AddToInventory(disk));
-            }
-        };
+        diskAction_.performed += context => this.reacher_.UseDiskAction();
     }
 
     // Update every frame

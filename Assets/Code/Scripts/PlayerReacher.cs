@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
@@ -10,6 +11,13 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
     private SceneManager sm_;
 
     private Computer computer_;
+
+    // honestly should go somewhere else, will probably move it soon.
+    public struct UIText
+    {
+        public string key;
+        public string value;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -78,6 +86,12 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         if (comp != null)
         {
             computer_ = comp;
+
+            if (GetDiskActionPrompt() == DiskActionPrompts.None)
+            {
+                computer_ = null;
+                return;
+            }
         }
     }
 
@@ -99,8 +113,101 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         }
     }
 
-    public Computer GetComputer()
+    public enum DiskActionPrompts
     {
-        return computer_;
+        Insert,
+        Eject,
+
+        // not usable, but will show a prompt
+        CannotInsert,
+        None,
+    }
+
+    public UIText? DiskActionPromptToString(DiskActionPrompts prompt)
+    {
+        switch (prompt)
+        {
+            case DiskActionPrompts.Insert:
+                return new UIText { key = "F", value = "Insert floppy disk" };
+            case DiskActionPrompts.Eject:
+                return new UIText { key = "F", value = "Eject floppy disk" };
+            case DiskActionPrompts.CannotInsert:
+                return new UIText { key = null, value = "Cannot insert floppy disk" };
+            case DiskActionPrompts.None:
+                return null;
+            default:
+                return null;
+        }
+    }
+
+    public DiskActionPrompts GetDiskActionPrompt()
+    {
+        if (computer_ == null)
+        {
+            Debug.Log("what");
+            return DiskActionPrompts.None;
+        }
+
+        switch
+            (
+                computer_.IsAvatarDisksFull(),
+                computer_.ContainsDisk(),
+                player_.inventory.GetCurrentHoldable() != null
+            )
+
+        {
+            case (true, false, true):
+                return DiskActionPrompts.CannotInsert;
+            // false, true, true
+            // false, false, true
+            case (false, _, true):
+                return DiskActionPrompts.Insert;
+            case (true, true, true):
+                // We can't handle this case because we can only hold one disk at a time.
+                // But also Louis said this won't ever happen in the game
+                // To avoid being in an unsolvable state, let's not do anything to the disk
+                Debug.LogError(
+                    "Computer has an ejectable disk even though we are currently holding a disk."
+                );
+                return DiskActionPrompts.None;
+            // false, true, false
+            // true, true, false
+            case (_, true, _):
+                return DiskActionPrompts.Eject;
+            // false, false, false
+            // true, false, false
+            default:
+                return DiskActionPrompts.None;
+        }
+    }
+
+    public void UseDiskAction()
+    {
+        if (computer_ == null)
+        {
+            return;
+        }
+
+        var prompt = GetDiskActionPrompt();
+        Debug.Log($"Using disk action {prompt}");
+
+        switch (prompt)
+        {
+            case DiskActionPrompts.Insert:
+                var disk = player_.inventory.PopCurrentHoldableFromInventory();
+                computer_.InsertFloppyDisk(disk);
+                break;
+            case DiskActionPrompts.Eject:
+                var disks = computer_.RemoveAllFloppyDisk();
+                disks.ForEach(disk => player_.inventory.AddToInventory(disk));
+                break;
+            case DiskActionPrompts.CannotInsert:
+                break;
+            case DiskActionPrompts.None:
+                break;
+            default:
+                Debug.LogError("Unknown disk action prompt.");
+                break;
+        }
     }
 }
