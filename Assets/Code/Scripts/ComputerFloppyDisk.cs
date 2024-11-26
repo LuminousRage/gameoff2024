@@ -5,9 +5,17 @@ using UnityEngine.Assertions;
 
 public class ComputerFloppyDisk : MonoBehaviour
 {
+    public Vector3[] slotPosition = new Vector3[2]
+    {
+        new Vector3(-0.5f, 0.5f, 0),
+        new Vector3(0.5f, 0.5f, 0),
+    };
+
     private Avatar avatar;
     private Computer computer;
-    private List<FloppyDisk> floppyDisks = new List<FloppyDisk>();
+
+    // this is a reference, so will be updated when the avatar's keys are updated
+    private FloppyDisk[] avatarFloppyDisks;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +24,7 @@ public class ComputerFloppyDisk : MonoBehaviour
         Assert.IsNotNull(this.computer);
 
         (avatar, _) = computer.level.GetAndValidateAvatarAndZone(this.computer);
+        avatarFloppyDisks = avatar.GetKeys();
     }
 
     // Update is called once per frame
@@ -23,7 +32,10 @@ public class ComputerFloppyDisk : MonoBehaviour
 
     public bool IsAvatarDisksFull() => avatar.IsKeysFull();
 
-    public bool ContainsDisk() => floppyDisks.Count > 0;
+    public FloppyDisk[] GetAllComputerDisks() =>
+        avatarFloppyDisks.Where(d => d != null && d.GetComputer() == this.computer).ToArray();
+
+    public bool ContainsDisk() => GetAllComputerDisks().Count() > 0;
 
     public void InsertFloppyDisk(FloppyDisk disk)
     {
@@ -33,17 +45,21 @@ public class ComputerFloppyDisk : MonoBehaviour
             return;
         }
 
+        disk.SetComputer(this.computer);
+        disk.transform.rotation = Quaternion.Euler(0, 0, 0);
+
         avatar.AddKey(disk);
-        floppyDisks.Add(disk);
     }
 
     public List<FloppyDisk> RemoveAllFloppyDisk()
     {
-        floppyDisks.ForEach(d => avatar.RemoveKey(d));
-        // todo: i'm pretty sure this creates a new list but should double check
-        var disks = floppyDisks.ToList();
-        floppyDisks.Clear();
+        var allDisks = GetAllComputerDisks().ToList();
+        allDisks.ForEach(d =>
+        {
+            avatar.RemoveKey(d);
+            d.SetComputer(null);
+        });
 
-        return disks;
+        return allDisks;
     }
 }

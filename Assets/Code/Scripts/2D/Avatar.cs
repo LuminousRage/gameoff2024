@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,7 +18,8 @@ public class Avatar : MonoBehaviour, IControllable
 
     public AvatarZone az;
     public AvatarInput ai;
-    private List<FloppyDisk> avatarKeys = new List<FloppyDisk>();
+    private FloppyDisk[] avatarKeys = new FloppyDisk[KeySize];
+    public const int KeySize = 2;
 
     public void SetControllable(bool controllable = true)
     {
@@ -76,26 +78,27 @@ public class Avatar : MonoBehaviour, IControllable
         return rb;
     }
 
-    public List<FloppyDisk> GetKeys()
+    public FloppyDisk[] GetKeys()
     {
         return avatarKeys;
     }
 
     public bool IsKeysFull()
     {
-        return avatarKeys.Count >= 2;
+        var keysCount = avatarKeys.Count(k => k != null);
+        return keysCount >= KeySize;
     }
 
     public void AddKey(FloppyDisk key)
     {
-        if (IsKeysFull())
-        {
-            // this shouldn't happen - there's validation everywhere to prevent this
-            Debug.LogError("Avatar already has 2 keys, but adding to avoid unsolvable state.");
-        }
         if (!avatarKeys.Contains(key))
         {
-            avatarKeys.Add(key);
+            var emptyIndex = Array.IndexOf(avatarKeys, null);
+            if (emptyIndex == -1)
+            {
+                Debug.LogError("Avatar already has max keys.");
+            }
+            avatarKeys[emptyIndex] = key;
         }
     }
 
@@ -103,7 +106,8 @@ public class Avatar : MonoBehaviour, IControllable
     {
         if (avatarKeys.Contains(key))
         {
-            avatarKeys.Remove(key);
+            var index = Array.IndexOf(avatarKeys, key);
+            avatarKeys[index] = null;
         }
     }
 }

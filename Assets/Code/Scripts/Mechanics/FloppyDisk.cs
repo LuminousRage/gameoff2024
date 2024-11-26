@@ -8,10 +8,19 @@ public class FloppyDisk : MonoBehaviour, IUsable
     Player player;
     private bool isInInventory_ = false;
 
+    // The computer the floppy disk is currently in, null if not in a computer
+    public Computer computer_;
+
     void Start()
     {
         player = FindFirstObjectByType<Player>();
         Assert.IsNotNull(player, "Unable to find Player from FloppyDisk.");
+
+        // If level predefines the floppy disk in a computer, add it to the computer
+        if (computer_ != null)
+        {
+            computer_.floppyDiskManager.InsertFloppyDisk(this);
+        }
     }
 
     public string GetUsableLabel() => "Floppy Disk";
@@ -27,15 +36,13 @@ public class FloppyDisk : MonoBehaviour, IUsable
             ?.UnsetUsable(this);
     }
 
-    public bool IsCurrentlyUsable()
-    {
-        return !isInInventory_;
-    }
+    public bool IsCurrentlyUsable() => !isInInventory_;
 
-    public void SetVisible(bool visible = true)
-    {
-        this.gameObject.SetActive(visible);
-    }
+    public void SetVisible(bool visible = true) => this.gameObject.SetActive(visible);
 
     public void UnsetVisible() => this.SetVisible(false);
+
+    public Computer GetComputer() => computer_;
+
+    public void SetComputer(Computer computer) => computer_ = computer;
 }
