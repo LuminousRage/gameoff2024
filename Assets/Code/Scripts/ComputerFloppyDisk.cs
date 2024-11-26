@@ -16,6 +16,7 @@ public class ComputerFloppyDisk : MonoBehaviour
 
     // this is a reference, so will be updated when the avatar's keys are updated
     private FloppyDisk[] avatarFloppyDisks;
+    private GameObject[] ghostFloppyDisks = new GameObject[2];
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,8 +47,6 @@ public class ComputerFloppyDisk : MonoBehaviour
         }
 
         disk.SetComputer(this.computer);
-        disk.transform.rotation = Quaternion.Euler(0, 0, 0);
-
         avatar.AddKey(disk);
     }
 
@@ -62,4 +61,14 @@ public class ComputerFloppyDisk : MonoBehaviour
 
         return allDisks;
     }
+
+    public Vector3 GetSlotPosition(int slotIndex) =>
+        slotPosition[slotIndex] + computer.transform.position;
+
+    public void SetGhostFloppyDisk(GameObject disk, int index)
+    {
+        ghostFloppyDisks[index] = disk;
+    }
+
+    public GameObject GetGhostFloppyDisk(int index) => ghostFloppyDisks[index];
 }

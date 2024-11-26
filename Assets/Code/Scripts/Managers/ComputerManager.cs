@@ -8,6 +8,7 @@ public class ComputerManager : MonoBehaviour
 {
     // Level -> (Avatar, Zone) -> Computer
     public Dictionary<Level2D, Dictionary<AvatarZoneTuple, Computer>> computerLookUp;
+    public GameObject ghostComputerPrefab;
 
     void Start()
     {
