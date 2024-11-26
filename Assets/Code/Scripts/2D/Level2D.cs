@@ -53,7 +53,7 @@ public class Level2D : MonoBehaviour
         entered_ = true;
     }
 
-    (Avatar, CollisionZone) GetAndValidateAvatarAndZone(Computer c)
+    public (Avatar, CollisionZone) GetAndValidateAvatarAndZone(Computer c)
     {
         var avatars = GetComponentsInChildren<Avatar>().Where(a => a.number == c.avatar).ToList();
         var zones = GetComponentsInChildren<CollisionZone>()

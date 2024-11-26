@@ -17,6 +17,7 @@ public class Avatar : MonoBehaviour, IControllable
 
     public AvatarZone az;
     public AvatarInput ai;
+    private List<FloppyDisk> avatarKeys = new List<FloppyDisk>();
 
     public void SetControllable(bool controllable = true)
     {
@@ -73,5 +74,29 @@ public class Avatar : MonoBehaviour, IControllable
     public Rigidbody2D GetRigidbody()
     {
         return rb;
+    }
+
+    public List<FloppyDisk> GetKeys()
+    {
+        return avatarKeys;
+    }
+
+    public bool IsKeysFull()
+    {
+        return avatarKeys.Count >= 2;
+    }
+
+    public void AddKey(FloppyDisk key)
+    {
+        if (IsKeysFull())
+        {
+            // this shouldn't happen - there's validation everywhere to prevent this
+            Debug.LogError("Avatar already has 2 keys, but adding to avoid unsolvable state.");
+        }
+
+        if (!avatarKeys.Contains(key))
+        {
+            avatarKeys.Add(key);
+        }
     }
 }

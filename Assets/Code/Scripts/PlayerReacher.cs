@@ -144,7 +144,6 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
     {
         if (computer_ == null)
         {
-            Debug.Log("what");
             return DiskActionPrompts.None;
         }
 

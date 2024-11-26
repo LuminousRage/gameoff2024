@@ -24,6 +24,8 @@ public class Computer : MonoBehaviour, IUsable
 
     private List<FloppyDisk> floppyDisks = new List<FloppyDisk>();
 
+    private Avatar avatarObj;
+
     public void Use(IControllable p)
     {
         sceneManager_.SetFocus(this);
@@ -57,6 +59,8 @@ public class Computer : MonoBehaviour, IUsable
         quad_ = this.transform.Find("Blackscreen")?.gameObject;
         Assert.IsNotNull(quad_, "Unable to find Quad in Computer.");
 
+        (avatarObj, _) = level.GetAndValidateAvatarAndZone(this);
+
         var cameraOffset = 2 * level.transform.forward;
 
         renderCamera_.transform.position = level.transform.position - cameraOffset;
@@ -82,15 +86,9 @@ public class Computer : MonoBehaviour, IUsable
         }
     }
 
-    public bool IsAvatarDisksFull()
-    {
-        return floppyDisks.Count == 2;
-    }
+    public bool IsAvatarDisksFull() => avatarObj.IsKeysFull();
 
-    public bool ContainsDisk()
-    {
-        return floppyDisks.Count > 0;
-    }
+    public bool ContainsDisk() => floppyDisks.Count > 0;
 
     public void InsertFloppyDisk(FloppyDisk disk)
     {
