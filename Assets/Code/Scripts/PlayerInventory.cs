@@ -81,6 +81,12 @@ public class PlayerInventory : MonoBehaviour
             Debug.LogError($"Disk {disk} already in inventory.");
             return;
         }
+
+        // if (player.reacher_.usable_.Contains(disk))
+        // {
+        //     player.reacher_.usable_.Remove(disk);
+        // }
+        // ;
         Debug.Log($"Adding disk {disk} to inventory.");
         // I think we'd only use the ID, but we can change that later
         items_.Add(disk);
@@ -132,6 +138,25 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log($"Player is now holding {currentHeldItem}");
     }
 
+    public void PutDownDisks(Computer c)
+    {
+        if (c == null)
+        {
+            Debug.LogError("Computer is null.");
+            return;
+        }
+
+        var disks = items_.ToArray();
+        items_.Clear();
+        currentIndex_ = -1;
+
+        foreach (var disk in disks)
+        {
+            disk.isInInventory_ = false;
+            var pos = c.transform.position + new Vector3(0f, -0.145f, 1f);
+            disk.transform.SetPositionAndRotation(pos, Quaternion.Euler(0, 0, 0));
+        }
+    }
     // Below is unused since we no longer hold multiple disks
     // public void SelectItem(int index)
     // {

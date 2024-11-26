@@ -26,8 +26,6 @@ public class SceneManager : MonoBehaviour
 
     private Computer focusedComputer_ = null;
 
-    private ComputerManager computerManager_;
-
     public Vector2 GetScaledDelta()
     {
         // Use the sensitivity value
@@ -139,6 +137,7 @@ public class SceneManager : MonoBehaviour
             player_.SetControllable(false);
 
             computer.level.EnterFrom(computer);
+            player_.inventory.PutDownDisks(computer);
 
             this.UnsetUsePrompt();
         }
@@ -174,8 +173,6 @@ public class SceneManager : MonoBehaviour
 
         this.followCamera_ = FindFirstObjectByType<FollowCamera>();
         Assert.IsNotNull(followCamera_, "Unable to find FollowCamera from the scene.");
-
-        computerManager_ = GetComponent<ComputerManager>();
 
         this.LockMouse();
         this.UnsetUsePrompt();

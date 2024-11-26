@@ -17,7 +17,7 @@ public class ComputerManager : MonoBehaviour
 
     void BuildComputerLookUp()
     {
-        var computers = GetComponentsInChildren<Computer>();
+        var computers = FindObjectsByType<Computer>(FindObjectsSortMode.None);
         computerLookUp = computers.Aggregate(
             new Dictionary<Level2D, Dictionary<AvatarZoneTuple, Computer>>(),
             (acc, computer) =>
