@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 753494827701538460}
   - component: {fileID: 9053343401189443293}
   - component: {fileID: 7170512055820982505}
+  - component: {fileID: 2563061281399753445}
   m_Layer: 0
   m_Name: Computer
   m_TagString: Untagged
@@ -156,6 +157,19 @@ MonoBehaviour:
   level: {fileID: 0}
   zone: 0
   avatar: 1
+  floppyDiskManager: {fileID: 0}
+--- !u!114 &2563061281399753445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145625254370762584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56700c88ae2be45c899e8dd13fe64aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4857487766089730823
 GameObject:
   m_ObjectHideFlags: 0

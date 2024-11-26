@@ -142,8 +142,8 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
 
         switch
             (
-                computer_.IsAvatarDisksFull(),
-                computer_.ContainsDisk(),
+                computer_.floppyDiskManager.IsAvatarDisksFull(),
+                computer_.floppyDiskManager.ContainsDisk(),
                 player_.inventory.GetCurrentHoldable() != null
             )
 
@@ -187,10 +187,10 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         {
             case DiskActionPrompts.Insert:
                 var disk = player_.inventory.PopCurrentHoldableFromInventory();
-                computer_.InsertFloppyDisk(disk);
+                computer_.floppyDiskManager.InsertFloppyDisk(disk);
                 break;
             case DiskActionPrompts.Eject:
-                var disks = computer_.RemoveAllFloppyDisk();
+                var disks = computer_.floppyDiskManager.RemoveAllFloppyDisk();
                 disks.ForEach(disk => player_.inventory.AddToInventory(disk));
                 break;
             case DiskActionPrompts.CannotInsert:

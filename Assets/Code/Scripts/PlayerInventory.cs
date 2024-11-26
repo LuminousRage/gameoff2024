@@ -16,6 +16,9 @@ public class PlayerInventory : MonoBehaviour
     [Range(0f, 1.0f)]
     public float distanceDown = 0.17f;
 
+    [Range(0f, 1.0f)]
+    public float distanceRight = -0.17f;
+
     private Player player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -51,7 +54,8 @@ public class PlayerInventory : MonoBehaviour
         var newPosition =
             headTransform_.position
             + this.distanceFromHead * headTransform_.forward
-            - distanceDown * headTransform_.up;
+            - distanceDown * headTransform_.up
+            + distanceRight * headTransform_.right;
         currentHeldItem.transform.position = newPosition;
         currentHeldItem.transform.rotation = headTransform_.rotation * Quaternion.Euler(100, 0, 0);
     }
@@ -83,11 +87,6 @@ public class PlayerInventory : MonoBehaviour
 
         currentIndex_ = items_.Count - 1;
         disk.SetVisible(true);
-    }
-
-    public List<IHoldable> GetInventory()
-    {
-        return items_;
     }
 
     public IHoldable PopCurrentHoldableFromInventory()
@@ -133,44 +132,45 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log($"Player is now holding {currentHeldItem}");
     }
 
-    public void SelectItem(int index)
-    {
-        if (index < 0 || index >= items_.Count)
-        {
-            Debug.LogError($"Invalid index {index} for selecting an item.");
-            return;
-        }
+    // Below is unused since we no longer hold multiple disks
+    // public void SelectItem(int index)
+    // {
+    //     if (index < 0 || index >= items_.Count)
+    //     {
+    //         Debug.LogError($"Invalid index {index} for selecting an item.");
+    //         return;
+    //     }
 
-        currentIndex_ = index;
-        UpdatePlayerHeldItem();
-    }
+    //     currentIndex_ = index;
+    //     UpdatePlayerHeldItem();
+    // }
 
-    public void SelectNext()
-    {
-        var newIndex = currentIndex_ + 1;
+    // public void SelectNext()
+    // {
+    //     var newIndex = currentIndex_ + 1;
 
-        if (items_.Count == 0 || currentIndex_ >= items_.Count - 1)
-        {
-            newIndex = -1;
-        }
+    //     if (items_.Count == 0 || currentIndex_ >= items_.Count - 1)
+    //     {
+    //         newIndex = -1;
+    //     }
 
-        this.SelectItem(newIndex);
-    }
+    //     this.SelectItem(newIndex);
+    // }
 
-    public void SelectPrevious()
-    {
-        var newIndex = currentIndex_ - 1;
+    // public void SelectPrevious()
+    // {
+    //     var newIndex = currentIndex_ - 1;
 
-        if (items_.Count == 0 || currentIndex_ == 0)
-        {
-            newIndex = -1;
-        }
+    //     if (items_.Count == 0 || currentIndex_ == 0)
+    //     {
+    //         newIndex = -1;
+    //     }
 
-        this.SelectItem(newIndex);
-    }
+    //     this.SelectItem(newIndex);
+    // }
 
-    public void Unselect()
-    {
-        this.SelectItem(-1);
-    }
+    // public void Unselect()
+    // {
+    //     this.SelectItem(-1);
+    // }
 }

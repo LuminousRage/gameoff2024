@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Globals;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -7,7 +5,7 @@ using UnityEngine.Assertions;
 public class Computer : MonoBehaviour, IUsable
 {
     public Level2D level;
-    public Globals.Zone zone;
+    public Zone zone;
 
     [Range(1, 8)]
     public byte avatar;
@@ -22,9 +20,7 @@ public class Computer : MonoBehaviour, IUsable
 
     private ITriggerable triggerable;
 
-    private List<FloppyDisk> floppyDisks = new List<FloppyDisk>();
-
-    private Avatar avatarObj;
+    public ComputerFloppyDisk floppyDiskManager;
 
     public void Use(IControllable p)
     {
@@ -59,7 +55,8 @@ public class Computer : MonoBehaviour, IUsable
         quad_ = this.transform.Find("Blackscreen")?.gameObject;
         Assert.IsNotNull(quad_, "Unable to find Quad in Computer.");
 
-        (avatarObj, _) = level.GetAndValidateAvatarAndZone(this);
+        floppyDiskManager = GetComponent<ComputerFloppyDisk>();
+        Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
 
         var cameraOffset = 2 * level.transform.forward;
 
@@ -84,30 +81,5 @@ public class Computer : MonoBehaviour, IUsable
                 triggerable.Untrigger();
             }
         }
-    }
-
-    public bool IsAvatarDisksFull() => avatarObj.IsKeysFull();
-
-    public bool ContainsDisk() => floppyDisks.Count > 0;
-
-    public void InsertFloppyDisk(FloppyDisk disk)
-    {
-        if (IsAvatarDisksFull())
-        {
-            Debug.LogError("Computer has max floppy disks inserted.");
-            return;
-        }
-
-        avatarObj.AddKey(disk);
-        floppyDisks.Add(disk);
-    }
-
-    public List<FloppyDisk> RemoveAllFloppyDisk()
-    {
-        floppyDisks.ForEach(d => avatarObj.RemoveKey(d));
-        var disks = floppyDisks.ToList();
-        floppyDisks.Clear();
-
-        return disks;
     }
 }
