@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerReacher : MonoBehaviour, IUsableSetter
 {
     private Player player_;
-    private List<IUsable> usable_ = new List<IUsable>();
+    public List<IUsable> usable_ = new List<IUsable>();
 
     private SceneManager sm_;
 

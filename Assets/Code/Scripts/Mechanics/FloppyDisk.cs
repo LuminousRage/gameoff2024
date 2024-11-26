@@ -6,7 +6,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
 {
     public Globals.FloppyDiskID floppyDiskID;
     Player player;
-    private bool isInInventory_ = false;
+    public bool isInInventory_ = false;
 
     // The computer the floppy disk is currently in, null if not in a computer
     public Computer computer_;

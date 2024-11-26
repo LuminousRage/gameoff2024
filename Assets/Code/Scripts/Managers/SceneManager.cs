@@ -139,6 +139,7 @@ public class SceneManager : MonoBehaviour
             player_.SetControllable(false);
 
             computer.level.EnterFrom(computer);
+            player_.inventory.PutDownDisks(computer);
 
             this.UnsetUsePrompt();
         }
