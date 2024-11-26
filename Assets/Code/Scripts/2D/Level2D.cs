@@ -50,7 +50,7 @@ public class Level2D : MonoBehaviour
 
             avatar.MoveAvatarTo(spawnPoint + transformPosition_);
             // This honestly just need to happen once when the avatar is first created, but it doesn't hurt to keep it
-            avatar.ToggleSpriteRenderer(true);
+            avatar.SetActive(true);
             // Zone resetting is automatically done once the avatar is detected in the new zone
         }
 

@@ -56,7 +56,7 @@ public class Avatar : MonoBehaviour, IControllable
         ai = GetComponent<AvatarInput>();
         Assert.IsNotNull(this.ai);
 
-        sr.enabled = false;
+        SetActive(false);
     }
 
     public void MoveAvatarTo(Vector2 position)
@@ -64,9 +64,12 @@ public class Avatar : MonoBehaviour, IControllable
         transform.position = position;
     }
 
-    public void ToggleSpriteRenderer(bool enable = true)
+    public void SetActive(bool enable = true)
     {
+        // We can't set the avatars to inactive because the lookup table will be broken
+        // instead let's just turn on/off the interactable parts of the avatar
         sr.enabled = enable;
+        rb.simulated = enable;
     }
 
     public Level2D GetLevel()
