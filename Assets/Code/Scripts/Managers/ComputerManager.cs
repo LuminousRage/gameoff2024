@@ -24,7 +24,6 @@ public class ComputerManager : MonoBehaviour
             {
                 if (computer.level == null)
                 {
-                    Debug.LogError("Computer has no level assigned.");
                     return acc;
                 }
 

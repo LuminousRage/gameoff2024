@@ -24,7 +24,12 @@ public class ComputerFloppyDisk : MonoBehaviour
         computer = this.GetComponent<Computer>();
         Assert.IsNotNull(this.computer);
 
+        if (computer.level == null)
+        {
+            return;
+        }
         (avatar, _) = computer.level.GetAndValidateAvatarAndZone(this.computer);
+        Assert.IsNotNull(this.avatar, "Unable to find avatar from ComputerFloppyDisk.");
         avatarFloppyDisks = avatar.GetKeys();
     }
 

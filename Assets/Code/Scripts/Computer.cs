@@ -40,7 +40,10 @@ public class Computer : MonoBehaviour, IUsable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Assert.IsNotNull(this.level);
+        Assert.IsNotNull(
+            this.level,
+            $"{this} of {transform.parent.gameObject} has no level assigned."
+        );
         NUnit.Framework.Assert.IsInstanceOf<Level2D>(this.level);
 
         renderCamera_ = GetComponentInChildren<Camera>();
@@ -68,6 +71,8 @@ public class Computer : MonoBehaviour, IUsable
 
     public void ToggleComputer(bool enabled = true)
     {
+        Debug.Log($"Toggling computer {this} to {enabled}");
+        renderCamera_.gameObject.SetActive(enabled);
         quad_.SetActive(enabled);
 
         if (triggerable != null)
