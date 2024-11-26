@@ -19,6 +19,7 @@ public class Avatar : MonoBehaviour, IControllable
     public AvatarZone az;
     public AvatarInput ai;
     private FloppyDisk[] avatarKeys = new FloppyDisk[KeySize];
+
     public const int KeySize = 2;
 
     public void SetControllable(bool controllable = true)
@@ -99,6 +100,8 @@ public class Avatar : MonoBehaviour, IControllable
                 Debug.LogError("Avatar already has max keys.");
             }
             avatarKeys[emptyIndex] = key;
+            key.SetFloppyDiskTransform(emptyIndex);
+            level.TellOtherComputersToRenderGhostDisks(number, key.GetComputer(), emptyIndex, true);
         }
     }
 
@@ -107,6 +110,7 @@ public class Avatar : MonoBehaviour, IControllable
         if (avatarKeys.Contains(key))
         {
             var index = Array.IndexOf(avatarKeys, key);
+            level.TellOtherComputersToRenderGhostDisks(number, key.GetComputer(), index, false);
             avatarKeys[index] = null;
         }
     }

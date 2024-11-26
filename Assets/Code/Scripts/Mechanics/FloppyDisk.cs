@@ -45,4 +45,12 @@ public class FloppyDisk : MonoBehaviour, IUsable
     public Computer GetComputer() => computer_;
 
     public void SetComputer(Computer computer) => computer_ = computer;
+
+    public void SetFloppyDiskTransform(int slotIndex)
+    {
+        transform.SetPositionAndRotation(
+            computer_.floppyDiskManager.GetSlotPosition(slotIndex),
+            Quaternion.Euler(0, 0, 0)
+        );
+    }
 }

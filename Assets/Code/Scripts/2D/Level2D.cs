@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Level2D : MonoBehaviour
 {
@@ -8,13 +9,18 @@ public class Level2D : MonoBehaviour
 
     private SceneManager sceneManager;
     private ComputerManager computerManager;
+    private GhostFloppyDiskManager ghostFloppyDiskManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         transformPosition_ = new Vector2(transform.position.x, transform.position.y);
         sceneManager = GameObject.FindFirstObjectByType<SceneManager>();
+        Assert.IsNotNull(this.sceneManager);
         computerManager = GameObject.FindFirstObjectByType<ComputerManager>();
+        Assert.IsNotNull(this.computerManager);
+        ghostFloppyDiskManager = FindFirstObjectByType<GhostFloppyDiskManager>();
+        Assert.IsNotNull(this.ghostFloppyDiskManager);
     }
 
     // Update is called once per frame
@@ -117,5 +123,37 @@ public class Level2D : MonoBehaviour
         // move 3d player in front of computer
         var transform = computer.GetWatcherTransform();
         sceneManager.UpdatePlayerLocation(transform);
+    }
+
+    public void TellOtherComputersToRenderGhostDisks(
+        byte avatarId,
+        Computer originComputer,
+        int slotIndex,
+        bool setVisible = true
+    )
+    {
+        var computers = computerManager
+            .computerLookUp[this]
+            .Where(c => c.Key.Item1 == avatarId && c.Value != originComputer)
+            .Select(c => c.Value);
+
+        foreach (var computer in computers)
+        {
+            if (setVisible)
+            {
+                var ghostDisk = ghostFloppyDiskManager.GetUnusedGhostDisk();
+                computer.floppyDiskManager.SetGhostFloppyDisk(ghostDisk, slotIndex);
+                Debug.Log(computer.floppyDiskManager.GetSlotPosition(slotIndex));
+                ghostDisk.transform.SetPositionAndRotation(
+                    computer.floppyDiskManager.GetSlotPosition(slotIndex),
+                    Quaternion.Euler(0, 0, 0)
+                );
+            }
+            else
+            {
+                GameObject ghostFloppy = computer.floppyDiskManager.GetGhostFloppyDisk(slotIndex);
+                ghostFloppyDiskManager.ReturnGhostDisk(ghostFloppy);
+            }
+        }
     }
 }
