@@ -98,11 +98,13 @@ public class Computer : MonoBehaviour, IUsable
             return;
         }
 
+        avatarObj.AddKey(disk);
         floppyDisks.Add(disk);
     }
 
     public List<FloppyDisk> RemoveAllFloppyDisk()
     {
+        floppyDisks.ForEach(d => avatarObj.RemoveKey(d));
         var disks = floppyDisks.ToList();
         floppyDisks.Clear();
 

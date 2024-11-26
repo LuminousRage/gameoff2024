@@ -93,10 +93,17 @@ public class Avatar : MonoBehaviour, IControllable
             // this shouldn't happen - there's validation everywhere to prevent this
             Debug.LogError("Avatar already has 2 keys, but adding to avoid unsolvable state.");
         }
-
         if (!avatarKeys.Contains(key))
         {
             avatarKeys.Add(key);
+        }
+    }
+
+    public void RemoveKey(FloppyDisk key)
+    {
+        if (avatarKeys.Contains(key))
+        {
+            avatarKeys.Remove(key);
         }
     }
 }

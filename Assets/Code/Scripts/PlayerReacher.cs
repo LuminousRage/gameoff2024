@@ -12,13 +12,6 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
 
     private Computer computer_;
 
-    // honestly should go somewhere else, will probably move it soon.
-    public struct UIText
-    {
-        public string key;
-        public string value;
-    }
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -123,20 +116,20 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         None,
     }
 
-    public UIText? DiskActionPromptToString(DiskActionPrompts prompt)
+    public (string, string) DiskActionPromptToString(DiskActionPrompts prompt)
     {
         switch (prompt)
         {
             case DiskActionPrompts.Insert:
-                return new UIText { key = "F", value = "Insert floppy disk" };
+                return ("F", "Insert floppy disk");
             case DiskActionPrompts.Eject:
-                return new UIText { key = "F", value = "Eject floppy disk" };
+                return ("F", "Eject floppy disk");
             case DiskActionPrompts.CannotInsert:
-                return new UIText { key = null, value = "Cannot insert floppy disk" };
+                return (null, "Floppy disk drive is full");
             case DiskActionPrompts.None:
-                return null;
+                return (null, null);
             default:
-                return null;
+                return (null, null);
         }
     }
 

@@ -16,7 +16,9 @@ public class SceneManager : MonoBehaviour
     private GameObject uiCanvas_;
 
     private TMP_Text useKeyPreview_,
-        useText_;
+        useText_,
+        diskText_,
+        diskKeyPreview_;
 
     private Player player_;
 
@@ -77,6 +79,8 @@ public class SceneManager : MonoBehaviour
     {
         if (player_.GetControllable())
         {
+            // Maybe I'll clean this up later...
+            // Use command
             var usablePriority = player_.reacher_.SortUsablePriority();
             var mostPriority = usablePriority.FirstOrDefault();
             if (mostPriority != null)
@@ -85,18 +89,46 @@ public class SceneManager : MonoBehaviour
                 useText_.gameObject.SetActive(true);
                 useKeyPreview_.text = key;
                 useKeyPreview_.gameObject.SetActive(true);
-                return;
             }
+            else
+            {
+                useText_.gameObject.SetActive(false);
+                useKeyPreview_.gameObject.SetActive(false);
+            }
+
+            // Disk command
+            var diskActionPrompt = player_.reacher_.GetDiskActionPrompt();
+            var (diskKey, diskLabel) = player_.reacher_.DiskActionPromptToString(diskActionPrompt);
+            if (diskLabel != null)
+            {
+                diskText_.text = diskLabel;
+                diskText_.gameObject.SetActive(true);
+            }
+            else
+            {
+                diskText_.gameObject.SetActive(false);
+            }
+            if (diskKey != null)
+            {
+                diskKeyPreview_.text = diskKey;
+                diskKeyPreview_.gameObject.SetActive(true);
+            }
+            else
+            {
+                diskKeyPreview_.gameObject.SetActive(false);
+            }
+            return;
         }
 
-        useText_.gameObject.SetActive(false);
-        useKeyPreview_.gameObject.SetActive(false);
+        UnsetUsePrompt();
     }
 
     public void UnsetUsePrompt()
     {
         useText_.gameObject.SetActive(false);
         useKeyPreview_.gameObject.SetActive(false);
+        diskText_.gameObject.SetActive(false);
+        diskKeyPreview_.gameObject.SetActive(false);
     }
 
     public void SetFocus(Computer computer)
@@ -133,6 +165,12 @@ public class SceneManager : MonoBehaviour
 
         useKeyPreview_ = uiCanvas_.transform.Find("KeyPreview").GetComponent<TMP_Text>();
         Assert.IsNotNull(useKeyPreview_);
+
+        diskText_ = uiCanvas_.transform.Find("DiskText").GetComponent<TMP_Text>();
+        Assert.IsNotNull(diskText_);
+
+        diskKeyPreview_ = uiCanvas_.transform.Find("DiskKeyPreview").GetComponent<TMP_Text>();
+        Assert.IsNotNull(diskKeyPreview_);
 
         this.followCamera_ = FindFirstObjectByType<FollowCamera>();
         Assert.IsNotNull(followCamera_, "Unable to find FollowCamera from the scene.");
