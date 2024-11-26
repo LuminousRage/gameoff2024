@@ -20,7 +20,7 @@ public class Computer : MonoBehaviour, IUsable
 
     private ITriggerable triggerable;
 
-    public ComputerFloppyDisk floppyDiskManager;
+    public ComputerFloppyDisk floppyDiskManager { get; private set; }
 
     public void Use(IControllable p)
     {
