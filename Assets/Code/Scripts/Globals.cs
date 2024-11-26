@@ -2,6 +2,7 @@ namespace Globals
 {
     public enum Zone
     {
+        Broken,
         A,
         B,
         C,
