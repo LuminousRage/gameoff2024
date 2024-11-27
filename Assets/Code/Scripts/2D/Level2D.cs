@@ -43,7 +43,8 @@ public class Level2D : MonoBehaviour
         var avatarLastZone = avatar.az.GetZone();
 
         // Avatar was previously exited out in a different zone
-        if (avatarLastZone != c.zone) {
+        if (avatarLastZone != c.zone)
+        {
             avatar.az.respawnIn(c.zone);
         }
 
@@ -52,7 +53,8 @@ public class Level2D : MonoBehaviour
         entered_ = true;
     }
 
-    public Avatar GetAndValidateAvatar(Computer c) {
+    public Avatar GetAndValidateAvatar(Computer c)
+    {
         var avatars = GetComponentsInChildren<Avatar>().Where(a => a.number == c.avatar).ToList();
 
         if (avatars.Count != 1)
@@ -84,16 +86,20 @@ public class Level2D : MonoBehaviour
         sceneManager.SetFocus(null);
     }
 
-    public void UpdatePlayerToComputer(byte avatarId, Globals.Zone newZone, Globals.Zone? oldZone)
+    public void UpdatePlayerToComputer(Avatar avatar, Globals.Zone newZone, Globals.Zone oldZone)
     {
-        if (oldZone != null)
+        if (avatar.hasEntered)
         {
-            var originalComputer = computerManager.computerLookUp[this][(avatarId, oldZone.Value)];
+            var originalComputer = computerManager.computerLookUp[this][(avatar.number, oldZone)];
             // If this is implemented right, every computer of the same avatar ID should be turned off when exited
             originalComputer.ToggleComputer(false);
         }
+        else
+        {
+            avatar.hasEntered = true;
+        }
 
-        var computer = computerManager.computerLookUp[this][(avatarId, newZone)];
+        var computer = computerManager.computerLookUp[this][(avatar.number, newZone)];
         computer.ToggleComputer(true);
 
         // move 3d player in front of computer

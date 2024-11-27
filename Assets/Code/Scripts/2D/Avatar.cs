@@ -15,11 +15,15 @@ public class Avatar : MonoBehaviour, IControllable
     public byte number = 1;
 
     private bool controlling_ = false;
-    
+
     public AvatarZone az;
     public AvatarInput ai;
     private FloppyDisk[] avatarKeys = new FloppyDisk[KeySize];
     private Camera renderCamera_;
+
+    // Whether the avatar has been entered before through a computer
+    [HideInInspector]
+    public bool hasEntered = false;
 
     public const int KeySize = 2;
 
@@ -53,14 +57,7 @@ public class Avatar : MonoBehaviour, IControllable
 
         renderCamera_ = GetComponentInChildren<Camera>();
         Assert.IsNotNull(renderCamera_, "Unable to find render camera in Avatar.");
-
     }
-
-    public void MoveAvatarTo(Vector2 position)
-    {
-        transform.position = position;
-    }
-
 
     public Level2D GetLevel()
     {
