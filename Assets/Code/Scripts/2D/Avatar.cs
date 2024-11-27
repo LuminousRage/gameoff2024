@@ -68,14 +68,6 @@ public class Avatar : MonoBehaviour, IControllable
         SetActive(false);
     }
 
-    public void FixedUpdate()
-    {
-        if (controlling_)
-        {
-            renderCamera_.transform.position = transform.position - 2 * level.transform.forward;
-        }
-    }
-
     public void MoveAvatarTo(Vector2 position)
     {
         transform.position = position;

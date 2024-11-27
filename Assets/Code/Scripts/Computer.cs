@@ -61,8 +61,6 @@ public class Computer : MonoBehaviour, IUsable
         ToggleComputer(false);
     }
 
-    public void FixedUpdate() { }
-
     public void ToggleComputer(bool enabled = true)
     {
         Debug.Log($"Toggling computer {this} to {enabled}");
