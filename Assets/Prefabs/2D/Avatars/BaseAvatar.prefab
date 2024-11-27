@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8617576594809164069}
+  - component: {fileID: 7999653218218875025}
   - component: {fileID: 3959676855675439273}
   - component: {fileID: 1124784903334507087}
-  - component: {fileID: 7999653218218875025}
   - component: {fileID: 3452220081574250936}
   - component: {fileID: 1609790220642901344}
   - component: {fileID: 7904636876759750003}
@@ -38,6 +38,20 @@ Transform:
   - {fileID: 8020667541768526929}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7999653218218875025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350891814998936499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39aaee6d56b624f15aec707990ff23fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentZone: 0
+  intialSpawns: []
 --- !u!114 &3959676855675439273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,6 +67,7 @@ MonoBehaviour:
   number: 1
   az: {fileID: 7999653218218875025}
   ai: {fileID: 1124784903334507087}
+  hasEntered: 0
 --- !u!114 &1124784903334507087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,20 +164,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   speed: 5
---- !u!114 &7999653218218875025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350891814998936499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39aaee6d56b624f15aec707990ff23fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentZone: 0
-  intialSpawns: []
 --- !u!50 &3452220081574250936
 Rigidbody2D:
   serializedVersion: 5
@@ -282,7 +283,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 1}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
