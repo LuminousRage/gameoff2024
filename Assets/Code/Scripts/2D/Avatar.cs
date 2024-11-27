@@ -11,7 +11,7 @@ public class Avatar : MonoBehaviour, IControllable
     private SpriteRenderer sr;
     private Rigidbody2D rb;
 
-    [HideInInspector] 
+    [Range(1, 8)]
     public byte number = 1;
 
     private bool controlling_ = false;
