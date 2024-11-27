@@ -66,7 +66,6 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         var usable = c.GetComponent<IUsable>();
         if (usable == null)
         {
-            // Debug.Log("Collision occured with non IUsable.");
             return;
         }
         if (usable.IsCurrentlyUsable())
@@ -93,7 +92,6 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         var usable = c.GetComponent<IUsable>();
         if (usable == null)
         {
-            Debug.Log("Collision occured with non IUsable.");
             return;
         }
 
