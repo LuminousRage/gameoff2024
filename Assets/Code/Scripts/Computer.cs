@@ -10,8 +10,6 @@ public class Computer : MonoBehaviour, IUsable
     [Range(1, 8)]
     public byte avatar;
 
-    private Camera renderCamera_;
-
     private GameObject watcher_;
 
     private GameObject quad_;
@@ -48,9 +46,6 @@ public class Computer : MonoBehaviour, IUsable
         );
         NUnit.Framework.Assert.IsInstanceOf<Level2D>(this.level);
 
-        renderCamera_ = GetComponentInChildren<Camera>();
-        Assert.IsNotNull(renderCamera_, "Unable to find render camera in Computer.");
-
         watcher_ = this.transform.Find("Watcher")?.gameObject;
         Assert.IsNotNull(watcher_, "Unable to find watcher in Computer.");
 
@@ -63,32 +58,14 @@ public class Computer : MonoBehaviour, IUsable
         floppyDiskManager = GetComponent<ComputerFloppyDisk>();
         Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
 
-        if (level != null)
-        {
-            avatarObj = level.GetAndValidateAvatarAndZone(this).Item1;
-
-            var cameraOffset = 2 * level.transform.forward;
-
-            renderCamera_.transform.position = level.transform.position - cameraOffset;
-            renderCamera_.transform.rotation = level.transform.rotation;
-        }
-
         ToggleComputer(false);
     }
 
-    public void FixedUpdate()
-    {
-        if (avatarObj != null)
-        {
-            renderCamera_.transform.position =
-                avatarObj.transform.position - 2 * level.transform.forward;
-        }
-    }
+    public void FixedUpdate() { }
 
     public void ToggleComputer(bool enabled = true)
     {
         Debug.Log($"Toggling computer {this} to {enabled}");
-        renderCamera_.gameObject.SetActive(enabled);
         quad_.SetActive(enabled);
 
         if (triggerable != null)

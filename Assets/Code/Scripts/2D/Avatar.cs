@@ -19,11 +19,13 @@ public class Avatar : MonoBehaviour, IControllable
     public AvatarZone az;
     public AvatarInput ai;
     private FloppyDisk[] avatarKeys = new FloppyDisk[KeySize];
+    private Camera renderCamera_;
 
     public const int KeySize = 2;
 
     public void SetControllable(bool controllable = true)
     {
+        renderCamera_.gameObject.SetActive(controllable);
         this.controlling_ = controllable;
     }
 
@@ -56,7 +58,22 @@ public class Avatar : MonoBehaviour, IControllable
         ai = GetComponent<AvatarInput>();
         Assert.IsNotNull(this.ai);
 
+        renderCamera_ = GetComponentInChildren<Camera>();
+        Assert.IsNotNull(renderCamera_, "Unable to find render camera in Avatar.");
+
+        var cameraOffset = 2 * level.transform.forward;
+        renderCamera_.transform.position = level.transform.position - cameraOffset;
+        renderCamera_.transform.rotation = level.transform.rotation;
+
         SetActive(false);
+    }
+
+    public void FixedUpdate()
+    {
+        if (controlling_)
+        {
+            renderCamera_.transform.position = transform.position - 2 * level.transform.forward;
+        }
     }
 
     public void MoveAvatarTo(Vector2 position)
