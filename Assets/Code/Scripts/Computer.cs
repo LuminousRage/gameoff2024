@@ -19,7 +19,6 @@ public class Computer : MonoBehaviour, IUsable
 
     public ComputerFloppyDisk floppyDiskManager { get; private set; }
 
-    private Avatar avatarObj;
 
     public void Use(IControllable p)
     {
@@ -54,7 +53,8 @@ public class Computer : MonoBehaviour, IUsable
         floppyDiskManager = GetComponent<ComputerFloppyDisk>();
         Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
 
-        ToggleComputer(false);
+        var currentAvatar = level.GetAndValidateAvatar(this);
+        ToggleComputer(currentAvatar.az.currentZone==zone);
     }
 
     public void ToggleComputer(bool enabled = true)

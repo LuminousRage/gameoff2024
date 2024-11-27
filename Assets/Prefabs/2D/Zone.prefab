@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a09138df7b74a499d1698dc822aaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zone: 0
+  zone: 1
   avatarSpawnPoint: {fileID: 7113343541490554606}
 --- !u!483693784 &5092079340372067206
 TilemapRenderer:

@@ -54,7 +54,6 @@ public class Avatar : MonoBehaviour, IControllable
         renderCamera_ = GetComponentInChildren<Camera>();
         Assert.IsNotNull(renderCamera_, "Unable to find render camera in Avatar.");
 
-        SetActive(false);
     }
 
     public void MoveAvatarTo(Vector2 position)
@@ -62,13 +61,6 @@ public class Avatar : MonoBehaviour, IControllable
         transform.position = position;
     }
 
-    public void SetActive(bool enable = true)
-    {
-        // We can't set the avatars to inactive because the lookup table will be broken
-        // instead let's just turn on/off the interactable parts of the avatar
-        sr.enabled = enable;
-        rb.simulated = enable;
-    }
 
     public Level2D GetLevel()
     {

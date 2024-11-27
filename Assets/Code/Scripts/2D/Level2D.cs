@@ -42,16 +42,9 @@ public class Level2D : MonoBehaviour
 
         var avatarLastZone = avatar.az.GetZone();
 
-        // Avatar has never entered, or was previously exited out in a different zone
-        if (avatarLastZone != c.zone || avatarLastZone == null)
-        {
-            var spawnPoint = new Vector2(avatar.az.spawns[c.zone].transform.position.x,avatar.az.spawns[c.zone].transform.position.y);
-            Debug.Log($"Respawning avatar to ${spawnPoint}");
-
-            avatar.MoveAvatarTo(spawnPoint);
-            // This honestly just need to happen once when the avatar is first created, but it doesn't hurt to keep it
-            avatar.SetActive(true);
-            // Zone resetting is automatically done once the avatar is detected in the new zone
+        // Avatar was previously exited out in a different zone
+        if (avatarLastZone != c.zone) {
+            avatar.az.respawnIn(c.zone);
         }
 
         avatar.SetControllable(true);
