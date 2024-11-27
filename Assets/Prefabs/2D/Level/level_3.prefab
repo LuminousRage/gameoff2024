@@ -545,11 +545,11 @@ PrefabInstance:
     - target: {fileID: 2147283066437374114, guid: 64de8951232093144a1f7b17b249093e, type: 3}
       propertyPath: intialSpawns.Array.data[1].spawn
       value: 
-      objectReference: {fileID: 5787996932654455167}
+      objectReference: {fileID: 6442079508336931809}
     - target: {fileID: 2147283066437374114, guid: 64de8951232093144a1f7b17b249093e, type: 3}
       propertyPath: intialSpawns.Array.data[2].spawn
       value: 
-      objectReference: {fileID: 6442079508336931809}
+      objectReference: {fileID: 5787996932654455167}
     - target: {fileID: 5938241316078715776, guid: 64de8951232093144a1f7b17b249093e, type: 3}
       propertyPath: m_Name
       value: Avatar 1
@@ -13243,11 +13243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 538202604343845018, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_Name
-      value: Zone A (2)
+      value: Zone B (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: number
@@ -15182,11 +15182,11 @@ PrefabInstance:
     - target: {fileID: 3573225921389967638, guid: 7cc540e2d0852fe469a3dca02ba79346, type: 3}
       propertyPath: intialSpawns.Array.data[1].spawn
       value: 
-      objectReference: {fileID: 1530199029448032795}
+      objectReference: {fileID: 76571295248347413}
     - target: {fileID: 3573225921389967638, guid: 7cc540e2d0852fe469a3dca02ba79346, type: 3}
       propertyPath: intialSpawns.Array.data[2].spawn
       value: 
-      objectReference: {fileID: 76571295248347413}
+      objectReference: {fileID: 1530199029448032795}
     - target: {fileID: 9093567656437951028, guid: 7cc540e2d0852fe469a3dca02ba79346, type: 3}
       propertyPath: m_Name
       value: Avatar 2
@@ -24655,11 +24655,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 538202604343845018, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_Name
-      value: Zone B
+      value: Zone A
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: number
@@ -33518,11 +33518,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 538202604343845018, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_Name
-      value: Zone A
+      value: Zone B
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: number
@@ -40657,11 +40657,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 538202604343845018, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_Name
-      value: Zone A (1)
+      value: Zone B (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: number
@@ -47499,11 +47499,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 538202604343845018, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_Name
-      value: Zone B (1)
+      value: Zone A (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: number
@@ -58826,11 +58826,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 538202604343845018, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_Name
-      value: Zone A (3)
+      value: Zone B (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: number
