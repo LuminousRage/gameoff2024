@@ -8,8 +8,6 @@ public class SceneManager : MonoBehaviour
 {
     public Vector2 mouseDelta { get; private set; } = Vector2.zero;
 
-    [Range(1f, 10f)]
-    public float mouseSensitivity = 5f;
 
     private bool locked = false;
 
@@ -29,7 +27,7 @@ public class SceneManager : MonoBehaviour
     public Vector2 GetScaledDelta()
     {
         // Use the sensitivity value
-        return this.mouseDelta * this.mouseSensitivity;
+        return this.mouseDelta * 10 * PlayerPrefs.GetFloat("SavedSensitivty");
     }
 
     public void ToggleMouseLock()
