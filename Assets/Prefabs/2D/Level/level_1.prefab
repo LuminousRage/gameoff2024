@@ -2326,6 +2326,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: isStandUpable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.size
       value: 1
       objectReference: {fileID: 0}

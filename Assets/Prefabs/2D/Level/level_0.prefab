@@ -7784,7 +7784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: number
