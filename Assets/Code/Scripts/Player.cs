@@ -29,7 +29,7 @@ public class Player : MonoBehaviour, IControllable
 
     private IUsable usable_;
     private Rigidbody rb_;
-    private GameObject head_;
+    public GameObject head_;
     public PlayerReacher reacher_;
 
     public PlayerInventory inventory;
@@ -68,8 +68,7 @@ public class Player : MonoBehaviour, IControllable
         // Find the head using the head's transform
         Transform headTransform = this.transform.Find("Head");
         Assert.IsNotNull(headTransform, "Unable to find Head transform from Player.");
-        this.head_ = headTransform.gameObject;
-        Assert.IsNotNull(this.head_, "Unable to find Head from head transform.");
+        Assert.IsNotNull(this.head_, "Did not set head_ in the inspector.");
 
         this.reacher_ = GetComponentInChildren<PlayerReacher>();
         Assert.IsNotNull(headTransform, "Unable to find Reacher transform from Player.");
