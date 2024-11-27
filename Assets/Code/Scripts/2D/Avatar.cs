@@ -11,11 +11,11 @@ public class Avatar : MonoBehaviour, IControllable
     private SpriteRenderer sr;
     private Rigidbody2D rb;
 
-    [Range(1, 8)]
+    [HideInInspector] 
     public byte number = 1;
 
     private bool controlling_ = false;
-
+    
     public AvatarZone az;
     public AvatarInput ai;
     private FloppyDisk[] avatarKeys = new FloppyDisk[KeySize];
@@ -25,7 +25,6 @@ public class Avatar : MonoBehaviour, IControllable
 
     public void SetControllable(bool controllable = true)
     {
-        renderCamera_.gameObject.SetActive(controllable);
         this.controlling_ = controllable;
     }
 
@@ -52,18 +51,8 @@ public class Avatar : MonoBehaviour, IControllable
         rb = GetComponent<Rigidbody2D>();
         Assert.IsNotNull(this.rb);
 
-        az = GetComponent<AvatarZone>();
-        Assert.IsNotNull(this.az);
-
-        ai = GetComponent<AvatarInput>();
-        Assert.IsNotNull(this.ai);
-
         renderCamera_ = GetComponentInChildren<Camera>();
         Assert.IsNotNull(renderCamera_, "Unable to find render camera in Avatar.");
-
-        var cameraOffset = 2 * level.transform.forward;
-        renderCamera_.transform.position = level.transform.position - cameraOffset;
-        renderCamera_.transform.rotation = level.transform.rotation;
 
         SetActive(false);
     }
