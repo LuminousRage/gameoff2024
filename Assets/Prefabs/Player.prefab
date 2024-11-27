@@ -264,6 +264,14 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
+    - m_Name: Disk
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 8a769612-2fbb-4221-9bc2-ddfe7b7518ec
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
     m_Bindings:
     - m_Name: 
       m_Id: 8a718dea-f28a-4f96-af7b-cfa75041e2bb
@@ -272,6 +280,14 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Use
+      m_Flags: 0
+    - m_Name: 
+      m_Id: a26bf247-4301-4c41-96b8-a65cd6b228b9
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Disk
       m_Flags: 0
   reacher_: {fileID: 0}
   inventory: {fileID: 0}
@@ -301,3 +317,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceFromHead: 0.35
   distanceDown: 0.17
+  distanceRight: 0

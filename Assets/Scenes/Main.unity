@@ -1666,8 +1666,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5513987295857094596, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
@@ -3835,74 +3834,6 @@ PrefabInstance:
     - target: {fileID: 3052933672463574367, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5595539030385383931, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: distanceRight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Actions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Bindings.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Actions.Array.data[1].m_Id
-      value: 8a769612-2fbb-4221-9bc2-ddfe7b7518ec
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Actions.Array.data[2].m_Id
-      value: 8a769612-2fbb-4221-9bc2-ddfe7b7518ec
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Bindings.Array.data[1].m_Id
-      value: a26bf247-4301-4c41-96b8-a65cd6b228b9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Bindings.Array.data[2].m_Id
-      value: a26bf247-4301-4c41-96b8-a65cd6b228b9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Actions.Array.data[1].m_Name
-      value: Disk
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Actions.Array.data[1].m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Actions.Array.data[2].m_Name
-      value: Eject
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Actions.Array.data[2].m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Bindings.Array.data[1].m_Path
-      value: <Keyboard>/f
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Bindings.Array.data[2].m_Path
-      value: <Keyboard>/f
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Bindings.Array.data[1].m_Action
-      value: Disk
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Bindings.Array.data[2].m_Action
-      value: Eject
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Actions.Array.data[1].m_ExpectedControlType
-      value: Button
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: gameplayActions.m_Actions.Array.data[2].m_ExpectedControlType
-      value: Button
       objectReference: {fileID: 0}
     - target: {fileID: 8880783659850259186, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
       propertyPath: m_Name
