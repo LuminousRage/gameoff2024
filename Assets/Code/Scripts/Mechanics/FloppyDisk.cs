@@ -13,6 +13,15 @@ public class FloppyDisk : MonoBehaviour, IUsable
 
     void Start()
     {
+        var rend = GetComponentInChildren<MeshRenderer>();
+        Debug.Log($"{rend}");
+
+        MaterialPropertyBlock mpb = new MaterialPropertyBlock();
+
+        mpb.SetColor("_FloppyColor", Globals.GetFloppyColor(floppyDiskID));
+        rend.SetPropertyBlock(mpb);
+        //////
+
         player = FindFirstObjectByType<Player>();
         Assert.IsNotNull(player, "Unable to find Player from FloppyDisk.");
 
