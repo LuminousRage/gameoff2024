@@ -33,22 +33,22 @@ public class Level2D : MonoBehaviour
             Debug.LogError("Attempted to enter level from a null Computer. Continuing anyway.");
             return;
         }
-        var (avatar, zone) = GetAndValidateAvatarAndZone(c);
-        if (avatar == null || zone == null)
+        var avatar = GetAndValidateAvatar(c);
+        if (avatar == null)
         {
             Debug.LogError("Failed to enter level. Exiting.");
             return;
         }
 
         var avatarLastZone = avatar.az.GetZone();
-        var spawnPoint = zone.spawnPoints.First(sp => sp.avatarId == avatar.number).spawnPoint;
+
         // Avatar has never entered, or was previously exited out in a different zone
-
-        if (avatarLastZone != zone.number || avatarLastZone == null)
+        if (avatarLastZone != c.zone || avatarLastZone == null)
         {
-            Debug.Log($"Respawning avatar to ${spawnPoint + transformPosition_}");
+            var spawnPoint = new Vector2(avatar.az.spawns[c.zone].transform.position.x,avatar.az.spawns[c.zone].transform.position.y);
+            Debug.Log($"Respawning avatar to ${spawnPoint}");
 
-            avatar.MoveAvatarTo(spawnPoint + transformPosition_);
+            avatar.MoveAvatarTo(spawnPoint);
             // This honestly just need to happen once when the avatar is first created, but it doesn't hurt to keep it
             avatar.SetActive(true);
             // Zone resetting is automatically done once the avatar is detected in the new zone
@@ -59,37 +59,20 @@ public class Level2D : MonoBehaviour
         entered_ = true;
     }
 
-    public (Avatar, CollisionZone) GetAndValidateAvatarAndZone(Computer c)
-    {
+    public Avatar GetAndValidateAvatar(Computer c) {
         var avatars = GetComponentsInChildren<Avatar>().Where(a => a.number == c.avatar).ToList();
-        var zones = GetComponentsInChildren<CollisionZone>()
-            .Where(z => z.number == c.zone)
-            .ToList();
-        (Avatar, CollisionZone) badResult = (null, null);
 
-        if (avatars.Count != 1 || zones.Count != 1)
+        if (avatars.Count != 1)
         {
             Debug.LogError(
-                "Expected 1 avatar and 1 zone for entering a level."
-                    + $"Found {avatars.Count} avatars and {zones.Count} zones."
+                "Expected 1 avatar per computer for entering a level."
+                    + $"Found {avatars.Count} avatars "
             );
 
-            return badResult;
+            return null;
         }
 
-        var avatar = avatars[0];
-        var zone = zones[0];
-
-        if (!zone.spawnPoints.Any(sp => sp.avatarId == avatar.number))
-        {
-            Debug.LogError(
-                $"Avatar {avatar.number} not found in spawn points of zone {zone.number}."
-            );
-
-            return badResult;
-        }
-
-        return (avatar, zone);
+        return avatars[0];
     }
 
     public void Exit()
