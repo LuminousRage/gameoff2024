@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
@@ -39,6 +40,10 @@ public class Player : MonoBehaviour, IControllable
     public void SetControllable(bool enable = true)
     {
         this.currentlyControlling_ = enable;
+        if (moveAction == null || useAction_ == null || diskAction_ == null)
+        {
+            return;
+        }
 
         if (currentlyControlling_)
         {
@@ -85,7 +90,7 @@ public class Player : MonoBehaviour, IControllable
         Assert.IsNotNull(useAction_, "Unable to find Use action from Player.");
         diskAction_ = gameplayActions.FindAction("Disk");
         Assert.IsNotNull(diskAction_, "Unable to find Insert action from Player.");
-
+        SetControllable(true);
         useAction_.performed += context => this.reacher_.UseUsable();
 
         diskAction_.performed += context => this.reacher_.UseDiskAction();
