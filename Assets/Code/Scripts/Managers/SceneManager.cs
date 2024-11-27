@@ -26,7 +26,12 @@ public class SceneManager : MonoBehaviour
     public Vector2 GetScaledDelta()
     {
         // Use the sensitivity value
-        return this.mouseDelta * 10 * PlayerPrefs.GetFloat("SavedSensitivty");
+        var sensitivity =
+            PlayerPrefs.GetFloat("SavedSensitivty") > 0.0001
+                ? PlayerPrefs.GetFloat("SavedSensitivty")
+                : 0.5f;
+
+        return this.mouseDelta * 10 * sensitivity;
     }
 
     public void ToggleMouseLock()
