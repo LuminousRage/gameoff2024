@@ -73,6 +73,7 @@ MonoBehaviour:
   level: {fileID: 0}
   zone: 1
   avatar: 1
+  quad_: {fileID: 5819217899711279613}
 --- !u!114 &2563061281399753445
 MonoBehaviour:
   m_ObjectHideFlags: 0

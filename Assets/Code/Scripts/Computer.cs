@@ -12,7 +12,7 @@ public class Computer : MonoBehaviour, IUsable
 
     private GameObject watcher_;
 
-    private GameObject quad_;
+    public GameObject quad_;
 
     private SceneManager sceneManager_;
 
@@ -51,9 +51,6 @@ public class Computer : MonoBehaviour, IUsable
 
         sceneManager_ = FindFirstObjectByType<SceneManager>();
         Assert.IsNotNull(sceneManager_, "Unable to find SceneManager from Computer.");
-
-        quad_ = this.transform.Find("Blackscreen")?.gameObject;
-        Assert.IsNotNull(quad_, "Unable to find Quad in Computer.");
 
         floppyDiskManager = GetComponent<ComputerFloppyDisk>();
         Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
