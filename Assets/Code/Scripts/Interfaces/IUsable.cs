@@ -7,6 +7,7 @@ public interface IUsable
 
     public string GetUsableLabel();
     public string GetActionLabel() => "Use";
+    public string GetKeyLabel() => "E";
 
     public string GetUsePrompt() => $"{GetActionLabel()} {GetUsableLabel()}";
 }

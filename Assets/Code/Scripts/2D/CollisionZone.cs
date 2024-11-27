@@ -10,6 +10,7 @@ public class CollisionZone : MonoBehaviour
 
     public GameObject avatarSpawnPoint;
 
+    public bool isStandUpable = true;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class CollisionZone : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D other)
-    {   
+    {
         if (other.CompareTag("Player"))
         {
             var avatar = other.GetComponent<Avatar>();

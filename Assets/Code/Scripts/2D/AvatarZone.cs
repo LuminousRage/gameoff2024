@@ -18,6 +18,8 @@ public class AvatarZone : MonoBehaviour
 
     public SpawnPoint[] intialSpawns;
 
+    public CollisionZone currentCollisionZone;
+
     void Start()
     {
         avatar = GetComponent<Avatar>();
@@ -44,6 +46,8 @@ public class AvatarZone : MonoBehaviour
             Debug.Log($"Changing Avatar {avatar.number} zone from {currentZone} to {newArea.zone}");
             avatar.GetLevel().UpdatePlayerToComputer(avatar, newArea.zone, currentZone);
             currentZone = newArea.zone;
+            // maybe todo: remove currentZone and get it from currentCollisionZone
+            currentCollisionZone = newArea;
             spawns[newArea.zone] = newArea.avatarSpawnPoint;
         }
     }

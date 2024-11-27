@@ -25,7 +25,7 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
 
         standupAction.performed += context =>
         {
-            if (avatar.GetControllable())
+            if (avatar.GetControllable() && avatar.az.currentCollisionZone.isStandUpable)
             {
                 Debug.Log("Standing up");
                 avatar.GetLevel().StandUp();

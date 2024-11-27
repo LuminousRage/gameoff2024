@@ -19,15 +19,68 @@ public class Computer : MonoBehaviour, IUsable
 
     public ComputerFloppyDisk floppyDiskManager { get; private set; }
 
+    public bool isGhostComputer = false;
+
+    private enum UseState
+    {
+        Usable,
+        Broken,
+    }
+
+    private UseState state_ = UseState.Usable;
 
     public void Use(IControllable p)
     {
-        sceneManager_.SetFocus(this);
+        switch (state_)
+        {
+            case UseState.Usable:
+                sceneManager_.SetFocus(this);
+                break;
+            case UseState.Broken:
+                break;
+        }
     }
 
     public string GetUsableLabel()
     {
-        return "Computer";
+        switch (state_)
+        {
+            case UseState.Usable:
+                return "Computer";
+            case UseState.Broken:
+                return "The computer is broken...";
+            default:
+                Debug.LogError($"Invalid state {state_} for {this}");
+                return "Computer";
+        }
+    }
+
+    public string GetActionLabel()
+    {
+        switch (state_)
+        {
+            case UseState.Usable:
+                return "Use";
+            case UseState.Broken:
+                return "";
+            default:
+                Debug.LogError($"Invalid state {state_} for {this}");
+                return "Use";
+        }
+    }
+
+    public string GetKeyLabel()
+    {
+        switch (state_)
+        {
+            case UseState.Usable:
+                return "E";
+            case UseState.Broken:
+                return "";
+            default:
+                Debug.LogError($"Invalid state {state_} for {this}");
+                return "E";
+        }
     }
 
     public Transform GetWatcherTransform()
@@ -54,13 +107,19 @@ public class Computer : MonoBehaviour, IUsable
         Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
 
         var currentAvatar = level.GetAndValidateAvatar(this);
-        ToggleComputer(currentAvatar.az.currentZone==zone);
+        ToggleComputer(currentAvatar.az.currentZone == zone);
     }
 
     public void ToggleComputer(bool enabled = true)
     {
         Debug.Log($"Toggling computer {this} to {enabled}");
         quad_.SetActive(enabled);
+
+        if (isGhostComputer)
+        {
+            // ghost computers should break on entry and exit!
+            state_ = UseState.Broken;
+        }
 
         if (triggerable != null)
         {

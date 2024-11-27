@@ -8,7 +8,6 @@ public class SceneManager : MonoBehaviour
 {
     public Vector2 mouseDelta { get; private set; } = Vector2.zero;
 
-
     private bool locked = false;
 
     private GameObject uiCanvas_;
@@ -83,7 +82,7 @@ public class SceneManager : MonoBehaviour
             {
                 useText_.text = $"{mostPriority.GetActionLabel()} {mostPriority.GetUsableLabel()}";
                 useText_.gameObject.SetActive(true);
-                useKeyPreview_.text = key;
+                useKeyPreview_.text = mostPriority.GetKeyLabel();
                 useKeyPreview_.gameObject.SetActive(true);
             }
             else
