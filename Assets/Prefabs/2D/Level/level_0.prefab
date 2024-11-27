@@ -8262,6 +8262,10 @@ PrefabInstance:
       value: 2.39
       objectReference: {fileID: 0}
     - target: {fileID: 3573225921389967638, guid: 7cc540e2d0852fe469a3dca02ba79346, type: 3}
+      propertyPath: currentZone
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573225921389967638, guid: 7cc540e2d0852fe469a3dca02ba79346, type: 3}
       propertyPath: intialSpawns.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -8382,6 +8386,10 @@ PrefabInstance:
     - target: {fileID: 387059862705215766, guid: 64de8951232093144a1f7b17b249093e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147283066437374114, guid: 64de8951232093144a1f7b17b249093e, type: 3}
+      propertyPath: currentZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2147283066437374114, guid: 64de8951232093144a1f7b17b249093e, type: 3}
       propertyPath: intialSpawns.Array.size
