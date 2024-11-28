@@ -31,8 +31,6 @@ public class Level2D : MonoBehaviour
         Assert.IsNotNull(outBrokenComputer, "No outBrokenComputer set for Level2D.");
     }
 
-    // Update is called once per frame
-    void Update() { }
 
     public void EnterFrom(Computer c)
     {

@@ -41,6 +41,53 @@ public class Computer : MonoBehaviour, IUsable
         }
     }
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        Assert.IsNotNull(
+            this.level,
+            $"{this} of {transform.parent.gameObject} has no level assigned."
+        );
+        NUnit.Framework.Assert.IsInstanceOf<Level2D>(this.level);
+
+        watcher_ = this.transform.Find("Watcher")?.gameObject;
+        Assert.IsNotNull(watcher_, "Unable to find watcher in Computer.");
+
+        sceneManager_ = FindFirstObjectByType<SceneManager>();
+        Assert.IsNotNull(sceneManager_, "Unable to find SceneManager from Computer.");
+
+        floppyDiskManager = GetComponent<ComputerFloppyDisk>();
+        Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
+
+        var currentAvatar = level.GetAndValidateAvatar(this);
+        ToggleComputer(currentAvatar.az.currentCollisionZone.zone==zone, true);
+    }
+
+    public void ToggleComputer(bool enabled = true, bool firstToggle = false)
+    {
+        Debug.Log($"Toggling computer {this} to {enabled}");
+        quad_.SetActive(enabled);
+
+        if (isGhostComputer && !firstToggle)
+        {
+            Debug.Log($"Toggling {this} to broken");
+            // ghost computers should break on entry and exit!
+            state_ = UseState.Broken;
+        }
+
+        if (!firstToggle && triggerable != null)
+        {
+            if (enabled)
+            {
+                triggerable.Trigger();
+            }
+            else
+            {
+                triggerable.Untrigger();
+            }
+        }
+    }
+
     public string GetUsableLabel()
     {
         switch (state_)
@@ -86,52 +133,5 @@ public class Computer : MonoBehaviour, IUsable
     public Transform GetWatcherTransform()
     {
         return watcher_.transform;
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Assert.IsNotNull(
-            this.level,
-            $"{this} of {transform.parent.gameObject} has no level assigned."
-        );
-        NUnit.Framework.Assert.IsInstanceOf<Level2D>(this.level);
-
-        watcher_ = this.transform.Find("Watcher")?.gameObject;
-        Assert.IsNotNull(watcher_, "Unable to find watcher in Computer.");
-
-        sceneManager_ = FindFirstObjectByType<SceneManager>();
-        Assert.IsNotNull(sceneManager_, "Unable to find SceneManager from Computer.");
-
-        floppyDiskManager = GetComponent<ComputerFloppyDisk>();
-        Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
-
-        var currentAvatar = level.GetAndValidateAvatar(this);
-        ToggleComputer(false, true);
-    }
-
-    public void ToggleComputer(bool enabled = true, bool firstToggle = false)
-    {
-        Debug.Log($"Toggling computer {this} to {enabled}");
-        quad_.SetActive(enabled);
-
-        if (isGhostComputer && !firstToggle)
-        {
-            Debug.Log($"Toggling {this} to broken");
-            // ghost computers should break on entry and exit!
-            state_ = UseState.Broken;
-        }
-
-        if (triggerable != null)
-        {
-            if (enabled)
-            {
-                triggerable.Trigger();
-            }
-            else
-            {
-                triggerable.Untrigger();
-            }
-        }
     }
 }
