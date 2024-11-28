@@ -11,6 +11,9 @@ public class Level2D : MonoBehaviour
     private ComputerManager computerManager;
     private GhostFloppyDiskManager ghostFloppyDiskManager;
 
+    // For broken zones only - the computer all avatars should exit out at
+    public Computer outBrokenComputer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +24,8 @@ public class Level2D : MonoBehaviour
         Assert.IsNotNull(this.computerManager);
         ghostFloppyDiskManager = FindFirstObjectByType<GhostFloppyDiskManager>();
         Assert.IsNotNull(this.ghostFloppyDiskManager);
+
+        Assert.IsNotNull(outBrokenComputer, "No outBrokenComputer set for Level2D.");
     }
 
     // Update is called once per frame
@@ -102,7 +107,10 @@ public class Level2D : MonoBehaviour
             avatar.hasEntered = true;
         }
 
-        var computer = computerManager.computerLookUp[this][(avatar.number, newZone)];
+        Computer computer =
+            newZone == Globals.Zone.Broken
+                ? outBrokenComputer
+                : computerManager.computerLookUp[this][(avatar.number, newZone)];
         computer.ToggleComputer(true);
 
         // move 3d player in front of computer

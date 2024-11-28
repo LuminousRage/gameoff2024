@@ -1499,6 +1499,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7624226045530271735, guid: 39383086a2455c7449179b37736fee5f, type: 3}
   m_PrefabInstance: {fileID: 446093166}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &464161733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 172594796893108011, guid: 942f1f14c87954416992239d895af274, type: 3}
+  m_PrefabInstance: {fileID: 279295740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a47bf25e6c2d38d7ba7c9a5ded071eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &479602729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1783,6 +1794,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7408867643597113986, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: outBrokenComputer
+      value: 
+      objectReference: {fileID: 464161733}
     - target: {fileID: 7720690547330486351, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
       propertyPath: m_Layer
       value: 0
