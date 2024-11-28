@@ -26,10 +26,7 @@ public class SceneManager : MonoBehaviour
     public Vector2 GetScaledDelta()
     {
         // Use the sensitivity value
-        var sensitivity =
-            PlayerPrefs.GetFloat("SavedSensitivty") > 0.0001
-                ? PlayerPrefs.GetFloat("SavedSensitivty")
-                : 0.5f;
+        var sensitivity = PlayerPrefs.GetFloat("SavedSensitivty",0.5f);
 
         return this.mouseDelta * 10 * sensitivity;
     }
