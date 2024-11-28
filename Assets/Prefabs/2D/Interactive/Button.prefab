@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1056245063844982802}
+  - component: {fileID: 8911771477902207537}
   - component: {fileID: 4929392995171712928}
   - component: {fileID: 6482563305863253746}
   - component: {fileID: 8540452976602152497}
-  - component: {fileID: 8911771477902207537}
   - component: {fileID: 1911761671321871711}
   m_Layer: 0
   m_Name: Button
@@ -36,6 +36,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8911771477902207537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541616606273452526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ed8e881f5baf47aa87d55551e09dd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerable:
+    rid: -2
+  activeForSeconds: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1839735485 &4929392995171712928
 Tilemap:
   m_ObjectHideFlags: 0
@@ -198,19 +218,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &8911771477902207537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541616606273452526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed8e881f5baf47aa87d55551e09dd01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeForSeconds: 1
 --- !u!61 &1911761671321871711
 BoxCollider2D:
   m_ObjectHideFlags: 0

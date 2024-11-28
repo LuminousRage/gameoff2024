@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 public class PressurePad : MonoBehaviour
 {
-    public ITriggerable triggerable;
+    public Triggerable triggerable;
 
     void Start()
     {

@@ -1,24 +1,30 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour, ITriggerable
+public abstract class Door : Triggerable
 {
-    private bool isOpen = false;
+    protected bool isOpen = false;
 
-    public void Trigger()
+    public override void Trigger()
     {
         if (!isOpen)
         {
             isOpen = true;
+            OpenSesame();
             Debug.Log($"Door {this.GetInstanceID()} opened");
         }
     }
 
-    public void Untrigger()
+    public override void Untrigger()
     {
         if (isOpen)
         {
             isOpen = false;
+            CloseSesame();
             Debug.Log($"Door {this.GetInstanceID()} closed");
         }
     }
+
+    public abstract void OpenSesame();
+
+    public abstract void CloseSesame();
 }
