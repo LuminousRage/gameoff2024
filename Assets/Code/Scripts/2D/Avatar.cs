@@ -30,6 +30,7 @@ public class Avatar : MonoBehaviour, IControllable
     public void SetControllable(bool controllable = true)
     {
         this.controlling_ = controllable;
+        renderCamera_.enabled = controllable;
     }
 
     public bool GetControllable()
@@ -57,6 +58,7 @@ public class Avatar : MonoBehaviour, IControllable
 
         renderCamera_ = GetComponentInChildren<Camera>();
         Assert.IsNotNull(renderCamera_, "Unable to find render camera in Avatar.");
+        renderCamera_.enabled = false;
     }
 
     public Level2D GetLevel()

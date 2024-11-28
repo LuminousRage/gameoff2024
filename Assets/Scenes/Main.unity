@@ -911,6 +911,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1588388268}
     m_Modifications:
+    - target: {fileID: 172594796893108011, guid: 942f1f14c87954416992239d895af274, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 539578676}
+    - target: {fileID: 172594796893108011, guid: 942f1f14c87954416992239d895af274, type: 3}
+      propertyPath: avatar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5350392030541197466, guid: 942f1f14c87954416992239d895af274, type: 3}
+      propertyPath: m_Name
+      value: Computer 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7751569316721975646, guid: 942f1f14c87954416992239d895af274, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -950,18 +962,6 @@ PrefabInstance:
     - target: {fileID: 7751569316721975646, guid: 942f1f14c87954416992239d895af274, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5350392030541197466, guid: 942f1f14c87954416992239d895af274, type: 3}
-      propertyPath: m_Name
-      value: Computer 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 172594796893108011, guid: 942f1f14c87954416992239d895af274, type: 3}
-      propertyPath: level
-      value: 
-      objectReference: {fileID: 539578676}
-    - target: {fileID: 172594796893108011, guid: 942f1f14c87954416992239d895af274, type: 3}
-      propertyPath: avatar
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1118,6 +1118,10 @@ PrefabInstance:
     - target: {fileID: 2189784487862825829, guid: 5bed9fd5b6c334823a47e93c02d5e6e0, type: 3}
       propertyPath: avatar
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189784487862825829, guid: 5bed9fd5b6c334823a47e93c02d5e6e0, type: 3}
+      propertyPath: isGhostComputer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6216914008539182292, guid: 5bed9fd5b6c334823a47e93c02d5e6e0, type: 3}
       propertyPath: m_Name
@@ -3104,6 +3108,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1588388268}
     m_Modifications:
+    - target: {fileID: 906668476064300452, guid: eb703821de38d4cb2a44a2eb3d3d3c8e, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 539578676}
+    - target: {fileID: 4949567132410231317, guid: eb703821de38d4cb2a44a2eb3d3d3c8e, type: 3}
+      propertyPath: m_Name
+      value: Computer 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7305708413130402769, guid: eb703821de38d4cb2a44a2eb3d3d3c8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -3144,14 +3156,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4949567132410231317, guid: eb703821de38d4cb2a44a2eb3d3d3c8e, type: 3}
-      propertyPath: m_Name
-      value: Computer 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 906668476064300452, guid: eb703821de38d4cb2a44a2eb3d3d3c8e, type: 3}
-      propertyPath: level
-      value: 
-      objectReference: {fileID: 539578676}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 269041750137883029, guid: 257da8d64edc477eca5dcc52381c1d50, type: 3}
@@ -4320,6 +4324,10 @@ PrefabInstance:
       propertyPath: level
       value: 
       objectReference: {fileID: 539578676}
+    - target: {fileID: 4949567132410231317, guid: eb703821de38d4cb2a44a2eb3d3d3c8e, type: 3}
+      propertyPath: m_Name
+      value: Computer 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7305708413130402769, guid: eb703821de38d4cb2a44a2eb3d3d3c8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
@@ -4359,10 +4367,6 @@ PrefabInstance:
     - target: {fileID: 7305708413130402769, guid: eb703821de38d4cb2a44a2eb3d3d3c8e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4949567132410231317, guid: eb703821de38d4cb2a44a2eb3d3d3c8e, type: 3}
-      propertyPath: m_Name
-      value: Computer 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4709,6 +4713,14 @@ PrefabInstance:
       propertyPath: level
       value: 
       objectReference: {fileID: 539578676}
+    - target: {fileID: 172594796893108011, guid: 942f1f14c87954416992239d895af274, type: 3}
+      propertyPath: avatar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5350392030541197466, guid: 942f1f14c87954416992239d895af274, type: 3}
+      propertyPath: m_Name
+      value: Computer 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7751569316721975646, guid: 942f1f14c87954416992239d895af274, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.026787
@@ -4748,14 +4760,6 @@ PrefabInstance:
     - target: {fileID: 7751569316721975646, guid: 942f1f14c87954416992239d895af274, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5350392030541197466, guid: 942f1f14c87954416992239d895af274, type: 3}
-      propertyPath: m_Name
-      value: Computer 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 172594796893108011, guid: 942f1f14c87954416992239d895af274, type: 3}
-      propertyPath: avatar
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

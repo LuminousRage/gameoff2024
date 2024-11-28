@@ -107,15 +107,15 @@ public class Computer : MonoBehaviour, IUsable
         Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
 
         var currentAvatar = level.GetAndValidateAvatar(this);
-        ToggleComputer(currentAvatar.az.currentZone == zone);
+        ToggleComputer(currentAvatar.az.currentZone == zone, true);
     }
 
-    public void ToggleComputer(bool enabled = true)
+    public void ToggleComputer(bool enabled = true, bool firstToggle = false)
     {
         Debug.Log($"Toggling computer {this} to {enabled}");
         quad_.SetActive(enabled);
 
-        if (isGhostComputer)
+        if (isGhostComputer && firstToggle)
         {
             // ghost computers should break on entry and exit!
             state_ = UseState.Broken;

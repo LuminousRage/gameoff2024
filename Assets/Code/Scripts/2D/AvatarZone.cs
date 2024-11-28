@@ -45,11 +45,12 @@ public class AvatarZone : MonoBehaviour
         {
             Debug.Log($"Changing Avatar {avatar.number} zone from {currentZone} to {newArea.zone}");
             avatar.GetLevel().UpdatePlayerToComputer(avatar, newArea.zone, currentZone);
-            currentZone = newArea.zone;
-            // maybe todo: remove currentZone and get it from currentCollisionZone
-            currentCollisionZone = newArea;
-            spawns[newArea.zone] = newArea.avatarSpawnPoint;
         }
+
+        currentZone = newArea.zone;
+        // maybe todo: remove currentZone and get it from currentCollisionZone
+        currentCollisionZone = newArea;
+        spawns[newArea.zone] = newArea.avatarSpawnPoint;
     }
 
     public void respawnIn(Globals.Zone zone)
