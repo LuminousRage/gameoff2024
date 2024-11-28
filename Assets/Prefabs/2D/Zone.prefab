@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zone: 1
   avatarSpawnPoint: {fileID: 7998297197144645617}
+  isStandUpable: 1
 --- !u!483693784 &5092079340372067206
 TilemapRenderer:
   m_ObjectHideFlags: 0
