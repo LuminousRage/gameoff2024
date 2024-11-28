@@ -3475,10 +3475,6 @@ PrefabInstance:
       propertyPath: startAt
       value: 
       objectReference: {fileID: 1406213652}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: startAt3dLevel
-      value: 
-      objectReference: {fileID: 1406213652}
     - target: {fileID: 8880783659850259186, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
       propertyPath: m_Name
       value: Player

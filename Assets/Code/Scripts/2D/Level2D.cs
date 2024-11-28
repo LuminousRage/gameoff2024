@@ -56,6 +56,11 @@ public class Level2D : MonoBehaviour
         avatar.GetLevel().UpdatePlayerToComputer(avatar, c.zone, avatarLastZone);
         avatar.SetControllable(true);
 
+        if (!entered_)
+        {
+            var avatars = GetComponentsInChildren<Avatar>().ToList();
+            avatars.ForEach(a => a.SetRenderCamera(true));
+        }
         entered_ = true;
     }
 
@@ -83,7 +88,12 @@ public class Level2D : MonoBehaviour
             Debug.LogError("Attempted to exit level without entering. Exiting anyway.");
         }
 
-        GetComponentsInChildren<Avatar>().ToList().ForEach(a => a.SetControllable(false));
+        var avatars = GetComponentsInChildren<Avatar>().ToList();
+        avatars.ForEach(a =>
+        {
+            a.SetControllable(false);
+            a.SetRenderCamera(false);
+        });
         entered_ = false;
     }
 
