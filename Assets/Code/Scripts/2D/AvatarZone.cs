@@ -45,7 +45,10 @@ public class AvatarZone : MonoBehaviour
         var oldZone = currentCollisionZone?.zone;
         if (avatar.GetControllable() && newArea.isStandUpable)
         {
-            avatar.GetLevel().UpdatePlayerToComputer(avatar, newArea.zone, oldZone);
+            var computerOverride = newArea.zone == Globals.Zone.Broken;
+            avatar
+                .GetLevel()
+                .UpdatePlayerToComputer(avatar, newArea.zone, oldZone, computerOverride);
         }
 
         Debug.Log($"Changing Avatar {avatar.number} zone from {oldZone} to {newArea.zone}");

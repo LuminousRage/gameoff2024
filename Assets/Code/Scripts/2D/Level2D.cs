@@ -92,7 +92,12 @@ public class Level2D : MonoBehaviour
         sceneManager.SetFocus(null);
     }
 
-    public void UpdatePlayerToComputer(Avatar avatar, Globals.Zone newZone, Globals.Zone? oldZone)
+    public void UpdatePlayerToComputer(
+        Avatar avatar,
+        Globals.Zone newZone,
+        Globals.Zone? oldZone,
+        bool computerOverride = false
+    )
     {
         if (avatar.hasEntered && oldZone != null)
         {
@@ -107,10 +112,10 @@ public class Level2D : MonoBehaviour
             avatar.hasEntered = true;
         }
 
-        Computer computer =
-            newZone == Globals.Zone.Broken
-                ? outBrokenComputer
-                : computerManager.computerLookUp[this][(avatar.number, newZone)];
+        // Current design doesn't allow for calculating computerOverride condition, so it has to be passed in
+        Computer computer = computerOverride
+            ? outBrokenComputer
+            : computerManager.computerLookUp[this][(avatar.number, newZone)];
         computer.ToggleComputer(true);
 
         // move 3d player in front of computer
