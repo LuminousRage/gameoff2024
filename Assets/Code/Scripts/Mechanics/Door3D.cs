@@ -1,13 +1,14 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Door3D : Door
 {
     [Header("Door Movement Settings")]
     [Tooltip("Total distance the door will slide")]
-    public float slideDistance = 2f;
+    public float slideDistance = 1.95f;
 
     [Tooltip("Speed of door sliding")]
-    public float slideSpeed = 2f;
+    public float slideSpeed = 5f;
 
     [Header("Optional Audio")]
     [Tooltip("Audio source for door sliding sound")]
@@ -23,11 +24,16 @@ public class Door3D : Door
     private Vector3 openPosition;
     private bool isMoving = false;
 
+    private Rigidbody rb;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        Assert.IsNotNull(rb, "Door3D requires a Rigidbody component.");
+
         closedPosition = transform.position;
-        openPosition = closedPosition + (Vector3.right.normalized * slideDistance);
+        openPosition = closedPosition + (Vector3.back.normalized * slideDistance);
     }
 
     // Update is called once per frame
@@ -37,15 +43,18 @@ public class Door3D : Door
         if (isMoving)
         {
             // Smoothly move the door towards its target position
-            transform.position = Vector3.MoveTowards(
-                transform.position,
-                isOpen ? openPosition : closedPosition,
-                slideSpeed * Time.deltaTime
+            rb.MovePosition(
+                Vector3.MoveTowards(
+                    transform.position,
+                    isOpen ? openPosition : closedPosition,
+                    slideSpeed * Time.deltaTime
+                )
             );
 
             // Check if door has reached its destination
             if (
-                Vector3.Distance(transform.position, isOpen ? openPosition : closedPosition) < 0.01f
+                Vector3.Distance(transform.position, isOpen ? openPosition : closedPosition)
+                < 0.001f
             )
             {
                 isMoving = false;
@@ -55,11 +64,11 @@ public class Door3D : Door
 
     public override void CloseSesame()
     {
-        throw new System.NotImplementedException();
+        isMoving = true;
     }
 
     public override void OpenSesame()
     {
-        throw new System.NotImplementedException();
+        isMoving = true;
     }
 }
