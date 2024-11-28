@@ -63,7 +63,6 @@ public class Level2D : MonoBehaviour
         {
             var avatars = GetComponentsInChildren<Avatar>().ToList();
             avatars.ForEach(a => a.SetRenderCamera(true));
-
             PlayerPrefs.SetInt("currentLevel", levelOrder);
         }
         entered_ = true;

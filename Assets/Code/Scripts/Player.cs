@@ -102,7 +102,8 @@ public class Player : MonoBehaviour, IControllable
     // Update every frame
     void Update()
     {
-        if (Time.frameCount == 10 && startAt3dLevel != null)
+        PlayerPrefs.GetInt("currentLevel");
+        if (Time.frameCount == 10 && (startAt3dLevel != null))
         {
             Debug.LogWarning(
                 $"Manually setting player position to {startAt3dLevel}, please ensure it is removed after you're done!"
