@@ -31,7 +31,6 @@ public class Level2D : MonoBehaviour
         Assert.IsNotNull(outBrokenComputer, "No outBrokenComputer set for Level2D.");
     }
 
-
     public void EnterFrom(Computer c)
     {
         if (c == null)
@@ -61,7 +60,7 @@ public class Level2D : MonoBehaviour
         {
             var avatars = GetComponentsInChildren<Avatar>().ToList();
             avatars.ForEach(a => a.SetRenderCamera(true));
-            PlayerPrefs.SetInt("currentLevel", levelOrder);
+            PlayerPrefs.SetInt("ContinueLevel", levelOrder);
         }
         entered_ = true;
     }

@@ -30,8 +30,8 @@ public class AvatarZone : MonoBehaviour
         foreach (var sp in intialSpawns)
         {
             spawns[sp.zone] = sp.spawn;
-            Assert.IsNotNull(sp.spawn,$"Spawn for avatar {avatar.number} zone {sp.zone} is null!");
-            sp.spawn.changeSpawn(true,avatar.number);
+            Assert.IsNotNull(sp.spawn, $"Spawn for avatar {avatar.number} zone {sp.zone} is null!");
+            sp.spawn.changeSpawn(true, avatar.number);
         }
     }
 
@@ -52,14 +52,20 @@ public class AvatarZone : MonoBehaviour
         }
 
         Debug.Log($"Changing Avatar {avatar.number} zone from {oldZone} to {newArea.zone}");
-        
-        if (spawns[newArea.zone]!=null) {
-            spawns[newArea.zone].changeSpawn(false,avatar.number);
+
+        if (spawns[newArea.zone] != null)
+        {
+            spawns[newArea.zone].changeSpawn(false, avatar.number);
         }
-        newArea.avatarSpawnPoint.changeSpawn(true,avatar.number);
+
+        Assert.IsNotNull(
+            newArea.avatarSpawnPoint,
+            $"Avatar spawn point for zone {newArea.zone} is null!"
+        );
+        newArea.avatarSpawnPoint.changeSpawn(true, avatar.number);
 
         currentCollisionZone = newArea;
-        spawns[newArea.zone] = newArea.avatarSpawnPoint.GetComponent<SpawnPoint>();
+        spawns[newArea.zone] = newArea.avatarSpawnPoint;
     }
 
     public void respawnIn(Globals.Zone zone)

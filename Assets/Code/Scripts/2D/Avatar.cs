@@ -57,8 +57,8 @@ public class Avatar : MonoBehaviour, IControllable
 
         renderCamera_ = GetComponentInChildren<Camera>();
         Assert.IsNotNull(renderCamera_, "Unable to find render camera in Avatar.");
-        
-        SetRenderCamera(PlayerPrefs.GetInt("currentLevel") == level.levelOrder);
+
+        SetRenderCamera(PlayerPrefs.GetInt("ContinueLevel") == level.levelOrder);
     }
 
     public Level2D GetLevel()
@@ -110,5 +110,10 @@ public class Avatar : MonoBehaviour, IControllable
     public void SetRenderCamera(bool enable = true)
     {
         renderCamera_.enabled = enable;
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        rb.linearVelocity = Vector2.zero;
     }
 }

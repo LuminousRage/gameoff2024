@@ -2562,6 +2562,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: avatarSpawnPoint
+      value: 
+      objectReference: {fileID: 1888912546020808463}
+    - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -7909,6 +7913,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: avatarSpawnPoint
+      value: 
+      objectReference: {fileID: 2629329827053198084}
+    - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -8458,6 +8466,14 @@ PrefabInstance:
       propertyPath: intialSpawns.Array.data[2].spawn
       value: 
       objectReference: {fileID: 1640391417076035707}
+    - target: {fileID: 4002078892781852400, guid: 7cc540e2d0852fe469a3dca02ba79346, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050985320225125496, guid: 7cc540e2d0852fe469a3dca02ba79346, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9093567656437951028, guid: 7cc540e2d0852fe469a3dca02ba79346, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -8519,6 +8535,10 @@ PrefabInstance:
     - target: {fileID: 387059862705215766, guid: 64de8951232093144a1f7b17b249093e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004160201892396868, guid: 64de8951232093144a1f7b17b249093e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2147283066437374114, guid: 64de8951232093144a1f7b17b249093e, type: 3}
       propertyPath: currentZone
