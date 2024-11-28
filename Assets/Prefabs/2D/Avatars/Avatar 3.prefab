@@ -14,12 +14,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3959676855675439273, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
       propertyPath: number
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7396354880262280703, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 422987034cd46bc4e9d708bb3504fba5, type: 2}
+    - target: {fileID: 7396354880262280703, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 8439
+      objectReference: {fileID: 0}
     - target: {fileID: 8617576594809164069, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

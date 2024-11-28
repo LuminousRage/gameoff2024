@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2350891814998936499, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
       propertyPath: m_Name
-      value: BaseAvatar
+      value: Avatar 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396354880262280703, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2295
       objectReference: {fileID: 0}
     - target: {fileID: 8617576594809164069, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
       propertyPath: m_LocalPosition.x
