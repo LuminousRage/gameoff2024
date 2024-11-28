@@ -1,8 +1,8 @@
-Shader "Custom/Checkerboard"
+Shader "Custom/ColorSwapper"
 {
     Properties
     {
-        _FloppyColor ("Floppy Disk Color", Color) = (0.8, 0.53, 0.6, 1)
+        _NewColor ("New Color", Color) = (0.8, 0.53, 0.6, 1)
 		_MainTex("Texture", 2D) = "white" {}
     }
 
@@ -23,7 +23,7 @@ Shader "Custom/Checkerboard"
 			float2 uv_MainTex;
         };
 
-        fixed4 _FloppyColor;
+        fixed4 _NewColor;
 		sampler2D _MainTex;
 		
 
@@ -39,8 +39,8 @@ Shader "Custom/Checkerboard"
 			float4 originalColour = tex2D(_MainTex, IN.uv_MainTex);
 
 			if (originalColour.b >= 0.98){
-				o.Albedo = _FloppyColor.rgb;
-				o.Alpha = _FloppyColor.a;
+				o.Albedo = _NewColor.rgb;
+				o.Alpha = _NewColor.a;
 			} else {
 				o.Albedo = originalColour.rgb;
 				o.Alpha = originalColour.a;

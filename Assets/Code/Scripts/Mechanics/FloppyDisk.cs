@@ -18,7 +18,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
 
         MaterialPropertyBlock mpb = new MaterialPropertyBlock();
 
-        mpb.SetColor("_FloppyColor", Globals.GetFloppyColor(floppyDiskID));
+        mpb.SetColor("_NewColor", Globals.GetFloppyColor(floppyDiskID));
         rend.SetPropertyBlock(mpb);
         //////
 
