@@ -3401,20 +3401,12 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4753164541546685440, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4753164541546685440, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: m_ImplicitCom
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4753164541546685440, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: m_ImplicitTensor
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
       propertyPath: startAt
+      value: 
+      objectReference: {fileID: 1406213652}
+    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
+      propertyPath: startAt3dLevel
       value: 
       objectReference: {fileID: 1406213652}
     - target: {fileID: 8880783659850259186, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
