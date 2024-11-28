@@ -90,6 +90,7 @@ public class Level2D : MonoBehaviour
     {
         if (avatar.hasEntered)
         {
+            Debug.Log("Avatar has entered before");
             var originalComputer = computerManager.computerLookUp[this][(avatar.number, oldZone)];
             // If this is implemented right, every computer of the same avatar ID should be turned off when exited
             originalComputer.ToggleComputer(false);
