@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour, IControllable
 
     public InputAction moveAction;
     private InputAction useAction_;
+    private InputAction diskAction_;
 
     public Transform GetHeadTransform()
     {
@@ -28,24 +30,32 @@ public class Player : MonoBehaviour, IControllable
 
     private IUsable usable_;
     private Rigidbody rb_;
-    private GameObject head_;
-    private PlayerReacher reacher_;
+    public GameObject head_;
+    public PlayerReacher reacher_;
+
+    public PlayerInventory inventory;
 
     private bool currentlyControlling_ = false;
 
     public void SetControllable(bool enable = true)
     {
         this.currentlyControlling_ = enable;
+        if (moveAction == null || useAction_ == null || diskAction_ == null)
+        {
+            return;
+        }
 
         if (currentlyControlling_)
         {
             moveAction.Enable();
             useAction_.Enable();
+            diskAction_.Enable();
         }
         else
         {
             moveAction.Disable();
             useAction_.Disable();
+            diskAction_.Disable();
         }
     }
 
@@ -63,8 +73,7 @@ public class Player : MonoBehaviour, IControllable
         // Find the head using the head's transform
         Transform headTransform = this.transform.Find("Head");
         Assert.IsNotNull(headTransform, "Unable to find Head transform from Player.");
-        this.head_ = headTransform.gameObject;
-        Assert.IsNotNull(this.head_, "Unable to find Head from head transform.");
+        Assert.IsNotNull(this.head_, "Did not set head_ in the inspector.");
 
         this.reacher_ = GetComponentInChildren<PlayerReacher>();
         Assert.IsNotNull(headTransform, "Unable to find Reacher transform from Player.");
@@ -74,12 +83,17 @@ public class Player : MonoBehaviour, IControllable
 
         // gameplayActions.Enable();
 
-        useAction_ = gameplayActions.FindAction("Use");
+        inventory = GetComponent<PlayerInventory>();
+        Assert.IsNotNull(inventory, "Unable to find PlayerInventory from Player.");
 
-        useAction_.performed += context =>
-        {
-            this.reacher_.UseUsable();
-        };
+        useAction_ = gameplayActions.FindAction("Use");
+        Assert.IsNotNull(useAction_, "Unable to find Use action from Player.");
+        diskAction_ = gameplayActions.FindAction("Disk");
+        Assert.IsNotNull(diskAction_, "Unable to find Insert action from Player.");
+        SetControllable(true);
+        useAction_.performed += context => this.reacher_.UseUsable();
+
+        diskAction_.performed += context => this.reacher_.UseDiskAction();
     }
 
     // Update every frame

@@ -1,7 +1,13 @@
-using UnityEngine;
+using System;
 
 public interface IUsable
 {
-    public void Use(Player p);
+    public void Use(IControllable p);
+    public bool IsCurrentlyUsable() => true;
+
     public string GetUsableLabel();
+    public string GetActionLabel() => "Use";
+    public string GetKeyLabel() => "E";
+
+    public string GetUsePrompt() => $"{GetActionLabel()} {GetUsableLabel()}";
 }

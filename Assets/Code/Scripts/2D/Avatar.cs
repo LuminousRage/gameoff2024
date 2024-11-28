@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,31 +8,38 @@ using UnityEngine.InputSystem;
 public class Avatar : MonoBehaviour, IControllable
 {
     private Level2D level;
-    private Rigidbody2D rb;
     private SpriteRenderer sr;
-    public InputAction move;
-    public InputAction standupAction;
-
-    private Globals.Zone? zone;
-
-    [SerializeField]
-    private float speed = 5;
+    private Rigidbody2D rb;
 
     [Range(1, 8)]
     public byte number = 1;
 
     private bool controlling_ = false;
 
+    public AvatarZone az;
+    public AvatarInput ai;
+    private FloppyDisk[] avatarKeys = new FloppyDisk[KeySize];
+    private Camera renderCamera_;
+
+    // Whether the avatar has been entered before through a computer
+    [HideInInspector]
+    public bool hasEntered = false;
+
+    public const int KeySize = 2;
+
     public void SetControllable(bool controllable = true)
     {
         this.controlling_ = controllable;
+        renderCamera_.enabled = controllable;
+    }
+
+    public bool GetControllable()
+    {
+        return this.controlling_;
     }
 
     void Start()
     {
-        move.Enable();
-        standupAction.Enable();
-
         // for debug only
         var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
         if (scene.name.Contains("Demo"))
@@ -39,65 +47,63 @@ public class Avatar : MonoBehaviour, IControllable
             SetControllable(true);
         }
 
-        rb = GetComponent<Rigidbody2D>();
-        Assert.IsNotNull(this.rb);
-
         sr = GetComponent<SpriteRenderer>();
         Assert.IsNotNull(this.sr);
 
         level = GetComponentInParent<Level2D>();
         Assert.IsNotNull(this.level);
 
-        sr.enabled = false;
+        rb = GetComponent<Rigidbody2D>();
+        Assert.IsNotNull(this.rb);
 
-        standupAction.performed += context =>
+        renderCamera_ = GetComponentInChildren<Camera>();
+        Assert.IsNotNull(renderCamera_, "Unable to find render camera in Avatar.");
+        renderCamera_.enabled = false;
+    }
+
+    public Level2D GetLevel()
+    {
+        return level;
+    }
+
+    public Rigidbody2D GetRigidbody()
+    {
+        return rb;
+    }
+
+    public FloppyDisk[] GetKeys()
+    {
+        return avatarKeys;
+    }
+
+    public bool IsKeysFull()
+    {
+        var keysCount = avatarKeys.Count(k => k != null);
+        return keysCount >= KeySize;
+    }
+
+    public void AddKey(FloppyDisk key)
+    {
+        if (!avatarKeys.Contains(key))
         {
-            if (controlling_)
+            var emptyIndex = Array.IndexOf(avatarKeys, null);
+            if (emptyIndex == -1)
             {
-                Debug.Log("Standing up");
-                level.StandUp();
+                Debug.LogError("Avatar already has max keys.");
             }
-        };
-    }
-
-    void FixedUpdate()
-    {
-        if (controlling_)
-        {
-            MovementHandler();
+            avatarKeys[emptyIndex] = key;
+            key.SetFloppyDiskTransform(emptyIndex);
+            level.TellOtherComputersToRenderGhostDisks(number, key.GetComputer(), emptyIndex, true);
         }
     }
 
-    void MovementHandler()
+    public void RemoveKey(FloppyDisk key)
     {
-        var directions = move.ReadValue<Vector2>();
-        directions = new Vector2(Mathf.Round(directions.x), Mathf.Round(directions.y));
-        var newPosition = rb.position + directions * Time.deltaTime * speed;
-        rb.MovePosition(newPosition);
-    }
-
-    public void MoveAvatarTo(Vector2 position)
-    {
-        transform.position = position;
-    }
-
-    public void ToggleSpriteRenderer(bool enable = true)
-    {
-        sr.enabled = enable;
-    }
-
-    public void SetZone(Globals.Zone newZone)
-    {
-        if (controlling_)
+        if (avatarKeys.Contains(key))
         {
-            Debug.Log($"Changing Avatar zone from {zone} to {newZone}");
-            level.UpdatePlayerToComputer(this.number, newZone, zone);
-            zone = newZone;
+            var index = Array.IndexOf(avatarKeys, key);
+            level.TellOtherComputersToRenderGhostDisks(number, key.GetComputer(), index, false);
+            avatarKeys[index] = null;
         }
-    }
-
-    public Globals.Zone? GetZone()
-    {
-        return zone;
     }
 }

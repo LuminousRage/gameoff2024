@@ -1,20 +1,21 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+// Note: I think this is more of a 3D manager, rather than a manager for the whole scene (which is 2D + 3D)
 public class SceneManager : MonoBehaviour
 {
     public Vector2 mouseDelta { get; private set; } = Vector2.zero;
-
-    [Range(1f, 10f)]
-    public float mouseSensitivity = 5f;
 
     private bool locked = false;
 
     private GameObject uiCanvas_;
 
-    private TMP_Text useText_;
-    private TMP_Text useKeyPreview_;
+    private TMP_Text useKeyPreview_,
+        useText_,
+        diskText_,
+        diskKeyPreview_;
 
     private Player player_;
 
@@ -22,12 +23,12 @@ public class SceneManager : MonoBehaviour
 
     private Computer focusedComputer_ = null;
 
-    private ComputerManager computerManager_;
-
     public Vector2 GetScaledDelta()
     {
         // Use the sensitivity value
-        return this.mouseDelta * this.mouseSensitivity;
+        var sensitivity = PlayerPrefs.GetFloat("SavedSensitivty", 0.5f);
+
+        return this.mouseDelta * 10 * sensitivity;
     }
 
     public void ToggleMouseLock()
@@ -71,20 +72,60 @@ public class SceneManager : MonoBehaviour
         this.locked = false;
     }
 
-    public void SetUsePrompt(IUsable usable)
+    public void SetUsePrompt(string key = "E")
     {
         if (player_.GetControllable())
         {
-            useText_.text = $"Use {usable.GetUsableLabel()}";
-            useText_.gameObject.SetActive(true);
-            useKeyPreview_.gameObject.SetActive(true);
+            // Maybe I'll clean this up later...
+            // Use command
+            var usablePriority = player_.reacher_.SortUsablePriority();
+            var mostPriority = usablePriority.FirstOrDefault();
+            if (mostPriority != null)
+            {
+                useText_.text = $"{mostPriority.GetActionLabel()} {mostPriority.GetUsableLabel()}";
+                useText_.gameObject.SetActive(true);
+                useKeyPreview_.text = mostPriority.GetKeyLabel();
+                useKeyPreview_.gameObject.SetActive(true);
+            }
+            else
+            {
+                useText_.gameObject.SetActive(false);
+                useKeyPreview_.gameObject.SetActive(false);
+            }
+
+            // Disk command
+            var diskActionPrompt = player_.reacher_.GetDiskActionPrompt();
+            var (diskKey, diskLabel) = player_.reacher_.DiskActionPromptToString(diskActionPrompt);
+            if (diskLabel != null)
+            {
+                diskText_.text = diskLabel;
+                diskText_.gameObject.SetActive(true);
+            }
+            else
+            {
+                diskText_.gameObject.SetActive(false);
+            }
+            if (diskKey != null)
+            {
+                diskKeyPreview_.text = diskKey;
+                diskKeyPreview_.gameObject.SetActive(true);
+            }
+            else
+            {
+                diskKeyPreview_.gameObject.SetActive(false);
+            }
+            return;
         }
+
+        UnsetUsePrompt();
     }
 
     public void UnsetUsePrompt()
     {
         useText_.gameObject.SetActive(false);
         useKeyPreview_.gameObject.SetActive(false);
+        diskText_.gameObject.SetActive(false);
+        diskKeyPreview_.gameObject.SetActive(false);
     }
 
     public void SetFocus(Computer computer)
@@ -95,6 +136,7 @@ public class SceneManager : MonoBehaviour
             player_.SetControllable(false);
 
             computer.level.EnterFrom(computer);
+            player_.inventory.PutDownDisks(computer);
 
             this.UnsetUsePrompt();
         }
@@ -122,21 +164,28 @@ public class SceneManager : MonoBehaviour
         useKeyPreview_ = uiCanvas_.transform.Find("KeyPreview").GetComponent<TMP_Text>();
         Assert.IsNotNull(useKeyPreview_);
 
+        diskText_ = uiCanvas_.transform.Find("DiskText").GetComponent<TMP_Text>();
+        Assert.IsNotNull(diskText_);
+
+        diskKeyPreview_ = uiCanvas_.transform.Find("DiskKeyPreview").GetComponent<TMP_Text>();
+        Assert.IsNotNull(diskKeyPreview_);
+
         this.followCamera_ = FindFirstObjectByType<FollowCamera>();
         Assert.IsNotNull(followCamera_, "Unable to find FollowCamera from the scene.");
-
-        computerManager_ = GetComponent<ComputerManager>();
 
         this.LockMouse();
         this.UnsetUsePrompt();
 
         // Start the game with the 3D player as controllable
         this.SetFocus(null);
+
+        ValidateFloppyDisks();
     }
 
     // Update is called once per frame
     void Update()
     {
+        SetUsePrompt();
         this.UpdateMouseDelta();
         this.UpdateUICanvas();
     }
@@ -159,14 +208,20 @@ public class SceneManager : MonoBehaviour
     {
         player_.transform.forward = transform.forward;
 
-        var newPosition = new Vector3(
-            transform.position.x,
-            player_.transform.position.y,
-            transform.position.z
-        );
         // subtract some offset so the player doesn't appear on the table
         // will need to be adjusted if the table size changes
-        player_.transform.position = newPosition + new Vector3(-0.5f, 0, 0);
+        player_.transform.position = transform.position + new Vector3(-0.5f, 0, 0);
         followCamera_._followee = transform;
+    }
+
+    void ValidateFloppyDisks()
+    {
+        var floppyDisks = GetComponentsInChildren<FloppyDisk>();
+        var distinctFloppyDiskCount = floppyDisks.Select(fd => fd.floppyDiskID).Distinct().Count();
+
+        if (distinctFloppyDiskCount != floppyDisks.Length)
+        {
+            Debug.LogError("There are duplicate floppy disks in the scene.");
+        }
     }
 }

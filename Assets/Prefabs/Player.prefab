@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 4753164541546685440}
   - component: {fileID: 8656902512701637491}
   - component: {fileID: 6058119305721968279}
+  - component: {fileID: 5595539030385383931}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -263,6 +264,14 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
+    - m_Name: Disk
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 8a769612-2fbb-4221-9bc2-ddfe7b7518ec
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
     m_Bindings:
     - m_Name: 
       m_Id: 8a718dea-f28a-4f96-af7b-cfa75041e2bb
@@ -272,6 +281,17 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Use
       m_Flags: 0
+    - m_Name: 
+      m_Id: a26bf247-4301-4c41-96b8-a65cd6b228b9
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Disk
+      m_Flags: 0
+  head_: {fileID: 8124183052260777435}
+  reacher_: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!114 &6058119305721968279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,3 +304,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c78a2c6a1a4e7deb6440cda33d4df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5595539030385383931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880783659850259186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae486b40a7584287af2118deda3be2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceFromHead: 0.35
+  distanceDown: 0.17
+  distanceRight: 0

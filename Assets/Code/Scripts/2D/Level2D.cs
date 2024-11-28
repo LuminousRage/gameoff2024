@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Level2D : MonoBehaviour
 {
@@ -8,13 +9,23 @@ public class Level2D : MonoBehaviour
 
     private SceneManager sceneManager;
     private ComputerManager computerManager;
+    private GhostFloppyDiskManager ghostFloppyDiskManager;
+
+    // For broken zones only - the computer all avatars should exit out at
+    public Computer outBrokenComputer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         transformPosition_ = new Vector2(transform.position.x, transform.position.y);
         sceneManager = GameObject.FindFirstObjectByType<SceneManager>();
+        Assert.IsNotNull(this.sceneManager);
         computerManager = GameObject.FindFirstObjectByType<ComputerManager>();
+        Assert.IsNotNull(this.computerManager);
+        ghostFloppyDiskManager = FindFirstObjectByType<GhostFloppyDiskManager>();
+        Assert.IsNotNull(this.ghostFloppyDiskManager);
+
+        Assert.IsNotNull(outBrokenComputer, "No outBrokenComputer set for Level2D.");
     }
 
     // Update is called once per frame
@@ -27,63 +38,42 @@ public class Level2D : MonoBehaviour
             Debug.LogError("Attempted to enter level from a null Computer. Continuing anyway.");
             return;
         }
-        var (avatar, zone) = GetAndValidateAvatarAndZone(c);
-        if (avatar == null || zone == null)
+        var avatar = GetAndValidateAvatar(c);
+        if (avatar == null)
         {
             Debug.LogError("Failed to enter level. Exiting.");
             return;
         }
 
-        var avatarLastZone = avatar.GetZone();
-        var spawnPoint = zone.spawnPoints.First(sp => sp.avatarId == avatar.number).spawnPoint;
-        // Avatar has never entered, or was previously exited out in a different zone
+        var avatarLastZone = avatar.az.GetZone();
 
-        if (avatarLastZone != zone.number || avatarLastZone == null)
+        // Avatar was previously exited out in a different zone
+        if (avatarLastZone != c.zone)
         {
-            Debug.Log($"Respawning avatar to ${spawnPoint + transformPosition_}");
-
-            avatar.MoveAvatarTo(spawnPoint + transformPosition_);
-            // This honestly just need to happen once when the avatar is first created, but it doesn't hurt to keep it
-            avatar.ToggleSpriteRenderer(true);
-            // Zone resetting is automatically done once the avatar is detected in the new zone
+            avatar.az.respawnIn(c.zone);
         }
 
+        avatar.GetLevel().UpdatePlayerToComputer(avatar, c.zone, avatarLastZone);
         avatar.SetControllable(true);
 
         entered_ = true;
     }
 
-    (Avatar, CollisionZone) GetAndValidateAvatarAndZone(Computer c)
+    public Avatar GetAndValidateAvatar(Computer c)
     {
         var avatars = GetComponentsInChildren<Avatar>().Where(a => a.number == c.avatar).ToList();
-        var zones = GetComponentsInChildren<CollisionZone>()
-            .Where(z => z.number == c.zone)
-            .ToList();
-        (Avatar, CollisionZone) badResult = (null, null);
 
-        if (avatars.Count != 1 || zones.Count != 1)
+        if (avatars.Count != 1)
         {
             Debug.LogError(
-                "Expected 1 avatar and 1 zone for entering a level."
-                    + $"Found {avatars.Count} avatars and {zones.Count} zones."
+                "Expected 1 avatar per computer for entering a level."
+                    + $"Found {avatars.Count} avatars "
             );
 
-            return badResult;
+            return null;
         }
 
-        var avatar = avatars[0];
-        var zone = zones[0];
-
-        if (!zone.spawnPoints.Any(sp => sp.avatarId == avatar.number))
-        {
-            Debug.LogError(
-                $"Avatar {avatar.number} not found in spawn points of zone {zone.number}."
-            );
-
-            return badResult;
-        }
-
-        return (avatar, zone);
+        return avatars[0];
     }
 
     public void Exit()
@@ -102,20 +92,67 @@ public class Level2D : MonoBehaviour
         sceneManager.SetFocus(null);
     }
 
-    public void UpdatePlayerToComputer(byte avatarId, Globals.Zone newZone, Globals.Zone? oldZone)
+    public void UpdatePlayerToComputer(
+        Avatar avatar,
+        Globals.Zone newZone,
+        Globals.Zone? oldZone,
+        bool computerOverride = false
+    )
     {
-        if (oldZone != null)
+        if (avatar.hasEntered && oldZone != null)
         {
-            var originalComputer = computerManager.computerLookUp[this][(avatarId, oldZone.Value)];
+            var originalComputer = computerManager.computerLookUp[this][
+                (avatar.number, oldZone.Value)
+            ];
             // If this is implemented right, every computer of the same avatar ID should be turned off when exited
             originalComputer.ToggleComputer(false);
         }
+        else
+        {
+            avatar.hasEntered = true;
+        }
 
-        var computer = computerManager.computerLookUp[this][(avatarId, newZone)];
+        // Current design doesn't allow for calculating computerOverride condition, so it has to be passed in
+        Computer computer = computerOverride
+            ? outBrokenComputer
+            : computerManager.computerLookUp[this][(avatar.number, newZone)];
         computer.ToggleComputer(true);
 
         // move 3d player in front of computer
+        Debug.Log($"Moving player to {computer} of {computer.transform.parent.name}");
         var transform = computer.GetWatcherTransform();
         sceneManager.UpdatePlayerLocation(transform);
+    }
+
+    public void TellOtherComputersToRenderGhostDisks(
+        byte avatarId,
+        Computer originComputer,
+        int slotIndex,
+        bool setVisible = true
+    )
+    {
+        var computers = computerManager
+            .computerLookUp[this]
+            .Where(c => c.Key.Item1 == avatarId && c.Value != originComputer)
+            .Select(c => c.Value);
+
+        foreach (var computer in computers)
+        {
+            if (setVisible)
+            {
+                var ghostDisk = ghostFloppyDiskManager.GetUnusedGhostDisk();
+                computer.floppyDiskManager.SetGhostFloppyDisk(ghostDisk, slotIndex);
+                Debug.Log(computer.floppyDiskManager.GetSlotPosition(slotIndex));
+                ghostDisk.transform.SetPositionAndRotation(
+                    computer.floppyDiskManager.GetSlotPosition(slotIndex),
+                    Quaternion.Euler(0, 0, 0)
+                );
+            }
+            else
+            {
+                GameObject ghostFloppy = computer.floppyDiskManager.GetGhostFloppyDisk(slotIndex);
+                ghostFloppyDiskManager.ReturnGhostDisk(ghostFloppy);
+            }
+        }
     }
 }
