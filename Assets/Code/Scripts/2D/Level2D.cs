@@ -14,6 +14,9 @@ public class Level2D : MonoBehaviour
     // For broken zones only - the computer all avatars should exit out at
     public Computer outBrokenComputer;
 
+    [Range(0, 15)]
+    public int levelOrder;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -60,6 +63,8 @@ public class Level2D : MonoBehaviour
         {
             var avatars = GetComponentsInChildren<Avatar>().ToList();
             avatars.ForEach(a => a.SetRenderCamera(true));
+
+            PlayerPrefs.SetInt("currentLevel", levelOrder);
         }
         entered_ = true;
     }
