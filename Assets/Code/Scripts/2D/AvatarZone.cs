@@ -6,6 +6,7 @@ public class AvatarZone : MonoBehaviour
 {
     private Avatar avatar;
 
+    // This should only be used in Start functions - everything else refer to currentCollisionZone.zone
     public Globals.Zone currentZone;
     public Dictionary<Globals.Zone, GameObject> spawns;
 
@@ -41,13 +42,13 @@ public class AvatarZone : MonoBehaviour
 
     public void changeAreaZone(CollisionZone newArea)
     {
+        var oldZone = currentCollisionZone?.zone;
         if (avatar.GetControllable())
         {
-            Debug.Log($"Changing Avatar {avatar.number} zone from {currentZone} to {newArea.zone}");
-            avatar.GetLevel().UpdatePlayerToComputer(avatar, newArea.zone, currentZone);
+            Debug.Log($"Changing Avatar {avatar.number} zone from {oldZone} to {newArea.zone}");
+            avatar.GetLevel().UpdatePlayerToComputer(avatar, newArea.zone, oldZone);
         }
 
-        currentZone = newArea.zone;
         // maybe todo: remove currentZone and get it from currentCollisionZone
         currentCollisionZone = newArea;
         spawns[newArea.zone] = newArea.avatarSpawnPoint;
@@ -61,9 +62,7 @@ public class AvatarZone : MonoBehaviour
         );
         Debug.Log($"Respawning avatar {avatar.number} to ${spawnPoint}");
 
-        avatar.GetLevel().UpdatePlayerToComputer(avatar, zone, currentZone);
         MoveAvatarTo(spawnPoint);
-        currentZone = zone;
     }
 
     public Globals.Zone? GetZone()

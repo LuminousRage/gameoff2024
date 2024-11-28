@@ -107,7 +107,7 @@ public class Computer : MonoBehaviour, IUsable
         Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
 
         var currentAvatar = level.GetAndValidateAvatar(this);
-        ToggleComputer(currentAvatar.az.currentZone == zone, true);
+        ToggleComputer(false, true);
     }
 
     public void ToggleComputer(bool enabled = true, bool firstToggle = false)

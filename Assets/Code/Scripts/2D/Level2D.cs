@@ -48,6 +48,7 @@ public class Level2D : MonoBehaviour
             avatar.az.respawnIn(c.zone);
         }
 
+        avatar.GetLevel().UpdatePlayerToComputer(avatar, c.zone, avatarLastZone);
         avatar.SetControllable(true);
 
         entered_ = true;
@@ -86,11 +87,13 @@ public class Level2D : MonoBehaviour
         sceneManager.SetFocus(null);
     }
 
-    public void UpdatePlayerToComputer(Avatar avatar, Globals.Zone newZone, Globals.Zone oldZone)
+    public void UpdatePlayerToComputer(Avatar avatar, Globals.Zone newZone, Globals.Zone? oldZone)
     {
-        if (avatar.hasEntered)
+        if (avatar.hasEntered && oldZone != null)
         {
-            var originalComputer = computerManager.computerLookUp[this][(avatar.number, oldZone)];
+            var originalComputer = computerManager.computerLookUp[this][
+                (avatar.number, oldZone.Value)
+            ];
             // If this is implemented right, every computer of the same avatar ID should be turned off when exited
             originalComputer.ToggleComputer(false);
         }
