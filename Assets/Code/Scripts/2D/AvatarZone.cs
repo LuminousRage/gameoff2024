@@ -43,13 +43,12 @@ public class AvatarZone : MonoBehaviour
     public void changeAreaZone(CollisionZone newArea)
     {
         var oldZone = currentCollisionZone?.zone;
-        if (avatar.GetControllable())
+        if (avatar.GetControllable() && newArea.isStandUpable)
         {
-            Debug.Log($"Changing Avatar {avatar.number} zone from {oldZone} to {newArea.zone}");
             avatar.GetLevel().UpdatePlayerToComputer(avatar, newArea.zone, oldZone);
         }
 
-        // maybe todo: remove currentZone and get it from currentCollisionZone
+        Debug.Log($"Changing Avatar {avatar.number} zone from {oldZone} to {newArea.zone}");
         currentCollisionZone = newArea;
         spawns[newArea.zone] = newArea.avatarSpawnPoint;
     }
