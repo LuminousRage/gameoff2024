@@ -53,7 +53,7 @@ public class AvatarZone : MonoBehaviour
 
         Debug.Log($"Changing Avatar {avatar.number} zone from {oldZone} to {newArea.zone}");
         currentCollisionZone = newArea;
-        spawns[newArea.zone] = newArea.avatarSpawnPoint;
+        spawns[newArea.zone] = newArea.avatarSpawnPoint1;
     }
 
     public void respawnIn(Globals.Zone zone)
