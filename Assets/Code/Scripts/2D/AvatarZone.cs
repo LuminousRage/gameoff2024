@@ -66,8 +66,12 @@ public class AvatarZone : MonoBehaviour
         currentZone = zone;
     }
 
-    public Globals.Zone GetZone()
+    public Globals.Zone? GetZone()
     {
-        return currentZone;
+        if (currentCollisionZone == null)
+        {
+            return null;
+        }
+        return currentCollisionZone.zone;
     }
 }

@@ -115,8 +115,9 @@ public class Computer : MonoBehaviour, IUsable
         Debug.Log($"Toggling computer {this} to {enabled}");
         quad_.SetActive(enabled);
 
-        if (isGhostComputer && firstToggle)
+        if (isGhostComputer && !firstToggle)
         {
+            Debug.Log($"Toggling {this} to broken");
             // ghost computers should break on entry and exit!
             state_ = UseState.Broken;
         }
