@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions;
@@ -64,6 +65,8 @@ public class Player : MonoBehaviour, IControllable
         return this.currentlyControlling_;
     }
 
+    public GameObject startAt3dLevel;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -99,6 +102,15 @@ public class Player : MonoBehaviour, IControllable
     // Update every frame
     void Update()
     {
+        if (Time.frameCount == 10 && startAt3dLevel != null)
+        {
+            Debug.LogWarning(
+                $"Manually setting player position to {startAt3dLevel}, please ensure it is removed after you're done!"
+            );
+            var transform = startAt3dLevel.GetComponentInChildren<Computer>().GetWatcherTransform();
+            this.transform.position = transform.position;
+        }
+
         if (this.currentlyControlling_)
         {
             this.UpdateCamera();
