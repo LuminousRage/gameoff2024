@@ -119,6 +119,7 @@ public class Level2D : MonoBehaviour
         computer.ToggleComputer(true);
 
         // move 3d player in front of computer
+        Debug.Log($"Moving player to {computer} of {computer.transform.parent.name}");
         var transform = computer.GetWatcherTransform();
         sceneManager.UpdatePlayerLocation(transform);
     }

@@ -26,7 +26,7 @@ public class SceneManager : MonoBehaviour
     public Vector2 GetScaledDelta()
     {
         // Use the sensitivity value
-        var sensitivity = PlayerPrefs.GetFloat("SavedSensitivty",0.5f);
+        var sensitivity = PlayerPrefs.GetFloat("SavedSensitivty", 0.5f);
 
         return this.mouseDelta * 10 * sensitivity;
     }
@@ -208,14 +208,9 @@ public class SceneManager : MonoBehaviour
     {
         player_.transform.forward = transform.forward;
 
-        var newPosition = new Vector3(
-            transform.position.x,
-            player_.transform.position.y,
-            transform.position.z
-        );
         // subtract some offset so the player doesn't appear on the table
         // will need to be adjusted if the table size changes
-        player_.transform.position = newPosition + new Vector3(-0.5f, 0, 0);
+        player_.transform.position = transform.position + new Vector3(-0.5f, 0, 0);
         followCamera_._followee = transform;
     }
 
