@@ -9,7 +9,11 @@ public class MainMenu : MonoBehaviour
         ContinueGame();
     }
     public void ContinueGame() {
-        sm.SceneManager.LoadScene("Main");
+        if (PlayerPrefs.GetInt("IntroDone",0)==0) {
+            sm.SceneManager.LoadScene("Intro");
+        } else {
+            sm.SceneManager.LoadScene("Main");
+        }
     }
     public void QuitGame()
     {

@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
@@ -13,9 +14,10 @@ public class DialogueSystem : MonoBehaviour
     private bool isWriting = false;
     private float writingStartTime = 0;
     public float writeRate = 30; //chars per sec
+    public EventTrigger.TriggerEvent onCloseds;
+
 
     public void StartDialogue() {
-        Debug.Log("a");
         popUpBox.GetComponent<Image>().enabled = true;
         popUpText.text = "";
         animator.SetTrigger("open");
@@ -26,10 +28,14 @@ public class DialogueSystem : MonoBehaviour
         writingStartTime = Time.realtimeSinceStartup;
     }
     public void OnClosed() {
+        BaseEventData eventData= new BaseEventData(EventSystem.current);
+        eventData.selectedObject=this.gameObject;
+        onCloseds.Invoke(eventData);
+        
         popUpBox.GetComponent<Image>().enabled = false;
+
     }
     public void SkipForward() {
-        Debug.Log("aa");
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 || !animator.GetCurrentAnimatorStateInfo(0).IsName("open")) 
             return;
         
