@@ -2742,6 +2742,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zone Broken (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
       value: 0
@@ -2769,14 +2777,6 @@ PrefabInstance:
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.data[0].spawnPoint.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6908236318321769296, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13251,6 +13251,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zone B (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
       value: 2
@@ -13274,14 +13282,6 @@ PrefabInstance:
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.data[0].spawnPoint.y
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6908236318321769296, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24663,6 +24663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zone A
       objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25
+      objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
       value: 1
@@ -24698,10 +24702,6 @@ PrefabInstance:
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.data[1].spawnPoint.y
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 6908236318321769296, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33526,6 +33526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zone B
       objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
       value: 2
@@ -33548,10 +33552,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.data[0].spawnPoint.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.y
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6908236318321769296, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
@@ -40665,6 +40665,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zone B (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
       value: 2
@@ -40688,14 +40696,6 @@ PrefabInstance:
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.data[0].spawnPoint.y
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 6908236318321769296, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -47507,6 +47507,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zone A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
       value: 1
@@ -47530,14 +47538,6 @@ PrefabInstance:
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.data[0].spawnPoint.y
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -32
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6908236318321769296, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58834,6 +58834,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zone B (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 611674965796486948, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: zone
       value: 2
@@ -58869,14 +58877,6 @@ PrefabInstance:
     - target: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: spawnPoints.Array.data[1].spawnPoint.y
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -32
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357719236403042245, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 6908236318321769296, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_LocalPosition.x
