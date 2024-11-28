@@ -36,4 +36,4 @@ MonoBehaviour:
   m_ColliderType: 1
   aliveSprite: {fileID: 1045799098, guid: 19c7021e5df009d45acbc39f3c863f8f, type: 3}
   deadSprite: {fileID: 10257836, guid: 617fabebcdd50ce4bb9c7da12188dcd9, type: 3}
-  alive: 1
+  alive: 0
