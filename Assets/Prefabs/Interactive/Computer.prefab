@@ -74,6 +74,11 @@ MonoBehaviour:
   zone: 1
   avatar: 1
   quad_: {fileID: 5819217899711279613}
+  avatarScreens:
+  - {fileID: 2100000, guid: 516766b31db36aaa3bd7d6e5dde4eb53, type: 2}
+  - {fileID: 2100000, guid: c0158d2cf9730b444a9fe2bded333469, type: 2}
+  - {fileID: 2100000, guid: 92afc89ac368d2c4c9c7b7d0d7f4b1b3, type: 2}
+  isGhostComputer: 0
 --- !u!114 &2563061281399753445
 MonoBehaviour:
   m_ObjectHideFlags: 0
