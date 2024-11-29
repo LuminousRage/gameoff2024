@@ -8,6 +8,8 @@ public class Button : MonoBehaviour, IUsable
 
     public float activeForSeconds = 1.0f;
 
+    private UseState state = UseState.Usable;
+
     void Start()
     {
         // Assert.IsNotNull(triggerable);
@@ -52,6 +54,7 @@ public class Button : MonoBehaviour, IUsable
         {
             isPressed = true;
             triggerable.Trigger();
+            state = UseState.Activated;
             Invoke("ResetButton", activeForSeconds);
         }
     }
@@ -60,11 +63,42 @@ public class Button : MonoBehaviour, IUsable
     {
         isPressed = false;
         triggerable.Untrigger();
+        state = UseState.Usable;
+    }
+
+    public enum UseState
+    {
+        Usable,
+        Activated,
     }
 
     public string GetUsableLabel() => "Button";
 
     public string GetActionLabel() => "Press";
 
-    public string GetKeyLabel() => "F";
+    public string GetUsePrompt()
+    {
+        switch (state)
+        {
+            case UseState.Usable:
+                return $"{GetActionLabel()} {GetUsableLabel()}";
+            case UseState.Activated:
+                return $"Button is active";
+            default:
+                return $"{GetActionLabel()} {GetUsableLabel()}";
+        }
+    }
+
+    public string GetKeyLabel()
+    {
+        switch (state)
+        {
+            case UseState.Usable:
+                return "F";
+            case UseState.Activated:
+                return "";
+            default:
+                return "F";
+        }
+    }
 }
