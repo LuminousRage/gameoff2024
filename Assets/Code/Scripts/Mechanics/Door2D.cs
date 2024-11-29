@@ -15,8 +15,6 @@ public class Door2D : Door
     private Vector2 openPosition;
     private bool isMoving = false;
 
-    public FloppyDisk key = null;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,24 +51,5 @@ public class Door2D : Door
     public override void OpenSesame()
     {
         isMoving = true;
-    }
-
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (key != null || other.gameObject.GetComponent<Avatar>().GetKeys().Contains(key))
-            {
-                Trigger();
-            }
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Untrigger();
-        }
     }
 }

@@ -11,6 +11,8 @@ public class FloppyDisk : MonoBehaviour, IUsable
     // The computer the floppy disk is currently in, null if not in a computer
     public Computer computer_;
 
+    public LaserDoor[] doors;
+
     void Start()
     {
         var rend = GetComponentInChildren<MeshRenderer>();
