@@ -12,6 +12,7 @@ public class Computer : MonoBehaviour, IUsable
     private GameObject watcher_;
 
     public GameObject quad_;
+    public Material[] avatarScreens;
 
     private SceneManager sceneManager_;
 
@@ -61,6 +62,8 @@ public class Computer : MonoBehaviour, IUsable
 
         var currentAvatar = level.GetAndValidateAvatar(this);
         ToggleComputer(currentAvatar.az.currentCollisionZone.zone==zone, true);
+        
+        quad_.GetComponent<MeshRenderer>().material = avatarScreens[avatar-1];
     }
 
     public void ToggleComputer(bool enabled = true, bool firstToggle = false)
