@@ -28,7 +28,7 @@ public class Level2D : MonoBehaviour
         ghostFloppyDiskManager = FindFirstObjectByType<GhostFloppyDiskManager>();
         Assert.IsNotNull(this.ghostFloppyDiskManager);
 
-        Assert.IsNotNull(outBrokenComputer, "No outBrokenComputer set for Level2D.");
+        //Assert.IsNotNull(outBrokenComputer, "No outBrokenComputer set for Level2D.");
     }
 
     public void EnterFrom(Computer c)

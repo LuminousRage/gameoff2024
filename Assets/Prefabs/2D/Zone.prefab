@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zone: 1
-  avatarSpawnPoint: {fileID: 2913660917160802037}
+  avatarSpawnPoint: {fileID: 1932591710009564554}
   isStandUpable: 1
 --- !u!483693784 &5092079340372067206
 TilemapRenderer:
@@ -437,7 +437,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 2f809a7fa3fa13f419d4a03d55a0e467, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
-    m_Data: {fileID: 1045799098, guid: 19c7021e5df009d45acbc39f3c863f8f, type: 3}
+    m_Data: {fileID: 10257836, guid: 617fabebcdd50ce4bb9c7da12188dcd9, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 1
     m_Data:
@@ -645,7 +645,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 2f809a7fa3fa13f419d4a03d55a0e467, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
-    m_Data: {fileID: 1045799098, guid: 19c7021e5df009d45acbc39f3c863f8f, type: 3}
+    m_Data: {fileID: 10257836, guid: 617fabebcdd50ce4bb9c7da12188dcd9, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 1
     m_Data:
@@ -802,7 +802,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 2f809a7fa3fa13f419d4a03d55a0e467, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
-    m_Data: {fileID: 1045799098, guid: 19c7021e5df009d45acbc39f3c863f8f, type: 3}
+    m_Data: {fileID: 10257836, guid: 617fabebcdd50ce4bb9c7da12188dcd9, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 1
     m_Data:
