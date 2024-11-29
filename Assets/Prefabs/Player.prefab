@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d6ca4d7f82b0403a40a9aa379e6644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 2
-  acceleration: 40
+  maxMoveSpeed: 2.2
+  acceleration: 35
   movementDeadzone: 0.2
   moveAction:
     m_Name: Move
@@ -242,6 +242,7 @@ MonoBehaviour:
   head_: {fileID: 8124183052260777435}
   reacher_: {fileID: 0}
   inventory: {fileID: 0}
+  startAt3dLevel: {fileID: 0}
 --- !u!114 &6058119305721968279
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slideDistance: 1.95
-  slideSpeed: 5
+  slideSpeed: 3.5
   doorSoundSource: {fileID: 0}
   openSound: {fileID: 0}
   closeSound: {fileID: 0}

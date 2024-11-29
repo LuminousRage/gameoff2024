@@ -33,7 +33,7 @@ public class Door3D : Door
         Assert.IsNotNull(rb, "Door3D requires a Rigidbody component.");
 
         closedPosition = transform.position;
-        openPosition = closedPosition + (Vector3.back.normalized * slideDistance);
+        openPosition = closedPosition + (Vector3.right.normalized * slideDistance);
     }
 
     // Update is called once per frame
