@@ -55,6 +55,7 @@ public class Level2D : MonoBehaviour
 
         avatar.GetLevel().UpdatePlayerToComputer(avatar, c.zone, avatarLastZone);
         avatar.SetControllable(true);
+        avatar.GetRigidbody().bodyType = RigidbodyType2D.Dynamic;
         sceneManager.avatarActive = avatar;
 
         if (!entered_)
@@ -95,6 +96,7 @@ public class Level2D : MonoBehaviour
         {
             a.SetControllable(false);
             a.SetRenderCamera(false);
+            a.GetRigidbody().bodyType = RigidbodyType2D.Static;
         });
         entered_ = false;
     }

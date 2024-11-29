@@ -59,6 +59,7 @@ public class Avatar : MonoBehaviour, IControllable
 
         rb = GetComponent<Rigidbody2D>();
         Assert.IsNotNull(this.rb);
+        rb.bodyType = RigidbodyType2D.Static;
 
         renderCamera_ = GetComponentInChildren<Camera>();
         Assert.IsNotNull(renderCamera_, "Unable to find render camera in Avatar.");
