@@ -103,7 +103,7 @@ public class Player : MonoBehaviour, IControllable
     void Update()
     {
         PlayerPrefs.GetInt("ContinueLevel");
-        if (Time.frameCount == 10 && (startAt3dLevel != null))
+        if (Time.frameCount == 30 && (startAt3dLevel != null))
         {
             Debug.LogWarning(
                 $"Manually setting player position to {startAt3dLevel}, please ensure it is removed after you're done!"

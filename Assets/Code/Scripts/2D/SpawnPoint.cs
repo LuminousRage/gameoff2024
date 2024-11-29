@@ -10,9 +10,18 @@ public class SpawnPoint : MonoBehaviour
     public Tilemap tilemap3;
     public TilePlus tile;
 
+    private bool firstChangeSpawn = true;
+
     public void changeSpawn(bool alive, int avatar)
     {
-        Debug.Log($"changeSpawn {alive} for avatar {avatar}");
+        if (firstChangeSpawn)
+        {
+            firstChangeSpawn = false;
+        }
+        else
+        {
+            Debug.Log($"changeSpawn {alive} for avatar {avatar}");
+        }
         tile.alive = alive;
         switch (avatar)
         {

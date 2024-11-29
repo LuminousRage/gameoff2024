@@ -17,7 +17,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
     void Start()
     {
         var rend = GetComponentInChildren<MeshRenderer>();
-        Debug.Log($"{rend}");
+        // Debug.Log($"{rend}");
 
         MaterialPropertyBlock mpb = new MaterialPropertyBlock();
 
@@ -28,10 +28,10 @@ public class FloppyDisk : MonoBehaviour, IUsable
 
         player = FindFirstObjectByType<Player>();
         Assert.IsNotNull(player, "Unable to find Player from FloppyDisk.");
-
         // If level predefines the floppy disk in a computer, add it to the computer
         if (computer_ != null)
         {
+            Debug.Log(computer_.floppyDiskManager);
             computer_.floppyDiskManager.InsertFloppyDisk(this);
         }
     }
@@ -49,7 +49,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
             ?.UnsetUsable(this);
     }
 
-    public bool IsCurrentlyUsable() => !isInInventory_;
+    public bool IsCurrentlyUsable() => !isInInventory_ && computer_ == null;
 
     public void SetVisible(bool visible = true) => this.gameObject.SetActive(visible);
 
@@ -63,7 +63,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
     {
         transform.SetPositionAndRotation(
             computer_.floppyDiskManager.GetSlotPosition(slotIndex),
-            Quaternion.Euler(0, 0, 90)
+            Quaternion.Euler(0, 0, 0)
         );
     }
 }

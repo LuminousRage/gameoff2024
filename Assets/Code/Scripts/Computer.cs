@@ -68,7 +68,11 @@ public class Computer : MonoBehaviour, IUsable
 
     public void ToggleComputer(bool enabled = true, bool firstToggle = false)
     {
-        Debug.Log($"Toggling computer {this} to {enabled}");
+        if (!firstToggle)
+        {
+            Debug.Log($"Toggling computer {this} to {enabled}");
+        }
+
         quad_.SetActive(enabled);
 
         if (isGhostComputer && !firstToggle)
