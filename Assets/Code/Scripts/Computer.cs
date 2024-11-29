@@ -57,13 +57,13 @@ public class Computer : MonoBehaviour, IUsable
         sceneManager_ = FindFirstObjectByType<SceneManager>();
         Assert.IsNotNull(sceneManager_, "Unable to find SceneManager from Computer.");
 
-        floppyDiskManager = GetComponent<ComputerFloppyDisk>();
+        floppyDiskManager = GetComponentInChildren<ComputerFloppyDisk>();
         Assert.IsNotNull(floppyDiskManager, "Unable to find ComputerFloppyDisk in Computer.");
 
         var currentAvatar = level.GetAndValidateAvatar(this);
-        ToggleComputer(currentAvatar.az.currentCollisionZone.zone==zone, true);
-        
-        quad_.GetComponent<MeshRenderer>().material = avatarScreens[avatar-1];
+        ToggleComputer(currentAvatar.az.currentCollisionZone.zone == zone, true);
+
+        quad_.GetComponent<MeshRenderer>().material = avatarScreens[avatar - 1];
     }
 
     public void ToggleComputer(bool enabled = true, bool firstToggle = false)

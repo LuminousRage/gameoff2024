@@ -63,7 +63,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
     {
         transform.SetPositionAndRotation(
             computer_.floppyDiskManager.GetSlotPosition(slotIndex),
-            Quaternion.Euler(0, 0, 0)
+            Quaternion.Euler(0, 0, 90)
         );
     }
 }

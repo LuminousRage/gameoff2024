@@ -7,8 +7,8 @@ public class ComputerFloppyDisk : MonoBehaviour
 {
     public Vector3[] slotPosition = new Vector3[2]
     {
-        new Vector3(-0.5f, 0.5f, 0),
-        new Vector3(0.5f, 0.5f, 0),
+        new Vector3(0.1352f, 0.087f, 0.1534f),
+        new Vector3(-0.0011f, 0.0338f, 0.1534f),
     };
 
     private Avatar avatar;
@@ -21,7 +21,7 @@ public class ComputerFloppyDisk : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        computer = this.GetComponent<Computer>();
+        computer = this.GetComponentInParent<Computer>();
         Assert.IsNotNull(this.computer);
 
         if (computer.level == null)
@@ -69,8 +69,7 @@ public class ComputerFloppyDisk : MonoBehaviour
         return allDisks;
     }
 
-    public Vector3 GetSlotPosition(int slotIndex) =>
-        slotPosition[slotIndex] + computer.transform.position;
+    public Vector3 GetSlotPosition(int slotIndex) => slotPosition[slotIndex] + transform.position;
 
     public void SetGhostFloppyDisk(GameObject disk, int index)
     {
