@@ -55,6 +55,7 @@ public class Level2D : MonoBehaviour
 
         avatar.GetLevel().UpdatePlayerToComputer(avatar, c.zone, avatarLastZone);
         avatar.SetControllable(true);
+        sceneManager.avatarActive = avatar;
 
         if (!entered_)
         {

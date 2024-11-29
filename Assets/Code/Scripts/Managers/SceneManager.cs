@@ -16,10 +16,8 @@ public class SceneManager : MonoBehaviour
 
     private GameObject uiCanvas_;
 
-    private TMP_Text useKeyPreview_,
-        useText_,
-        diskText_,
-        diskKeyPreview_;
+    private TextPrompt diskPrompt_,
+        usePrompt_;
 
     private Player player_;
 
@@ -29,6 +27,63 @@ public class SceneManager : MonoBehaviour
 
     [HideInInspector]
     public bool canUseAction = true;
+
+    private Vector3 initialUsePromptPosition;
+    private Vector3 initialDiskPromptPosition;
+    public Vector3 usePromptPosition2D = new Vector3(-246, -301.3333f, 0);
+    public Vector3 diskPromptPosition2D = new Vector3(-249.3333f, -301.3333f, 0);
+
+    [HideInInspector]
+    public Avatar avatarActive = null;
+
+    private struct TextPrompt
+    {
+        public GameObject parent;
+        public TMP_Text text;
+        public TMP_Text keyPreview;
+
+        public void SetActive(bool active)
+        {
+            text.gameObject.SetActive(active);
+            keyPreview.gameObject.SetActive(active);
+        }
+    }
+
+    void Start()
+    {
+        this.uiCanvas_ = this.transform.Find("UICanvas")?.gameObject;
+        Assert.IsNotNull(this.uiCanvas_);
+
+        this.player_ = GameObject.FindFirstObjectByType<Player>();
+        Assert.IsNotNull(this.player_);
+
+        this.followCamera_ = FindFirstObjectByType<FollowCamera>();
+        Assert.IsNotNull(followCamera_, "Unable to find FollowCamera from the scene.");
+
+        this.usePrompt_ = PromptObjectToStruct(
+            this.uiCanvas_.transform.Find("UsePrompt")?.gameObject
+        );
+        this.diskPrompt_ = PromptObjectToStruct(
+            this.uiCanvas_.transform.Find("DiskPrompt")?.gameObject
+        );
+
+        initialDiskPromptPosition = diskPrompt_.text.transform.localPosition;
+        initialUsePromptPosition = usePrompt_.text.transform.localPosition;
+
+        this.LockMouse();
+
+        // Start the game with the 3D player as controllable
+        this.SetFocus(null);
+
+        ValidateFloppyDisks();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        SetUsePrompt();
+        this.UpdateMouseDelta();
+    }
 
     public Vector2 GetScaledDelta()
     {
@@ -79,60 +134,79 @@ public class SceneManager : MonoBehaviour
         this.locked = false;
     }
 
-    public void SetUsePrompt(string key = "E")
+    public void SetUsePrompt()
     {
+        string useKeyText = null,
+            useText = null,
+            diskKeyText = null,
+            diskText = null;
+
+        Vector3 usePromptPosition = usePrompt_.parent.transform.position,
+            diskPromptPosition = diskPrompt_.parent.transform.position;
+
         if (player_.GetControllable())
         {
-            // Maybe I'll clean this up later...
+            usePromptPosition = initialUsePromptPosition;
+            diskPromptPosition = initialDiskPromptPosition;
+
             // Use command
             var usablePriority = player_.reacher_.SortUsablePriority();
             var mostPriority = usablePriority.FirstOrDefault();
-            if (mostPriority != null)
-            {
-                useText_.text = $"{mostPriority.GetActionLabel()} {mostPriority.GetUsableLabel()}";
-                useText_.gameObject.SetActive(true);
-                useKeyPreview_.text = mostPriority.GetKeyLabel();
-                useKeyPreview_.gameObject.SetActive(true);
-            }
-            else
-            {
-                useText_.gameObject.SetActive(false);
-                useKeyPreview_.gameObject.SetActive(false);
-            }
+            useText = mostPriority != null ? mostPriority.GetUsePrompt() : null;
+            useKeyText = mostPriority != null ? mostPriority.GetKeyLabel() : null;
 
             // Disk command
             var diskActionPrompt = player_.reacher_.GetDiskActionPrompt();
-            var (diskKey, diskLabel) = player_.reacher_.DiskActionPromptToString(diskActionPrompt);
-            if (diskLabel != null)
-            {
-                diskText_.text = diskLabel;
-                diskText_.gameObject.SetActive(true);
-            }
-            else
-            {
-                diskText_.gameObject.SetActive(false);
-            }
-            if (diskKey != null)
-            {
-                diskKeyPreview_.text = diskKey;
-                diskKeyPreview_.gameObject.SetActive(true);
-            }
-            else
-            {
-                diskKeyPreview_.gameObject.SetActive(false);
-            }
-            return;
+            (diskKeyText, diskText) = player_.reacher_.DiskActionPromptToString(diskActionPrompt);
+        }
+        else if (avatarActive != null)
+        {
+            usePromptPosition = usePromptPosition2D;
+            diskPromptPosition = diskPromptPosition2D;
+
+            var standUpable = avatarActive.az.currentCollisionZone.isStandUpable;
+            useText = standUpable ? "Stand up from the computer" : null;
+            useKeyText = standUpable ? "E" : null;
+
+            var avatarUsable = avatarActive.ai.usable;
+            diskKeyText = avatarUsable != null ? avatarUsable.GetKeyLabel() : null;
+            diskText = avatarUsable != null ? avatarUsable.GetUsePrompt() : null;
         }
 
-        UnsetUsePrompt();
+        SetPromptText(diskPrompt_, diskKeyText, diskText);
+        SetPromptText(usePrompt_, useKeyText, useText);
+
+        if (usePrompt_.parent.transform.position != usePromptPosition)
+        {
+            usePrompt_.parent.transform.localPosition = usePromptPosition;
+        }
+        if (diskPrompt_.parent.transform.position != diskPromptPosition)
+        {
+            diskPrompt_.parent.transform.localPosition = diskPromptPosition;
+        }
     }
 
-    public void UnsetUsePrompt()
+    private void SetPromptText(TextPrompt prompt, string keyText = null, string text = null)
     {
-        useText_.gameObject.SetActive(false);
-        useKeyPreview_.gameObject.SetActive(false);
-        diskText_.gameObject.SetActive(false);
-        diskKeyPreview_.gameObject.SetActive(false);
+        keyText = keyText ?? "";
+        text = text ?? "";
+
+        prompt.keyPreview.text = keyText;
+        prompt.text.text = text;
+    }
+
+    private TextPrompt PromptObjectToStruct(GameObject promptObject)
+    {
+        Assert.IsNotNull(promptObject, $"{promptObject.name} is null.");
+        var text = promptObject.transform.Find("Text").GetComponent<TMP_Text>();
+        var keyPreview = promptObject.transform.Find("KeyPreview").GetComponent<TMP_Text>();
+
+        return new TextPrompt
+        {
+            parent = promptObject,
+            text = text,
+            keyPreview = keyPreview,
+        };
     }
 
     public void SetFocus(Computer computer)
@@ -144,8 +218,6 @@ public class SceneManager : MonoBehaviour
 
             computer.level.EnterFrom(computer);
             player_.inventory.PutDownDisks(computer);
-
-            this.UnsetUsePrompt();
         }
         else
         {
@@ -157,58 +229,10 @@ public class SceneManager : MonoBehaviour
         focusedComputer_ = computer;
     }
 
-    void Start()
-    {
-        this.uiCanvas_ = this.transform.Find("UICanvas")?.gameObject;
-        Assert.IsNotNull(this.uiCanvas_);
-
-        this.player_ = GameObject.FindFirstObjectByType<Player>();
-        Assert.IsNotNull(this.player_);
-
-        this.useText_ = this.uiCanvas_.transform.Find("UsableText").GetComponent<TMP_Text>();
-        Assert.IsNotNull(this.useText_);
-
-        useKeyPreview_ = uiCanvas_.transform.Find("KeyPreview").GetComponent<TMP_Text>();
-        Assert.IsNotNull(useKeyPreview_);
-
-        diskText_ = uiCanvas_.transform.Find("DiskText").GetComponent<TMP_Text>();
-        Assert.IsNotNull(diskText_);
-
-        diskKeyPreview_ = uiCanvas_.transform.Find("DiskKeyPreview").GetComponent<TMP_Text>();
-        Assert.IsNotNull(diskKeyPreview_);
-
-        this.followCamera_ = FindFirstObjectByType<FollowCamera>();
-        Assert.IsNotNull(followCamera_, "Unable to find FollowCamera from the scene.");
-
-        this.LockMouse();
-        this.UnsetUsePrompt();
-
-        // Start the game with the 3D player as controllable
-        this.SetFocus(null);
-
-        ValidateFloppyDisks();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        SetUsePrompt();
-        this.UpdateMouseDelta();
-        this.UpdateUICanvas();
-    }
-
     private void UpdateMouseDelta()
     {
         var newDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         this.mouseDelta = newDelta;
-    }
-
-    private void UpdateUICanvas()
-    {
-        // var headTransform = player_.GetHeadTransform();
-
-        // this.uiCanvas_.transform.position = headTransform.position + headTransform.forward * 2;
-        // this.uiCanvas_.transform.rotation = headTransform.rotation;
     }
 
     public void UpdatePlayerLocation(Transform transform)

@@ -65,4 +65,6 @@ public class Button : MonoBehaviour, IUsable
     public string GetUsableLabel() => "Button";
 
     public string GetActionLabel() => "Press";
+
+    public string GetKeyLabel() => "F";
 }
