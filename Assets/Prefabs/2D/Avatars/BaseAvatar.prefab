@@ -139,7 +139,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 5033361d-547b-43f5-9d70-075e608610cd
-      m_Path: <Keyboard>/e
+      m_Path: <Keyboard>/f
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -156,7 +156,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 7f22e979-caaa-4c99-83e5-ada2319c0b9e
-      m_Path: <Keyboard>/enter
+      m_Path: <Keyboard>/e
       m_Interactions: 
       m_Processors: 
       m_Groups: 
