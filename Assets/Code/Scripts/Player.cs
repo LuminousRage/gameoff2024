@@ -102,7 +102,7 @@ public class Player : MonoBehaviour, IControllable
     // Update every frame
     void Update()
     {
-        PlayerPrefs.GetInt("currentLevel");
+        PlayerPrefs.GetInt("ContinueLevel");
         if (Time.frameCount == 10 && (startAt3dLevel != null))
         {
             Debug.LogWarning(
@@ -193,11 +193,15 @@ public class Player : MonoBehaviour, IControllable
             rb_.AddForce(force * Time.deltaTime, ForceMode.VelocityChange);
         }
 
-        float currentSpeed = rb_.linearVelocity.magnitude;
-
-        if (currentSpeed > maxMoveSpeed)
+        var currentVelocity2D = new Vector2(rb_.linearVelocity.x, rb_.linearVelocity.z);
+        if (currentVelocity2D.magnitude > maxMoveSpeed)
         {
-            rb_.linearVelocity = rb_.linearVelocity.normalized * maxMoveSpeed;
+            var cappedVelocity = currentVelocity2D.normalized * maxMoveSpeed;
+            rb_.linearVelocity = new Vector3(
+                cappedVelocity.x,
+                rb_.linearVelocity.y,
+                cappedVelocity.y
+            );
         }
     }
 }
