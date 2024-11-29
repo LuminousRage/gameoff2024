@@ -95,7 +95,7 @@ public class Player : MonoBehaviour, IControllable
         diskAction_ = gameplayActions.FindAction("Disk");
         Assert.IsNotNull(diskAction_, "Unable to find Insert action from Player.");
 
-        ContinueGame();
+        // ContinueGame();
 
         SetControllable(true);
         useAction_.performed += context => this.reacher_.UseUsable();
