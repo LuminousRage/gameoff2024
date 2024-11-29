@@ -15235,6 +15235,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3573225921389967638, guid: 7cc540e2d0852fe469a3dca02ba79346, type: 3}
+      propertyPath: currentCollisionZone
+      value: 
+      objectReference: {fileID: 6879249970213730459}
+    - target: {fileID: 3573225921389967638, guid: 7cc540e2d0852fe469a3dca02ba79346, type: 3}
       propertyPath: intialSpawns.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -49502,6 +49506,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6908236318321769296, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
   m_PrefabInstance: {fileID: 8065843318657642212}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6879249970213730459 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3501443866190370431, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
+  m_PrefabInstance: {fileID: 8065843318657642212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a09138df7b74a499d1698dc822aaac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8448278086884520814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1932591710009564554, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}

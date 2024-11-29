@@ -73,7 +73,7 @@ public class Level2D : MonoBehaviour
         {
             Debug.LogError(
                 "Expected 1 avatar per computer for entering a level."
-                    + $"Found {avatars.Count} avatars "
+                    + $"Found {avatars.Count} avatars for computer {c.avatar} in {c.zone}"
             );
 
             return null;

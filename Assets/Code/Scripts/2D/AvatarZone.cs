@@ -25,6 +25,7 @@ public class AvatarZone : MonoBehaviour
     {
         avatar = GetComponent<Avatar>();
         Assert.IsNotNull(this.avatar);
+        Assert.IsNotNull(this.currentCollisionZone);
 
         spawns = new Dictionary<Globals.Zone, SpawnPoint>();
         foreach (var sp in intialSpawns)
