@@ -14,6 +14,8 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
     [SerializeField]
     private float speed = 5;
 
+    SceneManager sm;
+
     void Start()
     {
         avatar = GetComponent<Avatar>();
@@ -23,13 +25,20 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
         standupAction.Enable();
         useAction.Enable();
 
+        sm = FindFirstObjectByType<SceneManager>();
+        Assert.IsNotNull(sm);
+
         standupAction.performed += context =>
         {
             if (avatar.GetControllable() && avatar.az.currentCollisionZone.isStandUpable)
-            {
-                Debug.Log("Standing up");
-                avatar.GetLevel().StandUp();
-            }
+                sm.RunActionWithInputLock(
+                    () =>
+                    {
+                        Debug.Log("Standing up");
+                        avatar.GetLevel().StandUp();
+                    },
+                    context.action
+                );
         };
 
         useAction.performed += context =>
@@ -75,6 +84,22 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
             Debug.Log($"Unsetting AvatarInput usable from {usable}");
             this.usable = null;
             // this.sm_.UnsetUsePrompt();
+        }
+    }
+
+    public void SetInputEnable(bool enable)
+    {
+        if (enable)
+        {
+            useAction.Enable();
+            move.Enable();
+            standupAction.Enable();
+        }
+        else
+        {
+            useAction.Disable();
+            move.Disable();
+            standupAction.Disable();
         }
     }
 }

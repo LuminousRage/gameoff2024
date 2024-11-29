@@ -98,7 +98,8 @@ public class Player : MonoBehaviour, IControllable
         ContinueGame();
 
         SetControllable(true);
-        useAction_.performed += context => this.reacher_.UseUsable();
+        useAction_.performed += context =>
+            mouseManager_.RunActionWithInputLock(() => this.reacher_.UseUsable(), context.action);
 
         diskAction_.performed += context => this.reacher_.UseDiskAction();
     }

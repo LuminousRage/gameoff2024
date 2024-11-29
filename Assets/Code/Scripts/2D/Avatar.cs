@@ -30,6 +30,11 @@ public class Avatar : MonoBehaviour, IControllable
     public void SetControllable(bool controllable = true)
     {
         this.controlling_ = controllable;
+
+        if (ai != null)
+        {
+            ai.SetInputEnable(controllable);
+        }
     }
 
     public bool GetControllable()
