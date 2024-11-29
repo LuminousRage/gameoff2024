@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
@@ -93,6 +94,9 @@ public class Player : MonoBehaviour, IControllable
         Assert.IsNotNull(useAction_, "Unable to find Use action from Player.");
         diskAction_ = gameplayActions.FindAction("Disk");
         Assert.IsNotNull(diskAction_, "Unable to find Insert action from Player.");
+
+        ContinueGame();
+
         SetControllable(true);
         useAction_.performed += context => this.reacher_.UseUsable();
 
@@ -100,18 +104,42 @@ public class Player : MonoBehaviour, IControllable
     }
 
     // Update every frame
+
+    void ContinueGame()
+    {
+        var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
+        var levels2d = this.transform.parent.GetComponentsInChildren<Level2D>().ToList();
+        var level2d = levels2d.Find(level => level.levelOrder == continueLevel - 1);
+        var computer = level2d == null ? null : level2d.outBrokenComputer;
+
+        if (startAt3dLevel != null || continueLevel != 0)
+        {
+            if (startAt3dLevel != null)
+            {
+                computer = startAt3dLevel.GetComponentInChildren<Computer>();
+                Debug.LogWarning(
+                    $"Manually setting player position to {startAt3dLevel}, please ensure it is removed after you're done!"
+                );
+            }
+
+            if (computer == null)
+            {
+                Debug.LogError("Unable to find computer to start at.");
+                return;
+            }
+
+            var transform = computer.transform.Find("Watcher")?.gameObject.transform;
+            this.transform.position = transform.position;
+            rb_.position = transform.position;
+            if (startAt3dLevel == null)
+            {
+                computer.state_ = Computer.UseState.Broken;
+            }
+        }
+    }
+
     void Update()
     {
-        PlayerPrefs.GetInt("ContinueLevel");
-        if (Time.frameCount == 30 && (startAt3dLevel != null))
-        {
-            Debug.LogWarning(
-                $"Manually setting player position to {startAt3dLevel}, please ensure it is removed after you're done!"
-            );
-            var transform = startAt3dLevel.GetComponentInChildren<Computer>().GetWatcherTransform();
-            this.transform.position = transform.position;
-        }
-
         if (this.currentlyControlling_)
         {
             this.UpdateCamera();

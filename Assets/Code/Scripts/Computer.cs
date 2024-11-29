@@ -22,13 +22,14 @@ public class Computer : MonoBehaviour, IUsable
 
     public bool isGhostComputer = false;
 
-    private enum UseState
+    public enum UseState
     {
         Usable,
         Broken,
     }
 
-    private UseState state_ = UseState.Usable;
+    [HideInInspector]
+    public UseState state_ = UseState.Usable;
 
     public void Use(IControllable p)
     {
