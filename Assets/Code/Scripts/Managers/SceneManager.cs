@@ -1,7 +1,11 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.InputSystem;
 
 // Note: I think this is more of a 3D manager, rather than a manager for the whole scene (which is 2D + 3D)
 public class SceneManager : MonoBehaviour
@@ -22,6 +26,9 @@ public class SceneManager : MonoBehaviour
     private FollowCamera followCamera_;
 
     private Computer focusedComputer_ = null;
+
+    [HideInInspector]
+    public bool canUseAction = true;
 
     public Vector2 GetScaledDelta()
     {
@@ -222,6 +229,28 @@ public class SceneManager : MonoBehaviour
         if (distinctFloppyDiskCount != floppyDisks.Length)
         {
             Debug.LogError("There are duplicate floppy disks in the scene.");
+        }
+    }
+
+    public IEnumerator ResetUseAction(InputAction action)
+    {
+        // Wait for a short moment to prevent immediate re-use
+        // yield return new WaitForEndOfFrame();
+
+        // Wait until the key is released
+        yield return new WaitUntil(() => !action.IsPressed());
+
+        canUseAction = true;
+    }
+
+    public void RunActionWithInputLock(Action function, InputAction inputAction)
+    {
+        if (canUseAction)
+        {
+            function();
+            canUseAction = false;
+
+            StartCoroutine(ResetUseAction(inputAction));
         }
     }
 }

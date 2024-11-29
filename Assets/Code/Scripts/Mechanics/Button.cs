@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 public class Button : MonoBehaviour, IUsable
 {
-    public ITriggerable triggerable;
+    public Triggerable triggerable;
     bool isPressed = false;
 
     public float activeForSeconds = 1.0f;

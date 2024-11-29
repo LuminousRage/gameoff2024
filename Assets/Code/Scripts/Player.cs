@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions;
@@ -64,6 +66,8 @@ public class Player : MonoBehaviour, IControllable
         return this.currentlyControlling_;
     }
 
+    public GameObject startAt3dLevel;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -90,13 +94,51 @@ public class Player : MonoBehaviour, IControllable
         Assert.IsNotNull(useAction_, "Unable to find Use action from Player.");
         diskAction_ = gameplayActions.FindAction("Disk");
         Assert.IsNotNull(diskAction_, "Unable to find Insert action from Player.");
+
+        ContinueGame();
+
         SetControllable(true);
-        useAction_.performed += context => this.reacher_.UseUsable();
+        useAction_.performed += context =>
+            mouseManager_.RunActionWithInputLock(() => this.reacher_.UseUsable(), context.action);
 
         diskAction_.performed += context => this.reacher_.UseDiskAction();
     }
 
     // Update every frame
+
+    void ContinueGame()
+    {
+        var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
+        var levels2d = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList();
+        var level2d = levels2d.Find(level => level.levelOrder == continueLevel - 1);
+        var computer = level2d == null ? null : level2d.outBrokenComputer;
+
+        if (startAt3dLevel != null || continueLevel != 0)
+        {
+            if (startAt3dLevel != null)
+            {
+                computer = startAt3dLevel.GetComponentInChildren<Computer>();
+                Debug.LogWarning(
+                    $"Manually setting player position to {startAt3dLevel}, please ensure it is removed after you're done!"
+                );
+            }
+
+            if (computer == null)
+            {
+                Debug.LogError("Unable to find computer to start at.");
+                return;
+            }
+
+            var transform = computer.transform.Find("Watcher")?.gameObject.transform;
+            this.transform.position = transform.position;
+            rb_.position = transform.position;
+            if (startAt3dLevel == null)
+            {
+                computer.state_ = Computer.UseState.Broken;
+            }
+        }
+    }
+
     void Update()
     {
         if (this.currentlyControlling_)
@@ -180,11 +222,15 @@ public class Player : MonoBehaviour, IControllable
             rb_.AddForce(force * Time.deltaTime, ForceMode.VelocityChange);
         }
 
-        float currentSpeed = rb_.linearVelocity.magnitude;
-
-        if (currentSpeed > maxMoveSpeed)
+        var currentVelocity2D = new Vector2(rb_.linearVelocity.x, rb_.linearVelocity.z);
+        if (currentVelocity2D.magnitude > maxMoveSpeed)
         {
-            rb_.linearVelocity = rb_.linearVelocity.normalized * maxMoveSpeed;
+            var cappedVelocity = currentVelocity2D.normalized * maxMoveSpeed;
+            rb_.linearVelocity = new Vector3(
+                cappedVelocity.x,
+                rb_.linearVelocity.y,
+                cappedVelocity.y
+            );
         }
     }
 }

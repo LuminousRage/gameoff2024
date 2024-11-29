@@ -30,7 +30,11 @@ public class Avatar : MonoBehaviour, IControllable
     public void SetControllable(bool controllable = true)
     {
         this.controlling_ = controllable;
-        renderCamera_.enabled = controllable;
+
+        if (ai != null)
+        {
+            ai.SetInputEnable(controllable);
+        }
     }
 
     public bool GetControllable()
@@ -58,7 +62,8 @@ public class Avatar : MonoBehaviour, IControllable
 
         renderCamera_ = GetComponentInChildren<Camera>();
         Assert.IsNotNull(renderCamera_, "Unable to find render camera in Avatar.");
-        renderCamera_.enabled = false;
+
+        SetRenderCamera(PlayerPrefs.GetInt("ContinueLevel") == level.levelOrder);
     }
 
     public Level2D GetLevel()
@@ -105,5 +110,15 @@ public class Avatar : MonoBehaviour, IControllable
             level.TellOtherComputersToRenderGhostDisks(number, key.GetComputer(), index, false);
             avatarKeys[index] = null;
         }
+    }
+
+    public void SetRenderCamera(bool enable = true)
+    {
+        renderCamera_.enabled = enable;
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        rb.linearVelocity = Vector2.zero;
     }
 }

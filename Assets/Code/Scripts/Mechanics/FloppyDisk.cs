@@ -1,3 +1,4 @@
+using System.Linq;
 using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -11,23 +12,26 @@ public class FloppyDisk : MonoBehaviour, IUsable
     // The computer the floppy disk is currently in, null if not in a computer
     public Computer computer_;
 
+    public LaserDoor[] doors = new LaserDoor[0];
+
     void Start()
     {
         var rend = GetComponentInChildren<MeshRenderer>();
-        Debug.Log($"{rend}");
+        // Debug.Log($"{rend}");
 
         MaterialPropertyBlock mpb = new MaterialPropertyBlock();
 
-        mpb.SetColor("_FloppyColor", Globals.GetFloppyColor(floppyDiskID));
+        mpb.SetColor("_NewColor", Globals.GetFloppyColor(floppyDiskID));
         rend.SetPropertyBlock(mpb);
         //////
+        doors.ToList().ForEach(door => door.color = Globals.GetFloppyColor(floppyDiskID));
 
         player = FindFirstObjectByType<Player>();
         Assert.IsNotNull(player, "Unable to find Player from FloppyDisk.");
-
         // If level predefines the floppy disk in a computer, add it to the computer
         if (computer_ != null)
         {
+            Debug.Log(computer_.floppyDiskManager);
             computer_.floppyDiskManager.InsertFloppyDisk(this);
         }
     }
@@ -45,7 +49,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
             ?.UnsetUsable(this);
     }
 
-    public bool IsCurrentlyUsable() => !isInInventory_;
+    public bool IsCurrentlyUsable() => !isInInventory_ && computer_ == null;
 
     public void SetVisible(bool visible = true) => this.gameObject.SetActive(visible);
 

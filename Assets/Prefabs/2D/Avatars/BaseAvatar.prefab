@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aaee6d56b624f15aec707990ff23fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentZone: 0
   intialSpawns: []
   currentCollisionZone: {fileID: 0}
 --- !u!114 &3959676855675439273
@@ -157,7 +156,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 7f22e979-caaa-4c99-83e5-ada2319c0b9e
-      m_Path: <Keyboard>/enter
+      m_Path: <Keyboard>/f
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -355,12 +354,12 @@ Camera:
     x: 0
     y: 0
     width: 1
-    height: 0.77
+    height: 0.7
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 9
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

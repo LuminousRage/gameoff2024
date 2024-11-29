@@ -1,23 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.InputSystem.Controls;
 
 public class AvatarZone : MonoBehaviour
 {
     private Avatar avatar;
 
     // This should only be used in Start functions - everything else refer to currentCollisionZone.zone
-    public Globals.Zone currentZone;
-    public Dictionary<Globals.Zone, GameObject> spawns;
+    public Dictionary<Globals.Zone, SpawnPoint> spawns;
 
     [System.Serializable]
-    public struct SpawnPoint
+    public struct SetSpawnPoint
     {
         public Globals.Zone zone;
-        public GameObject spawn;
+        public SpawnPoint spawn;
     }
 
-    public SpawnPoint[] intialSpawns;
+    public SetSpawnPoint[] intialSpawns;
 
     public CollisionZone currentCollisionZone;
 
@@ -25,14 +25,15 @@ public class AvatarZone : MonoBehaviour
     {
         avatar = GetComponent<Avatar>();
         Assert.IsNotNull(this.avatar);
+        Assert.IsNotNull(this.currentCollisionZone);
 
-        spawns = new Dictionary<Globals.Zone, GameObject>();
+        spawns = new Dictionary<Globals.Zone, SpawnPoint>();
         foreach (var sp in intialSpawns)
         {
             spawns[sp.zone] = sp.spawn;
+            Assert.IsNotNull(sp.spawn, $"Spawn for avatar {avatar.number} zone {sp.zone} is null!");
+            sp.spawn.changeSpawn(true, avatar.number);
         }
-
-        MoveAvatarTo(spawns[currentZone].transform.position);
     }
 
     public void MoveAvatarTo(Vector2 position)
@@ -52,6 +53,18 @@ public class AvatarZone : MonoBehaviour
         }
 
         Debug.Log($"Changing Avatar {avatar.number} zone from {oldZone} to {newArea.zone}");
+
+        if (spawns[newArea.zone] != null)
+        {
+            spawns[newArea.zone].changeSpawn(false, avatar.number);
+        }
+
+        Assert.IsNotNull(
+            newArea.avatarSpawnPoint,
+            $"Avatar spawn point for zone {newArea.zone} is null!"
+        );
+        newArea.avatarSpawnPoint.changeSpawn(true, avatar.number);
+
         currentCollisionZone = newArea;
         spawns[newArea.zone] = newArea.avatarSpawnPoint;
     }

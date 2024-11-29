@@ -1,0 +1,8 @@
+using UnityEngine;
+
+public abstract class Triggerable : MonoBehaviour
+{
+    public abstract void Trigger();
+
+    public abstract void Untrigger();
+}

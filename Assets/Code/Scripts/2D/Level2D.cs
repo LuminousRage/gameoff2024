@@ -14,6 +14,9 @@ public class Level2D : MonoBehaviour
     // For broken zones only - the computer all avatars should exit out at
     public Computer outBrokenComputer;
 
+    [Range(0, 15)]
+    public int levelOrder;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,11 +28,8 @@ public class Level2D : MonoBehaviour
         ghostFloppyDiskManager = FindFirstObjectByType<GhostFloppyDiskManager>();
         Assert.IsNotNull(this.ghostFloppyDiskManager);
 
-        Assert.IsNotNull(outBrokenComputer, "No outBrokenComputer set for Level2D.");
+        //Assert.IsNotNull(outBrokenComputer, "No outBrokenComputer set for Level2D.");
     }
-
-    // Update is called once per frame
-    void Update() { }
 
     public void EnterFrom(Computer c)
     {
@@ -56,6 +56,12 @@ public class Level2D : MonoBehaviour
         avatar.GetLevel().UpdatePlayerToComputer(avatar, c.zone, avatarLastZone);
         avatar.SetControllable(true);
 
+        if (!entered_)
+        {
+            var avatars = GetComponentsInChildren<Avatar>().ToList();
+            avatars.ForEach(a => a.SetRenderCamera(true));
+            PlayerPrefs.SetInt("ContinueLevel", levelOrder);
+        }
         entered_ = true;
     }
 
@@ -67,7 +73,7 @@ public class Level2D : MonoBehaviour
         {
             Debug.LogError(
                 "Expected 1 avatar per computer for entering a level."
-                    + $"Found {avatars.Count} avatars "
+                    + $"Found {avatars.Count} avatars for computer {c.avatar} in {c.zone}"
             );
 
             return null;
@@ -83,7 +89,12 @@ public class Level2D : MonoBehaviour
             Debug.LogError("Attempted to exit level without entering. Exiting anyway.");
         }
 
-        GetComponentsInChildren<Avatar>().ToList().ForEach(a => a.SetControllable(false));
+        var avatars = GetComponentsInChildren<Avatar>().ToList();
+        avatars.ForEach(a =>
+        {
+            a.SetControllable(false);
+            a.SetRenderCamera(false);
+        });
         entered_ = false;
     }
 
