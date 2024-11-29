@@ -282,6 +282,14 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4563370746115112250, guid: 473c0ed740fc33543a9cfe601d026194, type: 3}
+      propertyPath: m_ChunkCullingBounds.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563370746115112250, guid: 473c0ed740fc33543a9cfe601d026194, type: 3}
+      propertyPath: m_ChunkCullingBounds.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4569245508263511491, guid: 473c0ed740fc33543a9cfe601d026194, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01
@@ -1122,14 +1130,6 @@ PrefabInstance:
       propertyPath: startAt
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: acceleration
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: maxMoveSpeed
-      value: 2.2
-      objectReference: {fileID: 0}
     - target: {fileID: 8880783659850259186, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1326,6 +1326,14 @@ PrefabInstance:
     - target: {fileID: 8344096381811063106, guid: 6559a15754e49de42aa1d175b6c2a770, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956230981683067755, guid: 6559a15754e49de42aa1d175b6c2a770, type: 3}
+      propertyPath: m_ChunkCullingBounds.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956230981683067755, guid: 6559a15754e49de42aa1d175b6c2a770, type: 3}
+      propertyPath: m_ChunkCullingBounds.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -15,6 +15,8 @@ public class Door2D : Door
     private Vector2 openPosition;
     private bool isMoving = false;
 
+    private Vector2 position => transform.position;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
