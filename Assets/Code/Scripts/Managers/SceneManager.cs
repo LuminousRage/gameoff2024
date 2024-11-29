@@ -31,7 +31,7 @@ public class SceneManager : MonoBehaviour
     private Vector3 initialUsePromptPosition;
     private Vector3 initialDiskPromptPosition;
     public Vector3 usePromptPosition2D = new Vector3(-246, -301.3333f, 0);
-    public Vector3 diskPromptPosition2D = new Vector3(-249.3333f, -301.3333f, 0);
+    public Vector3 diskPromptPosition2D = new Vector3(149.3333f, -301.3333f, 0);
 
     [HideInInspector]
     public Avatar avatarActive = null;
@@ -67,8 +67,8 @@ public class SceneManager : MonoBehaviour
             this.uiCanvas_.transform.Find("DiskPrompt")?.gameObject
         );
 
-        initialDiskPromptPosition = diskPrompt_.text.transform.localPosition;
-        initialUsePromptPosition = usePrompt_.text.transform.localPosition;
+        initialDiskPromptPosition = diskPrompt_.parent.transform.localPosition;
+        initialUsePromptPosition = usePrompt_.parent.transform.localPosition;
 
         this.LockMouse();
 
