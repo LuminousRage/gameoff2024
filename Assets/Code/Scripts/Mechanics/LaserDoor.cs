@@ -1,11 +1,14 @@
 using System.Linq;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using UnityEngine;
 
 public class LaserDoor : MonoBehaviour
 {
     private Transform[] children;
+
+    // this is assigned at runtime through the floppy disk
+    [HideInInspector]
+    public Color color;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

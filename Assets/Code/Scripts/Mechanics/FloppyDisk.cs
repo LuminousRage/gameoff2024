@@ -1,3 +1,4 @@
+using System.Linq;
 using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -11,7 +12,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
     // The computer the floppy disk is currently in, null if not in a computer
     public Computer computer_;
 
-    public LaserDoor[] doors;
+    public LaserDoor[] doors = new LaserDoor[0];
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
         mpb.SetColor("_NewColor", Globals.GetFloppyColor(floppyDiskID));
         rend.SetPropertyBlock(mpb);
         //////
+        doors.ToList().ForEach(door => door.color = Globals.GetFloppyColor(floppyDiskID));
 
         player = FindFirstObjectByType<Player>();
         Assert.IsNotNull(player, "Unable to find Player from FloppyDisk.");
