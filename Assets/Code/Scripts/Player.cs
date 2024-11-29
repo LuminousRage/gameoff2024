@@ -95,7 +95,7 @@ public class Player : MonoBehaviour, IControllable
         diskAction_ = gameplayActions.FindAction("Disk");
         Assert.IsNotNull(diskAction_, "Unable to find Insert action from Player.");
 
-        // ContinueGame();
+        ContinueGame();
 
         SetControllable(true);
         useAction_.performed += context => this.reacher_.UseUsable();
@@ -108,7 +108,7 @@ public class Player : MonoBehaviour, IControllable
     void ContinueGame()
     {
         var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
-        var levels2d = this.transform.parent.GetComponentsInChildren<Level2D>().ToList();
+        var levels2d = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList();
         var level2d = levels2d.Find(level => level.levelOrder == continueLevel - 1);
         var computer = level2d == null ? null : level2d.outBrokenComputer;
 
