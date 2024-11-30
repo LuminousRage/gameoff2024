@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using TreeEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
@@ -78,8 +79,6 @@ public class Player : MonoBehaviour, IControllable
         return this.currentlyControlling_;
     }
 
-    public GameObject startAt3dLevel;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -121,42 +120,21 @@ public class Player : MonoBehaviour, IControllable
         ContinueGame();
     }
 
-    // Update every frame
 
     void ContinueGame()
     {
         var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
         sceneManager_.EnsureLoaded(continueLevel);
-        startAt3dLevel = sceneManager_.GetLevel(continueLevel);
-
-        var levels2d = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList();
-        var level2d = levels2d.Find(level => level.levelOrder == continueLevel - 1);
-        var computer = level2d == null ? null : level2d.outBrokenComputer;
-
-
-        if (startAt3dLevel != null)
+        if (continueLevel>0)
         {
-            computer = startAt3dLevel.GetComponentInChildren<Computer>();
-            Debug.LogWarning(
-                $"Manually setting player position to {startAt3dLevel}, please ensure it is removed after you're done!"
-            );
-        }
-        if (continueLevel != 0)
-        {
-
-            if (computer == null)
-            {
-                Debug.LogError("Unable to find computer to start at.");
-                return;
-            }
-
-            var transform = computer.transform.Find("Watcher")?.gameObject.transform;
-            this.transform.position = transform.position;
-            rb_.position = transform.position;
-            if (startAt3dLevel == null)
-            {
-                computer.state_ = Computer.UseState.Broken;
-            }
+            var previousLevel = sceneManager_.GetLevel(continueLevel-1);
+            var exitComputer = previousLevel.GetComponentInChildren<Level2D>().outBrokenComputer;
+            Debug.Log($"lvl {continueLevel}");
+            Debug.Log($"lval {exitComputer.GetWatcherTransform().position}");
+            this.transform.position = exitComputer.GetWatcherTransform().position;
+            Debug.Log($"lval {this.transform.position}");
+            sceneManager_.UpdatePlayerLocation(exitComputer.GetWatcherTransform());
+            exitComputer.state_ = Computer.UseState.Broken;
         }
     }
 

@@ -153,6 +153,7 @@ public class Level2D : MonoBehaviour
         Debug.Log($"Moving player to {computer} of {computer.transform.parent.name}");
         var transform = computer.GetWatcherTransform();
         sceneManager.UpdatePlayerLocation(transform);
+        sceneManager.followCamera_._followee = transform;
     }
 
     public void TellOtherComputersToRenderGhostDisks(

@@ -20,7 +20,9 @@ public class SceneManager : MonoBehaviour
 
     private Player player_;
 
-    private FollowCamera followCamera_;
+
+    [HideInInspector]
+    public FollowCamera followCamera_;
 
     [HideInInspector]
     public Computer focusedComputer_ = null;
@@ -87,6 +89,24 @@ public class SceneManager : MonoBehaviour
         this.SetFocus(null);
 
         ValidateFloppyDisks();
+        ContinueGame();
+    }
+    
+    void ContinueGame()
+    {
+        var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
+        EnsureLoaded(continueLevel);
+        if (continueLevel>0)
+        {
+            var previousLevel = GetLevel(continueLevel-1);
+            var exitComputer = previousLevel.GetComponentInChildren<Level2D>().outBrokenComputer;
+            Debug.Log($"lvl {continueLevel}");
+            Debug.Log($"lval {exitComputer.GetWatcherTransform().position}");
+            this.transform.position = exitComputer.GetWatcherTransform().position;
+            Debug.Log($"lval {this.transform.position}");
+            UpdatePlayerLocation(exitComputer.GetWatcherTransform());
+            exitComputer.state_ = Computer.UseState.Broken;
+        }
     }
 
     // Update is called once per frame
@@ -249,14 +269,8 @@ public class SceneManager : MonoBehaviour
     {
         // subtract some offset so the player doesn't appear on the table
         // will need to be adjusted if the table size changes
-        player_.transform.position =
-            transform.position + -0.7f * transform.forward + new Vector3(0, -0.6f, 0);
-        player_.transform.forward = new Vector3(
-            transform.forward.x,
-            0,
-            transform.forward.z
-        ).normalized;
-        followCamera_._followee = transform;
+        player_.transform.position = transform.position + -0.7f * transform.forward + new Vector3(0, -0.6f, 0);
+        player_.transform.forward = new Vector3(transform.forward.x,0,transform.forward.z).normalized;
     }
 
     void ValidateFloppyDisks()
@@ -304,7 +318,7 @@ public class SceneManager : MonoBehaviour
             var level = levelsLoaded_[i];
 
             // Check for out of the range we want loaded
-            if (i < levelIndex - 1 || i > levelIndex + 2)
+            if (i < levelIndex - 1 || i > levelIndex + 1)
             {
                 if (level != null)
                     Destroy(level);
@@ -316,12 +330,12 @@ public class SceneManager : MonoBehaviour
             {
                 GameObject newLevel = Instantiate<GameObject>(levelData.levelPrefabs[i]);
                 newLevel.gameObject.transform.position = new Vector3(0, i % 3 * 100, 0);
-                if (i>=levelIndex) {
+                if (i>=levelIndex && i-1>=0) {
                     var previouslevel = levelsLoaded_[i-1].GetComponentsInChildren<Level2D>()[0];
                     //TODO:checking for avatar not 1 is a hacky fix that will work for now
                     previouslevel.outBrokenComputer = newLevel.GetComponentsInChildren<Computer>().ToList().Find((a) => a.isGhostComputer && a.avatar!= 1);
                 }
-                
+
                 UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(
                     newLevel,
                     currentScene

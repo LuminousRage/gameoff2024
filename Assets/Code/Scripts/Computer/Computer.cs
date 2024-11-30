@@ -9,7 +9,7 @@ public class Computer : MonoBehaviour, IUsable
     [Range(1, 8)]
     public byte avatar;
 
-    private GameObject watcher_;
+    public GameObject watcher_;
 
     public GameObject quad_;
     public Material[] avatarScreens;
@@ -55,7 +55,6 @@ public class Computer : MonoBehaviour, IUsable
         );
         NUnit.Framework.Assert.IsInstanceOf<Level2D>(this.level);
 
-        watcher_ = this.transform.Find("Watcher")?.gameObject;
         Assert.IsNotNull(watcher_, "Unable to find watcher in Computer.");
 
         sceneManager_ = FindFirstObjectByType<SceneManager>();
