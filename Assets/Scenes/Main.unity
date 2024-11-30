@@ -701,6 +701,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f948da5f3a272ce58b5b11d9228bc54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &903804886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5711427748593967741, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+  m_PrefabInstance: {fileID: 1514575903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1216837171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1130,6 +1135,10 @@ PrefabInstance:
       propertyPath: startAt
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
+      propertyPath: startAt3dLevel
+      value: 
+      objectReference: {fileID: 903804886}
     - target: {fileID: 8880783659850259186, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
       propertyPath: m_Name
       value: Player

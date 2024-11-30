@@ -156,11 +156,8 @@ public class Level2D : MonoBehaviour
             {
                 var ghostDisk = ghostFloppyDiskManager.GetUnusedGhostDisk();
                 computer.floppyDiskManager.SetGhostFloppyDisk(ghostDisk, slotIndex);
-                Debug.Log(computer.floppyDiskManager.GetSlotPosition(slotIndex));
-                ghostDisk.transform.SetPositionAndRotation(
-                    computer.floppyDiskManager.GetSlotPosition(slotIndex),
-                    Quaternion.Euler(0, 0, 0)
-                );
+                var (pos, rot) = computer.floppyDiskManager.GetSlotPositionAndRotation(slotIndex);
+                ghostDisk.transform.SetPositionAndRotation(pos, rot);
             }
             else
             {
