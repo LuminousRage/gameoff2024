@@ -7,8 +7,8 @@ public class ComputerFloppyDisk : MonoBehaviour
 {
     public Vector3[] slotPosition = new Vector3[2]
     {
-        new Vector3(-0.0481f, 0.091f, 0.08f),
-        new Vector3(-0.1651f, 0.091f, 0.0802f),
+        new Vector3(-0.0481f, 0.1f, 0.08f),
+        new Vector3(-0.1651f, 0.1f, 0.0802f),
     };
     public Quaternion defaultDiskRotation = Quaternion.Euler(-90, 90, 0);
 

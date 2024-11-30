@@ -158,7 +158,7 @@ public class Level2D : MonoBehaviour
 
                 var rend = ghostDisk.GetComponentInChildren<MeshRenderer>();
                 MaterialPropertyBlock mpb = new MaterialPropertyBlock();
-                mpb.SetFloat("Transparency", 0.1f);
+                mpb.SetFloat("_Transparency", 0.4f);
                 mpb.SetColor("_NewColor", Globals.GetFloppyColor(floppyDiskID.Value));
                 rend.SetPropertyBlock(mpb);
 

@@ -38,11 +38,11 @@ Shader "Custom/ColorSwapper"
 
             if (originalColour.b >= 0.98){
                 o.Albedo = _NewColor.rgb;
-                o.Alpha = _NewColor.a * _Transparency;
             } else {
                 o.Albedo = originalColour.rgb;
-                o.Alpha = originalColour.a * _Transparency;
             }
+
+            o.Alpha = _Transparency;
         }
         ENDCG
     }

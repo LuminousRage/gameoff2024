@@ -130,6 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotPosition:
-  - {x: -0.0481, y: 0.091, z: 0.08}
-  - {x: -0.1651, y: 0.091, z: 0.0802}
+  - {x: -0.0481, y: 0.1, z: 0.08}
+  - {x: -0.1651, y: 0.1, z: 0.0802}
   defaultDiskRotation: {x: -0.49999997, y: 0.49999997, z: 0.49999997, w: 0.49999997}
