@@ -14,6 +14,8 @@ public class Level2D : MonoBehaviour
     // For broken zones only - the computer all avatars should exit out at
     public Computer outBrokenComputer;
 
+    private bool isOnBrokenComputer = false;
+
     [Range(0, 15)]
     public int levelOrder;
 
@@ -84,7 +86,7 @@ public class Level2D : MonoBehaviour
         return avatars[0];
     }
 
-    public void Exit(Computer outComputer)
+    public void Exit()
     {
         if (!entered_)
         {
@@ -98,16 +100,11 @@ public class Level2D : MonoBehaviour
             a.SetRenderCamera(false);
             a.GetRigidbody().bodyType = RigidbodyType2D.Static;
         });
-        Debug.Log($"{outComputer} exited level {levelOrder}");
-        // if (outComputer == outBrokenComputer)
-        // {
-        //     outBrokenComputer
-        //         .transform.parent.GetComponentsInChildren<Computer>()
-        //         .ToList()
-        //         .ForEach(c => c.avatarObj.SetRenderCamera(true));
 
-        //     outBrokenComputer.quad_.SetActive(false);
-        // }
+        if (isOnBrokenComputer)
+        {
+            outBrokenComputer.quad_.SetActive(false);
+        }
 
         entered_ = false;
     }
@@ -147,6 +144,7 @@ public class Level2D : MonoBehaviour
                 avatar.number - 1
             ];
         }
+        isOnBrokenComputer = computerOverride;
         computer.ToggleComputer(true);
 
         // move 3d player in front of computer

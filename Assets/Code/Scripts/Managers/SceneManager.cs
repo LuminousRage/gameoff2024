@@ -23,7 +23,8 @@ public class SceneManager : MonoBehaviour
 
     private FollowCamera followCamera_;
 
-    private Computer focusedComputer_ = null;
+    [HideInInspector]
+    public Computer focusedComputer_ = null;
 
     [HideInInspector]
     public bool canUseAction = true;
@@ -225,7 +226,7 @@ public class SceneManager : MonoBehaviour
             player_.SetControllable(true);
         }
 
-        focusedComputer_?.level.Exit(focusedComputer_);
+        focusedComputer_?.level.Exit();
         focusedComputer_ = computer;
     }
 
