@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1243508350795154130}
+  - component: {fileID: 3447472716206756452}
   m_Layer: 0
   m_Name: Dimension B
   m_TagString: Untagged
@@ -37,6 +38,19 @@ Transform:
   - {fileID: 2941767222112528150}
   m_Father: {fileID: 4790847450273755924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3447472716206756452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664931407255618986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418759c66db60437a9eb6e9269171283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zone: 2
 --- !u!1 &2671348153579812182
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,6 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8848428197308007161}
+  - component: {fileID: 7430175922068997166}
   m_Layer: 0
   m_Name: Dimension C
   m_TagString: Untagged
@@ -113,6 +128,19 @@ Transform:
   - {fileID: 3941981192475819398}
   m_Father: {fileID: 4790847450273755924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7430175922068997166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5048274113804420694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418759c66db60437a9eb6e9269171283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zone: 3
 --- !u!1 &5711427748593967741
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5010441708634115590}
+  - component: {fileID: 2297459567167857745}
   m_Layer: 0
   m_Name: Dimension Broken -Temp
   m_TagString: Untagged
@@ -149,6 +178,19 @@ Transform:
   - {fileID: 5288187206683831636}
   m_Father: {fileID: 4790847450273755924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2297459567167857745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5711427748593967741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418759c66db60437a9eb6e9269171283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zone: 0
 --- !u!1001 &31041602938448821
 PrefabInstance:
   m_ObjectHideFlags: 0
