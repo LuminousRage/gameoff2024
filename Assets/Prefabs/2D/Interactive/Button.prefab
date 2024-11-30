@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1056245063844982802}
-  - component: {fileID: 8911771477902207537}
+  - component: {fileID: 2523810950830040743}
   - component: {fileID: 4929392995171712928}
   - component: {fileID: 6482563305863253746}
   - component: {fileID: 8540452976602152497}
@@ -36,7 +36,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8911771477902207537
+--- !u!114 &2523810950830040743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,17 +45,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 541616606273452526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed8e881f5baf47aa87d55551e09dd01, type: 3}
+  m_Script: {fileID: 11500000, guid: 11774fe8b95004b818ba47ec3e453cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerable:
-    rid: -2
-  activeForSeconds: 1
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+  triggerable: {fileID: 0}
+  activeForSeconds: 10
+  inputKey: F
 --- !u!1839735485 &4929392995171712928
 Tilemap:
   m_ObjectHideFlags: 0
@@ -211,7 +206,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -252,7 +247,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 4.5, y: 2.5}
+  m_Offset: {x: 5, y: 2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
