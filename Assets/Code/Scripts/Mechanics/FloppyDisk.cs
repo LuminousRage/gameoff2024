@@ -1,5 +1,4 @@
 using System.Linq;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -31,7 +30,6 @@ public class FloppyDisk : MonoBehaviour, IUsable
         // If level predefines the floppy disk in a computer, add it to the computer
         if (computer_ != null)
         {
-            Debug.Log(computer_.floppyDiskManager);
             computer_.floppyDiskManager.InsertFloppyDisk(this);
         }
     }
@@ -61,9 +59,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
 
     public void SetFloppyDiskTransform(int slotIndex)
     {
-        transform.SetPositionAndRotation(
-            computer_.floppyDiskManager.GetSlotPosition(slotIndex),
-            Quaternion.Euler(0, 0, 0)
-        );
+        var (pos, rot) = computer_.floppyDiskManager.GetSlotPositionAndRotation(slotIndex);
+        transform.SetPositionAndRotation(pos, rot);
     }
 }

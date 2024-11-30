@@ -1,16 +1,23 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Button : MonoBehaviour, IUsable
+public abstract class Button : MonoBehaviour, IUsable
 {
     public Triggerable triggerable;
     bool isPressed = false;
 
     public float activeForSeconds = 1.0f;
 
+    protected UseState state = UseState.Usable;
+
+    public string inputKey = "F";
+
     void Start()
     {
-        // Assert.IsNotNull(triggerable);
+        Assert.IsNotNull(
+            triggerable,
+            $"{this.name} of {transform.parent.gameObject.name} has no triggerable assigned."
+        );
     }
 
     IUsableSetter GetUsableSetter(GameObject obj)
@@ -52,6 +59,8 @@ public class Button : MonoBehaviour, IUsable
         {
             isPressed = true;
             triggerable.Trigger();
+            UseAnimation();
+            state = UseState.Activated;
             Invoke("ResetButton", activeForSeconds);
         }
     }
@@ -60,9 +69,46 @@ public class Button : MonoBehaviour, IUsable
     {
         isPressed = false;
         triggerable.Untrigger();
+        UnuseAnimation();
+        state = UseState.Usable;
+    }
+
+    protected abstract void UseAnimation();
+    protected abstract void UnuseAnimation();
+
+    public enum UseState
+    {
+        Usable,
+        Activated,
     }
 
     public string GetUsableLabel() => "Button";
 
     public string GetActionLabel() => "Press";
+
+    public string GetUsePrompt()
+    {
+        switch (state)
+        {
+            case UseState.Usable:
+                return $"{GetActionLabel()} {GetUsableLabel()}";
+            case UseState.Activated:
+                return $"Button is active";
+            default:
+                return $"{GetActionLabel()} {GetUsableLabel()}";
+        }
+    }
+
+    public string GetKeyLabel()
+    {
+        switch (state)
+        {
+            case UseState.Usable:
+                return inputKey;
+            case UseState.Activated:
+                return "";
+            default:
+                return inputKey;
+        }
+    }
 }

@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 5595539030385383931}
   - component: {fileID: 220526795326924657}
   - component: {fileID: 4753164541546685440}
+  - component: {fileID: 8999819859933993122}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -149,9 +150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d6ca4d7f82b0403a40a9aa379e6644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 2
-  acceleration: 40
+  maxMoveSpeed: 2.2
+  acceleration: 35
   movementDeadzone: 0.2
+  sprintRatio: 1.7
   moveAction:
     m_Name: Move
     m_Type: 0
@@ -222,6 +224,14 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
+    - m_Name: Sprint
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 3968b8c0-26cc-43d3-a8b1-3e3edb37c84e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
     m_Bindings:
     - m_Name: 
       m_Id: 8a718dea-f28a-4f96-af7b-cfa75041e2bb
@@ -239,9 +249,18 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Disk
       m_Flags: 0
+    - m_Name: 
+      m_Id: 9c74e12d-0de3-463d-b661-7b1157716b73
+      m_Path: <Keyboard>/leftShift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Sprint
+      m_Flags: 0
   head_: {fileID: 8124183052260777435}
   reacher_: {fileID: 0}
   inventory: {fileID: 0}
+  startAt3dLevel: {fileID: 0}
 --- !u!114 &6058119305721968279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,3 +338,11 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!81 &8999819859933993122
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880783659850259186}
+  m_Enabled: 1

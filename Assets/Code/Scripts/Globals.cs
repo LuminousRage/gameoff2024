@@ -10,7 +10,6 @@ public static class Globals
         A,
         B,
         C,
-        D,
     }
 
     public enum FloppyDiskID
@@ -22,10 +21,6 @@ public static class Globals
         E,
         F,
         G,
-        H,
-        I,
-        J,
-        K,
     }
 
     public static readonly Dictionary<FloppyDiskID, Color> FloppyColourMap = new Dictionary<
@@ -40,10 +35,6 @@ public static class Globals
         { FloppyDiskID.E, Color.cyan },
         { FloppyDiskID.F, Color.magenta },
         { FloppyDiskID.G, Color.red },
-        { FloppyDiskID.H, new Color(0.6f, 0.4f, 0.1f) },
-        { FloppyDiskID.I, new Color(0.0f, 0.4f, 0.8f) },
-        { FloppyDiskID.J, new Color(1f, 0.0f, 1f) },
-        { FloppyDiskID.K, new Color(0.5f, 0.2f, 0f) },
     };
 
     public static Color GetFloppyColor(FloppyDiskID id)
@@ -55,4 +46,12 @@ public static class Globals
 
         return FloppyColourMap[id];
     }
+
+    public static readonly Dictionary<Zone, Color> ZoneColourMap = new Dictionary<Zone, Color>()
+    {
+        { Zone.Broken, new Color(0.85f, 0.85f, 0.85f) },
+        { Zone.B, Color.blue },
+        { Zone.A, Color.green },
+        { Zone.C, Color.magenta },
+    };
 }

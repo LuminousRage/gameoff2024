@@ -1,6 +1,8 @@
 using System.Linq;
+using TreeEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
+using sm = UnityEngine.SceneManagement;
 
 public class Level2D : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class Level2D : MonoBehaviour
 
     // For broken zones only - the computer all avatars should exit out at
     public Computer outBrokenComputer;
+
+    private bool isOnBrokenComputer = false;
 
     [Range(0, 15)]
     public int levelOrder;
@@ -55,14 +59,8 @@ public class Level2D : MonoBehaviour
 
         avatar.GetLevel().UpdatePlayerToComputer(avatar, c.zone, avatarLastZone);
         avatar.SetControllable(true);
-
-        if (!entered_)
-        {
-            var avatars = GetComponentsInChildren<Avatar>().ToList();
-            avatars.ForEach(a => a.SetRenderCamera(true));
-            PlayerPrefs.SetInt("ContinueLevel", levelOrder);
-        }
-        entered_ = true;
+        avatar.GetRigidbody().bodyType = RigidbodyType2D.Dynamic;
+        sceneManager.avatarActive = avatar;
     }
 
     public Avatar GetAndValidateAvatar(Computer c)
@@ -82,20 +80,35 @@ public class Level2D : MonoBehaviour
         return avatars[0];
     }
 
-    public void Exit()
+    public void OnStandUp()
     {
-        if (!entered_)
-        {
-            Debug.LogError("Attempted to exit level without entering. Exiting anyway.");
-        }
-
         var avatars = GetComponentsInChildren<Avatar>().ToList();
         avatars.ForEach(a =>
         {
             a.SetControllable(false);
-            a.SetRenderCamera(false);
+            a.GetRigidbody().bodyType = RigidbodyType2D.Static;
         });
-        entered_ = false;
+
+        if (isOnBrokenComputer)
+        {
+            //TODO:What happens when the level cap is reached
+            outBrokenComputer.quad_.SetActive(false);
+            var levels =FindObjectsByType<Level2D>(FindObjectsSortMode.None)
+                .ToList();
+            var nextlevel = levels.Find((a) => a.levelOrder == levelOrder + 1);
+            if (nextlevel == null)
+            {
+                //TODO:take me to the credits
+                sm.SceneManager.LoadScene("Main Menu");
+            } else {
+                var nextAvatars = nextlevel.GetComponentsInChildren<Avatar>().ToList();
+                avatars.ForEach(a => a.SetRenderCamera(false));
+                nextAvatars.ForEach(a => a.SetRenderCamera(true));
+                PlayerPrefs.SetInt("ContinueLevel", levelOrder + 1);
+
+                sceneManager.EnsureLoaded(nextlevel.levelOrder);
+            }
+            }
     }
 
     public void StandUp()
@@ -127,19 +140,27 @@ public class Level2D : MonoBehaviour
         Computer computer = computerOverride
             ? outBrokenComputer
             : computerManager.computerLookUp[this][(avatar.number, newZone)];
+        if (computerOverride)
+        {
+            computer.quad_.GetComponent<MeshRenderer>().material = computer.avatarScreens[
+                avatar.number - 1
+            ];
+        }
+        isOnBrokenComputer = computerOverride;
         computer.ToggleComputer(true);
 
         // move 3d player in front of computer
         Debug.Log($"Moving player to {computer} of {computer.transform.parent.name}");
         var transform = computer.GetWatcherTransform();
         sceneManager.UpdatePlayerLocation(transform);
+        sceneManager.followCamera_._followee = transform;
     }
 
     public void TellOtherComputersToRenderGhostDisks(
         byte avatarId,
         Computer originComputer,
         int slotIndex,
-        bool setVisible = true
+        Globals.FloppyDiskID? floppyDiskID = null
     )
     {
         var computers = computerManager
@@ -149,15 +170,19 @@ public class Level2D : MonoBehaviour
 
         foreach (var computer in computers)
         {
-            if (setVisible)
+            if (floppyDiskID != null)
             {
                 var ghostDisk = ghostFloppyDiskManager.GetUnusedGhostDisk();
+
+                var rend = ghostDisk.GetComponentInChildren<MeshRenderer>();
+                MaterialPropertyBlock mpb = new MaterialPropertyBlock();
+                mpb.SetFloat("_Transparency", 0.4f);
+                mpb.SetColor("_NewColor", Globals.GetFloppyColor(floppyDiskID.Value));
+                rend.SetPropertyBlock(mpb);
+
                 computer.floppyDiskManager.SetGhostFloppyDisk(ghostDisk, slotIndex);
-                Debug.Log(computer.floppyDiskManager.GetSlotPosition(slotIndex));
-                ghostDisk.transform.SetPositionAndRotation(
-                    computer.floppyDiskManager.GetSlotPosition(slotIndex),
-                    Quaternion.Euler(0, 0, 0)
-                );
+                var (pos, rot) = computer.floppyDiskManager.GetSlotPositionAndRotation(slotIndex);
+                ghostDisk.transform.SetPositionAndRotation(pos, rot);
             }
             else
             {

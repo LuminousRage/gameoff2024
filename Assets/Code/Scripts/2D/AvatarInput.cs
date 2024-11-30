@@ -9,7 +9,7 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
     public InputAction standupAction;
     public InputAction useAction;
 
-    private IUsable usable;
+    public IUsable usable { get; private set; }
 
     [SerializeField]
     private float speed = 5;

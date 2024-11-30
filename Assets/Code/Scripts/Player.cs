@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using TreeEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,9 +15,18 @@ public class Player : MonoBehaviour, IControllable
     [Range(0f, 1.0f)]
     public float movementDeadzone = 0.2f;
 
+    [
+        Range(1.2f, 3f),
+        Tooltip(
+            "The ratio to apply when the player sprints. For example, at 2.0f the player will run twice as fast when sprinting."
+        )
+    ]
+    public float sprintRatio = 1.6f;
+
     public InputAction moveAction;
     private InputAction useAction_;
     private InputAction diskAction_;
+    private InputAction sprintAction_;
 
     public Transform GetHeadTransform()
     {
@@ -28,7 +38,7 @@ public class Player : MonoBehaviour, IControllable
 
     public InputActionMap gameplayActions;
 
-    private SceneManager mouseManager_;
+    private SceneManager sceneManager_;
 
     private IUsable usable_;
     private Rigidbody rb_;
@@ -38,6 +48,7 @@ public class Player : MonoBehaviour, IControllable
     public PlayerInventory inventory;
 
     private bool currentlyControlling_ = false;
+    private bool currentlySprinting_ = false;
 
     public void SetControllable(bool enable = true)
     {
@@ -52,12 +63,14 @@ public class Player : MonoBehaviour, IControllable
             moveAction.Enable();
             useAction_.Enable();
             diskAction_.Enable();
+            sprintAction_.Enable();
         }
         else
         {
             moveAction.Disable();
             useAction_.Disable();
             diskAction_.Disable();
+            sprintAction_.Disable();
         }
     }
 
@@ -65,8 +78,6 @@ public class Player : MonoBehaviour, IControllable
     {
         return this.currentlyControlling_;
     }
-
-    public GameObject startAt3dLevel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -82,8 +93,8 @@ public class Player : MonoBehaviour, IControllable
         this.reacher_ = GetComponentInChildren<PlayerReacher>();
         Assert.IsNotNull(headTransform, "Unable to find Reacher transform from Player.");
 
-        this.mouseManager_ = FindFirstObjectByType<SceneManager>();
-        Assert.IsNotNull(this.mouseManager_, "Unable to find the MouseManager from the Player.");
+        this.sceneManager_ = FindFirstObjectByType<SceneManager>();
+        Assert.IsNotNull(this.sceneManager_, "Unable to find the MouseManager from the Player.");
 
         // gameplayActions.Enable();
 
@@ -94,48 +105,36 @@ public class Player : MonoBehaviour, IControllable
         Assert.IsNotNull(useAction_, "Unable to find Use action from Player.");
         diskAction_ = gameplayActions.FindAction("Disk");
         Assert.IsNotNull(diskAction_, "Unable to find Insert action from Player.");
-
-        ContinueGame();
+        sprintAction_ = gameplayActions.FindAction("Sprint");
+        Assert.IsNotNull(sprintAction_, "Unable to find Sprint action from Player.");
 
         SetControllable(true);
         useAction_.performed += context =>
-            mouseManager_.RunActionWithInputLock(() => this.reacher_.UseUsable(), context.action);
+            sceneManager_.RunActionWithInputLock(() => this.reacher_.UseUsable(), context.action);
 
         diskAction_.performed += context => this.reacher_.UseDiskAction();
+
+        sprintAction_.started += context => this.currentlySprinting_ = true;
+        sprintAction_.canceled += context => this.currentlySprinting_ = false;
+
+        ContinueGame();
     }
 
-    // Update every frame
 
     void ContinueGame()
     {
         var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
-        var levels2d = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList();
-        var level2d = levels2d.Find(level => level.levelOrder == continueLevel - 1);
-        var computer = level2d == null ? null : level2d.outBrokenComputer;
-
-        if (startAt3dLevel != null || continueLevel != 0)
+        sceneManager_.EnsureLoaded(continueLevel);
+        if (continueLevel>0)
         {
-            if (startAt3dLevel != null)
-            {
-                computer = startAt3dLevel.GetComponentInChildren<Computer>();
-                Debug.LogWarning(
-                    $"Manually setting player position to {startAt3dLevel}, please ensure it is removed after you're done!"
-                );
-            }
-
-            if (computer == null)
-            {
-                Debug.LogError("Unable to find computer to start at.");
-                return;
-            }
-
-            var transform = computer.transform.Find("Watcher")?.gameObject.transform;
-            this.transform.position = transform.position;
-            rb_.position = transform.position;
-            if (startAt3dLevel == null)
-            {
-                computer.state_ = Computer.UseState.Broken;
-            }
+            var previousLevel = sceneManager_.GetLevel(continueLevel-1);
+            var exitComputer = previousLevel.GetComponentInChildren<Level2D>().outBrokenComputer;
+            Debug.Log($"lvl {continueLevel}");
+            Debug.Log($"lval {exitComputer.GetWatcherTransform().position}");
+            this.transform.position = exitComputer.GetWatcherTransform().position;
+            Debug.Log($"lval {this.transform.position}");
+            sceneManager_.UpdatePlayerLocation(exitComputer.GetWatcherTransform());
+            exitComputer.state_ = Computer.UseState.Broken;
         }
     }
 
@@ -148,7 +147,7 @@ public class Player : MonoBehaviour, IControllable
 
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
-            mouseManager_.ToggleMouseLock();
+            sceneManager_.ToggleMouseLock();
         }
     }
 
@@ -163,7 +162,7 @@ public class Player : MonoBehaviour, IControllable
 
     private void UpdateCamera()
     {
-        Vector2 mouseXY = this.mouseManager_.GetScaledDelta();
+        Vector2 mouseXY = this.sceneManager_.GetScaledDelta();
 
         // Rotate horizontal view (no need for bounds checking)
         this.transform.Rotate(new Vector3(0, mouseXY.x, 0));
@@ -215,6 +214,10 @@ public class Player : MonoBehaviour, IControllable
         direction += inputDirections.y * this.transform.forward;
         direction += inputDirections.x * this.head_.transform.right;
 
+        float sprintModifier = currentlySprinting_ ? 2 : 1;
+
+        direction *= sprintModifier;
+
         // Add force if high enough
         if (direction.magnitude >= movementDeadzone)
         {
@@ -223,14 +226,22 @@ public class Player : MonoBehaviour, IControllable
         }
 
         var currentVelocity2D = new Vector2(rb_.linearVelocity.x, rb_.linearVelocity.z);
-        if (currentVelocity2D.magnitude > maxMoveSpeed)
+
+        var maxSpeed = GetMaxMoveSpeed();
+        if (currentVelocity2D.magnitude > maxSpeed)
         {
-            var cappedVelocity = currentVelocity2D.normalized * maxMoveSpeed;
+            var cappedVelocity = currentVelocity2D.normalized * maxSpeed;
             rb_.linearVelocity = new Vector3(
                 cappedVelocity.x,
                 rb_.linearVelocity.y,
                 cappedVelocity.y
             );
         }
+    }
+
+    // Gets the max speed with respect to sprinting
+    private float GetMaxMoveSpeed()
+    {
+        return this.maxMoveSpeed * (this.currentlySprinting_ ? this.sprintRatio : 1);
     }
 }

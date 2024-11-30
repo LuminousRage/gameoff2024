@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
         if (PlayerPrefs.GetInt("IntroDone",0)==0) {
             sm.SceneManager.LoadScene("Intro");
         } else {
-            sm.SceneManager.LoadScene("Main");
+            sm.SceneManager.LoadScene("Main (Dynamic)");
         }
     }
     public void QuitGame()

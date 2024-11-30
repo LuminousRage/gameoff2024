@@ -86,31 +86,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9741f11dea0b6b042831e0861855255c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9125091866706169344}
+      addedObject: {fileID: 4725648925589609885}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9741f11dea0b6b042831e0861855255c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4725648925589609885}
+      addedObject: {fileID: 7786286319797554945}
   m_SourcePrefab: {fileID: 100100000, guid: 9741f11dea0b6b042831e0861855255c, type: 3}
 --- !u!1 &5600090525046173608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9741f11dea0b6b042831e0861855255c, type: 3}
   m_PrefabInstance: {fileID: 4717218761841922809}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9125091866706169344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5600090525046173608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56700c88ae2be45c899e8dd13fe64aeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotPosition:
-  - {x: 0.1352, y: 0.087, z: 0.1534}
-  - {x: -0.0011, y: 0.0338, z: 0.1534}
 --- !u!65 &4725648925589609885
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -132,3 +117,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 0.6, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7786286319797554945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600090525046173608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56700c88ae2be45c899e8dd13fe64aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotPosition:
+  - {x: -0.0481, y: 0.1, z: 0.08}
+  - {x: -0.1651, y: 0.1, z: 0.0802}
+  defaultDiskRotation: {x: -0.49999997, y: 0.49999997, z: 0.49999997, w: 0.49999997}

@@ -5,6 +5,8 @@ public class PressurePad : MonoBehaviour
 {
     public Triggerable triggerable;
 
+    private int thingsOnPad = 0;
+
     void Start()
     {
         Assert.IsNotNull(triggerable);
@@ -14,7 +16,11 @@ public class PressurePad : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            triggerable.Trigger();
+            if (thingsOnPad == 0)
+            {
+                triggerable.Trigger();
+            }
+            thingsOnPad++;
         }
     }
 
@@ -22,7 +28,11 @@ public class PressurePad : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            triggerable.Untrigger();
+            thingsOnPad--;
+            if (thingsOnPad == 0)
+            {
+                triggerable.Untrigger();
+            }
         }
     }
 }

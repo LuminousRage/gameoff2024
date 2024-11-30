@@ -302,6 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8020667541768526929}
   - component: {fileID: 7396354880262280703}
+  - component: {fileID: 375100568842870288}
   m_Layer: 0
   m_Name: RenderCamera
   m_TagString: Untagged
@@ -354,9 +355,9 @@ Camera:
     x: 0
     y: 0
     width: 1
-    height: 0.7
+    height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 60
   field of view: 60
   orthographic: 1
   orthographic size: 9
@@ -375,3 +376,15 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &375100568842870288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573050921396762487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce3762d4abed5a4e9af6357fe471146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

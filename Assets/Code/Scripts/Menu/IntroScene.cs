@@ -14,6 +14,7 @@ public class IntroScene : MonoBehaviour
     }
 
     public void MoveToMain() {
-        sm.SceneManager.LoadScene("Main");
+        PlayerPrefs.SetInt("IntroDone",1);
+        sm.SceneManager.LoadScene("Main (Dynamic)");
     }
 }
