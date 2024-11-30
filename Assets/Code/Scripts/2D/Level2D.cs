@@ -60,13 +60,6 @@ public class Level2D : MonoBehaviour
         avatar.GetRigidbody().bodyType = RigidbodyType2D.Dynamic;
         sceneManager.avatarActive = avatar;
 
-        if (!entered_)
-        {
-            var avatars = GetComponentsInChildren<Avatar>().ToList();
-            avatars.ForEach(a => a.SetRenderCamera(true));
-            PlayerPrefs.SetInt("ContinueLevel", levelOrder);
-        }
-        entered_ = true;
     }
 
     public Avatar GetAndValidateAvatar(Computer c)
@@ -86,27 +79,26 @@ public class Level2D : MonoBehaviour
         return avatars[0];
     }
 
-    public void Exit()
+    public void OnStandUp()
     {
-        if (!entered_)
-        {
-            Debug.LogError("Attempted to exit level without entering. Exiting anyway.");
-        }
 
         var avatars = GetComponentsInChildren<Avatar>().ToList();
         avatars.ForEach(a =>
         {
             a.SetControllable(false);
-            a.SetRenderCamera(false);
             a.GetRigidbody().bodyType = RigidbodyType2D.Static;
         });
 
         if (isOnBrokenComputer)
         {
             outBrokenComputer.quad_.SetActive(false);
+            var nextlevel = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList().Find((a)=>a.levelOrder==levelOrder+1);
+            var nextAvatars = nextlevel.GetComponentsInChildren<Avatar>().ToList();
+            avatars.ForEach(a => a.SetRenderCamera(false));
+            nextAvatars.ForEach(a => a.SetRenderCamera(true));
+            PlayerPrefs.SetInt("ContinueLevel", levelOrder+1);
         }
 
-        entered_ = false;
     }
 
     public void StandUp()
