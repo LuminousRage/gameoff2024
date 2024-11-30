@@ -16,7 +16,7 @@ public class Computer : MonoBehaviour, IUsable
 
     private SceneManager sceneManager_;
 
-    private Triggerable triggerable;
+    public Triggerable triggerable;
 
     public ComputerFloppyDisk floppyDiskManager { get; private set; }
 
