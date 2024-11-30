@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2663430857529816667, guid: a3c87ec5467454f4cad728b32a648b1d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4363284309548397378, guid: a3c87ec5467454f4cad728b32a648b1d, type: 3}
       propertyPath: m_Name
-      value: DoorH
+      value: SlidingDoorH
       objectReference: {fileID: 0}
     - target: {fileID: 4729444229694671808, guid: a3c87ec5467454f4cad728b32a648b1d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -140,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94affac230f254f0c89646522b5abfdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  signalCount: 1
   slideDistance: 3
   slideSpeed: 2
   direction: {x: -1, y: 0}
