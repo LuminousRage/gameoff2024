@@ -126,26 +126,23 @@ public class Player : MonoBehaviour, IControllable
     void ContinueGame()
     {
         var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
+        sceneManager_.EnsureLoaded(continueLevel);
+        startAt3dLevel = sceneManager_.GetLevel(continueLevel);
 
         var levels2d = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList();
         var level2d = levels2d.Find(level => level.levelOrder == continueLevel - 1);
         var computer = level2d == null ? null : level2d.outBrokenComputer;
 
-        if (continueLevel >= 0)
-        {
-            sceneManager_.EnsureLoaded(continueLevel);
-            startAt3dLevel = sceneManager_.GetLevel(continueLevel);
-        }
 
         if (startAt3dLevel != null)
         {
-            if (startAt3dLevel != null)
-            {
-                computer = startAt3dLevel.GetComponentInChildren<Computer>();
-                Debug.LogWarning(
-                    $"Manually setting player position to {startAt3dLevel}, please ensure it is removed after you're done!"
-                );
-            }
+            computer = startAt3dLevel.GetComponentInChildren<Computer>();
+            Debug.LogWarning(
+                $"Manually setting player position to {startAt3dLevel}, please ensure it is removed after you're done!"
+            );
+        }
+        if (continueLevel != 0)
+        {
 
             if (computer == null)
             {

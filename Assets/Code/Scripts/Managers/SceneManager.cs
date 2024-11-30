@@ -316,20 +316,18 @@ public class SceneManager : MonoBehaviour
             {
                 GameObject newLevel = Instantiate<GameObject>(levelData.levelPrefabs[i]);
                 newLevel.gameObject.transform.position = new Vector3(0, i % 3 * 100, 0);
-
-                if (newLevel == null)
-                {
-                    Debug.LogError($"Unable to load level {i}. This will cause problems later.");
+                if (i>=levelIndex) {
+                    var previouslevel = levelsLoaded_[i-1].GetComponentsInChildren<Level2D>()[0];
+                    //TODO:checking for avatar not 1 is a hacky fix that will work for now
+                    previouslevel.outBrokenComputer = newLevel.GetComponentsInChildren<Computer>().ToList().Find((a) => a.isGhostComputer && a.avatar!= 1);
                 }
-                else
-                {
-                    UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(
-                        newLevel,
-                        currentScene
-                    );
+                
+                UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(
+                    newLevel,
+                    currentScene
+                );
 
-                    levelsLoaded_[i] = newLevel;
-                }
+                levelsLoaded_[i] = newLevel;
             }
         }
     }
