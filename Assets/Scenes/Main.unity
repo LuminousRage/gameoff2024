@@ -1122,10 +1122,6 @@ PrefabInstance:
       propertyPath: startAt
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 8656902512701637491, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
-      propertyPath: startAt3dLevel
-      value: 
-      objectReference: {fileID: 2000563603}
     - target: {fileID: 8880783659850259186, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1239,11 +1235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a47bf25e6c2d38d7ba7c9a5ded071eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2000563603 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8843277282884400971, guid: 6559a15754e49de42aa1d175b6c2a770, type: 3}
-  m_PrefabInstance: {fileID: 2075173915}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2075173915
 PrefabInstance:
   m_ObjectHideFlags: 0

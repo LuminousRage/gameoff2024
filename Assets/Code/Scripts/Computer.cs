@@ -20,6 +20,8 @@ public class Computer : MonoBehaviour, IUsable
 
     public ComputerFloppyDisk floppyDiskManager { get; private set; }
 
+    public Avatar avatarObj { get; private set; }
+
     public bool isGhostComputer = false;
 
     public enum UseState
@@ -65,6 +67,9 @@ public class Computer : MonoBehaviour, IUsable
         ToggleComputer(currentAvatar.az.currentCollisionZone.zone == zone, true);
 
         quad_.GetComponent<MeshRenderer>().material = avatarScreens[avatar - 1];
+
+        avatarObj = level.GetAndValidateAvatar(this);
+        Assert.IsNotNull(this.avatarObj, "Unable to find avatar from Computer.");
     }
 
     public void ToggleComputer(bool enabled = true, bool firstToggle = false)
@@ -85,7 +90,8 @@ public class Computer : MonoBehaviour, IUsable
 
         if (!firstToggle && triggerable != null)
         {
-            if (enabled)
+            // Computer off trigers the triggerable
+            if (!enabled)
             {
                 triggerable.Trigger();
             }

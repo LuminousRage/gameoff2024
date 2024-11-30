@@ -12,7 +12,6 @@ public class ComputerFloppyDisk : MonoBehaviour
     };
     public Quaternion defaultDiskRotation = Quaternion.Euler(-90, 90, 0);
 
-    private Avatar avatar;
     private Computer computer;
 
     // this is a reference, so will be updated when the avatar's keys are updated
@@ -24,20 +23,13 @@ public class ComputerFloppyDisk : MonoBehaviour
     {
         computer = this.GetComponentInParent<Computer>();
         Assert.IsNotNull(this.computer);
-
-        if (computer.level == null)
-        {
-            return;
-        }
-        avatar = computer.level.GetAndValidateAvatar(this.computer);
-        Assert.IsNotNull(this.avatar, "Unable to find avatar from ComputerFloppyDisk.");
-        avatarFloppyDisks = avatar.GetKeys();
+        avatarFloppyDisks = computer.avatarObj.GetKeys();
     }
 
     // Update is called once per frame
     void Update() { }
 
-    public bool IsAvatarDisksFull() => avatar.IsKeysFull();
+    public bool IsAvatarDisksFull() => computer.avatarObj.IsKeysFull();
 
     public FloppyDisk[] GetAllComputerDisks() =>
         avatarFloppyDisks.Where(d => d != null && d.GetComputer() == this.computer).ToArray();
@@ -55,8 +47,8 @@ public class ComputerFloppyDisk : MonoBehaviour
         }
 
         disk.SetComputer(this.computer);
-        avatar.AddKey(disk);
-        disk.doors.ToList().ForEach(door => door.UpdateLaserCollision(avatar));
+        computer.avatarObj.AddKey(disk);
+        disk.doors.ToList().ForEach(door => door.UpdateLaserCollision(computer.avatarObj));
     }
 
     public List<FloppyDisk> RemoveAllFloppyDisk()
@@ -64,9 +56,9 @@ public class ComputerFloppyDisk : MonoBehaviour
         var allDisks = GetAllComputerDisks().ToList();
         allDisks.ForEach(d =>
         {
-            avatar.RemoveKey(d);
+            computer.avatarObj.RemoveKey(d);
             d.SetComputer(null);
-            d.doors.ToList().ForEach(door => door.UpdateLaserCollision(avatar));
+            d.doors.ToList().ForEach(door => door.UpdateLaserCollision(computer.avatarObj));
         });
 
         return allDisks;

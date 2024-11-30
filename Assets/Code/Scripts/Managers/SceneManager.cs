@@ -225,7 +225,7 @@ public class SceneManager : MonoBehaviour
             player_.SetControllable(true);
         }
 
-        focusedComputer_?.level.Exit();
+        focusedComputer_?.level.Exit(focusedComputer_);
         focusedComputer_ = computer;
     }
 
