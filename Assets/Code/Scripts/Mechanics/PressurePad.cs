@@ -28,11 +28,11 @@ public class PressurePad : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            thingsOnPad--;
             if (thingsOnPad == 0)
             {
                 triggerable.Untrigger();
             }
-            thingsOnPad--;
         }
     }
 }
