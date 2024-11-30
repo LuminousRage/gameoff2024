@@ -120,18 +120,17 @@ public class Player : MonoBehaviour, IControllable
         ContinueGame();
     }
 
-
     void ContinueGame()
     {
         var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
         sceneManager_.EnsureLoaded(continueLevel);
-        if (continueLevel>0)
+        if (continueLevel > 0)
         {
-            var previousLevel = sceneManager_.GetLevel(continueLevel-1);
+            var previousLevel = sceneManager_.GetLevel(continueLevel - 1);
             var exitComputer = previousLevel.GetComponentInChildren<Level2D>().outBrokenComputer;
             Debug.Log($"lvl {continueLevel}");
             Debug.Log($"lval {exitComputer.GetWatcherTransform().position}");
-            this.transform.position = exitComputer.GetWatcherTransform().position;
+            rb_.MovePosition(exitComputer.GetWatcherTransform().position);
             Debug.Log($"lval {this.transform.position}");
             sceneManager_.UpdatePlayerLocation(exitComputer.GetWatcherTransform());
             exitComputer.state_ = Computer.UseState.Broken;
