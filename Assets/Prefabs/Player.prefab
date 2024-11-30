@@ -152,6 +152,7 @@ MonoBehaviour:
   maxMoveSpeed: 2.2
   acceleration: 35
   movementDeadzone: 0.2
+  sprintRatio: 1.7
   moveAction:
     m_Name: Move
     m_Type: 0
@@ -222,6 +223,14 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
+    - m_Name: Sprint
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 3968b8c0-26cc-43d3-a8b1-3e3edb37c84e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
     m_Bindings:
     - m_Name: 
       m_Id: 8a718dea-f28a-4f96-af7b-cfa75041e2bb
@@ -238,6 +247,14 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Disk
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 9c74e12d-0de3-463d-b661-7b1157716b73
+      m_Path: <Keyboard>/leftShift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Sprint
       m_Flags: 0
   head_: {fileID: 8124183052260777435}
   reacher_: {fileID: 0}
