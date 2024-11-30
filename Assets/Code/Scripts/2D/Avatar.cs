@@ -99,7 +99,12 @@ public class Avatar : MonoBehaviour, IControllable
             }
             avatarKeys[emptyIndex] = key;
             key.SetFloppyDiskTransform(emptyIndex);
-            level.TellOtherComputersToRenderGhostDisks(number, key.GetComputer(), emptyIndex, true);
+            level.TellOtherComputersToRenderGhostDisks(
+                number,
+                key.GetComputer(),
+                emptyIndex,
+                key.floppyDiskID
+            );
         }
     }
 
@@ -108,7 +113,7 @@ public class Avatar : MonoBehaviour, IControllable
         if (avatarKeys.Contains(key))
         {
             var index = Array.IndexOf(avatarKeys, key);
-            level.TellOtherComputersToRenderGhostDisks(number, key.GetComputer(), index, false);
+            level.TellOtherComputersToRenderGhostDisks(number, key.GetComputer(), index);
             avatarKeys[index] = null;
         }
     }

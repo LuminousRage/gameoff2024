@@ -44,6 +44,8 @@ public class ComputerFloppyDisk : MonoBehaviour
 
     public bool ContainsDisk() => GetAllComputerDisks().Count() > 0;
 
+    public bool ContainsGhostDisk() => ghostFloppyDisks.Any(d => d != null);
+
     public void InsertFloppyDisk(FloppyDisk disk)
     {
         if (IsAvatarDisksFull())

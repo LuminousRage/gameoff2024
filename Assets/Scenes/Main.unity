@@ -992,6 +992,42 @@ PrefabInstance:
       propertyPath: outBrokenComputer
       value: 
       objectReference: {fileID: 1500820572}
+    - target: {fileID: 3941981192475819398, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.3588347
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941981192475819398, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.586
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941981192475819398, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.372
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941981192475819398, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941981192475819398, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941981192475819398, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941981192475819398, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941981192475819398, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941981192475819398, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 4237993347170516722, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
@@ -1050,6 +1086,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8862181503918009675, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
       propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130095590464032653, guid: 602c448608c71704a8f4ff571e702d3d, type: 3}
+      propertyPath: floppyDiskID
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

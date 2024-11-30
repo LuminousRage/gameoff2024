@@ -111,6 +111,7 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
 
         // not usable, but will show a prompt
         CannotInsert,
+        CannotEject,
         None,
     }
 
@@ -124,6 +125,8 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
                 return ("F", "Eject floppy disk");
             case DiskActionPrompts.CannotInsert:
                 return (null, "Floppy disk drive is full");
+            case DiskActionPrompts.CannotEject:
+                return (null, "Floppy disk is in another computer");
             case DiskActionPrompts.None:
                 return (null, null);
             default:
@@ -137,22 +140,28 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         {
             return DiskActionPrompts.None;
         }
-
+        Debug.Log(
+            $"{computer_.floppyDiskManager.IsAvatarDisksFull()} {computer_.floppyDiskManager.ContainsDisk()} {player_.inventory.GetCurrentHoldable() != null}"
+        );
         switch
             (
                 computer_.floppyDiskManager.IsAvatarDisksFull(),
                 computer_.floppyDiskManager.ContainsDisk(),
-                player_.inventory.GetCurrentHoldable() != null
+                player_.inventory.GetCurrentHoldable() != null,
+                computer_.floppyDiskManager.ContainsGhostDisk()
             )
 
         {
-            case (true, false, true):
+            // IsAvatarDisksFull() && ContainsDisk() necessates ContainsGhostDisk() is true
+            case (true, false, false, _):
+                return DiskActionPrompts.CannotEject;
+            case (true, false, true, _):
                 return DiskActionPrompts.CannotInsert;
             // false, true, true
             // false, false, true
-            case (false, _, true):
+            case (false, _, true, _):
                 return DiskActionPrompts.Insert;
-            case (true, true, true):
+            case (true, true, true, _):
                 // We can't handle this case because we can only hold one disk at a time.
                 // But also Louis said this won't ever happen in the game
                 // To avoid being in an unsolvable state, let's not do anything to the disk
@@ -162,10 +171,11 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
                 return DiskActionPrompts.None;
             // false, true, false
             // true, true, false
-            case (_, true, _):
+            case (_, true, _, _):
                 return DiskActionPrompts.Eject;
-            // false, false, false
-            // true, false, false
+            case (false, false, false, true):
+                return DiskActionPrompts.CannotEject;
+            // false, false, false, false
             default:
                 return DiskActionPrompts.None;
         }
@@ -192,6 +202,8 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
                 disks.ForEach(disk => player_.inventory.AddToInventory(disk));
                 break;
             case DiskActionPrompts.CannotInsert:
+                break;
+            case DiskActionPrompts.CannotEject:
                 break;
             case DiskActionPrompts.None:
                 break;

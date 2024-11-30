@@ -142,7 +142,7 @@ public class Level2D : MonoBehaviour
         byte avatarId,
         Computer originComputer,
         int slotIndex,
-        bool setVisible = true
+        Globals.FloppyDiskID? floppyDiskID = null
     )
     {
         var computers = computerManager
@@ -152,9 +152,16 @@ public class Level2D : MonoBehaviour
 
         foreach (var computer in computers)
         {
-            if (setVisible)
+            if (floppyDiskID != null)
             {
                 var ghostDisk = ghostFloppyDiskManager.GetUnusedGhostDisk();
+
+                var rend = ghostDisk.GetComponentInChildren<MeshRenderer>();
+                MaterialPropertyBlock mpb = new MaterialPropertyBlock();
+                mpb.SetFloat("Transparency", 0.1f);
+                mpb.SetColor("_NewColor", Globals.GetFloppyColor(floppyDiskID.Value));
+                rend.SetPropertyBlock(mpb);
+
                 computer.floppyDiskManager.SetGhostFloppyDisk(ghostDisk, slotIndex);
                 var (pos, rot) = computer.floppyDiskManager.GetSlotPositionAndRotation(slotIndex);
                 ghostDisk.transform.SetPositionAndRotation(pos, rot);

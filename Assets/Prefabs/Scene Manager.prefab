@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialFloppyDiskCount: 10
-  ghostFloppyDiskPrefab: {fileID: 1938758619342909474, guid: 788d9c09e1d3c49a890b410516a85ac9, type: 3}
+  ghostFloppyDiskPrefab: {fileID: 4219988466177038081, guid: 2df3e4a3ef0744ea79d03c4c088f1bb8, type: 3}
 --- !u!114 &3597940299408079123
 MonoBehaviour:
   m_ObjectHideFlags: 0
