@@ -196,7 +196,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: fae53c55b70feb01b942d4b9dcf21b64, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -6478536213147159724, guid: 55a7f8fbed979ebe0a21b5e1c17e40ce, type: 3}
+      objectReference: {fileID: 2100000, guid: 3323ea413c82991638c5835cda117c5b, type: 2}
     - target: {fileID: 919132149155446097, guid: fae53c55b70feb01b942d4b9dcf21b64, type: 3}
       propertyPath: m_Name
       value: Window Frame
