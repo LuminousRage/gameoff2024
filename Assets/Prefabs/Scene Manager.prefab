@@ -659,6 +659,7 @@ MonoBehaviour:
   usePromptPosition2D: {x: -246, y: -301.3333, z: 0}
   diskPromptPosition2D: {x: 149.3333, y: -301.3333, z: 0}
   avatarActive: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 1ff33cceaa0cfca7ebcbd3f5b7faf629, type: 2}
 --- !u!114 &1129350630913415715
 MonoBehaviour:
   m_ObjectHideFlags: 0

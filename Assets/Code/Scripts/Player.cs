@@ -37,7 +37,7 @@ public class Player : MonoBehaviour, IControllable
 
     public InputActionMap gameplayActions;
 
-    private SceneManager mouseManager_;
+    private SceneManager sceneManager_;
 
     private IUsable usable_;
     private Rigidbody rb_;
@@ -94,8 +94,8 @@ public class Player : MonoBehaviour, IControllable
         this.reacher_ = GetComponentInChildren<PlayerReacher>();
         Assert.IsNotNull(headTransform, "Unable to find Reacher transform from Player.");
 
-        this.mouseManager_ = FindFirstObjectByType<SceneManager>();
-        Assert.IsNotNull(this.mouseManager_, "Unable to find the MouseManager from the Player.");
+        this.sceneManager_ = FindFirstObjectByType<SceneManager>();
+        Assert.IsNotNull(this.sceneManager_, "Unable to find the MouseManager from the Player.");
 
         // gameplayActions.Enable();
 
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour, IControllable
 
         SetControllable(true);
         useAction_.performed += context =>
-            mouseManager_.RunActionWithInputLock(() => this.reacher_.UseUsable(), context.action);
+            sceneManager_.RunActionWithInputLock(() => this.reacher_.UseUsable(), context.action);
 
         diskAction_.performed += context => this.reacher_.UseDiskAction();
 
@@ -126,11 +126,18 @@ public class Player : MonoBehaviour, IControllable
     void ContinueGame()
     {
         var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
+
         var levels2d = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList();
         var level2d = levels2d.Find(level => level.levelOrder == continueLevel - 1);
         var computer = level2d == null ? null : level2d.outBrokenComputer;
 
-        if (startAt3dLevel != null || continueLevel != 0)
+        if (continueLevel >= 0)
+        {
+            sceneManager_.EnsureLoaded(continueLevel);
+            startAt3dLevel = sceneManager_.GetLevel(continueLevel);
+        }
+
+        if (startAt3dLevel != null)
         {
             if (startAt3dLevel != null)
             {
@@ -165,7 +172,7 @@ public class Player : MonoBehaviour, IControllable
 
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
-            mouseManager_.ToggleMouseLock();
+            sceneManager_.ToggleMouseLock();
         }
     }
 
@@ -180,7 +187,7 @@ public class Player : MonoBehaviour, IControllable
 
     private void UpdateCamera()
     {
-        Vector2 mouseXY = this.mouseManager_.GetScaledDelta();
+        Vector2 mouseXY = this.sceneManager_.GetScaledDelta();
 
         // Rotate horizontal view (no need for bounds checking)
         this.transform.Rotate(new Vector3(0, mouseXY.x, 0));

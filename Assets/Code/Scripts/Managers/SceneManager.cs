@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -37,6 +36,10 @@ public class SceneManager : MonoBehaviour
     [HideInInspector]
     public Avatar avatarActive = null;
 
+    public LevelData levelData;
+
+    private GameObject[] levelsLoaded_ = { };
+
     private struct TextPrompt
     {
         public GameObject parent;
@@ -67,6 +70,13 @@ public class SceneManager : MonoBehaviour
         this.diskPrompt_ = PromptObjectToStruct(
             this.uiCanvas_.transform.Find("DiskPrompt")?.gameObject
         );
+
+        Assert.IsNotNull(
+            levelData,
+            "No level data given to SceneManager. No levels can be loaded."
+        );
+
+        levelsLoaded_ = new GameObject[levelData.levelPrefabs.Length];
 
         initialDiskPromptPosition = diskPrompt_.parent.transform.localPosition;
         initialUsePromptPosition = usePrompt_.parent.transform.localPosition;
@@ -237,11 +247,15 @@ public class SceneManager : MonoBehaviour
 
     public void UpdatePlayerLocation(Transform transform)
     {
-
         // subtract some offset so the player doesn't appear on the table
         // will need to be adjusted if the table size changes
-        player_.transform.position = transform.position + -0.7f*transform.forward + new Vector3(0,-0.6f,0);
-        player_.transform.forward = new Vector3(transform.forward.x,0,transform.forward.z).normalized;
+        player_.transform.position =
+            transform.position + -0.7f * transform.forward + new Vector3(0, -0.6f, 0);
+        player_.transform.forward = new Vector3(
+            transform.forward.x,
+            0,
+            transform.forward.z
+        ).normalized;
         followCamera_._followee = transform;
     }
 
@@ -276,5 +290,52 @@ public class SceneManager : MonoBehaviour
 
             StartCoroutine(ResetUseAction(inputAction));
         }
+    }
+
+    public void EnsureLoaded(int levelIndex)
+    {
+        // Validation checks
+        if (levelIndex < 0 || levelIndex > levelData.levelPrefabs.Length)
+            return;
+
+        var currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+        for (int i = 0; i < levelData.levelPrefabs.Length; i++)
+        {
+            var level = levelsLoaded_[i];
+
+            // Check for out of the range we want loaded
+            if (i < levelIndex - 1 || i > levelIndex + 2)
+            {
+                if (level != null)
+                    Destroy(level);
+
+                continue;
+            }
+            // Else covers all levels we want loaded
+            else if (level == null)
+            {
+                GameObject newLevel = Instantiate<GameObject>(levelData.levelPrefabs[i]);
+                newLevel.gameObject.transform.position = new Vector3(0, i % 3 * 100, 0);
+
+                if (newLevel == null)
+                {
+                    Debug.LogError($"Unable to load level {i}. This will cause problems later.");
+                }
+                else
+                {
+                    UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(
+                        newLevel,
+                        currentScene
+                    );
+
+                    levelsLoaded_[i] = newLevel;
+                }
+            }
+        }
+    }
+
+    public GameObject GetLevel(int levelIndex)
+    {
+        return levelsLoaded_[levelIndex];
     }
 }

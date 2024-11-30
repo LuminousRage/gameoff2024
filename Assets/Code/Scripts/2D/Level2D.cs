@@ -59,7 +59,6 @@ public class Level2D : MonoBehaviour
         avatar.SetControllable(true);
         avatar.GetRigidbody().bodyType = RigidbodyType2D.Dynamic;
         sceneManager.avatarActive = avatar;
-
     }
 
     public Avatar GetAndValidateAvatar(Computer c)
@@ -81,7 +80,6 @@ public class Level2D : MonoBehaviour
 
     public void OnStandUp()
     {
-
         var avatars = GetComponentsInChildren<Avatar>().ToList();
         avatars.ForEach(a =>
         {
@@ -92,13 +90,16 @@ public class Level2D : MonoBehaviour
         if (isOnBrokenComputer)
         {
             outBrokenComputer.quad_.SetActive(false);
-            var nextlevel = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList().Find((a)=>a.levelOrder==levelOrder+1);
+            var nextlevel = FindObjectsByType<Level2D>(FindObjectsSortMode.None)
+                .ToList()
+                .Find((a) => a.levelOrder == levelOrder + 1);
             var nextAvatars = nextlevel.GetComponentsInChildren<Avatar>().ToList();
             avatars.ForEach(a => a.SetRenderCamera(false));
             nextAvatars.ForEach(a => a.SetRenderCamera(true));
-            PlayerPrefs.SetInt("ContinueLevel", levelOrder+1);
-        }
+            PlayerPrefs.SetInt("ContinueLevel", levelOrder + 1);
 
+            sceneManager.EnsureLoaded(nextlevel.levelOrder);
+        }
     }
 
     public void StandUp()
