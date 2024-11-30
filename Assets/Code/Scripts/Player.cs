@@ -14,9 +14,18 @@ public class Player : MonoBehaviour, IControllable
     [Range(0f, 1.0f)]
     public float movementDeadzone = 0.2f;
 
+    [
+        Range(1.2f, 3f),
+        Tooltip(
+            "The ratio to apply when the player sprints. For example, at 2.0f the player will run twice as fast when sprinting."
+        )
+    ]
+    public float sprintRatio = 1.6f;
+
     public InputAction moveAction;
     private InputAction useAction_;
     private InputAction diskAction_;
+    private InputAction sprintAction_;
 
     public Transform GetHeadTransform()
     {
@@ -38,6 +47,7 @@ public class Player : MonoBehaviour, IControllable
     public PlayerInventory inventory;
 
     private bool currentlyControlling_ = false;
+    private bool currentlySprinting_ = false;
 
     public void SetControllable(bool enable = true)
     {
@@ -52,12 +62,14 @@ public class Player : MonoBehaviour, IControllable
             moveAction.Enable();
             useAction_.Enable();
             diskAction_.Enable();
+            sprintAction_.Enable();
         }
         else
         {
             moveAction.Disable();
             useAction_.Disable();
             diskAction_.Disable();
+            sprintAction_.Disable();
         }
     }
 
@@ -94,14 +106,17 @@ public class Player : MonoBehaviour, IControllable
         Assert.IsNotNull(useAction_, "Unable to find Use action from Player.");
         diskAction_ = gameplayActions.FindAction("Disk");
         Assert.IsNotNull(diskAction_, "Unable to find Insert action from Player.");
-
-        ContinueGame();
+        sprintAction_ = gameplayActions.FindAction("Sprint");
+        Assert.IsNotNull(sprintAction_, "Unable to find Sprint action from Player.");
 
         SetControllable(true);
         useAction_.performed += context =>
             mouseManager_.RunActionWithInputLock(() => this.reacher_.UseUsable(), context.action);
 
         diskAction_.performed += context => this.reacher_.UseDiskAction();
+
+        sprintAction_.started += context => this.currentlySprinting_ = true;
+        sprintAction_.canceled += context => this.currentlySprinting_ = false;
     }
 
     // Update every frame
@@ -215,6 +230,10 @@ public class Player : MonoBehaviour, IControllable
         direction += inputDirections.y * this.transform.forward;
         direction += inputDirections.x * this.head_.transform.right;
 
+        float sprintModifier = currentlySprinting_ ? 2 : 1;
+
+        direction *= sprintModifier;
+
         // Add force if high enough
         if (direction.magnitude >= movementDeadzone)
         {
@@ -223,14 +242,22 @@ public class Player : MonoBehaviour, IControllable
         }
 
         var currentVelocity2D = new Vector2(rb_.linearVelocity.x, rb_.linearVelocity.z);
-        if (currentVelocity2D.magnitude > maxMoveSpeed)
+
+        var maxSpeed = GetMaxMoveSpeed();
+        if (currentVelocity2D.magnitude > maxSpeed)
         {
-            var cappedVelocity = currentVelocity2D.normalized * maxMoveSpeed;
+            var cappedVelocity = currentVelocity2D.normalized * maxSpeed;
             rb_.linearVelocity = new Vector3(
                 cappedVelocity.x,
                 rb_.linearVelocity.y,
                 cappedVelocity.y
             );
         }
+    }
+
+    // Gets the max speed with respect to sprinting
+    private float GetMaxMoveSpeed()
+    {
+        return this.maxMoveSpeed * (this.currentlySprinting_ ? this.sprintRatio : 1);
     }
 }
