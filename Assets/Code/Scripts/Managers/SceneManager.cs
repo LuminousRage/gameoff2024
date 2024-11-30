@@ -242,7 +242,7 @@ public class SceneManager : MonoBehaviour
         // subtract some offset so the player doesn't appear on the table
         // will need to be adjusted if the table size changes
         player_.transform.position = transform.position + -0.7f*transform.forward + new Vector3(0,-0.6f,0);
-        player_.transform.forward = (new Vector3(transform.forward.x,0,transform.forward.z)).normalized;
+        player_.transform.forward = new Vector3(transform.forward.x,0,transform.forward.z).normalized;
         followCamera_._followee = transform;
     }
 
