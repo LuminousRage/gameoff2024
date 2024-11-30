@@ -6,7 +6,9 @@ public abstract class Door : Triggerable
 
     public override void Trigger()
     {
-        if (!isOpen)
+        UpdateSignalCount(true);
+
+        if (!isOpen && CanTrigger())
         {
             isOpen = true;
             OpenSesame();
@@ -16,7 +18,9 @@ public abstract class Door : Triggerable
 
     public override void Untrigger()
     {
-        if (isOpen)
+        UpdateSignalCount(false);
+
+        if (isOpen && !CanTrigger())
         {
             isOpen = false;
             CloseSesame();
