@@ -24,6 +24,14 @@ public class Computer : MonoBehaviour, IUsable
 
     public bool isGhostComputer = false;
 
+    [Tooltip("The sound that plays when the computer is turned on.")]
+    public AudioClip onSound;
+
+    [Tooltip("The sound that plays when the computer is turned off.")]
+    public AudioClip offSound;
+
+    private AudioSource audioSource_;
+
     public enum UseState
     {
         Usable,
@@ -70,6 +78,12 @@ public class Computer : MonoBehaviour, IUsable
 
         avatarObj = level.GetAndValidateAvatar(this);
         Assert.IsNotNull(this.avatarObj, "Unable to find avatar from Computer.");
+
+        this.audioSource_ = GetComponent<AudioSource>();
+        Assert.IsNotNull(
+            this.audioSource_,
+            "Unable to find on/off button audio source in Computer."
+        );
     }
 
     public void ToggleComputer(bool enabled = true, bool firstToggle = false)
@@ -80,6 +94,11 @@ public class Computer : MonoBehaviour, IUsable
         }
 
         quad_.SetActive(enabled);
+
+        if (!firstToggle)
+        {
+            this.PlayToggleSound();
+        }
 
         if (isGhostComputer && !firstToggle)
         {
@@ -147,5 +166,27 @@ public class Computer : MonoBehaviour, IUsable
     public Transform GetWatcherTransform()
     {
         return watcher_.transform;
+    }
+
+    private void PlayToggleSound()
+    {
+        try
+        {
+            bool computerJustTurnedOn = quad_.activeSelf;
+            if (computerJustTurnedOn)
+            {
+                audioSource_.PlayOneShot(onSound);
+                Debug.Log($"Played computer turned {computerJustTurnedOn}.");
+            }
+            else
+            {
+                audioSource_.PlayOneShot(offSound);
+                Debug.Log($"Played computer turned {computerJustTurnedOn}.");
+            }
+        }
+        catch
+        {
+            Debug.LogError("Unable to play sound for computer turning on.");
+        }
     }
 }
