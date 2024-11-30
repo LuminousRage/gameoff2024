@@ -122,9 +122,4 @@ public class Avatar : MonoBehaviour, IControllable
     {
         renderCamera_.enabled = enable;
     }
-
-    public void OnCollisionStay2D(Collision2D collision)
-    {
-        rb.linearVelocity = Vector2.zero;
-    }
 }
