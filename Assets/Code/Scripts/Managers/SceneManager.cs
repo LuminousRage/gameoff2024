@@ -219,15 +219,14 @@ public class SceneManager : MonoBehaviour
 
             computer.level.EnterFrom(computer);
             player_.inventory.PutDownDisks(computer);
+            focusedComputer_ = computer;
         }
         else
         {
             followCamera_._followee = player_.GetHeadTransform();
             player_.SetControllable(true);
+            focusedComputer_?.level.OnStandUp();
         }
-
-        focusedComputer_?.level.Exit();
-        focusedComputer_ = computer;
     }
 
     private void UpdateMouseDelta()
