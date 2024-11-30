@@ -729,6 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edcb83bcd1b0b58f8f1fec2b1afa6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  focusedComputer_: {fileID: 0}
   canUseAction: 1
   usePromptPosition2D: {x: -246, y: -301.3333, z: 0}
   diskPromptPosition2D: {x: 149.3333, y: -301.3333, z: 0}
@@ -787,6 +788,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e488bbcbd037245c3ab650d192a10e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materials:
+  - zone: 0
+    material: {fileID: 2100000, guid: 0e83d60dc3cf248c1ae7a8b87a50c66f, type: 2}
+  - zone: 1
+    material: {fileID: 2100000, guid: ca0fadd23b372481aace20c2d23cda8d, type: 2}
+  - zone: 2
+    material: {fileID: 2100000, guid: 67cd9ef67ad8e4761807d35cc91a1832, type: 2}
+  - zone: 3
+    material: {fileID: 2100000, guid: 5f90df8f11ea74539a7edeb6f621e0ca, type: 2}
 --- !u!1 &7048587360645359303
 GameObject:
   m_ObjectHideFlags: 0

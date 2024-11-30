@@ -1362,38 +1362,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 520459265549453095, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: materials.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 520459265549453095, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: materials.Array.data[1].zone
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 520459265549453095, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: materials.Array.data[2].zone
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 520459265549453095, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: materials.Array.data[3].zone
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 520459265549453095, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: materials.Array.data[0].material
-      value: 
-      objectReference: {fileID: 2100000, guid: ca0fadd23b372481aace20c2d23cda8d, type: 2}
-    - target: {fileID: 520459265549453095, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: materials.Array.data[1].material
-      value: 
-      objectReference: {fileID: 2100000, guid: ca0fadd23b372481aace20c2d23cda8d, type: 2}
-    - target: {fileID: 520459265549453095, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: materials.Array.data[2].material
-      value: 
-      objectReference: {fileID: 2100000, guid: 67cd9ef67ad8e4761807d35cc91a1832, type: 2}
-    - target: {fileID: 520459265549453095, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: materials.Array.data[3].material
-      value: 
-      objectReference: {fileID: 2100000, guid: 5f90df8f11ea74539a7edeb6f621e0ca, type: 2}
     - target: {fileID: 1672645643783580029, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

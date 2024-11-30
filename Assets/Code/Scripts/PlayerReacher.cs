@@ -140,9 +140,7 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         {
             return DiskActionPrompts.None;
         }
-        Debug.Log(
-            $"{computer_.floppyDiskManager.IsAvatarDisksFull()} {computer_.floppyDiskManager.ContainsDisk()} {player_.inventory.GetCurrentHoldable() != null}"
-        );
+
         switch
             (
                 computer_.floppyDiskManager.IsAvatarDisksFull(),

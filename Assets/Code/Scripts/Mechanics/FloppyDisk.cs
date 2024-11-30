@@ -30,7 +30,6 @@ public class FloppyDisk : MonoBehaviour, IUsable
         // If level predefines the floppy disk in a computer, add it to the computer
         if (computer_ != null)
         {
-            Debug.Log(computer_.floppyDiskManager);
             computer_.floppyDiskManager.InsertFloppyDisk(this);
         }
     }
