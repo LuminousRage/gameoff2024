@@ -1,9 +1,5 @@
 using System;
-using System.Linq;
-using TreeEditor;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
@@ -33,12 +29,12 @@ public class Player : MonoBehaviour, IControllable
         return this.head_.transform;
     }
 
-
     public InputActionMap gameplayActions;
 
     private SceneManager sceneManager_;
 
     private IUsable usable_;
+
     [HideInInspector]
     public Rigidbody rb_;
     public GameObject head_;
@@ -115,10 +111,7 @@ public class Player : MonoBehaviour, IControllable
 
         sprintAction_.started += context => this.currentlySprinting_ = true;
         sprintAction_.canceled += context => this.currentlySprinting_ = false;
-
     }
-
-
 
     void Update()
     {
@@ -146,11 +139,14 @@ public class Player : MonoBehaviour, IControllable
     {
         Vector2 mouseXY = this.sceneManager_.GetScaledDelta();
 
+        Transform headTransform = this.head_.transform;
+
         // Rotate horizontal view (no need for bounds checking)
-        this.transform.Rotate(new Vector3(0, mouseXY.x, 0));
+        headTransform.RotateAround(headTransform.position, Vector3.up, mouseXY.x);
+
+        // headTransform.rotation *= Quaternion.Euler(0, mouseXY.x, 0);
 
         // Rotate head view (vertical)
-        Transform headTransform = this.head_.transform;
 
         // Old X angle in [-180, 180]
         float oldXAngle = headTransform.rotation.eulerAngles.x;
