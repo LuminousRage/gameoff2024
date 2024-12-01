@@ -50,19 +50,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6581299629243836519, guid: 8cfecf136dce94c4dae84cca9554b565, type: 3}
       propertyPath: m_Color.b
-      value: 0.1499371
+      value: 0.6273585
       objectReference: {fileID: 0}
     - target: {fileID: 6581299629243836519, guid: 8cfecf136dce94c4dae84cca9554b565, type: 3}
       propertyPath: m_Color.g
-      value: 0.1499371
+      value: 0.6273585
       objectReference: {fileID: 0}
     - target: {fileID: 6581299629243836519, guid: 8cfecf136dce94c4dae84cca9554b565, type: 3}
       propertyPath: m_Color.r
-      value: 0.59599996
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581299629243836519, guid: 8cfecf136dce94c4dae84cca9554b565, type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9080883503773126683, guid: 8cfecf136dce94c4dae84cca9554b565, type: 3}
       propertyPath: m_Name
-      value: Big Room Ceiling with light Variant -C
+      value: Big Room Ceiling with light Variant - C
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
