@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.5, y: -205.69}
-  m_SizeDelta: {x: 0, y: -411.38}
+  m_AnchoredPosition: {x: 0.25, y: -360}
+  m_SizeDelta: {x: 0.5, y: -720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7540296774096539293
 CanvasRenderer:
@@ -245,11 +245,11 @@ MonoBehaviour:
   popUpBox: {fileID: 3757050722554040521}
   animator: {fileID: 2940181644069147426}
   popUpText: {fileID: 1524554350746435387}
-  remainingDialogue: []
   writeRate: 30
   onCloseds:
     m_PersistentCalls:
       m_Calls: []
+  remainingDialogue: []
 --- !u!1 &4124026822820148631
 GameObject:
   m_ObjectHideFlags: 0

@@ -127,13 +127,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1235912428}
     m_Modifications:
+    - target: {fileID: 1524554350746435387, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524554350746435387, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524554350746435387, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 3757050722554040521, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: m_Name
       value: DialogueBox
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.size
-      value: 33
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: 'remainingDialogue.Array.data[0]'
@@ -189,7 +201,8 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[5].text
-      value: " Oh, he\u2019s not home? Still hanging out with his new friend I guess. "
+      value: 'I wish he would come home more often or at least leave me a message
+        when he disappears like this. '
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[6].font
@@ -197,8 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[6].text
-      value: 'I wish he would come home more often or at least leave me a message
-        when he disappears like this. '
+      value: 'We need to be strong together. '
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[7].font
@@ -206,7 +218,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[7].text
-      value: 'We need to be strong together. '
+      value: "\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[8].font
@@ -222,7 +234,8 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[9].text
-      value: "\u2026"
+      value: "I should sleep it\u2019s already 9pm, he\u2019ll probably get in late
+        again. "
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[10].font
@@ -230,8 +243,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[10].text
-      value: "I should sleep it\u2019s already 9pm, he\u2019ll probably get in late
-        again. "
+      value: "I\u2019ll leave the light on for him. "
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[11].font
@@ -239,7 +251,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[11].text
-      value: "I\u2019ll leave the light on for him. "
+      value: "I hope he\u2019s alright. "
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[12].font
@@ -247,23 +259,23 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[12].text
-      value: "I hope he\u2019s alright. "
+      value: ..
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[13].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[13].text
-      value: ..
+      value: BEEP BEEP BEEP BEEP
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[14].font
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[14].text
-      value: BEEP BEEP BEEP BEEP
+      value: "Time to get up and get at \u2018em! "
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[15].font
@@ -271,7 +283,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[15].text
-      value: "Time to get up and get at \u2018em! "
+      value: 'Huh, the light is still on? Did he forget to turn it off? '
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[16].font
@@ -279,7 +291,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[16].text
-      value: 'Huh, the light is still on? Did he forget to turn it off? '
+      value: "He\u2019s not home.. "
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[17].font
@@ -287,32 +299,32 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[17].text
-      value: "He\u2019s not home.. "
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: remainingDialogue.Array.data[18].font
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: remainingDialogue.Array.data[18].text
       value: "I know, he probably stayed over at his friends place. I\u2019ll call
         them. "
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: remainingDialogue.Array.data[19].font
+      propertyPath: remainingDialogue.Array.data[18].font
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: remainingDialogue.Array.data[19].text
+      propertyPath: remainingDialogue.Array.data[18].text
       value: Ring Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[19].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[19].text
+      value: Hey have you seen Ian?
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[20].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[20].text
-      value: Hey have you seen Ian?
+      value: "Ma\u2019am we do not have your son."
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[21].font
@@ -320,32 +332,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[21].text
-      value: "Ma\u2019am we do not have your son."
+      value: Please proceed.
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[22].font
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: remainingDialogue.Array.data[22].text
-      value: Please proceed.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: remainingDialogue.Array.data[23].font
-      value: 
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: remainingDialogue.Array.data[23].text
+      propertyPath: remainingDialogue.Array.data[22].text
       value: "Oh he didn\u2019t stay over? Where could he have gone last night then?
         Could he have been kidnapped? I need to call the police. "
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: remainingDialogue.Array.data[24].font
+      propertyPath: remainingDialogue.Array.data[23].font
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: remainingDialogue.Array.data[24].text
+      propertyPath: remainingDialogue.Array.data[23].text
       value: Ring Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[24].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[24].text
+      value: My son has gone missing have you guys heard anything?
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[25].font
@@ -353,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[25].text
-      value: My son has gone missing have you guys heard anything?
+      value: "Ma\u2019am we do not have your son."
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[26].font
@@ -361,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[26].text
-      value: "Ma\u2019am we do not have your son."
+      value: Please proceed.
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[27].font
@@ -369,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[27].text
-      value: Please proceed.
+      value: ' I would like to file a missing person report for my son.  '
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[28].font
@@ -377,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[28].text
-      value: ' I would like to file a missing person report for my son.  '
+      value: Ok.
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[29].font
@@ -385,7 +397,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[29].text
-      value: Ok.
+      value: "Where could he have gone\u2026 "
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[30].font
@@ -393,7 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[30].text
-      value: "Where could he have gone\u2026 "
+      value: "\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[31].font
@@ -401,7 +413,8 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[31].text
-      value: "\u2026"
+      value: "He\u2019s been spending a lot of time on his computer recently maybe
+        I\u2019ll find some clues there\u2026 "
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[32].font
@@ -486,7 +499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7508342324663885230, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -69.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7508342324663885230, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -714,7 +727,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
