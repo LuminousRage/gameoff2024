@@ -29,7 +29,6 @@ public class ComputerFloppyDisk : MonoBehaviour
         avatarFloppyDisks = avatar.GetKeys();
     }
 
-
     public bool IsAvatarDisksFull() => avatar.IsKeysFull();
 
     public FloppyDisk[] GetAllComputerDisks() =>
