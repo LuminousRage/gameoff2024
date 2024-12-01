@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -29,7 +28,6 @@ public class ComputerFloppyDisk : MonoBehaviour
         Assert.IsNotNull(this.avatar, $"{computer} has no avatar object.");
         avatarFloppyDisks = avatar.GetKeys();
     }
-
 
     public bool IsAvatarDisksFull() => avatar.IsKeysFull();
 

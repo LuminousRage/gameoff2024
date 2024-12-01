@@ -291,6 +291,14 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
+    - m_Name: Pause
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: dd91077a-e5ba-47de-a48b-82c4590372b4
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
     m_Bindings:
     - m_Name: 
       m_Id: 8a718dea-f28a-4f96-af7b-cfa75041e2bb
@@ -315,6 +323,14 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Sprint
+      m_Flags: 0
+    - m_Name: 
+      m_Id: baf412bf-ba32-4887-840b-d59a9f43ab8b
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
       m_Flags: 0
   rb_: {fileID: 0}
   head_: {fileID: 8124183052260777435}
