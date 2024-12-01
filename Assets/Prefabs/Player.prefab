@@ -60,6 +60,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7000257175610438640}
+  - component: {fileID: 1302777201492140027}
   m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
@@ -83,6 +84,14 @@ Transform:
   - {fileID: 6469064875842252587}
   m_Father: {fileID: 3052933672463574367}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1302777201492140027
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124183052260777435}
+  m_Enabled: 1
 --- !u!1 &8241396265650477490
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +174,6 @@ GameObject:
   - component: {fileID: 5595539030385383931}
   - component: {fileID: 220526795326924657}
   - component: {fileID: 4753164541546685440}
-  - component: {fileID: 8999819859933993122}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -312,6 +320,7 @@ MonoBehaviour:
   head_: {fileID: 8124183052260777435}
   reacher_: {fileID: 0}
   inventory: {fileID: 0}
+  levelOverride: 0
 --- !u!114 &6058119305721968279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,11 +398,3 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!81 &8999819859933993122
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8880783659850259186}
-  m_Enabled: 1
