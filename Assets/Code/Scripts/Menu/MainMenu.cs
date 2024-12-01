@@ -9,7 +9,6 @@ public class MainMenu : MonoBehaviour
         ContinueGame();
     }
     public void ContinueGame() {
-        PlayerPrefs.SetInt("ContinueLevel",8);
         if (PlayerPrefs.GetInt("IntroDone",0)==0) {
             sm.SceneManager.LoadScene("Intro Dialogue");
         } else {
