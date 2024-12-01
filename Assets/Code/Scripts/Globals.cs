@@ -17,10 +17,6 @@ public static class Globals
         A,
         B,
         C,
-        D,
-        E,
-        F,
-        G,
     }
 
     public static readonly Dictionary<FloppyDiskID, Color> FloppyColourMap = new Dictionary<
@@ -28,13 +24,12 @@ public static class Globals
         Color
     >()
     {
-        { FloppyDiskID.A, new Color(0.85f, 0.85f, 0.85f) },
-        { FloppyDiskID.B, Color.blue },
-        { FloppyDiskID.C, Color.green },
-        { FloppyDiskID.D, Color.yellow },
-        { FloppyDiskID.E, Color.cyan },
-        { FloppyDiskID.F, Color.magenta },
-        { FloppyDiskID.G, Color.red },
+        // magenta
+        { FloppyDiskID.A, new Color(191 / 255, 48 / 255, 146 / 255) },
+        // cyan
+        { FloppyDiskID.B, new Color(49 / 255, 189 / 255, 170 / 255) },
+        // eyllow
+        { FloppyDiskID.C, new Color(255 / 255, 200 / 255, 0 / 255) },
     };
 
     public static Color GetFloppyColor(FloppyDiskID id)

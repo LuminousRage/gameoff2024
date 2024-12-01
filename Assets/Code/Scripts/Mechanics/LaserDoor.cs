@@ -12,12 +12,19 @@ public class LaserDoor : MonoBehaviour
     [HideInInspector]
     public Color color;
 
+    private SpriteRenderer laserSpriteRenderer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         children = GetComponentsInChildren<Transform>();
         children = children.Where(child => child.name.StartsWith("Door")).ToArray();
         Assert.IsTrue(children.Length == 3, "LaserDoor children should be 3");
+
+        var laser = transform.Find("LaserStripe");
+        Assert.IsNotNull(laser, "LaserDoor should have a LaserStripe child");
+        laserSpriteRenderer = laser.GetComponent<SpriteRenderer>();
+        laserSpriteRenderer.color = color;
 
         c = GetComponent<BoxCollider2D>();
         Assert.IsNotNull(c, "LaserDoor should have a BoxCollider2D");
