@@ -189,7 +189,9 @@ public class Player : MonoBehaviour, IControllable
         Vector3 direction = Vector3.zero;
 
         // Add movement relative to camera/character orientation
-        direction += inputDirections.y * this.transform.forward;
+        direction +=
+            inputDirections.y
+            * new Vector3(head_.transform.forward.x, 0, head_.transform.forward.z).normalized;
         direction += inputDirections.x * this.head_.transform.right;
 
         float sprintModifier = currentlySprinting_ ? 2 : 1;
