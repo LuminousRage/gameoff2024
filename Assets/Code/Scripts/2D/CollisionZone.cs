@@ -1,7 +1,5 @@
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Tilemaps;
 
 public class CollisionZone : MonoBehaviour
 {
@@ -12,7 +10,6 @@ public class CollisionZone : MonoBehaviour
     public SpawnPoint avatarSpawnPoint;
 
     public bool isStandUpable = true;
-
 
     void Start()
     {
@@ -32,5 +29,4 @@ public class CollisionZone : MonoBehaviour
             }
         }
     }
-
 }
