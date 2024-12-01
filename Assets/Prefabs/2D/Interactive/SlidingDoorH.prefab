@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlidingDoorH
       objectReference: {fileID: 0}
+    - target: {fileID: 4649536297556260413, guid: a3c87ec5467454f4cad728b32a648b1d, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649536297556260413, guid: a3c87ec5467454f4cad728b32a648b1d, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4729444229694671808, guid: a3c87ec5467454f4cad728b32a648b1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

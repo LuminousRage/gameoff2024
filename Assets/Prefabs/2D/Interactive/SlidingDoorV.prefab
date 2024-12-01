@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94affac230f254f0c89646522b5abfdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  signalCount: 1
   slideDistance: 3
   slideSpeed: 2
   direction: {x: 0, y: 1}
