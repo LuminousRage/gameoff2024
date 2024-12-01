@@ -264,7 +264,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[14].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[14].text
       value: "Time to get up and get at \u2018em! "
