@@ -39,6 +39,8 @@ public class SceneManager : MonoBehaviour
 
     public LevelData levelData;
 
+    public GameObject exitText;
+
     private GameObject[] levelsLoaded_ = { };
 
     private struct TextPrompt
@@ -361,5 +363,10 @@ public class SceneManager : MonoBehaviour
     public GameObject GetLevel(int levelIndex)
     {
         return levelsLoaded_[levelIndex];
+    }
+
+    public void SetExitTextActive(bool active)
+    {
+        this.exitText.SetActive(active);
     }
 }
