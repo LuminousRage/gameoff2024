@@ -16,7 +16,7 @@ public class ComputerManager : MonoBehaviour
         BuildComputerLookUp();
     }
 
-    void BuildComputerLookUp()
+    public void BuildComputerLookUp()
     {
         var computers = FindObjectsByType<Computer>(FindObjectsSortMode.None);
         computerLookUp = computers.Aggregate(

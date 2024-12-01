@@ -54,6 +54,8 @@ public class SceneManager : MonoBehaviour
         }
     }
 
+    private ComputerManager cm_;
+
     void Start()
     {
         this.uiCanvas_ = this.transform.Find("UICanvas")?.gameObject;
@@ -64,6 +66,9 @@ public class SceneManager : MonoBehaviour
 
         this.followCamera_ = FindFirstObjectByType<FollowCamera>();
         Assert.IsNotNull(followCamera_, "Unable to find FollowCamera from the scene.");
+
+        cm_ = GetComponent<ComputerManager>();
+        Assert.IsNotNull(cm_, "Unable to find ComputerManager from the scene.");
 
         this.usePrompt_ = PromptObjectToStruct(
             this.uiCanvas_.transform.Find("UsePrompt")?.gameObject
@@ -350,6 +355,7 @@ public class SceneManager : MonoBehaviour
                 levelsLoaded_[i] = newLevel;
             }
         }
+        cm_.BuildComputerLookUp();
     }
 
     public GameObject GetLevel(int levelIndex)
