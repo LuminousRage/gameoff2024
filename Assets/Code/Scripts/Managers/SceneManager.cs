@@ -102,7 +102,6 @@ public class SceneManager : MonoBehaviour
             var exitComputer = previousLevel.GetComponentInChildren<Level2D>().outBrokenComputer;
             Debug.Log($"lvl {continueLevel}");
             Debug.Log($"lval {exitComputer.GetWatcherTransform().position}");
-            player_.rb_.MovePosition(exitComputer.GetWatcherTransform().position);
             Debug.Log($"lval {this.transform.position}");
             UpdatePlayerLocation(exitComputer.GetWatcherTransform());
             exitComputer.state_ = Computer.UseState.Broken;
@@ -269,7 +268,9 @@ public class SceneManager : MonoBehaviour
     {
         // subtract some offset so the player doesn't appear on the table
         // will need to be adjusted if the table size changes
+        
         player_.transform.position = transform.position + -0.7f * transform.forward + new Vector3(0, -0.6f, 0);
+        player_.GetComponent<Rigidbody>().MovePosition(player_.transform.position);
         player_.transform.forward = new Vector3(transform.forward.x,0,transform.forward.z).normalized;
     }
 

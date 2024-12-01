@@ -33,8 +33,6 @@ public class Player : MonoBehaviour, IControllable
         return this.head_.transform;
     }
 
-    // Private
-
 
     public InputActionMap gameplayActions;
 
