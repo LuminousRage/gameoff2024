@@ -152,7 +152,7 @@ public class PlayerInventory : MonoBehaviour
         foreach (var disk in disks)
         {
             disk.isInInventory_ = false;
-            var pos = c.transform.position + new Vector3(0f, -0.145f, 1f);
+            var pos = c.transform.position + new Vector3(-0.642f, 0.06f, -0.666f);
             disk.transform.SetPositionAndRotation(pos, Quaternion.Euler(0, 0, 0));
         }
     }
