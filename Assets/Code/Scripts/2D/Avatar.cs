@@ -17,6 +17,12 @@ public class Avatar : MonoBehaviour, IControllable
 
     public AvatarZone az;
     public AvatarInput ai;
+    public SpriteRenderer leftHand;
+    public SpriteRenderer rightHand;
+    
+    public Sprite keyA;
+    public Sprite keyB;
+    public Sprite keyC;
     private FloppyDisk[] avatarKeys = new FloppyDisk[KeySize];
     private Camera renderCamera_;
 
@@ -96,6 +102,23 @@ public class Avatar : MonoBehaviour, IControllable
                 Debug.LogError("Avatar already has max keys.");
             }
             avatarKeys[emptyIndex] = key;
+            var hand = leftHand;
+            if (emptyIndex==1) {
+                hand = rightHand;
+            }
+            
+            switch (key.floppyDiskID) {
+                case Globals.FloppyDiskID.A:
+                    hand.sprite = keyA;
+                break;
+                case Globals.FloppyDiskID.B:
+                    hand.sprite = keyB;
+                break;
+                case Globals.FloppyDiskID.C:
+                    hand.sprite = keyC;
+                break;
+            }
+            
             key.SetFloppyDiskTransform(emptyIndex);
             level.TellOtherComputersToRenderGhostDisks(
                 number,
@@ -113,6 +136,12 @@ public class Avatar : MonoBehaviour, IControllable
             var index = Array.IndexOf(avatarKeys, key);
             level.TellOtherComputersToRenderGhostDisks(number, key.GetComputer(), index);
             avatarKeys[index] = null;
+            
+            var hand = leftHand;
+            if (index==1) {
+                hand = rightHand;
+            }
+            hand.sprite = null;
         }
     }
 
