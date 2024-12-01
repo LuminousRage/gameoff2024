@@ -28,7 +28,7 @@ public static class Globals
         { FloppyDiskID.A, new Color(191 / 255f, 48 / 255f, 146 / 255f) },
         // cyan
         { FloppyDiskID.B, new Color(49 / 255f, 189 / 255f, 170 / 255f) },
-        // eyllow
+        // yellow
         { FloppyDiskID.C, new Color(255 / 255f, 200 / 255f, 0 / 255f) },
     };
 
