@@ -673,7 +673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9551d4dbfd8a54506b3a77e4d45f9edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostComputerPrefab: {fileID: 0}
+  ghostComputerPrefab: {fileID: 1938758619342909474, guid: f524b6bc7d58f4d4fa74929c7436b95f, type: 3}
+  stuff: []
 --- !u!114 &4768923639611596836
 MonoBehaviour:
   m_ObjectHideFlags: 0

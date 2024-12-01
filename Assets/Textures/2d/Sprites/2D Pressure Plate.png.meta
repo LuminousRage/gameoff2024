@@ -102,7 +102,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -122,9 +122,9 @@ TextureImporter:
       name: 2D Pressure Plate_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 32
         y: 0
-        width: 16
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -136,50 +136,6 @@ TextureImporter:
       bones: []
       spriteID: e3d465cf671d04652a4043d746912e16
       internalID: 1456348526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2D Pressure Plate_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 64b2bba52e22444a799845ddce109454
-      internalID: -386945917
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2D Pressure Plate_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80b3c3baf45834edb9e9e3e81c727017
-      internalID: -2146111327
       vertices: []
       indices: 
       edges: []
@@ -200,8 +156,6 @@ TextureImporter:
     nameFileIdTable:
       2D Pressure Plate_0: 398946365
       2D Pressure Plate_1: 1456348526
-      2D Pressure Plate_2: -386945917
-      2D Pressure Plate_3: -2146111327
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
