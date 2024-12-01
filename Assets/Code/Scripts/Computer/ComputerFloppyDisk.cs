@@ -48,7 +48,7 @@ public class ComputerFloppyDisk : MonoBehaviour
 
         disk.SetComputer(this.computer);
         computer.avatarObj.AddKey(disk);
-        disk.doors.ToList().ForEach(door => door.UpdateLaserCollision(computer.avatarObj));
+        disk.doors.ToList().ForEach(door => door.UpdateLaserCollision(computer.avatarObj, true));
     }
 
     public List<FloppyDisk> RemoveAllFloppyDisk()
@@ -58,7 +58,7 @@ public class ComputerFloppyDisk : MonoBehaviour
         {
             computer.avatarObj.RemoveKey(d);
             d.SetComputer(null);
-            d.doors.ToList().ForEach(door => door.UpdateLaserCollision(computer.avatarObj));
+            d.doors.ToList().ForEach(door => door.UpdateLaserCollision(computer.avatarObj, false));
         });
 
         return allDisks;
