@@ -654,6 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edcb83bcd1b0b58f8f1fec2b1afa6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followCamera_: {fileID: 0}
   focusedComputer_: {fileID: 0}
   canUseAction: 1
   usePromptPosition2D: {x: -246, y: -301.3333, z: 0}
@@ -716,7 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materials:
   - zone: 0
-    material: {fileID: 2100000, guid: 0e83d60dc3cf248c1ae7a8b87a50c66f, type: 2}
+    material: {fileID: 2100000, guid: e0062fc485489f36fa2d1e221da6a922, type: 2}
   - zone: 1
     material: {fileID: 2100000, guid: ca0fadd23b372481aace20c2d23cda8d, type: 2}
   - zone: 2
