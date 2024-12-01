@@ -10,11 +10,18 @@ public class DialogueSystem : MonoBehaviour
     public GameObject popUpBox;
     public Animator animator;
     public TMP_Text popUpText;
-    public String[] remainingDialogue;
     private bool isWriting = false;
     private float writingStartTime = 0;
     public float writeRate = 30; //chars per sec
     public EventTrigger.TriggerEvent onCloseds;
+    
+    [System.Serializable]
+    public struct Dialog {
+        public TMPro.TMP_FontAsset font;
+        public String text;
+    }
+
+    public Dialog[] remainingDialogue;
 
 
     public void StartDialogue() {
@@ -41,13 +48,14 @@ public class DialogueSystem : MonoBehaviour
         
         if (isWriting) {
             isWriting = false;
-            popUpText.text = remainingDialogue[0];
+            popUpText.text = remainingDialogue[0].text;
         }
         else if (remainingDialogue.Count()>1) {
             isWriting = true;
             writingStartTime = Time.realtimeSinceStartup;
-            popUpText.text = "";
             remainingDialogue = remainingDialogue.Skip(1).ToArray();
+            popUpText.text = "";
+            popUpText.font = remainingDialogue[0].font;
         } else {
             animator.SetTrigger("close");
         }
@@ -58,10 +66,10 @@ public class DialogueSystem : MonoBehaviour
         if (!isWriting) return;
 
         var currentChar = Mathf.FloorToInt(writeRate*(Time.realtimeSinceStartup-writingStartTime));
-        if (currentChar < remainingDialogue[0].Count()) {
-            popUpText.text = remainingDialogue[0][..currentChar];
+        if (currentChar < remainingDialogue[0].text.Count()) {
+            popUpText.text = remainingDialogue[0].text[..currentChar];
         } else {
-            popUpText.text = remainingDialogue[0];
+            popUpText.text = remainingDialogue[0].text;
             isWriting = false;
         }
     }

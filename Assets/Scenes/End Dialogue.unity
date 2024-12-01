@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.size
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: 'remainingDialogue.Array.data[0]'
@@ -142,6 +142,290 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: 'remainingDialogue.Array.data[1]'
       value: '[Intro story]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[0].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[0].text
+      value: "I\u2019m sorry mum I can\u2019t leave here. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[1].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[1].text
+      value: 'Why not?? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[2].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[2].text
+      value: "I don\u2019t exist in your world anymore. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[3].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[3].text
+      value: "They\u2019re keeping you here to test on me.  "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[4].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[4].text
+      value: "I\u2019m a part of the game now. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[5].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[5].text
+      value: 'Please get out of here before you become a part of it too. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[6].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[6].text
+      value: 'And remember to take your meds. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[7].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[7].text
+      value: "I\u2019m not leaving here without you. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[8].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[8].text
+      value: "\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[9].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[9].text
+      value: "\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[10].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[10].text
+      value: "I should sleep it\u2019s already 9pm, he\u2019ll probably get in late
+        again. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[11].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[11].text
+      value: "I\u2019ll leave the light on for him. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[12].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[12].text
+      value: "I hope he\u2019s alright. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[13].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[13].text
+      value: ..
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[14].font
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[14].text
+      value: BEEP BEEP BEEP BEEP
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[15].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[15].text
+      value: "Time to get up and get at \u2018em! "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[16].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[16].text
+      value: 'Huh, the light is still on? Did he forget to turn it off? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[17].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[17].text
+      value: "He\u2019s not home.. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[18].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[18].text
+      value: "I know, he probably stayed over at his friends place. I\u2019ll call
+        them. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[19].font
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[19].text
+      value: Ring Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[20].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[20].text
+      value: Hey have you seen Ian?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[21].font
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[21].text
+      value: "Ma\u2019am we do not have your son."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[22].font
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[22].text
+      value: Please proceed.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[23].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[23].text
+      value: "Oh he didn\u2019t stay over? Where could he have gone last night then?
+        Could he have been kidnapped? I need to call the police. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[24].font
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[24].text
+      value: Ring Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[25].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[25].text
+      value: My son has gone missing have you guys heard anything?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[26].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[26].text
+      value: "Ma\u2019am we do not have your son."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[27].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[27].text
+      value: Please proceed.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[28].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[28].text
+      value: ' I would like to file a missing person report for my son.  '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[29].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[29].text
+      value: Ok.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[30].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[30].text
+      value: "Where could he have gone\u2026 "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[31].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[31].text
+      value: "\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[32].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[32].text
+      value: "He\u2019s been spending a lot of time on his computer recently maybe
+        I\u2019ll find some clues there\u2026 "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[33].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[33].text
+      value: "I hope he\u2019s alright. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[34].font
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
+      propertyPath: remainingDialogue.Array.data[34].text
+      value: "I hope he\u2019s alright. "
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: onCloseds.m_PersistentCalls.m_Calls.Array.size
@@ -161,7 +445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: onCloseds.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveToMain
+      value: MoveToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: onCloseds.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

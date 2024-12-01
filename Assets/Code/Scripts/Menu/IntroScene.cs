@@ -17,4 +17,8 @@ public class IntroScene : MonoBehaviour
         PlayerPrefs.SetInt("IntroDone",1);
         sm.SceneManager.LoadScene("Main (Dynamic)");
     }
+    public void MoveToMainMenu() {
+        PlayerPrefs.SetInt("IntroDone",1);
+        sm.SceneManager.LoadScene("Main Menu");
+    }
 }

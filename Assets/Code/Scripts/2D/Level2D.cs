@@ -95,8 +95,8 @@ public class Level2D : MonoBehaviour
             var nextlevel = levels.Find((a) => a.levelOrder == levelOrder + 1);
             if (nextlevel == null)
             {
-                //TODO:take me to the credits
-                sm.SceneManager.LoadScene("Main Menu");
+                sceneManager.UnlockMouse();
+                sm.SceneManager.LoadScene("End Dialogue");
             }
             else
             {
