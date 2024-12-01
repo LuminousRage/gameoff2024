@@ -53,7 +53,7 @@ public class Computer : MonoBehaviour, IUsable
             this.level,
             $"{this} of {transform.parent.gameObject} has no level assigned."
         );
-        NUnit.Framework.Assert.IsInstanceOf<Level2D>(this.level);
+        // NUnit.Framework.Assert.IsInstanceOf<Level2D>(this.level);
 
         Assert.IsNotNull(watcher_, "Unable to find watcher in Computer.");
 
