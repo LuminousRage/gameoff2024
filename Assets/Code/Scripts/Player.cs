@@ -41,7 +41,8 @@ public class Player : MonoBehaviour, IControllable
     private SceneManager sceneManager_;
 
     private IUsable usable_;
-    private Rigidbody rb_;
+    [HideInInspector]
+    public Rigidbody rb_;
     public GameObject head_;
     public PlayerReacher reacher_;
 
@@ -117,25 +118,9 @@ public class Player : MonoBehaviour, IControllable
         sprintAction_.started += context => this.currentlySprinting_ = true;
         sprintAction_.canceled += context => this.currentlySprinting_ = false;
 
-        ContinueGame();
     }
 
-    void ContinueGame()
-    {
-        var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
-        sceneManager_.EnsureLoaded(continueLevel);
-        if (continueLevel > 0)
-        {
-            var previousLevel = sceneManager_.GetLevel(continueLevel - 1);
-            var exitComputer = previousLevel.GetComponentInChildren<Level2D>().outBrokenComputer;
-            Debug.Log($"lvl {continueLevel}");
-            Debug.Log($"lval {exitComputer.GetWatcherTransform().position}");
-            rb_.MovePosition(exitComputer.GetWatcherTransform().position);
-            Debug.Log($"lval {this.transform.position}");
-            sceneManager_.UpdatePlayerLocation(exitComputer.GetWatcherTransform());
-            exitComputer.state_ = Computer.UseState.Broken;
-        }
-    }
+
 
     void Update()
     {

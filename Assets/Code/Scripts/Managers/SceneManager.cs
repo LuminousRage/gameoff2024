@@ -102,7 +102,7 @@ public class SceneManager : MonoBehaviour
             var exitComputer = previousLevel.GetComponentInChildren<Level2D>().outBrokenComputer;
             Debug.Log($"lvl {continueLevel}");
             Debug.Log($"lval {exitComputer.GetWatcherTransform().position}");
-            this.transform.position = exitComputer.GetWatcherTransform().position;
+            player_.rb_.MovePosition(exitComputer.GetWatcherTransform().position);
             Debug.Log($"lval {this.transform.position}");
             UpdatePlayerLocation(exitComputer.GetWatcherTransform());
             exitComputer.state_ = Computer.UseState.Broken;
