@@ -5,7 +5,6 @@ using sm = UnityEngine.SceneManagement;
 
 public class Level2D : MonoBehaviour
 {
-    bool entered_ = false;
     Vector2 transformPosition_;
 
     private SceneManager sceneManager;
@@ -170,6 +169,12 @@ public class Level2D : MonoBehaviour
 
         foreach (var computer in computers)
         {
+            if (computer.zone == Globals.Zone.Broken)
+            {
+                // skip ghost disk for broken computers
+                continue;
+            }
+
             if (floppyDiskID != null)
             {
                 var ghostDisk = ghostFloppyDiskManager.GetUnusedGhostDisk();

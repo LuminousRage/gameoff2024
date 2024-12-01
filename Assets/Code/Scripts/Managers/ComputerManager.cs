@@ -9,6 +9,7 @@ public class ComputerManager : MonoBehaviour
     // Level -> (Avatar, Zone) -> Computer
     public Dictionary<Level2D, Dictionary<AvatarZoneTuple, Computer>> computerLookUp;
     public GameObject ghostComputerPrefab;
+    public List<string> stuff;
 
     void Start()
     {
@@ -37,6 +38,14 @@ public class ComputerManager : MonoBehaviour
                 return acc;
             }
         );
+
+        // this is for debug, hence called stuff
+        stuff = computerLookUp
+            .ToList()
+            .Select(level =>
+                $"{level.Key}, {level.Value.ToList().Aggregate("", (acc, kvp) => $"{acc} {kvp.Value}")}"
+            )
+            .ToList();
         Assert.IsTrue(computerLookUp.Count > 0, "No computers found in scene.");
     }
 }

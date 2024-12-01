@@ -159,4 +159,9 @@ public class Computer : MonoBehaviour, IUsable
     {
         return watcher_.transform;
     }
+
+    public override string ToString()
+    {
+        return $"Computer {avatar} (zone {zone}, {level.name})";
+    }
 }

@@ -49,6 +49,7 @@ MonoBehaviour:
   floppyDiskID: 0
   isInInventory_: 0
   computer_: {fileID: 0}
+  doors: []
 --- !u!65 &1059640437377028002
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 08b29a8a16bd2ba439ff4510602833f1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f55b6110f043f4d4f9855dd110657476, type: 2}
+      objectReference: {fileID: 2100000, guid: 244dab1bf4300462da43e50531a842aa, type: 2}
     - target: {fileID: 919132149155446097, guid: 08b29a8a16bd2ba439ff4510602833f1, type: 3}
       propertyPath: m_Name
       value: FloppyDisk_Blue
