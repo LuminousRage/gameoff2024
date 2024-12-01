@@ -1,9 +1,5 @@
 using System;
-using System.Linq;
-using TreeEditor;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
@@ -147,11 +143,14 @@ public class Player : MonoBehaviour, IControllable
     {
         Vector2 mouseXY = this.sceneManager_.GetScaledDelta();
 
+        Transform headTransform = this.head_.transform;
+
         // Rotate horizontal view (no need for bounds checking)
-        this.transform.Rotate(new Vector3(0, mouseXY.x, 0));
+        headTransform.RotateAround(headTransform.position, Vector3.up, mouseXY.x);
+
+        // headTransform.rotation *= Quaternion.Euler(0, mouseXY.x, 0);
 
         // Rotate head view (vertical)
-        Transform headTransform = this.head_.transform;
 
         // Old X angle in [-180, 180]
         float oldXAngle = headTransform.rotation.eulerAngles.x;
@@ -194,7 +193,9 @@ public class Player : MonoBehaviour, IControllable
         Vector3 direction = Vector3.zero;
 
         // Add movement relative to camera/character orientation
-        direction += inputDirections.y * this.transform.forward;
+        direction +=
+            inputDirections.y
+            * new Vector3(head_.transform.forward.x, 0, head_.transform.forward.z).normalized;
         direction += inputDirections.x * this.head_.transform.right;
 
         float sprintModifier = currentlySprinting_ ? 2 : 1;
