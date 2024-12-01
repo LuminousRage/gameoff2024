@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6451251238019508688
 Transform:
   m_ObjectHideFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -809504548, guid: 9e311a17a565640399ca3161d36be7c6, type: 3}
+  m_Sprite: {fileID: -1918725777, guid: 0082909305df9443da8a298c36aa29f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,7 +142,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e0b3e1e0b0076459cb74d816ced0cbff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -809504548, guid: 9e311a17a565640399ca3161d36be7c6, type: 3}
+  m_Sprite: {fileID: -1918725777, guid: 0082909305df9443da8a298c36aa29f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2663430857529816667, guid: a3c87ec5467454f4cad728b32a648b1d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1918725777, guid: 0082909305df9443da8a298c36aa29f9, type: 3}
     - target: {fileID: 4363284309548397378, guid: a3c87ec5467454f4cad728b32a648b1d, type: 3}
       propertyPath: m_Name
       value: LaserDoorH
@@ -240,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7617738521347729171, guid: a3c87ec5467454f4cad728b32a648b1d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4649536297556260413, guid: a3c87ec5467454f4cad728b32a648b1d, type: 3}
