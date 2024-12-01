@@ -21,7 +21,7 @@ public class PressurePad : MonoBehaviour
             $"{this.name} of {transform.parent.gameObject.name} has no sprite renderer."
         );
 
-        spriteRenderer.sprite = onSprite;
+        spriteRenderer.sprite = offSprite;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

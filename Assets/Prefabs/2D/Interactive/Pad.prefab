@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerable: {fileID: 0}
-  onSprite: {fileID: 398946365, guid: 9f5255c6879f9b74fa14bcdf50679a2d, type: 3}
-  offSprite: {fileID: 1456348526, guid: 9f5255c6879f9b74fa14bcdf50679a2d, type: 3}
+  onSprite: {fileID: 1456348526, guid: 9f5255c6879f9b74fa14bcdf50679a2d, type: 3}
+  offSprite: {fileID: 398946365, guid: 9f5255c6879f9b74fa14bcdf50679a2d, type: 3}
 --- !u!212 &1570223804226718391
 SpriteRenderer:
   m_ObjectHideFlags: 0
