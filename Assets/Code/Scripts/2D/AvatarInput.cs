@@ -14,10 +14,13 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
     [SerializeField]
     private float speed = 5;
 
+    private Animator animator;
     SceneManager sm;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+        Assert.IsNotNull(animator);
         avatar = GetComponent<Avatar>();
         Assert.IsNotNull(this.avatar);
 
@@ -63,6 +66,19 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
         var rb = avatar.GetRigidbody();
 
         var directions = move.ReadValue<Vector2>();
+
+        if (directions.x != 0 | directions.y != 0)
+        {
+            animator.SetFloat("X", directions.x);
+            animator.SetFloat("Y", directions.y);
+
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+        }
+
         directions = new Vector2(Mathf.Round(directions.x), Mathf.Round(directions.y));
         var newPosition = rb.position + directions * Time.deltaTime * speed;
         rb.MovePosition(newPosition);

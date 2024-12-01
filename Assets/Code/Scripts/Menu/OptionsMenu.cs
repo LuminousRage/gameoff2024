@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ public class OptionsMenu : MonoBehaviour
     private Slider sensitivtySlider;
 
     [SerializeField]
-    private AudioMixer masterMixer;
+    private AudioMixer[] mixers;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,7 +39,7 @@ public class OptionsMenu : MonoBehaviour
         }
         RefreshVolumeSlider(v);
         PlayerPrefs.SetFloat("SavedMasterVolume", v);
-        masterMixer.SetFloat("MasterVolume", Mathf.Log10(v) * 20f);
+        mixers.ToList().ForEach((mixer)=>mixer.SetFloat("MasterVolume", Mathf.Log10(v) * 20f));
     }
 
     public void SetVolumeFromSlider()
