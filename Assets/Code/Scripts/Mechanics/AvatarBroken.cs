@@ -66,4 +66,8 @@ public class AvatarBroken : MonoBehaviour, IUsable
 
     public string GetActionLabel() => "Speak to";
 
+    public string GetKeyLabel()
+    {
+        return inputKey;
+    }
 }
