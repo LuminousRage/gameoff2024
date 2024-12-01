@@ -113,8 +113,6 @@ public class Player : MonoBehaviour, IControllable
 
         sprintAction_.started += context => this.currentlySprinting_ = true;
         sprintAction_.canceled += context => this.currentlySprinting_ = false;
-
-        PlayerPrefs.SetInt("ContinueLevel", levelOverride);
     }
 
     void Update()
