@@ -9,16 +9,23 @@ public class OptionsMenu : MonoBehaviour
     private Slider soundSlider;
 
     [SerializeField]
-    private Slider sensitivtySlider;
+    private Slider musicSlider;
 
     [SerializeField]
-    private AudioMixer[] mixers;
+    private Slider sensitivitySlider;
+
+    [SerializeField]
+    private AudioMixer soundEffectsMixer;
+
+    [SerializeField]
+    private AudioMixer musicMixer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SetVolume(PlayerPrefs.GetFloat("SavedMasterVolume", 1));
-        SetSensitivity(PlayerPrefs.GetFloat("SavedSensitivty", 0.5f));
+        SetSoundEffectsVolume(PlayerPrefs.GetFloat("SavedSoundEffectsVolume", 1));
+        SetMusicVolume(PlayerPrefs.GetFloat("SavedMusicVolume", 1));
+        SetSensitivity(PlayerPrefs.GetFloat("SavedSensitivity", 0.5f));
     }
 
     private void SetSensitivity(float v)
@@ -27,38 +34,61 @@ public class OptionsMenu : MonoBehaviour
         {
             v = .00001f;
         }
-        RefreshSensitivtySlider(v);
-        PlayerPrefs.SetFloat("SavedSensitivty", v);
+        RefreshsensitivitySlider(v);
+        PlayerPrefs.SetFloat("SavedSensitivity", v);
     }
 
-    private void SetVolume(float v)
+    private void SetSoundEffectsVolume(float v)
     {
         if (v < .00001f)
         {
             v = .00001f;
         }
-        RefreshVolumeSlider(v);
-        PlayerPrefs.SetFloat("SavedMasterVolume", v);
-        mixers.ToList().ForEach((mixer)=>mixer.SetFloat("MasterVolume", Mathf.Log10(v) * 20f));
+        RefreshSoundEffectsSlider(v);
+        PlayerPrefs.SetFloat("SavedSoundEffectsVolume", v);
+
+        soundEffectsMixer.SetFloat("MasterVolume", Mathf.Log10(v) * 20f);
     }
 
-    public void SetVolumeFromSlider()
+    private void SetMusicVolume(float v)
     {
-        SetVolume(soundSlider.value);
+        if (v < .00001f)
+        {
+            v = .00001f;
+        }
+        RefreshMusicSlider(v);
+        PlayerPrefs.SetFloat("SavedMusicVolume", v);
+
+        musicMixer.SetFloat("MasterVolume", Mathf.Log10(v) * 20f);
     }
 
-    public void SetSensitivtyFromSlider()
+    public void SetSoundVolumeFromSlider()
     {
-        SetSensitivity(sensitivtySlider.value);
+        SetSoundEffectsVolume(soundSlider.value);
     }
 
-    private void RefreshVolumeSlider(float v)
+    public void SetMusicVolumeFromSlider()
+    {
+        SetMusicVolume(musicSlider.value);
+    }
+
+    public void SetsensitivityFromSlider()
+    {
+        SetSensitivity(sensitivitySlider.value);
+    }
+
+    private void RefreshMusicSlider(float v)
+    {
+        musicSlider.value = v;
+    }
+
+    private void RefreshSoundEffectsSlider(float v)
     {
         soundSlider.value = v;
     }
 
-    private void RefreshSensitivtySlider(float v)
+    private void RefreshsensitivitySlider(float v)
     {
-        sensitivtySlider.value = v;
+        sensitivitySlider.value = v;
     }
 }

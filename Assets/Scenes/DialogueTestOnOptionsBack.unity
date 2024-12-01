@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundSlider: {fileID: 1457183484}
-  sensitivtySlider: {fileID: 1594760739}
+  sensitivitySlider: {fileID: 1594760739}
   masterMixer: {fileID: 24100000, guid: f7ef0c53894ba334495a4b8797142bae, type: 2}
 --- !u!1 &1594760737
 GameObject:
@@ -2492,7 +2492,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1546613471}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: SetSensitivtyFromSlider
+        m_MethodName: SetsensitivityFromSlider
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
