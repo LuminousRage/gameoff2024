@@ -64,6 +64,7 @@ public class Player : MonoBehaviour, IControllable
             useAction_.Enable();
             diskAction_.Enable();
             sprintAction_.Enable();
+            pauseAction_.Enable();
         }
         else
         {
@@ -252,7 +253,7 @@ public class Player : MonoBehaviour, IControllable
     {
         if (this.exitIfTimeIsOver_ != null && Time.time >= this.exitIfTimeIsOver_)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Main menu");
         }
     }
 }
