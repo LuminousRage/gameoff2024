@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: room_12
+  m_Name: 2D Button_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 166235698, guid: 09e9192c8f5664acd87d25c063ff281a, type: 3}
+  m_Sprite: {fileID: -786785433, guid: 0fc39a60b3d137847a2f4da5e39b7bb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -33,4 +33,4 @@ MonoBehaviour:
     e33: 1
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
-  m_ColliderType: 2
+  m_ColliderType: 1

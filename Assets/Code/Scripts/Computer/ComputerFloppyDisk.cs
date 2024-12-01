@@ -23,6 +23,7 @@ public class ComputerFloppyDisk : MonoBehaviour
     {
         computer = this.GetComponentInParent<Computer>();
         Assert.IsNotNull(this.computer);
+        Assert.IsNotNull(this.computer.avatarObj, $"{computer} has no avatar object.");
         avatarFloppyDisks = computer.avatarObj.GetKeys();
     }
 
