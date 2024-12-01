@@ -109,7 +109,7 @@ public class SceneManager : MonoBehaviour
 
     void ContinueGame()
     {
-        var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
+        var continueLevel = PlayerPrefs.GetInt("ContinueLevel",0);
         EnsureLoaded(continueLevel);
         if (continueLevel > 0)
         {
