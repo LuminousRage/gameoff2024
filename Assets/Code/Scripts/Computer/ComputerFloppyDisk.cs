@@ -27,8 +27,6 @@ public class ComputerFloppyDisk : MonoBehaviour
         avatarFloppyDisks = computer.avatarObj.GetKeys();
     }
 
-    // Update is called once per frame
-    void Update() { }
 
     public bool IsAvatarDisksFull() => computer.avatarObj.IsKeysFull();
 
