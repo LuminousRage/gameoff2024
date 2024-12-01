@@ -8,6 +8,8 @@ public class Button2D : Button
 
     private SpriteRenderer spriteRenderer;
 
+    public AudioSource buttonPressSound;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -26,5 +28,6 @@ public class Button2D : Button
     protected override void UseAnimation()
     {
         spriteRenderer.sprite = pressedSprite;
+        buttonPressSound?.Play();
     }
 }
