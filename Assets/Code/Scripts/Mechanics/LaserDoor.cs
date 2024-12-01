@@ -33,20 +33,13 @@ public class LaserDoor : MonoBehaviour
         var avatarId = avatarWithFloppy.number;
         var avatarLayer = avatarWithFloppy.gameObject.layer;
 
-        var layerWithRights = children
+        children
             .ToList()
-            .Aggregate(
-                avatarLayer,
-                (acc, child) =>
-                {
-                    var avatarHasRights = child.name.Contains(avatarId.ToString());
-                    UpdateSprite(child, avatarHasRights);
-
-                    return avatarHasRights ? child.gameObject.layer : acc;
-                }
-            );
-
-        avatarWithFloppy.gameObject.layer = layerWithRights;
+            .ForEach(child =>
+            {
+                var avatarHasRights = child.name.Contains(avatarId.ToString());
+                UpdateSprite(child, avatarHasRights);
+            });
     }
 
     void UpdateSprite(Transform child, bool hasRights)

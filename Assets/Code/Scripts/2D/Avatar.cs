@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
@@ -27,10 +28,15 @@ public class Avatar : MonoBehaviour, IControllable
 
     public const int KeySize = 2;
 
+    public LayerMask layer;
+
     public void SetControllable(bool controllable = true)
     {
         this.controlling_ = controllable;
-
+        // Set avatar to its own layer when it is being controlled, for laser doors
+        // this means when in control, it can see all other avatars (because they are in default
+        // as they are not controllabel)
+        this.gameObject.layer = controllable ? layer.value : 0;
         if (ai != null)
         {
             ai.SetInputEnable(controllable);

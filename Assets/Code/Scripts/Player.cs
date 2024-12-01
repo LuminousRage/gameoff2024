@@ -33,18 +33,20 @@ public class Player : MonoBehaviour, IControllable
         return this.head_.transform;
     }
 
-
     public InputActionMap gameplayActions;
 
     private SceneManager sceneManager_;
 
     private IUsable usable_;
+
     [HideInInspector]
     public Rigidbody rb_;
     public GameObject head_;
     public PlayerReacher reacher_;
 
     public PlayerInventory inventory;
+
+    public int levelOverride = 0;
 
     private bool currentlyControlling_ = false;
     private bool currentlySprinting_ = false;
@@ -116,9 +118,8 @@ public class Player : MonoBehaviour, IControllable
         sprintAction_.started += context => this.currentlySprinting_ = true;
         sprintAction_.canceled += context => this.currentlySprinting_ = false;
 
+        PlayerPrefs.SetInt("ContinueLevel", levelOverride);
     }
-
-
 
     void Update()
     {

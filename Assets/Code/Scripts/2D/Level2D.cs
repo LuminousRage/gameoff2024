@@ -93,14 +93,15 @@ public class Level2D : MonoBehaviour
         {
             //TODO:What happens when the level cap is reached
             outBrokenComputer.quad_.SetActive(false);
-            var levels =FindObjectsByType<Level2D>(FindObjectsSortMode.None)
-                .ToList();
+            var levels = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList();
             var nextlevel = levels.Find((a) => a.levelOrder == levelOrder + 1);
             if (nextlevel == null)
             {
                 //TODO:take me to the credits
                 sm.SceneManager.LoadScene("Main Menu");
-            } else {
+            }
+            else
+            {
                 var nextAvatars = nextlevel.GetComponentsInChildren<Avatar>().ToList();
                 avatars.ForEach(a => a.SetRenderCamera(false));
                 nextAvatars.ForEach(a => a.SetRenderCamera(true));
@@ -108,7 +109,7 @@ public class Level2D : MonoBehaviour
 
                 sceneManager.EnsureLoaded(nextlevel.levelOrder);
             }
-            }
+        }
     }
 
     public void StandUp()
