@@ -66,8 +66,9 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
         var rb = avatar.GetRigidbody();
 
         var directions = move.ReadValue<Vector2>();
+        // Debug.Log(animator.GetBool("IsWalking"));
 
-        if (directions.x != 0 | directions.y != 0)
+        if (directions.x != 0 || directions.y != 0)
         {
             animator.SetFloat("X", directions.x);
             animator.SetFloat("Y", directions.y);
