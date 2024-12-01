@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -17,20 +18,22 @@ public class ComputerFloppyDisk : MonoBehaviour
     // this is a reference, so will be updated when the avatar's keys are updated
     private FloppyDisk[] avatarFloppyDisks;
     private GameObject[] ghostFloppyDisks = new GameObject[2];
+    private Avatar avatar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         computer = this.GetComponentInParent<Computer>();
         Assert.IsNotNull(this.computer);
-        Assert.IsNotNull(this.computer.avatarObj, $"{computer} has no avatar object.");
-        avatarFloppyDisks = computer.avatarObj.GetKeys();
+        avatar = computer.level.GetAndValidateAvatar(computer);
+        Assert.IsNotNull(this.avatar, $"{computer} has no avatar object.");
+        avatarFloppyDisks = avatar.GetKeys();
     }
 
     // Update is called once per frame
     void Update() { }
 
-    public bool IsAvatarDisksFull() => computer.avatarObj.IsKeysFull();
+    public bool IsAvatarDisksFull() => avatar.IsKeysFull();
 
     public FloppyDisk[] GetAllComputerDisks() =>
         avatarFloppyDisks.Where(d => d != null && d.GetComputer() == this.computer).ToArray();
@@ -48,8 +51,8 @@ public class ComputerFloppyDisk : MonoBehaviour
         }
 
         disk.SetComputer(this.computer);
-        computer.avatarObj.AddKey(disk);
-        disk.doors.ToList().ForEach(door => door.UpdateLaserCollision(computer.avatarObj, true));
+        avatar.AddKey(disk);
+        disk.doors.ToList().ForEach(door => door.UpdateLaserCollision(avatar, true));
     }
 
     public List<FloppyDisk> RemoveAllFloppyDisk()
@@ -57,9 +60,9 @@ public class ComputerFloppyDisk : MonoBehaviour
         var allDisks = GetAllComputerDisks().ToList();
         allDisks.ForEach(d =>
         {
-            computer.avatarObj.RemoveKey(d);
+            avatar.RemoveKey(d);
             d.SetComputer(null);
-            d.doors.ToList().ForEach(door => door.UpdateLaserCollision(computer.avatarObj, false));
+            d.doors.ToList().ForEach(door => door.UpdateLaserCollision(avatar, false));
         });
 
         return allDisks;

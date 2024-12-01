@@ -25,11 +25,11 @@ public static class Globals
     >()
     {
         // magenta
-        { FloppyDiskID.A, new Color(191 / 255, 48 / 255, 146 / 255) },
+        { FloppyDiskID.A, new Color(191 / 255f, 48 / 255f, 146 / 255f) },
         // cyan
-        { FloppyDiskID.B, new Color(49 / 255, 189 / 255, 170 / 255) },
+        { FloppyDiskID.B, new Color(49 / 255f, 189 / 255f, 170 / 255f) },
         // eyllow
-        { FloppyDiskID.C, new Color(255 / 255, 200 / 255, 0 / 255) },
+        { FloppyDiskID.C, new Color(255 / 255f, 200 / 255f, 0 / 255f) },
     };
 
     public static Color GetFloppyColor(FloppyDiskID id)

@@ -10,9 +10,11 @@ public class LaserDoor : MonoBehaviour
 
     // this is assigned at runtime through the floppy disk
     [HideInInspector]
-    public Color color;
+    public Color color = Color.white;
 
     private SpriteRenderer laserSpriteRenderer;
+
+    private bool startCalled = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,8 +23,8 @@ public class LaserDoor : MonoBehaviour
         children = children.Where(child => child.name.StartsWith("Door")).ToArray();
         Assert.IsTrue(children.Length == 3, "LaserDoor children should be 3");
 
-        var laser = transform.Find("LaserStripe");
-        Assert.IsNotNull(laser, "LaserDoor should have a LaserStripe child");
+        var laser = transform.Find("LaserStripes");
+        Assert.IsNotNull(laser, "LaserDoor should have a LaserStripes child");
         laserSpriteRenderer = laser.GetComponent<SpriteRenderer>();
         laserSpriteRenderer.color = color;
 
@@ -47,6 +49,12 @@ public class LaserDoor : MonoBehaviour
         );
         var avatarIdStr = avatarWithFloppy.number.ToString();
 
+        if (!startCalled)
+        {
+            Start();
+            startCalled = true;
+        }
+
         Physics2D.IgnoreCollision(
             c,
             avatarWithFloppy.GetComponent<BoxCollider2D>(),
@@ -69,7 +77,7 @@ public class LaserDoor : MonoBehaviour
         var sr = child.GetComponent<SpriteRenderer>();
         Assert.IsNotNull(sr, "LaserDoor child should have a SpriteRenderer");
 
-        var opacity = hasRights ? .5f : 1f;
-        sr.color = new Color(1f, 1f, 1f, opacity);
+        var outsideOpacity = hasRights ? .5f : 1f;
+        sr.color = new Color(1f, 1f, 1f, outsideOpacity);
     }
 }

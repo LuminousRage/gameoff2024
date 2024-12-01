@@ -94,6 +94,8 @@ public class SceneManager : MonoBehaviour
 
         ValidateFloppyDisks();
         ContinueGame();
+
+        PlayerPrefs.SetInt("ContinueLevel", 6);
     }
 
     void ContinueGame()
