@@ -27,6 +27,7 @@ public class DialogueSystem : MonoBehaviour
     public void StartDialogue() {
         popUpBox.GetComponent<Image>().enabled = true;
         popUpText.text = "";
+        popUpText.font = remainingDialogue[0].font;
         animator.SetTrigger("open");
     }
 

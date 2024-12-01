@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.size
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: 'remainingDialogue.Array.data[0]'
@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[0].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 5ececa2ddd07f9848b6799b06c196847, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[0].text
       value: "I\u2019m sorry mum I can\u2019t leave here. "
@@ -154,7 +154,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[1].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[1].text
       value: 'Why not?? '
@@ -162,7 +162,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[2].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 5ececa2ddd07f9848b6799b06c196847, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[2].text
       value: "I don\u2019t exist in your world anymore. "
@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[3].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 5ececa2ddd07f9848b6799b06c196847, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[3].text
       value: "They\u2019re keeping you here to test on me.  "
@@ -178,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[4].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 5ececa2ddd07f9848b6799b06c196847, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[4].text
       value: "I\u2019m a part of the game now. "
@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[5].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 5ececa2ddd07f9848b6799b06c196847, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[5].text
       value: 'Please get out of here before you become a part of it too. '
@@ -194,7 +194,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[6].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 5ececa2ddd07f9848b6799b06c196847, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[6].text
       value: 'And remember to take your meds. '
@@ -202,7 +202,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[7].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[7].text
       value: "I\u2019m not leaving here without you. "
@@ -210,18 +210,18 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[8].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 9d358514d4fd9ff41bbe8dbb68ea3a0c, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[8].text
-      value: "\u2026"
+      value: CRASH
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[9].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: d1f058b6e9874a541b587636fa044034, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[9].text
-      value: "\u2026"
+      value: 'Subject, return to your cell immediately! '
       objectReference: {fileID: 0}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[10].font
