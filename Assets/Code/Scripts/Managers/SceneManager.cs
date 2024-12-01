@@ -62,8 +62,6 @@ public class SceneManager : MonoBehaviour
     {
         try
         {
-
-
             this.uiCanvas_ = this.transform.Find("UICanvas")?.gameObject;
             Assert.IsNotNull(this.uiCanvas_);
 
@@ -109,7 +107,7 @@ public class SceneManager : MonoBehaviour
 
     void ContinueGame()
     {
-        var continueLevel = PlayerPrefs.GetInt("ContinueLevel",0);
+        var continueLevel = PlayerPrefs.GetInt("ContinueLevel", 0);
         EnsureLoaded(continueLevel);
         if (continueLevel > 0)
         {
