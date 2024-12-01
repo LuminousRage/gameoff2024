@@ -1,9 +1,5 @@
 using System;
-using System.Linq;
-using TreeEditor;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
@@ -33,19 +29,20 @@ public class Player : MonoBehaviour, IControllable
         return this.head_.transform;
     }
 
-    // Private
-
-
     public InputActionMap gameplayActions;
 
     private SceneManager sceneManager_;
 
     private IUsable usable_;
-    private Rigidbody rb_;
+
+    [HideInInspector]
+    public Rigidbody rb_;
     public GameObject head_;
     public PlayerReacher reacher_;
 
     public PlayerInventory inventory;
+
+    public int levelOverride = 0;
 
     private bool currentlyControlling_ = false;
     private bool currentlySprinting_ = false;
@@ -116,26 +113,6 @@ public class Player : MonoBehaviour, IControllable
 
         sprintAction_.started += context => this.currentlySprinting_ = true;
         sprintAction_.canceled += context => this.currentlySprinting_ = false;
-
-        ContinueGame();
-    }
-
-
-    void ContinueGame()
-    {
-        var continueLevel = PlayerPrefs.GetInt("ContinueLevel");
-        sceneManager_.EnsureLoaded(continueLevel);
-        if (continueLevel>0)
-        {
-            var previousLevel = sceneManager_.GetLevel(continueLevel-1);
-            var exitComputer = previousLevel.GetComponentInChildren<Level2D>().outBrokenComputer;
-            Debug.Log($"lvl {continueLevel}");
-            Debug.Log($"lval {exitComputer.GetWatcherTransform().position}");
-            this.transform.position = exitComputer.GetWatcherTransform().position;
-            Debug.Log($"lval {this.transform.position}");
-            sceneManager_.UpdatePlayerLocation(exitComputer.GetWatcherTransform());
-            exitComputer.state_ = Computer.UseState.Broken;
-        }
     }
 
     void Update()
@@ -164,11 +141,14 @@ public class Player : MonoBehaviour, IControllable
     {
         Vector2 mouseXY = this.sceneManager_.GetScaledDelta();
 
+        Transform headTransform = this.head_.transform;
+
         // Rotate horizontal view (no need for bounds checking)
-        this.transform.Rotate(new Vector3(0, mouseXY.x, 0));
+        headTransform.RotateAround(headTransform.position, Vector3.up, mouseXY.x);
+
+        // headTransform.rotation *= Quaternion.Euler(0, mouseXY.x, 0);
 
         // Rotate head view (vertical)
-        Transform headTransform = this.head_.transform;
 
         // Old X angle in [-180, 180]
         float oldXAngle = headTransform.rotation.eulerAngles.x;
@@ -211,7 +191,9 @@ public class Player : MonoBehaviour, IControllable
         Vector3 direction = Vector3.zero;
 
         // Add movement relative to camera/character orientation
-        direction += inputDirections.y * this.transform.forward;
+        direction +=
+            inputDirections.y
+            * new Vector3(head_.transform.forward.x, 0, head_.transform.forward.z).normalized;
         direction += inputDirections.x * this.head_.transform.right;
 
         float sprintModifier = currentlySprinting_ ? 2 : 1;

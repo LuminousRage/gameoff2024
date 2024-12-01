@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class Door2D : Door
@@ -15,8 +14,6 @@ public class Door2D : Door
     private Vector2 openPosition;
     private bool isMoving = false;
 
-    private Vector2 position => transform.position;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,12 +26,13 @@ public class Door2D : Door
     {
         if (isMoving)
         {
-            // Move door
-            transform.position = Vector2.MoveTowards(
+            var towards = Vector2.MoveTowards(
                 transform.position,
                 isOpen ? openPosition : closedPosition,
                 slideSpeed * Time.deltaTime
             );
+
+            transform.position = new Vector3(towards.x, towards.y, transform.position.z);
 
             if (
                 Vector2.Distance(transform.position, isOpen ? openPosition : closedPosition) < 0.01f

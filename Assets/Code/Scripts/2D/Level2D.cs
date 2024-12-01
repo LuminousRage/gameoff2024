@@ -1,12 +1,10 @@
 using System.Linq;
-using TreeEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using sm = UnityEngine.SceneManagement;
 
 public class Level2D : MonoBehaviour
 {
-    bool entered_ = false;
     Vector2 transformPosition_;
 
     private SceneManager sceneManager;
@@ -93,14 +91,15 @@ public class Level2D : MonoBehaviour
         {
             //TODO:What happens when the level cap is reached
             outBrokenComputer.quad_.SetActive(false);
-            var levels =FindObjectsByType<Level2D>(FindObjectsSortMode.None)
-                .ToList();
+            var levels = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList();
             var nextlevel = levels.Find((a) => a.levelOrder == levelOrder + 1);
             if (nextlevel == null)
             {
-                //TODO:take me to the credits
-                sm.SceneManager.LoadScene("Main Menu");
-            } else {
+                sceneManager.UnlockMouse();
+                sm.SceneManager.LoadScene("End Dialogue");
+            }
+            else
+            {
                 var nextAvatars = nextlevel.GetComponentsInChildren<Avatar>().ToList();
                 avatars.ForEach(a => a.SetRenderCamera(false));
                 nextAvatars.ForEach(a => a.SetRenderCamera(true));
@@ -108,7 +107,7 @@ public class Level2D : MonoBehaviour
 
                 sceneManager.EnsureLoaded(nextlevel.levelOrder);
             }
-            }
+        }
     }
 
     public void StandUp()
@@ -170,6 +169,12 @@ public class Level2D : MonoBehaviour
 
         foreach (var computer in computers)
         {
+            if (computer.zone == Globals.Zone.Broken)
+            {
+                // skip ghost disk for broken computers
+                continue;
+            }
+
             if (floppyDiskID != null)
             {
                 var ghostDisk = ghostFloppyDiskManager.GetUnusedGhostDisk();

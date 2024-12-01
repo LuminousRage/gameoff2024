@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ContinueGame() {
         if (PlayerPrefs.GetInt("IntroDone",0)==0) {
-            sm.SceneManager.LoadScene("Intro");
+            sm.SceneManager.LoadScene("Intro Dialogue");
         } else {
             sm.SceneManager.LoadScene("Main (Dynamic)");
         }

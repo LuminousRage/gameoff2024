@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.InputSystem;
 
 public class Avatar : MonoBehaviour, IControllable
 {
@@ -30,7 +29,6 @@ public class Avatar : MonoBehaviour, IControllable
     public void SetControllable(bool controllable = true)
     {
         this.controlling_ = controllable;
-
         if (ai != null)
         {
             ai.SetInputEnable(controllable);

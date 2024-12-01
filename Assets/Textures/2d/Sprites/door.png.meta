@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,8 +102,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 192
-        height: 192
+        width: 48
+        height: 48
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,7 +112,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a034d5c0f9f445b89668523ad40bef9
+      spriteID: f0881dfddf90fcc4ebb0e4a277a9758c
       internalID: -809504548
       vertices: []
       indices: 
@@ -122,10 +122,10 @@ TextureImporter:
       name: door_1
       rect:
         serializedVersion: 2
-        x: 192
+        x: 53
         y: 0
-        width: 64
-        height: 192
+        width: 6
+        height: 48
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,7 +134,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b76ac44f5ecf043d38297d0f499cf032
+      spriteID: 2437c3145620dbd4899680a3cfd4556f
       internalID: -137017655
       vertices: []
       indices: 
@@ -156,15 +156,6 @@ TextureImporter:
     nameFileIdTable:
       door_0: -809504548
       door_1: -137017655
-      door_10: 1805037177
-      door_11: 1378081836
-      door_2: 1964273290
-      door_4: 1775952279
-      door_5: 688248820
-      door_6: 892393420
-      door_7: 897103746
-      door_8: 1225937225
-      door_9: -111298966
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

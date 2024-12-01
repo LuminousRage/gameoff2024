@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main menu.unity
     guid: aad35c9a3edfcc044b6b27cbbbade699
   - enabled: 1
-    path: Assets/Scenes/Intro.unity
+    path: Assets/Scenes/Intro Dialogue.unity
     guid: 8c5108679e9446646aa2777638a0faa8
   - enabled: 1
     path: Assets/Scenes/Main (Dynamic).unity
@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 5e8ed1cfe0c35df2e868e7daf5acad94
+  - enabled: 1
+    path: Assets/Scenes/End Dialogue.unity
+    guid: 15d92310abaa4074e98d5023197ca86b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

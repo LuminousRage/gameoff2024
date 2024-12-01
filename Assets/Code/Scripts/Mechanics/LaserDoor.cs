@@ -6,9 +6,15 @@ public class LaserDoor : MonoBehaviour
 {
     private Transform[] children;
 
+    private BoxCollider2D c;
+
     // this is assigned at runtime through the floppy disk
     [HideInInspector]
-    public Color color;
+    public Color color = Color.white;
+
+    private SpriteRenderer laserSpriteRenderer;
+
+    private bool startCalled = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +22,14 @@ public class LaserDoor : MonoBehaviour
         children = GetComponentsInChildren<Transform>();
         children = children.Where(child => child.name.StartsWith("Door")).ToArray();
         Assert.IsTrue(children.Length == 3, "LaserDoor children should be 3");
+
+        var laser = transform.Find("LaserStripes");
+        Assert.IsNotNull(laser, "LaserDoor should have a LaserStripes child");
+        laserSpriteRenderer = laser.GetComponent<SpriteRenderer>();
+        laserSpriteRenderer.color = color;
+
+        c = GetComponent<BoxCollider2D>();
+        Assert.IsNotNull(c, "LaserDoor should have a BoxCollider2D");
 
         children
             .ToList()
@@ -28,25 +42,33 @@ public class LaserDoor : MonoBehaviour
             });
     }
 
-    public void UpdateLaserCollision(Avatar avatarWithFloppy)
+    public void UpdateLaserCollision(Avatar avatarWithFloppy, bool avatarHasRights)
     {
-        var avatarId = avatarWithFloppy.number;
-        var avatarLayer = avatarWithFloppy.gameObject.layer;
+        Debug.Log(
+            $"Updating laser collision for {avatarWithFloppy} with rights: {avatarHasRights}"
+        );
+        var avatarIdStr = avatarWithFloppy.number.ToString();
 
-        var layerWithRights = children
+        if (!startCalled)
+        {
+            Start();
+            startCalled = true;
+        }
+
+        Physics2D.IgnoreCollision(
+            c,
+            avatarWithFloppy.GetComponent<BoxCollider2D>(),
+            avatarHasRights
+        );
+
+        children
             .ToList()
-            .Aggregate(
-                avatarLayer,
-                (acc, child) =>
-                {
-                    var avatarHasRights = child.name.Contains(avatarId.ToString());
-                    UpdateSprite(child, avatarHasRights);
+            .ForEach(child =>
+            {
+                var layerHasRights = child.name.Contains(avatarIdStr);
 
-                    return avatarHasRights ? child.gameObject.layer : acc;
-                }
-            );
-
-        avatarWithFloppy.gameObject.layer = layerWithRights;
+                UpdateSprite(child, layerHasRights);
+            });
     }
 
     void UpdateSprite(Transform child, bool hasRights)
@@ -55,7 +77,7 @@ public class LaserDoor : MonoBehaviour
         var sr = child.GetComponent<SpriteRenderer>();
         Assert.IsNotNull(sr, "LaserDoor child should have a SpriteRenderer");
 
-        var opacity = hasRights ? .5f : 1f;
-        sr.color = new Color(1f, 1f, 1f, opacity);
+        var outsideOpacity = hasRights ? .5f : 1f;
+        sr.color = new Color(1f, 1f, 1f, outsideOpacity);
     }
 }

@@ -50,6 +50,8 @@ MonoBehaviour:
   triggerable: {fileID: 0}
   activeForSeconds: 10
   inputKey: F
+  pressedSprite: {fileID: -786785433, guid: 0fc39a60b3d137847a2f4da5e39b7bb1, type: 3}
+  unpressedSprite: {fileID: 1123615604, guid: 0fc39a60b3d137847a2f4da5e39b7bb1, type: 3}
 --- !u!61 &1911761671321871711
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -84,17 +86,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.5, y: -0.5}
+  m_Offset: {x: 0.5, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 1}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
 --- !u!212 &127128953245256857
 SpriteRenderer:
@@ -140,7 +142,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -495638778, guid: a609b9defa1b54a3f809bc188fff77dd, type: 3}
+  m_Sprite: {fileID: 1123615604, guid: 0fc39a60b3d137847a2f4da5e39b7bb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,15 +187,15 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1, y: -0.5}
+  m_Offset: {x: 0.5, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 1}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 1}
+  m_Size: {x: 0.75, y: 0.5}
   m_EdgeRadius: 0

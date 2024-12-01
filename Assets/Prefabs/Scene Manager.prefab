@@ -654,6 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edcb83bcd1b0b58f8f1fec2b1afa6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followCamera_: {fileID: 0}
   focusedComputer_: {fileID: 0}
   canUseAction: 1
   usePromptPosition2D: {x: -246, y: -301.3333, z: 0}
@@ -672,7 +673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9551d4dbfd8a54506b3a77e4d45f9edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostComputerPrefab: {fileID: 0}
+  ghostComputerPrefab: {fileID: 1938758619342909474, guid: f524b6bc7d58f4d4fa74929c7436b95f, type: 3}
+  stuff: []
 --- !u!114 &4768923639611596836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,7 +688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialFloppyDiskCount: 10
-  ghostFloppyDiskPrefab: {fileID: 4219988466177038081, guid: 2df3e4a3ef0744ea79d03c4c088f1bb8, type: 3}
+  ghostFloppyDiskPrefab: {fileID: 1938758619342909474, guid: f524b6bc7d58f4d4fa74929c7436b95f, type: 3}
 --- !u!114 &3597940299408079123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,7 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materials:
   - zone: 0
-    material: {fileID: 2100000, guid: 0e83d60dc3cf248c1ae7a8b87a50c66f, type: 2}
+    material: {fileID: 2100000, guid: e0062fc485489f36fa2d1e221da6a922, type: 2}
   - zone: 1
     material: {fileID: 2100000, guid: ca0fadd23b372481aace20c2d23cda8d, type: 2}
   - zone: 2

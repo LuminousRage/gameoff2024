@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.InputSystem.Controls;
 
 public class AvatarZone : MonoBehaviour
 {
