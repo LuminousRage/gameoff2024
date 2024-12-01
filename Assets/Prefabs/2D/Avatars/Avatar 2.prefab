@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1609790220642901344, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f32ec8ee3a41daf4095b770d2bbbd467, type: 3}
     - target: {fileID: 2350891814998936499, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
       propertyPath: m_Name
       value: Avatar 2
@@ -28,6 +32,10 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 4343
       objectReference: {fileID: 0}
+    - target: {fileID: 7855075956485666284, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 9e629db57da1747f88aeaacddd0dc13c, type: 2}
     - target: {fileID: 8617576594809164069, guid: b373a62ab782e1e4faa679eed114d45a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
