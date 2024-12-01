@@ -723,6 +723,26 @@ PrefabInstance:
       propertyPath: triggerable
       value: 
       objectReference: {fileID: 921323267964091374}
+    - target: {fileID: 6671745030988758950, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[15].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671745030988758950, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[20].m_Data
+      value: 
+      objectReference: {fileID: 1542740813, guid: a2ac021b242324c7bb8255b81696c299, type: 3}
+    - target: {fileID: 6671745030988758950, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[15].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671745030988758950, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[20].m_RefCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671745030988758950, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
+      propertyPath: m_Tiles.Array.data[10].second.m_TileSpriteIndex
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9199213260508090076, guid: 51a3f4f2d0bc14012bb737142e803c26, type: 3}
       propertyPath: triggerable
       value: 

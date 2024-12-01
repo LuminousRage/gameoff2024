@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -19,7 +18,7 @@ public class Avatar : MonoBehaviour, IControllable
     public AvatarInput ai;
     public SpriteRenderer leftHand;
     public SpriteRenderer rightHand;
-    
+
     public Sprite keyA;
     public Sprite keyB;
     public Sprite keyC;
@@ -103,22 +102,24 @@ public class Avatar : MonoBehaviour, IControllable
             }
             avatarKeys[emptyIndex] = key;
             var hand = leftHand;
-            if (emptyIndex==1) {
+            if (emptyIndex == 1)
+            {
                 hand = rightHand;
             }
-            
-            switch (key.floppyDiskID) {
+
+            switch (key.floppyDiskID)
+            {
                 case Globals.FloppyDiskID.A:
                     hand.sprite = keyA;
-                break;
+                    break;
                 case Globals.FloppyDiskID.B:
                     hand.sprite = keyB;
-                break;
+                    break;
                 case Globals.FloppyDiskID.C:
                     hand.sprite = keyC;
-                break;
+                    break;
             }
-            
+
             key.SetFloppyDiskTransform(emptyIndex);
             level.TellOtherComputersToRenderGhostDisks(
                 number,
@@ -136,9 +137,10 @@ public class Avatar : MonoBehaviour, IControllable
             var index = Array.IndexOf(avatarKeys, key);
             level.TellOtherComputersToRenderGhostDisks(number, key.GetComputer(), index);
             avatarKeys[index] = null;
-            
+
             var hand = leftHand;
-            if (index==1) {
+            if (index == 1)
+            {
                 hand = rightHand;
             }
             hand.sprite = null;
