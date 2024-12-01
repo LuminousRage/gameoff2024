@@ -11,6 +11,8 @@ public class PressurePad : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private int thingsOnPad = 0;
+    public AudioSource padPressSound;
+    public AudioSource padUnPressSound;
 
     void Start()
     {
@@ -26,10 +28,12 @@ public class PressurePad : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == "Player")
         {
             if (thingsOnPad == 0)
             {
+                padPressSound?.Play();
                 spriteRenderer.sprite = onSprite;
                 triggerable.Trigger();
             }
@@ -44,6 +48,7 @@ public class PressurePad : MonoBehaviour
             thingsOnPad--;
             if (thingsOnPad == 0)
             {
+                padUnPressSound?.Play();
                 spriteRenderer.sprite = offSprite;
                 triggerable.Untrigger();
             }
