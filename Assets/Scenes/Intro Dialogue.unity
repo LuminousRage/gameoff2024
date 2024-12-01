@@ -128,14 +128,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1235912428}
     m_Modifications:
     - target: {fileID: 1524554350746435387, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1524554350746435387, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
-      propertyPath: m_fontSize
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 1524554350746435387, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: m_fontSizeBase
       value: 72
       objectReference: {fileID: 0}
@@ -158,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[0].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[0].text
       value: ' Ian, can you take out the trash? '
@@ -166,7 +158,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[1].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[1].text
       value: ' Ian??? '
@@ -174,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[2].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[2].text
       value: ' IIIIIAAAAAAANNNNNN?!?!?!!?????? '
@@ -182,7 +174,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[3].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[3].text
       value: " Oh, he\u2019s not home? Still hanging out with his new friend I guess. "
@@ -190,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[4].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[4].text
       value: " He\u2019s been so distant ever since david left us.   "
@@ -198,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[5].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[5].text
       value: 'I wish he would come home more often or at least leave me a message
@@ -207,7 +199,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[6].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[6].text
       value: 'We need to be strong together. '
@@ -215,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[7].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[7].text
       value: "\u2026"
@@ -223,7 +215,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[8].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[8].text
       value: "\u2026"
@@ -231,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[9].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[9].text
       value: "I should sleep it\u2019s already 9pm, he\u2019ll probably get in late
@@ -240,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[10].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[10].text
       value: "I\u2019ll leave the light on for him. "
@@ -248,7 +240,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[11].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[11].text
       value: "I hope he\u2019s alright. "
@@ -256,7 +248,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[12].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 9d358514d4fd9ff41bbe8dbb68ea3a0c, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[12].text
       value: ..
@@ -264,7 +256,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[13].font
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 9d358514d4fd9ff41bbe8dbb68ea3a0c, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[13].text
       value: BEEP BEEP BEEP BEEP
@@ -280,7 +272,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[15].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[15].text
       value: 'Huh, the light is still on? Did he forget to turn it off? '
@@ -288,7 +280,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[16].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[16].text
       value: "He\u2019s not home.. "
@@ -296,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[17].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[17].text
       value: "I know, he probably stayed over at his friends place. I\u2019ll call
@@ -305,7 +297,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[18].font
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 9d358514d4fd9ff41bbe8dbb68ea3a0c, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[18].text
       value: Ring Ring
@@ -313,7 +305,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[19].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[19].text
       value: Hey have you seen Ian?
@@ -321,7 +313,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[20].font
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: d1f058b6e9874a541b587636fa044034, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[20].text
       value: "Ma\u2019am we do not have your son."
@@ -329,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[21].font
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: d1f058b6e9874a541b587636fa044034, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[21].text
       value: Please proceed.
@@ -337,7 +329,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[22].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[22].text
       value: "Oh he didn\u2019t stay over? Where could he have gone last night then?
@@ -346,7 +338,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[23].font
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 9d358514d4fd9ff41bbe8dbb68ea3a0c, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[23].text
       value: Ring Ring
@@ -354,7 +346,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[24].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[24].text
       value: My son has gone missing have you guys heard anything?
@@ -362,7 +354,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[25].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: d1f058b6e9874a541b587636fa044034, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[25].text
       value: "Ma\u2019am we do not have your son."
@@ -370,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[26].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: d1f058b6e9874a541b587636fa044034, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[26].text
       value: Please proceed.
@@ -378,7 +370,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[27].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[27].text
       value: ' I would like to file a missing person report for my son.  '
@@ -386,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[28].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: d1f058b6e9874a541b587636fa044034, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[28].text
       value: Ok.
@@ -394,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[29].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[29].text
       value: "Where could he have gone\u2026 "
@@ -402,7 +394,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[30].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[30].text
       value: "\u2026"
@@ -410,7 +402,7 @@ PrefabInstance:
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[31].font
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 7535fe40a930577469283565b1d2b3e7, type: 2}
     - target: {fileID: 4035388820375295073, guid: 70ad1070e5e62154d84119090546d6e4, type: 3}
       propertyPath: remainingDialogue.Array.data[31].text
       value: "He\u2019s been spending a lot of time on his computer recently maybe
