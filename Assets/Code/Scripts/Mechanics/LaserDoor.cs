@@ -1,6 +1,6 @@
 using System.Linq;
-using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class LaserDoor : MonoBehaviour
 {

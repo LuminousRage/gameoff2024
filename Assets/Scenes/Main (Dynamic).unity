@@ -188,23 +188,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f273ea23b8434d248bc8ed4ad1c09fae, type: 3}
---- !u!1 &2040443184 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8277451081226215872, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-  m_PrefabInstance: {fileID: 7896249486808647597}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2040443188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040443184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7896249486808647597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,34 +236,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4036888277417441758, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: m_HDR
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4036888277417441758, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: m_AllowMSAA
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4036888277417441758, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4036888277417441758, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: m_BackGroundColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4036888277417441758, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4036888277417441758, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4036888277417441758, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6084405766315213975, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
       propertyPath: m_Name
       value: SceneManager
@@ -288,10 +243,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8277451081226215872, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2040443188}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c7d1373638a5bb8784940a0f2ee646f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

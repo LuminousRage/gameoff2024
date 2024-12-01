@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, IControllable
     private InputAction useAction_;
     private InputAction diskAction_;
     private InputAction sprintAction_;
+    private InputAction pauseAction_;
 
     public Transform GetHeadTransform()
     {
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour, IControllable
     private bool currentlyControlling_ = false;
     private bool currentlySprinting_ = false;
 
+    private Nullable<float> exitIfTimeIsOver_ = null;
+
     public void SetControllable(bool enable = true)
     {
         this.currentlyControlling_ = enable;
@@ -61,6 +64,7 @@ public class Player : MonoBehaviour, IControllable
             useAction_.Enable();
             diskAction_.Enable();
             sprintAction_.Enable();
+            pauseAction_.Enable();
         }
         else
         {
@@ -104,6 +108,8 @@ public class Player : MonoBehaviour, IControllable
         Assert.IsNotNull(diskAction_, "Unable to find Insert action from Player.");
         sprintAction_ = gameplayActions.FindAction("Sprint");
         Assert.IsNotNull(sprintAction_, "Unable to find Sprint action from Player.");
+        pauseAction_ = gameplayActions.FindAction("Pause");
+        Assert.IsNotNull(pauseAction_, "Unable to find Pause action from Player.");
 
         SetControllable(true);
         useAction_.performed += context =>
@@ -113,6 +119,19 @@ public class Player : MonoBehaviour, IControllable
 
         sprintAction_.started += context => this.currentlySprinting_ = true;
         sprintAction_.canceled += context => this.currentlySprinting_ = false;
+
+        pauseAction_.started += context =>
+        {
+            Debug.Log(
+                $"Initiated pause at {UnityEngine.Time.time}. Will exit if time reaches {this.exitIfTimeIsOver_}"
+            );
+            this.exitIfTimeIsOver_ = UnityEngine.Time.time + 3f;
+        };
+        pauseAction_.canceled += context =>
+        {
+            Debug.Log("Cancelled pause.");
+            this.exitIfTimeIsOver_ = null;
+        };
     }
 
     void Update()
@@ -131,6 +150,9 @@ public class Player : MonoBehaviour, IControllable
     // Update on a fixed timer
     void FixedUpdate()
     {
+        // Don't need to check every frame, so its in FixedUpdate
+        this.CheckForExit();
+
         this.UpdatePosition();
     }
 
@@ -225,5 +247,13 @@ public class Player : MonoBehaviour, IControllable
     private float GetMaxMoveSpeed()
     {
         return this.maxMoveSpeed * (this.currentlySprinting_ ? this.sprintRatio : 1);
+    }
+
+    public void CheckForExit()
+    {
+        if (this.exitIfTimeIsOver_ != null && Time.time >= this.exitIfTimeIsOver_)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Main menu");
+        }
     }
 }
