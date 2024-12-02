@@ -25,8 +25,13 @@ public class OptionsMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        OnStart();
+    }
+
+    public void OnStart() {
+
         SetSoundEffectsVolume(PlayerPrefs.GetFloat("SavedSoundEffectsVolume", 1));
-        SetMusicVolume(PlayerPrefs.GetFloat("SavedMusicVolume", 1));
+        SetMusicVolume(PlayerPrefs.GetFloat("SavedMusicVolume", 0.4f));
         SetSensitivity(PlayerPrefs.GetFloat("SavedSensitivity", 0.5f));
         SetSensitivity(PlayerPrefs.GetFloat("Exposure", 0.5f));
     }
@@ -48,7 +53,7 @@ public class OptionsMenu : MonoBehaviour
         {
             v = .00001f;
         }
-        RefreshsensitivitySlider(v);
+        RefreshExposureSlider(v);
         PlayerPrefs.SetFloat("Exposure", v);
         PlayerPrefs.Save();
     }
