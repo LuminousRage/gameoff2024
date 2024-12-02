@@ -56,6 +56,7 @@ public class Level2D : MonoBehaviour
         }
 
         avatar.GetLevel().UpdatePlayerToComputer(avatar, c.zone, avatarLastZone);
+        avatar.SetRenderCamera(true);
         avatar.SetControllable(true);
         avatar.GetRigidbody().bodyType = RigidbodyType2D.Dynamic;
         sceneManager.avatarActive = avatar;

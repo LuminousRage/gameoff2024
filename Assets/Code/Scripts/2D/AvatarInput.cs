@@ -39,6 +39,7 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
                     {
                         Debug.Log("Standing up");
                         avatar.GetLevel().StandUp();
+                        avatar.SetRenderCamera(false);
                     },
                     context.action
                 );
