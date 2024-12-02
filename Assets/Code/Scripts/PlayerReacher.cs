@@ -21,8 +21,6 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
         Assert.IsNotNull(sm_, "Unable to find SceneManager from Player.");
     }
 
-    // Update is called once per frame
-    void Update() { }
 
     public void UseUsable()
     {
@@ -135,7 +133,7 @@ public class PlayerReacher : MonoBehaviour, IUsableSetter
 
     public DiskActionPrompts GetDiskActionPrompt()
     {
-        if (computer_ == null)
+        if (computer_ == null || computer_.isGhostComputer)
         {
             return DiskActionPrompts.None;
         }
