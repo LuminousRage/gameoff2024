@@ -34,6 +34,10 @@ public class Avatar : MonoBehaviour, IControllable
     public void SetControllable(bool controllable = true)
     {
         this.controlling_ = controllable;
+        if (!controllable)
+        {
+            ai.animator.SetBool("IsWalking", false);
+        }
         if (ai != null)
         {
             ai.SetInputEnable(controllable);

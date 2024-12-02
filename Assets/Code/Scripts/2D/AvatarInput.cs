@@ -14,7 +14,7 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
     [SerializeField]
     private float speed = 5;
 
-    private Animator animator;
+    public Animator animator;
     SceneManager sm;
 
     void Start()
