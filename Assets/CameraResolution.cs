@@ -6,8 +6,9 @@ using UnityEngine;
 public class CameraResolution : MonoBehaviour
 {
     #region Pola
-    private int ScreenSizeX = 1440;
-    private int ScreenSizeY = 1080;
+    public int ScreenSizeX = 1440;
+    public int ScreenSizeY = 1080;
+    public float targetaspect = 4.0f / 3.0f;
     #endregion
 
     #region metody
@@ -18,7 +19,6 @@ public class CameraResolution : MonoBehaviour
         if (Screen.width == ScreenSizeX && Screen.height == ScreenSizeY)
             return;
 
-        float targetaspect = 16.0f / 9.0f;
         float windowaspect = (float)Screen.width / (float)Screen.height;
         float scaleheight = windowaspect / targetaspect;
         Camera camera = GetComponent<Camera>();
