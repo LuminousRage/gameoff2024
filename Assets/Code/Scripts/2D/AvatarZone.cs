@@ -37,7 +37,7 @@ public class AvatarZone : MonoBehaviour
 
     public void MoveAvatarTo(Vector2 position)
     {
-        avatar.transform.position = new Vector3(position.x,position.y,transform.position.z);
+        avatar.transform.position = new Vector3(position.x, position.y, avatar.transform.position.z);
     }
 
     public void changeAreaZone(CollisionZone newArea)
