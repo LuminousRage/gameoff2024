@@ -104,8 +104,6 @@ public class Level2D : MonoBehaviour
                 avatars.ForEach(a => a.SetRenderCamera(false));
                 nextAvatars.ForEach(a =>
                 {
-                    // this fixes a camera bug
-                    a.SetRenderCamera(false);
                     a.SetRenderCamera(true);
                 });
                 PlayerPrefs.SetInt("ContinueLevel", levelOrder + 1);
