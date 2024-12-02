@@ -90,7 +90,6 @@ public class Level2D : MonoBehaviour
 
         if (isOnBrokenComputer)
         {
-            //TODO:What happens when the level cap is reached
             outBrokenComputer.quad_.SetActive(false);
             var levels = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList();
             var nextlevel = levels.Find((a) => a.levelOrder == levelOrder + 1);
@@ -103,10 +102,10 @@ public class Level2D : MonoBehaviour
             {
                 var nextAvatars = nextlevel.GetComponentsInChildren<Avatar>().ToList();
                 avatars.ForEach(a => a.SetRenderCamera(false));
-                // nextAvatars.ForEach(a =>
-                // {
-                //     a.SetRenderCamera(true);
-                // });
+                nextAvatars.ForEach(a =>
+                {
+                    a.SetRenderCamera(true);
+                });
                 PlayerPrefs.SetInt("ContinueLevel", levelOrder + 1);
                 PlayerPrefs.Save();
 

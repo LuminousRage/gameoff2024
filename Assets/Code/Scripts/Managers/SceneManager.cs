@@ -281,7 +281,7 @@ public class SceneManager : MonoBehaviour
         player_.transform.position =
             transform.position + -0.7f * transform.forward + new Vector3(0, -0.6f, 0);
         player_.GetComponent<Rigidbody>().MovePosition(player_.transform.position);
-        player_.transform.forward = new Vector3(
+        player_.GetHeadTransform().forward = new Vector3(
             transform.forward.x,
             0,
             transform.forward.z

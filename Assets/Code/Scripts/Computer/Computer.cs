@@ -67,7 +67,6 @@ public class Computer : MonoBehaviour, IUsable
         ToggleComputer(currentAvatar.az.currentCollisionZone.zone == zone, true);
 
         quad_.GetComponent<MeshRenderer>().material = avatarScreens[avatar - 1];
-        quad_.SetActive(false);
 
         avatarObj = level.GetAndValidateAvatar(this);
         Assert.IsNotNull(this.avatarObj, "Unable to find avatar from Computer.");
