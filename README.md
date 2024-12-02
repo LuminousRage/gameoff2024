@@ -2,7 +2,7 @@
 Entry for [Game Off 2024](https://itch.io/jam/game-off-2024).
 See our game on [itch.io](https://luminousrage.itch.io/chameleon).
 
-Charmeleon is a 2D/3D dimension-weaving puzzle adventure game, where you play a game that distorts reality. Will you let the colours shape who you are, or will you protect what you hold dear?
+Chameleon is a 2D/3D dimension-weaving puzzle adventure game, where you play a game that distorts reality. Will you let the colours shape who you are, or will you protect what you hold dear?
 
 # Credits
 * 4321louis - Code, puzzle design, story (he decided to put *.meta in the .gitignore)
