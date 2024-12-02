@@ -7,6 +7,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
     public Globals.FloppyDiskID floppyDiskID;
     Player player;
     public bool isInInventory_ = false;
+    public bool ghost = false;
 
     // The computer the floppy disk is currently in, null if not in a computer
     public Computer computer_;
@@ -47,7 +48,7 @@ public class FloppyDisk : MonoBehaviour, IUsable
             ?.UnsetUsable(this);
     }
 
-    public bool IsCurrentlyUsable() => !isInInventory_ && computer_ == null;
+    public bool IsCurrentlyUsable() => !isInInventory_ && computer_ == null && !ghost;
 
     public void SetVisible(bool visible = true) => this.gameObject.SetActive(visible);
 

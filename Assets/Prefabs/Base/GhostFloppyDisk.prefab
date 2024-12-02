@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floppyDiskID: 0
   isInInventory_: 0
+  ghost: 1
   computer_: {fileID: 0}
   doors: []
 --- !u!65 &1059640437377028002
