@@ -12,6 +12,7 @@ public class OptionsMenu : MonoBehaviour
 
     [SerializeField]
     private Slider sensitivitySlider;
+
     [SerializeField]
     private Slider exposureSlider;
 
@@ -38,7 +39,9 @@ public class OptionsMenu : MonoBehaviour
         }
         RefreshsensitivitySlider(v);
         PlayerPrefs.SetFloat("SavedSensitivity", v);
+        PlayerPrefs.Save();
     }
+
     private void SetExposure(float v)
     {
         if (v < .00001f)
@@ -47,6 +50,7 @@ public class OptionsMenu : MonoBehaviour
         }
         RefreshsensitivitySlider(v);
         PlayerPrefs.SetFloat("Exposure", v);
+        PlayerPrefs.Save();
     }
 
     private void SetSoundEffectsVolume(float v)
@@ -57,6 +61,7 @@ public class OptionsMenu : MonoBehaviour
         }
         RefreshSoundEffectsSlider(v);
         PlayerPrefs.SetFloat("SavedSoundEffectsVolume", v);
+        PlayerPrefs.Save();
 
         soundEffectsMixer.SetFloat("MasterVolume", Mathf.Log10(v) * 20f);
     }
@@ -69,6 +74,7 @@ public class OptionsMenu : MonoBehaviour
         }
         RefreshMusicSlider(v);
         PlayerPrefs.SetFloat("SavedMusicVolume", v);
+        PlayerPrefs.Save();
 
         musicMixer.SetFloat("MasterVolume", Mathf.Log10(v) * 20f);
     }
@@ -87,6 +93,7 @@ public class OptionsMenu : MonoBehaviour
     {
         SetSensitivity(sensitivitySlider.value);
     }
+
     public void SetExposureFromSlider()
     {
         SetExposure(exposureSlider.value);
@@ -106,6 +113,7 @@ public class OptionsMenu : MonoBehaviour
     {
         sensitivitySlider.value = v;
     }
+
     private void RefreshExposureSlider(float v)
     {
         exposureSlider.value = v;

@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main (Dynamic).unity
     guid: 77afbb83eb7cbe374be136d0edfad3fd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 5e8ed1cfe0c35df2e868e7daf5acad94
   - enabled: 1

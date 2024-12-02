@@ -4,9 +4,9 @@ using sm = UnityEngine.SceneManagement;
 
 public class IntroScene : MonoBehaviour
 {
-    
     public AudioSource endSong;
     public EventTrigger.TriggerEvent start;
+
     void Start()
     {
         BaseEventData eventData = new BaseEventData(EventSystem.current);
@@ -15,12 +15,18 @@ public class IntroScene : MonoBehaviour
         endSong?.Play();
     }
 
-    public void MoveToMain() {
-        PlayerPrefs.SetInt("IntroDone",1);
+    public void MoveToMain()
+    {
+        PlayerPrefs.SetInt("IntroDone", 1);
+        PlayerPrefs.Save();
+
         sm.SceneManager.LoadScene("Main (Dynamic)");
     }
-    public void MoveToMainMenu() {
-        PlayerPrefs.SetInt("IntroDone",1);
+
+    public void MoveToMainMenu()
+    {
+        PlayerPrefs.SetInt("IntroDone", 1);
+        PlayerPrefs.Save();
         sm.SceneManager.LoadScene("Main Menu");
     }
 }
