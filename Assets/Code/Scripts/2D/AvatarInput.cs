@@ -65,13 +65,13 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
     {
         var rb = avatar.GetRigidbody();
 
-        var directions = move.ReadValue<Vector2>();
+        var direction = move.ReadValue<Vector2>();
         // Debug.Log(animator.GetBool("IsWalking"));
 
-        if (directions.x != 0 || directions.y != 0)
+        if (direction.x != 0 || direction.y != 0)
         {
-            animator.SetFloat("X", directions.x);
-            animator.SetFloat("Y", directions.y);
+            animator.SetFloat("X", direction.x);
+            animator.SetFloat("Y", direction.y);
 
             animator.SetBool("IsWalking", true);
         }
@@ -80,8 +80,8 @@ public class AvatarInput : MonoBehaviour, IUsableSetter
             animator.SetBool("IsWalking", false);
         }
 
-        directions = new Vector2(Mathf.Round(directions.x), Mathf.Round(directions.y));
-        var newPosition = rb.position + directions * Time.deltaTime * speed;
+        direction = new Vector2(Mathf.Round(direction.x), Mathf.Round(direction.y));
+        var newPosition = rb.position + direction * Time.deltaTime * speed;
         rb.MovePosition(newPosition);
     }
 
