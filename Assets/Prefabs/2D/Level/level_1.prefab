@@ -18678,10 +18678,6 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[390].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
-    - target: {fileID: 225930030351015334, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[0].m_Data
-      value: 
-      objectReference: {fileID: -140540032, guid: ae5f1761aab1df749b59ef6687e9a5eb, type: 3}
     - target: {fileID: 538202604343845018, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_Name
       value: Zone B
@@ -18734,14 +18730,6 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[1].spawnPoint.y
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4343211556304033941, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[0].m_Data
-      value: 
-      objectReference: {fileID: -140540032, guid: ae5f1761aab1df749b59ef6687e9a5eb, type: 3}
-    - target: {fileID: 6372372390300826411, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[0].m_Data
-      value: 
-      objectReference: {fileID: -140540032, guid: ae5f1761aab1df749b59ef6687e9a5eb, type: 3}
     - target: {fileID: 6908236318321769296, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -25206,10 +25194,6 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[119].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
-    - target: {fileID: 225930030351015334, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[0].m_Data
-      value: 
-      objectReference: {fileID: -140540032, guid: ae5f1761aab1df749b59ef6687e9a5eb, type: 3}
     - target: {fileID: 538202604343845018, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_Name
       value: Zone A
@@ -25246,14 +25230,6 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[0].spawnPoint.y
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4343211556304033941, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[0].m_Data
-      value: 
-      objectReference: {fileID: -140540032, guid: ae5f1761aab1df749b59ef6687e9a5eb, type: 3}
-    - target: {fileID: 6372372390300826411, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[0].m_Data
-      value: 
-      objectReference: {fileID: -140540032, guid: ae5f1761aab1df749b59ef6687e9a5eb, type: 3}
     - target: {fileID: 6908236318321769296, guid: 4e8397dad9bf3457ab3cf1d16426abce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
