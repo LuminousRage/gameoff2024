@@ -33,7 +33,7 @@ public class OptionsMenu : MonoBehaviour
         SetSoundEffectsVolume(PlayerPrefs.GetFloat("SavedSoundEffectsVolume", 1));
         SetMusicVolume(PlayerPrefs.GetFloat("SavedMusicVolume", 0.4f));
         SetSensitivity(PlayerPrefs.GetFloat("SavedSensitivity", 0.5f));
-        SetSensitivity(PlayerPrefs.GetFloat("Exposure", 0.5f));
+        SetExposure(PlayerPrefs.GetFloat("Exposure", 0.5f));
     }
 
     private void SetSensitivity(float v)

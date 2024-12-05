@@ -17,8 +17,6 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         PlayerPrefs.SetInt("IntroDone", 0);
-        PlayerPrefs.Save();
-
         PlayerPrefs.SetInt("ContinueLevel", 0);
         PlayerPrefs.Save();
 
