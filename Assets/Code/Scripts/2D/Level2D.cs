@@ -91,6 +91,7 @@ public class Level2D : MonoBehaviour
         if (isOnBrokenComputer)
         {
             outBrokenComputer.quad_.SetActive(false);
+            outBrokenComputer.soundManager.ToggleOff();
             var levels = FindObjectsByType<Level2D>(FindObjectsSortMode.None).ToList();
             var nextlevel = levels.Find((a) => a.levelOrder == levelOrder + 1);
             if (nextlevel == null)
