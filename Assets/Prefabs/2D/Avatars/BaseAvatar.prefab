@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1609790220642901344}
   - component: {fileID: 7904636876759750003}
   - component: {fileID: 7855075956485666284}
+  - component: {fileID: 6283594172904857907}
   m_Layer: 0
   m_Name: BaseAvatar
   m_TagString: Player
@@ -323,6 +324,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6283594172904857907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350891814998936499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2d2c2942db9e74fa2e52f01ecc66f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneA: 0
+  zoneB: 0
+  zoneC: 0
+  zoneBroken: 0
 --- !u!1 &5482656814196737542
 GameObject:
   m_ObjectHideFlags: 0

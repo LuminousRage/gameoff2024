@@ -1,17 +1,16 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class ComputerSoundManager : SoundManager
+public class ComputerSoundManager : MonoBehaviour
 {
     // Parameters
-    [Min(0)]
-    public float zoneAudioDelaySeconds = 1;
 
     [Range(0, 1)]
     public float fanVolume = 0.1f;
 
     [Range(0, 1)]
     public float zoneVolume = 0.8f;
+    public float crossFadeRate = 0.3f;
 
     // Sources
 
@@ -32,85 +31,31 @@ public class ComputerSoundManager : SoundManager
 
     private Computer computer_;
 
-    // The zone audio
-    private AudioSource computerZoneAudioSource = null;
-
-    private float originalVolume = 0;
-
     public void Start()
     {
         computer_ = GetComponent<Computer>();
 
-        Assert.IsNotNull(
-            this.computer_,
-            "Unable to find Computer in parent of ComputerSoundManager."
-        );
-
-        Assert.IsNotNull(
-            this.computerOnSource,
-            "Unable to find on button audio source in Computer."
-        );
-
-        Assert.IsNotNull(
-            this.computerOffSource,
-            "Unable to find off button audio source in Computer."
-        );
-
-        Assert.IsNotNull(this.fanLoop, "Fan loop is null.");
-
         fanStart.volume = fanVolume;
-        fanLoop.volume = fanVolume;
         fanStop.volume = fanVolume;
-
-        fanLoop.loop = true;
-
-        switch (computer_.zone)
-        {
-            case Globals.Zone.A:
-                this.computerZoneAudioSource = zoneALoop;
-                break;
-            case Globals.Zone.B:
-                this.computerZoneAudioSource = zoneBLoop;
-                break;
-            case Globals.Zone.C:
-                this.computerZoneAudioSource = zoneCLoop;
-                break;
-            case Globals.Zone.Broken:
-                this.computerZoneAudioSource = brokenLoop;
-                break;
-            default:
-                Debug.LogError(
-                    $"Invalid computer zone in computer. Zone: {computer_.zone.GetType()}."
-                );
-                return;
-        }
-
-        Assert.IsNotNull(
-            computerZoneAudioSource,
-            "Unable to find zone audio source from computer."
-        );
-
-        originalVolume = computerZoneAudioSource.volume;
-
-        computerZoneAudioSource.maxDistance = 5;
-        computerZoneAudioSource.volume = 0;
-        computerZoneAudioSource.Play();
+        zoneALoop.volume = 0;
+        zoneBLoop.volume = 0;
+        zoneCLoop.volume = 0;
+        brokenLoop.volume = 0;
+        fanLoop.volume = 0;
+        zoneALoop.Play();
+        zoneBLoop.Play();
+        zoneCLoop.Play();
+        brokenLoop.Play();
+        fanLoop.Play();
     }
 
-    public override void ToggleOn()
+    public void ToggleOn()
     {
-        if (base.SoundEnabled())
-            return;
-
         try
         {
             computerOnSource.Play();
             fanStart.Play();
-
-            // var currentTime = AudioSettings.dspTime;
             fanLoop.PlayScheduled(fanStart.clip.length);
-
-            computerZoneAudioSource.volume = originalVolume * zoneVolume;
         }
         catch (System.Exception e)
         {
@@ -118,16 +63,34 @@ public class ComputerSoundManager : SoundManager
         }
     }
 
-    public override void ToggleOff()
+    void Update()
     {
-        if (!base.SoundEnabled())
+        if (!computer_.quad_.activeSelf) {
             return;
+        }
+        var avAudio = computer_.avatarObj.GetComponent<AvatarAudio>();
+        var amount = crossFadeRate * Time.deltaTime;
+        avAudio.zoneA = Mathf.Clamp(avAudio.zoneA + amount * (computer_.zone == Globals.Zone.A ? 1 : -1), 0, 1);
+        avAudio.zoneB = Mathf.Clamp(avAudio.zoneB + amount * (computer_.zone == Globals.Zone.B ? 1 : -1), 0, 1);
+        avAudio.zoneC = Mathf.Clamp(avAudio.zoneC + amount * (computer_.zone == Globals.Zone.C ? 1 : -1), 0, 1);
+        avAudio.zoneBroken = Mathf.Clamp(avAudio.zoneBroken + amount * (computer_.zone == Globals.Zone.Broken ? 1 : -1) , 0, 1);
+        zoneALoop.volume = avAudio.zoneA * zoneVolume;
+        zoneBLoop.volume = avAudio.zoneB * zoneVolume;
+        zoneCLoop.volume = avAudio.zoneC * zoneVolume;
+        brokenLoop.volume = avAudio.zoneBroken * zoneVolume;
+    }
 
+    public void ToggleOff()
+    {
         try
         {
-            computerZoneAudioSource.volume = 0;
+            zoneALoop.volume = 0;
+            zoneBLoop.volume = 0;
+            zoneCLoop.volume = 0;
+            brokenLoop.volume = 0;
+            fanLoop.volume = 0;
             computerOffSource.Play();
-            fanLoop.Stop();
+            fanStart.Stop();
             fanStop.Play();
         }
         catch

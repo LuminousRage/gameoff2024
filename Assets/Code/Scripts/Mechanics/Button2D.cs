@@ -19,7 +19,6 @@ public class Button2D : Button
         );
     }
 
-    // todo: some sprite crap
     protected override void UnuseAnimation()
     {
         spriteRenderer.sprite = unpressedSprite;

@@ -17,7 +17,7 @@ public class Computer : MonoBehaviour, IUsable
     private SceneManager sceneManager_;
 
     public Triggerable triggerable;
-    public SoundManager soundManager;
+    public ComputerSoundManager soundManager;
 
     public ComputerFloppyDisk floppyDiskManager { get; private set; }
 
@@ -83,23 +83,27 @@ public class Computer : MonoBehaviour, IUsable
 
         quad_.SetActive(enabled);
 
-        if (!firstToggle)
+        if (enabled)
         {
             soundManager.ToggleOn();
         }
-        else
+        
+        if (firstToggle)
+            return;
+        
+        if (!enabled)
         {
             soundManager.ToggleOff();
         }
 
-        if (isGhostComputer && !firstToggle)
+        if (isGhostComputer)
         {
             Debug.Log($"Toggling {this} to broken");
             // ghost computers should break on entry and exit!
             state_ = UseState.Broken;
         }
 
-        if (!firstToggle && triggerable != null)
+        if (triggerable != null)
         {
             // Computer off trigers the triggerable
             if (!enabled)
