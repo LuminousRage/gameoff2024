@@ -71,8 +71,8 @@ public class AvatarZone : MonoBehaviour
     public void respawnIn(Globals.Zone zone)
     {
         var spawnPoint = new Vector2(
-            spawns[zone].transform.position.x,
-            spawns[zone].transform.position.y
+            spawns[zone].transform.position.x + 0.5f,
+            spawns[zone].transform.position.y + 0.75f
         );
         Debug.Log($"Respawning avatar {avatar.number} to ${spawnPoint}");
 
